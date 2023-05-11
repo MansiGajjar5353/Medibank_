@@ -318,7 +318,9 @@ class _SignUpState extends State<SignUp>{
                         borderRadius: BorderRadius.circular(32.0)
                     ),),
                   
-                  onPressed:_otppage),),
+                  onPressed:(){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
+                  }),),
 
       ),
 

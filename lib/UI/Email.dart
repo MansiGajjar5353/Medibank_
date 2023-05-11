@@ -190,20 +190,23 @@ Transform.translate(offset: Offset(-16, 0),
         Center(
           child: Stack(
       children: [
-      Transform.translate(offset: Offset(-20,-60),
-       child: Container(
-            height: 368,
-            width:300,
-            child:Image.asset('image/Rectangle.png'),
-          ),),
+      Transform.translate(offset: Offset(0,-60),
+        child:SizedBox(
+          height: 300,
+          child: Image.asset(
+            'image/Rectangle.png',
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
 
-          Transform.translate(offset: Offset(0,130),
+          Transform.translate(offset: Offset(0,140),
       child:  Center(
           child: Container(
                 child:Text('2/10 Questions', style: TextStyle(color:Color(0xffB0B2B5),fontSize: 12),),
             ),
       ),),
-          Transform.translate(offset: Offset(150, 160),
+          Transform.translate(offset: Offset(150, 170),
           child:Center(
           child:Container(
             child:Row(
@@ -229,7 +232,7 @@ Transform.translate(offset: Offset(-16, 0),
     ),
           ),
 
-        Transform.translate(offset: Offset(0, 190),
+        Transform.translate(offset: Offset(0, 200),
         child:  Center(
           child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(

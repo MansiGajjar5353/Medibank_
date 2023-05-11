@@ -158,7 +158,7 @@ class _SigninState extends State<Signin>{
 
 
 
-      Padding(padding: EdgeInsets.only(top:120.0, left:50.0, right: 50.0)),
+      Padding(padding: EdgeInsets.only(top:145.0, left:50.0, right: 50.0)),
       Container(
         height: 50.0,
         margin: EdgeInsets.only(left:20.0,right:20.0),

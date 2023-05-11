@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'Email_page.dart';
+import 'Email.dart';
 class otpScreen extends StatefulWidget{
   //final String data;
   //const otpScreen(this.data,{ super.key})
@@ -182,12 +182,19 @@ Padding(padding: EdgeInsets.only(top:20)),
                  Center(
                    child: Stack(
                      children: [
-                       Transform.translate(offset: Offset(-20,-60),
-                         child: Container(
+                       Transform.translate(offset: Offset(0,-60),
+                         child:SizedBox(
+                           height: 300,
+                           child: Image.asset(
+                             "image/Otpapage.png",
+                             fit: BoxFit.contain,
+                           ),
+                         ),
+                         /*child: Container(
                            height: 368,
                            width:300,
                            child:Image.asset('image/Otpapage.png'),
-                         ),),
+                         ),*/),
 
                        Transform.translate(offset: Offset(0,130),
                          child:  Center(
@@ -231,8 +238,9 @@ Padding(padding: EdgeInsets.only(top:20)),
                                ),
 
                              ),
-                             onPressed: ()  {
-                               setState(() async {
+                             onPressed: ()  {Navigator.push(context,MaterialPageRoute(builder: (context)=>Email_Screen(),));
+
+                      /*         setState(() async {
                                  _otp = _fieldOne.text +
                                      _fieldTwo.text +
                                      _fieldThree.text +
@@ -260,7 +268,7 @@ Padding(padding: EdgeInsets.only(top:20)),
                                  }
 
 
-                               });
+                               });*/
                              },
                              icon: Container(
                                margin: EdgeInsets.only(left:10),
@@ -347,9 +355,9 @@ Padding(padding: EdgeInsets.only(top:20)),
          ), label: Text(""),
                  ),*/
                  // Display the entered OTP code
-               Text(
+              /* Text(
                   "$_WelcomeString",
-                 ),
+                 ),*/
                ]
 
            )
