@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../Onbording/Responsive.dart';
 import 'Email.dart';
 class otpScreen extends StatefulWidget{
   //final String data;
@@ -19,7 +20,7 @@ class otpScreen extends StatefulWidget{
 class _otpScreenState extends State<otpScreen> {
   //final String data;
   //otpScreen({required this.data});
-  String _WelcomeString = "";
+  //String _WelcomeString = "";
   final TextEditingController _fieldOne = TextEditingController();
   final TextEditingController _fieldTwo = TextEditingController();
   final TextEditingController _fieldThree = TextEditingController();
@@ -29,6 +30,10 @@ class _otpScreenState extends State<otpScreen> {
   String? _otp;
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    var _mediaquery = MediaQuery.of(context);
    return Scaffold(
      appBar: AppBar(
        backgroundColor: Color(0xffffffff),
@@ -36,114 +41,137 @@ class _otpScreenState extends State<otpScreen> {
      iconTheme: IconThemeData(color: Colors.green),),
 
        body:Container(
+         height: _mediaquery.size.height*1,
     child: ListView(
       children: [
-        Row(
-          children: [
-            Container(
-              child: Column(
+        Container(
+        //  height: _mediaquery.size.height*0.13,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                children: [
-                  Transform.translate(offset: Offset(-16, 0),
-                    child:  Container(
-                      child: Text("Personal ",style: new TextStyle( color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                    ),),
-                  Transform.translate(offset: Offset(5, 0),
-                    child:   Container(
-                      //margin: EdgeInsets.only(left:30,),
-                      child:Text("Information ",style: new TextStyle(height:0.90,color: Colors.green, fontSize: 24.0, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                    ),),
-                  Transform.translate(offset: Offset(27, 0),
-                    child:  Container(
-                      child: Text("Note: minim mollit non deserunt ullamco ",style:new TextStyle( color: Color(0xff929292), fontSize: 9.0, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                    ), ),
-                  Transform.translate(offset: Offset(5, 0),
-                    child:  Container(
-                      child: Text("est sit aliqua dolor do amet sint. ",style:new TextStyle( color: Color(0xff929292), fontSize: 9.0, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                    ), )  ,
-                ],
-              ), ),
-            Container(
-              child:Column(
-                children: [
-                  Transform.translate(offset: Offset(40,0),
-                    child:Container(
-                      child: Image.asset('image/perso.png',height: 70,),
-                    ),),
+                    Container(
+                      margin:EdgeInsets.only(left:25),
+
+                        child: Text("Personal ",style: new TextStyle( color: Colors.black,  fontSize: Responsive.isSmallScreen(context)? width/15 : width/30,
+                            fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
+                      ),
+
+                         Container(
+                           margin:EdgeInsets.only(left:25),
+                        //margin: EdgeInsets.only(left:30,),
+                        child:Text("Information ",style: new TextStyle(height:0.90,color: Colors.green, fontSize: Responsive.isSmallScreen(context)? width/15 : width/30, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
+                      ),
+
+                        Container(
+                          margin:EdgeInsets.only(left:25),
+                        child: Text("Note: minim mollit non deserunt ullamco ",style:new TextStyle( color: Color(0xff929292), fontSize: Responsive.isSmallScreen(context)? width/46 : width/60, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
+                      ),
+
+                       Container(
+                         margin:EdgeInsets.only(left:25),
+                        child: Text("est sit aliqua dolor do amet sint. ",style:new TextStyle( color: Color(0xff929292), fontSize: Responsive.isSmallScreen(context)? width/46 : width/60, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
+                      ),
+                  ],
+                ), ),
+              Container(
+                margin: EdgeInsets.only(right: 20),
+                child:Column(
+                  children: [
+
+                     Container(
+                        child: Image.asset('image/perso.png',height: _mediaquery.size.height*0.089),
+                      ),
 
 
-                  Transform.translate(offset: Offset(40, 7),
-                    child: Container(
-                      child:RichText(
-                        text: TextSpan(
-                          text: 'category ',
-                          style: TextStyle(
-                            color: Color(0xff929292),
-                            fontSize: 11,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w300,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: '4/12',
-                              style: TextStyle(
-                                color: Color(0xff24B445),
-                                fontWeight: FontWeight.w900,
-                                fontFamily: 'Poppins',
-                              ),
+
+              Container(
+                margin: EdgeInsets.only(top: _mediaquery.size.height*0.01),
+                        child:RichText(
+                          text: TextSpan(
+                            text: 'category ',
+                            style: TextStyle(
+                              color: Color(0xff929292),
+                              fontSize: Responsive.isSmallScreen(context)?width/35 : width/60,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w300,
                             ),
-                          ],
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: '4/12',
+                                style: TextStyle(
+                                  color: Color(0xff24B445),
+                                  fontWeight: FontWeight.w900,
+                                  fontFamily: 'Poppins',
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),),
-                ],
-              ),
-            ),
-          ],
-        ),
-
-
-      Padding(padding: EdgeInsets.only(top:40.0)),
-      Container(
-        margin: EdgeInsets.only(left:21.0,top:50.0 ),
-        //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
-        child:RichText(
-          text: TextSpan(
-            text: 'We need to verify your ',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-                fontFamily: 'Poppins',
-               fontWeight: FontWeight.w400,
-            ),
-            children: <TextSpan>[
-              TextSpan(
-                text: 'Number',
-                style: TextStyle(
-                  color: Colors.green,
-                  fontWeight: FontWeight.w400,
-                    fontFamily: 'Poppins',
-
+                  ],
                 ),
-              ),
-              TextSpan(
-                text: '?',
               ),
             ],
           ),
         ),
-       // child:Text("We need to verify your Number?",style: new TextStyle(height:0.90,color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.w900,fontFamily: 'Poppins'),),
 
+
+      Padding(padding: EdgeInsets.only(top:50.0)),
+      Center(
+        child: Container(
+         // margin: EdgeInsets.only(left:21.0,top:50.0 ),
+          //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
+          child:RichText(
+            text: TextSpan(
+              text: 'We need to verify your ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: Responsive.isSmallScreen(context)? width/19: width/30,
+                  fontFamily: 'Poppins',
+                 fontWeight: FontWeight.w400,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Number',
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins',
+
+                  ),
+                ),
+                TextSpan(
+                  text: '?',
+                ),
+              ],
+            ),
+          ),
+         // child:Text("We need to verify your Number?",style: new TextStyle(height:0.90,color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.w900,fontFamily: 'Poppins'),),
+
+        ),
       ),
 
         Container(
           child:Column(
             children: [
               Container(
-                child:Text("Amet minim mollit non deserunt ullamco est sit ", style: new TextStyle(color:Color(0xff929292),fontSize: 12),
+                child:Text("Amet minim mollit non deserunt ullamco est sit ",
+                  style: new TextStyle(color:Color(0xff929292),
+                    fontSize: Responsive.isSmallScreen(context)? width/32:width/60,
+                  fontFamily: 'Poppins'),
                 ),),
 
-              Container( child:Text("aliqua dolor do amet sint.",  style: new TextStyle(color:Color(0xff929292),fontSize: 12),
+              Container( child:Text("aliqua dolor do amet sint.",
+                style: new TextStyle(color:Color(0xff929292),
+                    fontSize: Responsive.isSmallScreen(context)? width/32:width/60,
+                    fontFamily: 'Poppins'),
               ),
               ),
             ],
@@ -152,6 +180,7 @@ class _otpScreenState extends State<otpScreen> {
 Padding(padding: EdgeInsets.only(top:20)),
       Column(
              mainAxisAlignment: MainAxisAlignment.center,
+               crossAxisAlignment: CrossAxisAlignment.start,
                children:[
 
                  Row(
@@ -170,11 +199,23 @@ Padding(padding: EdgeInsets.only(top:20)),
                  ),
        Container(
          child:Row(
+           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
            children: [
-             Padding(padding: EdgeInsets.only(left:20)),
-             Text("Resend Otp?",style: new TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Color(0xffC7C7C7), fontSize: 14.0 ),),
-             Padding(padding: EdgeInsets.only(left:150)),
-             Text("0.30sec",style: new TextStyle(fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Color(0xffC7C7C7),fontSize: 14.0 )),
+             InkWell(
+               onTap: (){},
+               child: Container(margin:EdgeInsets.only(left: 20),
+                   child: Text("Resend Otp?",
+                 style: new TextStyle(fontFamily: "Poppins",
+                     fontWeight: FontWeight.w400, color: Color(0xffC7C7C7),
+                     fontSize: 14.0 ),)),
+             ),
+
+             Container(margin:EdgeInsets.only(right: 20),
+                 child: Text("0.30sec",
+                 style: new TextStyle(fontFamily: "Poppins",
+                     fontWeight: FontWeight.w400, color: Color(0xffC7C7C7),
+                     fontSize: 14.0 ))),
            ],
          )
        ),
@@ -184,28 +225,35 @@ Padding(padding: EdgeInsets.only(top:20)),
                      children: [
                        Transform.translate(offset: Offset(0,-60),
                          child:SizedBox(
-                           height: 300,
+                           height: _mediaquery.size.height*0.49,
                            child: Image.asset(
                              "image/Otpapage.png",
                              fit: BoxFit.contain,
                            ),
                          ),
+
                          /*child: Container(
                            height: 368,
                            width:300,
                            child:Image.asset('image/Otpapage.png'),
                          ),*/),
 
-                       Transform.translate(offset: Offset(0,130),
-                         child:  Center(
+
+                         Center(
                            child: Container(
-                             child:Text('2/10 Questions', style: TextStyle(color:Color(0xffB0B2B5),fontSize: 12),),
+                             margin: EdgeInsets.only(top: _mediaquery.size.height*0.25),
+                             child:Text('2/10 Questions',
+                               style: TextStyle(color:Color(0xffB0B2B5),
+                                   fontSize: Responsive.isSmallScreen(context)? width/25:width/60),),
                            ),
-                         ),),
-                       Transform.translate(offset: Offset(150, 160),
-                         child:Center(
+                         ),
+
+
+                        Center(
                            child:Container(
+                             margin: EdgeInsets.only(top: _mediaquery.size.height*0.29),
                              child:Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
                                children: [
                                  Padding(padding: EdgeInsets.only(left:9)),
                                  CircleAvatar(
@@ -226,63 +274,82 @@ Padding(padding: EdgeInsets.only(top:20)),
                              ),
                            ),
                          ),
-                       ),
 
-                       Transform.translate(offset: Offset(0, 190),
-                         child:  Center(
-                           child: ElevatedButton.icon(
+
+
+                       Center(
+                         child: Container(
+                           height: _mediaquery.size.height*0.070,
+                           width: Responsive.isSmallScreen(context) ? width/2.5: width/3.5,
+                           margin: EdgeInsets.only(top: _mediaquery.size.height*0.32),
+                           child: ElevatedButton(onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context)=>Email_Screen(),));  },
+                             child: Image(image: AssetImage('image/AerrowRight.png'),
+                                 height: _mediaquery.size.height*0.04) ,
                              style: ElevatedButton.styleFrom(
-                               primary: Color(0xff24B445),
-                               shape: RoundedRectangleBorder(
-                                   borderRadius: BorderRadius.circular(32.0)
-                               ),
-
-                             ),
-                             onPressed: ()  {Navigator.push(context,MaterialPageRoute(builder: (context)=>Email_Screen(),));
-
-                      /*         setState(() async {
-                                 _otp = _fieldOne.text +
-                                     _fieldTwo.text +
-                                     _fieldThree.text +
-                                     _fieldFour.text+
-                                     _fieldFive.text+
-                                     _fieldSix.text;
-
-                                 final url = Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/VerifyMobileOtp');
-
-                                 final jsonBody = jsonEncode({
-                                   "createdAt": "fjsfhsfd082342084324",
-                                   "userId": 0,
-                                   "otpNumber": _otp,
-                                 });
-
-                                 final response = await http.post(url, body: jsonBody, headers: {
-                                   'Content-Type': 'application/json',
-                                 });
-                                 log(response.body);
-                                 if (response.statusCode == 200) {
-                                   //_WelcomeString = "Sign Up Succes";
-                                   Navigator.push(context,MaterialPageRoute(builder: (context)=>Email_Screen(),));
-                                 } else {
-                                   _WelcomeString = "Please enter valid OTP";
-                                 }
-
-
-                               });*/
-                             },
-                             icon: Container(
-                               margin: EdgeInsets.only(left:10),
-                               width: 80,
-                               child: Icon(
-                                 Icons.arrow_forward,
-                                 size: 30,
-                                 color: Colors.black,
-                               ),
-                             ), label: Text(""),
+                                           backgroundColor: Color(0xff24B445),
+                                           shape: RoundedRectangleBorder(
+                                               borderRadius: BorderRadius.circular(32.0)
+                                          ),
                            ),
                          ),
-
+                         ),
                        ),
+
+                      //     Center(
+                      //       child: Container(
+                      //         margin: EdgeInsets.only(top: _mediaquery.size.height*0.32),
+                      //        child: ElevatedButton.icon(
+                      //          style: ElevatedButton.styleFrom(
+                      //            backgroundColor: Color(0xff24B445),
+                      //            shape: RoundedRectangleBorder(
+                      //                borderRadius: BorderRadius.circular(32.0)
+                      //            ),
+                      //
+                      //          ),
+                      //          onPressed: ()  {Navigator.push(context,MaterialPageRoute(builder: (context)=>Email_Screen(),));
+                      //
+                      // /*         setState(() async {
+                      //              _otp = _fieldOne.text +
+                      //                  _fieldTwo.text +
+                      //                  _fieldThree.text +
+                      //                  _fieldFour.text+
+                      //                  _fieldFive.text+
+                      //                  _fieldSix.text;
+                      //
+                      //              final url = Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/VerifyMobileOtp');
+                      //
+                      //              final jsonBody = jsonEncode({
+                      //                "createdAt": "fjsfhsfd082342084324",
+                      //                "userId": 0,
+                      //                "otpNumber": _otp,
+                      //              });
+                      //
+                      //              final response = await http.post(url, body: jsonBody, headers: {
+                      //                'Content-Type': 'application/json',
+                      //              });
+                      //              log(response.body);
+                      //              if (response.statusCode == 200) {
+                      //                //_WelcomeString = "Sign Up Succes";
+                      //                Navigator.push(context,MaterialPageRoute(builder: (context)=>Email_Screen(),));
+                      //              } else {
+                      //                _WelcomeString = "Please enter valid OTP";
+                      //              }
+                      //
+                      //
+                      //            });*/
+                      //          },
+                      //          icon: Container(
+                      //            margin: EdgeInsets.only(left:10),
+                      //            width: Responsive.isSmallScreen(context)?width/3.2 : width/50,
+                      //             height: _mediaquery.size.height*0.071,
+                      //            child: Image(image: AssetImage('image/AerrowRight.png'),
+                      //                fit: BoxFit.scaleDown),
+                      //          ), label: Text(""),
+                      //        ),
+                      //    ),
+                      //     ),
+
+
 
 
 
@@ -377,9 +444,9 @@ class OtpInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      width: 50,
+    return Container(
+      height:50,
+      width: 45,
       child: TextField(
         autofocus: autoFocus,
         textAlign: TextAlign.center,
@@ -395,8 +462,11 @@ class OtpInput extends StatelessWidget {
               borderRadius: BorderRadius.circular(35),
               borderSide: BorderSide.none,
             ),
+            hintText: "2",
             counterText: '',
-            hintStyle: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: 18.0, fontWeight: FontWeight.w400)),
+            hintStyle: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize:12,
+                fontWeight: FontWeight.w400)),
         onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();
@@ -404,16 +474,5 @@ class OtpInput extends StatelessWidget {
         },
       ),
     );
-  }
-}
-class HalfClipper extends CustomClipper<Rect> {
-  @override
-  Rect getClip(Size size) {
-    return Rect.fromLTRB(0, 0, size.width , size.height);
-  }
-
-  @override
-  bool shouldReclip(HalfClipper oldClipper) {
-    return false;
   }
 }

@@ -32,7 +32,11 @@ dependencies:
     sdk: flutter
   http: 0.13.6
   sizer: ^2.0.15
+  intl: ^0.18.0
+  flutter_material_color_picker: ^1.1.0+2
 
+  scroll_snap_list: ^0.8.4
+  modal_bottom_sheet: 2.1.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -79,6 +83,119 @@ flutter:
     - image/Rectangle.png
     - image/Otpapage.png
     - image/google.png
+    - image/born.png
+    - image/Female1.png
+    - image/Male1.png
+    - image/other1.png
+    - image/Plan1.png
+    - image/Plan2.png
+    - image/India.png
+    - image/Dashboard.png
+    - image/D.png
+    - image/DD1.png
+    - image/DD2.png
+    - image/D3.png
+    - image/DD4.png
+    - image/DD5.png
+    - image/Fitness2.png
+    - image/D6.png
+    - image/DDD7.png
+    - image/D8.png
+    - image/D9.png
+    - image/Home.png
+    - image/Documents.png
+    - image/Microphone.png
+    - image/Union.png
+    - image/Abha.png
+    - image/Frame4.png
+    - image/Email1.png
+    - image/file3.png
+    - image/Heart1.png
+    - image/Welcome1.png
+    - image/Pulse.png
+    - image/Patient.png
+    - image/Steps.png
+    - image/Calories.png
+    - image/Bpressure.png
+    - image/num.png
+    - image/Minimum.png
+    - image/Maximum.png
+    - image/110%.png
+    - image/icon.png
+    - image/Ox.png
+    - image/Normal.png
+    - image/High.png
+    - image/Stepss.png
+    - image/Fire1.png
+    - image/Place.png
+    - image/Clock.png
+    - image/stat.png
+    - image/Daily.png
+    - image/Dates.png
+    - image/StepVec.png
+    - image/Dates2.png
+    - image/Calendar.png
+    - image/480KCL.png
+    - image/AvgBurn.png
+    - image/Goal.png
+    - image/Graph.png
+    - image/Line.png
+    - image/Edit.png
+    - image/delete.png
+    - image/accescode.png
+    - image/Healthsummary.png
+    - image/DoctorsSummary.png
+    - image/BabyBorn.png
+    - image/DeliveryTime.png
+    - image/Watch1.png
+    - image/Sym.png
+    - image/DD7.png
+    - image/Polygon.png
+    - image/DDD8.png
+    - image/DoctorZone.png
+    - image/Dp.png
+    - image/DD9.png
+    - image/DD10.png
+    - image/CaseBack.png
+    - image/Home2.png
+    - image/File12.png
+    - image/Records.png
+    - image/Mic1.png
+    - image/Abha1.png
+    - image/Pulse1.png
+    - image/Patient1.png
+    - image/Step1.png
+    - image/Calories1.png
+    - image/AccessCode1.png
+    - image/health1.png
+    - image/Doctor1.png
+    - image/Ecliose1.png
+    - image/Ellipse4.png
+    - image/BP1.png
+    - image/BP2.png
+    - image/Min1.png
+    - image/Circle1.png
+    - image/Sleep.png
+    - image/Fire3.png
+    - image/Oxy1.png
+    - image/Art1.png
+    - image/110%1.png
+    - image/Cal2.png
+    - image/Vec2.png
+    - image/F5.png
+    - image/Firee.png
+    - image/Place2.png
+    - image/Clock1.png
+    - image/AerrowRight.png
+    - image/A1.png
+    - image/Avoice1.png
+    - image/voiceassis.png
+    - image/Update1.png
+    - image/Viewvoice1.png
+    - image/trash1.png
+    - image/Circles1.png
+    - image/Bmi1.png
+    - image/Bmi2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

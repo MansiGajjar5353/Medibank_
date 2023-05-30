@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/UI/Signup.dart';
 
+import '../Onbording/Responsive.dart';
 import 'FinalPage.dart';
 
 class Signin extends StatefulWidget{
@@ -52,6 +53,10 @@ class _SigninState extends State<Signin>{
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -66,19 +71,22 @@ class _SigninState extends State<Signin>{
           Container(
           margin: EdgeInsets.only(left:21.0, top:10.0),
           //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
-          child:Text("Please sign in to continue",style: new TextStyle(color: Color(0xff24B445), fontSize: 16.0, fontWeight: FontWeight.w600, fontFamily: 'Poppins' ),),
+          child:Text("Please sign in to continue",style: new TextStyle(color: Color(0xff24B445),
+              fontSize: Responsive.isSmallScreen(context)? width/28 : width/60,
+              fontWeight: FontWeight.w600, fontFamily: 'Poppins' ),),
 
         ),
       Container(
         margin: EdgeInsets.only(left:21.0, top:10.0),
         //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
-        child:Text("Glad to see you!",style: new TextStyle(color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.w600,fontFamily: 'Poppins'),),
+        child:Text("Glad to see you!",style: new TextStyle(color: Colors.black,  fontSize: Responsive.isSmallScreen(context)? width/15 : width/60,
+            fontWeight: FontWeight.w600,fontFamily: 'Poppins'),),
 
       ),
-              Padding(padding: EdgeInsets.only(top: 20.0,right: 30.0, left:30.0)),
+              Padding(padding: EdgeInsets.only(top: 10.0,right: 30.0, left:30.0)),
               Container(
                 width: 360,
-                height: 50,
+                height:_mediaquery.size.height*0.07,
                 margin: EdgeInsets.only(left:0.0,right: 20.0),
                 padding: EdgeInsets.only(left:20.0),
                 decoration: BoxDecoration(
@@ -95,7 +103,8 @@ class _SigninState extends State<Signin>{
                       borderSide: BorderSide.none,),
 
                     hintText: "User name/Contact no",
-                    hintStyle: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 15),
+                    hintStyle: TextStyle(color: Color(0xff4F555A).withOpacity(0.50),  fontSize: Responsive.isSmallScreen(context)? width/25 : width/60,
+                    ),
                   ),
                 ),
               ),
@@ -108,10 +117,10 @@ class _SigninState extends State<Signin>{
                   hintText: "Contact no",
                 ),
               ),*/
-              Padding(padding: EdgeInsets.only(top: 20.0,right: 30.0, left:30.0)),
+              Padding(padding: EdgeInsets.only(top: 10.0,right: 30.0, left:30.0)),
               Container(
                 width: 360,
-                height: 50,
+                height:_mediaquery.size.height*0.06,
                 margin: EdgeInsets.only(left:0,right: 20.0),
                 padding: EdgeInsets.only(left:20.0),
                 decoration: BoxDecoration(
@@ -129,7 +138,7 @@ class _SigninState extends State<Signin>{
                       borderRadius: BorderRadius.circular(35),
                       borderSide: BorderSide.none,),
                     hintText: "Password",
-                    hintStyle: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),fontSize: 15),
+                    hintStyle: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/25 : width/60,),
                     suffixIcon: IconButton(
                       icon: Icon(
                         !_obscureText2 ? Icons.visibility : Icons.visibility_off,
@@ -151,21 +160,22 @@ class _SigninState extends State<Signin>{
         onPressed: () {
           print("recover preseed");
         },
-        child: Text('Recover Password?',style: new TextStyle(color: Color(0xffC7C7C7), fontWeight: FontWeight.w900, fontFamily: 'Poppins', fontSize: 10),),
+        child: Text('Recover Password?',style: new TextStyle(height:0.99,color: Color(0xffC7C7C7), fontWeight: FontWeight.w900, fontFamily: 'Poppins', fontSize: 10),),
       ),
       //child:Text("Recover Password?", style: new TextStyle(color: Colors.grey, fontWeight: FontWeight.w900, fontFamily: 'Poppins'),),
     ),
 
 
 
-      Padding(padding: EdgeInsets.only(top:145.0, left:50.0, right: 50.0)),
+      Padding(padding: EdgeInsets.only(top:180.0, left:50.0, right: 50.0)),
       Container(
         height: 50.0,
         margin: EdgeInsets.only(left:20.0,right:20.0),
 
-              child:ElevatedButton(  child: Text("Sign In",style:TextStyle(color:Color(0xffFFFFFF),fontSize: 15, fontWeight: FontWeight.w700)),
+              child:ElevatedButton(  child: Text("Sign In",style:TextStyle(color:Color(0xffFFFFFF),  fontSize:  Responsive.isSmallScreen(context)? width/
+                  25:width/60, fontWeight: FontWeight.w700)),
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF24B445),
+                    backgroundColor: Color(0xFF24B445),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32.0)
                     ),
@@ -186,7 +196,7 @@ class _SigninState extends State<Signin>{
                     SizedBox(width: 10),
                     Text(
                       'Or Login with',
-                      style: TextStyle(fontSize: 12, color: Colors.grey)
+                      style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/30 : width/60, color: Colors.grey)
                     ),
                     SizedBox(width: 10),
                     Container(
@@ -212,20 +222,22 @@ class _SigninState extends State<Signin>{
                 ),
                 child: ElevatedButton(
                     child:Center(
-                      child: Row(
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(padding: EdgeInsets.only(left:100),),
+                          //Padding(padding: EdgeInsets.only(left:100),),
                           Image.asset('image/google.png',
                             height: 20,),
                           Padding(padding: EdgeInsets.only(left:10)),
-                          Text("Google", style:new TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w900)),
+                          Text("Google", style:new TextStyle(
+                              fontSize:  Responsive.isSmallScreen(context)? width/
+                                  25:width/60,
+                              color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w900)),
                         ],
                       ),
                     ),
 
                     style: ElevatedButton.styleFrom(
-                      elevation:0,
-                      primary: Colors.white,
+                      elevation:0, backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32.0),
 
@@ -249,12 +261,12 @@ class _SigninState extends State<Signin>{
                 child:   Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Center(child: Text('Not a member?', style: TextStyle(color: Color(0xffACADAC),fontSize: 14),)),
+                    Center(child: Text('Not a member?', style: TextStyle(color: Color(0xffACADAC),fontSize: Responsive.isSmallScreen(context)? width/25 : width/60,),)),
                     Center(child: TextButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp(),));
                       },
-                      child: Text('Sign Up', style: TextStyle(color: Color(0xff191F32),fontSize: 14),),
+                      child: Text('Sign Up', style: TextStyle(color: Color(0xff191F32),fontSize: Responsive.isSmallScreen(context)? width/25 : width/60,),),
                     ),),
                   ],
                 ),

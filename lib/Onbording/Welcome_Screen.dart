@@ -1,0 +1,401 @@
+import 'package:flutter/material.dart';
+import 'DashBoardd.dart';
+import 'Responsive.dart';
+import 'Dashboard.dart';
+
+class Welcome_Screen extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return Welcome_ScreenState();
+  }
+
+}
+
+class Welcome_ScreenState extends State<Welcome_Screen>{
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.green),
+      ),
+      body: Container(
+        height: _mediaquery.size.height*1,
+        child: ListView(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child: Text("Welcome,",style: new TextStyle( color: Colors.black,
+                      fontSize:Responsive.isSmallScreen(context)? width/16: width/60,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins'),),
+                ),
+                Container(
+                  child: Text("Prathvi Bharatwala ",
+                    style: new TextStyle( color: Color(0xff24B445),
+                        fontSize:Responsive.isSmallScreen(context)? width/16: width/60,
+                        fontWeight: FontWeight.w400,fontFamily: 'Poppins'),),
+                ),
+                Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.02)),
+                Container(
+                  child: Text("Now you can track your health", style: new TextStyle(
+                    color:Color(0xff929292),
+                    fontSize: Responsive.isSmallScreen(context)? width/23 : width/60,
+                    fontWeight: FontWeight.w400,
+                  ),),
+                ),
+
+                Container(
+                  child: Text("records with ease !", style: new TextStyle(
+                    color:Color(0xff929292),
+                    fontSize: Responsive.isSmallScreen(context)? width/23 : width/60,
+                    fontWeight: FontWeight.w400,
+                  ),),
+                ),
+
+              ],
+            ),
+
+Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.04)),
+          Column(
+           // mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              Row(
+
+              mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: _mediaquery.size.width*0.09,
+                    width: _mediaquery.size.width*0.09,
+
+                    child: Image(image: AssetImage('image/Email1.png')),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 10),),
+                  Container(child: Text("Amet minim mollit non deserunt ullamco est\nsit aliqua dolor do amet sint.",
+                    style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color:Color(0xff929292),
+                    fontSize: Responsive.isSmallScreen(context)? width/36 : width/50,
+                  ),),),
+
+                ],
+              ),
+              Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.015)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: _mediaquery.size.width*0.09,
+                    width: _mediaquery.size.width*0.09,
+                    child: Image(image: AssetImage('image/file3.png')),
+                  ),
+                  Padding(padding: EdgeInsets.only(left:10)),
+                  Container(child: Text("Amet minim mollit non deserunt ullamco est\nsit aliqua dolor do amet sint.",style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color:Color(0xff929292),
+                    fontSize: Responsive.isSmallScreen(context)? width/36 : width/50,
+                  ),),),
+
+                ],
+              ),
+              Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.015)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: _mediaquery.size.width*0.09,
+                    width: _mediaquery.size.width*0.09,
+
+                    child: Image(image: AssetImage('image/Heart1.png')),
+                  ),
+                  Padding(padding: EdgeInsets.only(left:10)),
+                  Container(child: Text("Amet minim mollit non deserunt ullamco est\nsit aliqua dolor do amet sint.",style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color:Color(0xff929292),
+                    fontSize: Responsive.isSmallScreen(context)? width/36 : width/50,
+                  ),),),
+
+                ],
+              ),
+            ],
+
+          ),
+
+          Stack(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: _mediaquery.size.height*0.05),
+                height:_mediaquery.size.height*0.5,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('image/Welcome1.png'),
+
+                  ),
+              ),
+              ),
+
+              Container(
+                margin: EdgeInsets.only(top:_mediaquery.size.height*0.15),
+                child:Column
+              (
+                  mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child:Text(
+                    "Other Benifits",
+                    style: TextStyle(
+                      color: Color(0xff24B445),
+                      fontWeight: FontWeight.w500,
+                      fontSize: Responsive.isSmallScreen(context)? width/22 :width/60,
+                    ),
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Row(
+mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 36,
+                        width:Responsive.isSmallScreen(context)? width/3 : width/6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(35), // set the border radius
+                          color: Color(0xffFFFFFF),
+                        ),
+                        child:Center(
+                          child: Text("health management",  style: TextStyle(
+                            color: Color(0xff555555),
+                            fontWeight: FontWeight.w400,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                          ),),
+                        ),
+
+                      ),
+                      Padding(padding:EdgeInsets.only(left:10)),
+                      Container(
+                        height: 36,
+                        width:Responsive.isSmallScreen(context)? width/3 : width/6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(35), // set the border radius
+                          color: Color(0xffFFFFFF),
+                        ),
+                        child:Center(
+                          child: Text("fitness activities",  style: TextStyle(
+                            color: Color(0xff555555),
+                            fontWeight: FontWeight.w400,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                          ),),
+                        ),
+
+                      ),
+
+                    ],
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.only(top: 15),
+                  child: Row(
+
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 36,
+                        width:Responsive.isSmallScreen(context)? width/2.4 : width/6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(35), // set the border radius
+                          color: Color(0xffFFFFFF),
+                        ),
+                        child:Center(
+                          child: Text("Analyitics around your health",  style: TextStyle(
+                            color: Color(0xff555555),
+                            fontWeight: FontWeight.w400,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                          ),),
+                        ),
+
+                      ),
+                      Padding(padding:EdgeInsets.only(left:10)),
+                      Container(
+                        height: 36,
+                        width:Responsive.isSmallScreen(context)? width/2.4 : width/6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(35), // set the border radius
+                          color: Color(0xffFFFFFF),
+                        ),
+                        child:Center(
+                          child: Text("Family health management",  style: TextStyle(
+                            color: Color(0xff555555),
+                            fontWeight: FontWeight.w400,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                          ),),
+                        ),
+
+                      ),
+
+                    ],
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.only(top: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 36,
+                        width:Responsive.isSmallScreen(context)? width/3 : width/6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(35), // set the border radius
+                          color: Color(0xffFFFFFF),
+                        ),
+                        child:Center(
+                          child: Text("health management",  style: TextStyle(
+                            color: Color(0xff555555),
+                            fontWeight: FontWeight.w400,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                          ),),
+                        ),
+
+                      ),
+                      Padding(padding:EdgeInsets.only(left:10)),
+                      Container(
+                        height: 36,
+                        width:Responsive.isSmallScreen(context)? width/2.4 : width/6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(35), // set the border radius
+                          color: Color(0xffFFFFFF),
+                        ),
+                        child:Center(
+                          child: Text("Family health management",  style: TextStyle(
+                            color: Color(0xff555555),
+                            fontWeight: FontWeight.w400,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                          ),),
+                        ),
+
+                      ),
+
+                    ],
+                  ),
+                ),
+
+                Center(
+                  child: Container(
+                    height: _mediaquery.size.height*0.070,
+                    width: Responsive.isSmallScreen(context) ? width/2.5: width/3.5,
+                    margin: EdgeInsets.only(top: _mediaquery.size.height*0.02),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> DashBoardd(),));
+                      },
+                      child: Image(image: AssetImage('image/AerrowRight.png'),
+                          height: _mediaquery.size.height*0.04) ,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff24B445),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0)
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // Container(
+                //
+                //   child:Column(
+                //     children: [
+                //       Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.04)),
+                //
+                //       ElevatedButton.icon(
+                //         style: ElevatedButton.styleFrom(
+                //           backgroundColor: Color(0xff24B445),
+                //           shape: RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.circular(32.0)
+                //           ),
+                //
+                //         ),
+                //         onPressed: (){
+                //
+                //           Navigator.push(context, MaterialPageRoute(builder: (context)=> Dashboard(),));
+                //
+                //         },
+                //
+                //         icon: Container(
+                //           margin: EdgeInsets.only(left:10),
+                //           width: 80,
+                //           child: Icon(
+                //             Icons.arrow_forward,
+                //             size: 30,
+                //             color: Colors.black,
+                //           ),
+                //         ), label: Text(""),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+
+              ],
+              ),
+
+              )
+
+            ],
+
+
+          ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          ],
+
+        ),
+      ),
+    );
+  }
+
+
+}
