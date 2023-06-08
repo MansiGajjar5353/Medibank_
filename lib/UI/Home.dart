@@ -6,6 +6,9 @@ import 'package:project_signup_page/UI/Signin.dart';
 import 'package:project_signup_page/UI/Signup.dart';
 import 'package:project_signup_page/UI/otpScreen.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
+import '../Dashbord/practice.dart';
+import '../Onbording/Code.dart';
+import '../Onbording/Records.dart';
 import 'Email.dart';
 
 
@@ -19,14 +22,55 @@ class Home extends StatefulWidget{
 }
 
 class _Homestate extends State<Home> {
+  Color buttonColor = Colors.black; // Initial color of the button
+  bool isButtonPressed = false;
+  Color buttonColor2 = Colors.black; // Initial color of the button
+  bool isButtonPressed2 = false;
+
+  void handleButtonPress() {
+    setState(() {
+      buttonColor = Colors.green; // Change the color to your desired value
+      isButtonPressed = true;
+    });
+
+    Future.delayed(const Duration(milliseconds: 200), () {
+      setState(() {
+        buttonColor = Colors.green; // Change the color back to the original value
+        isButtonPressed = false;
+      });
+
+      // Perform navigation after the delay
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp()));
+    });
+  }
+
+  void handleButtonPress2() {
+    setState(() {
+      buttonColor2 = Color(0xff24B445); // Change the color to your desired value
+      isButtonPressed2 = true;
+    });
+
+    Future.delayed(const Duration(milliseconds: 200), () {
+      setState(() {
+        buttonColor2 = Color(0xff000000); // Change the color back to the original value
+        isButtonPressed2 = false;
+      });
+
+      // Perform navigation after the delay
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> Signin()));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     var _mediaquery = MediaQuery.of(context);
+
+
 
 
 
@@ -137,22 +181,25 @@ class _Homestate extends State<Home> {
 
                     child: ElevatedButton(
 
-                      child:  Text('Sign Up', style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                      child:  Text('Sign Up', style: TextStyle(color: isButtonPressed ? Colors.white : Color(0xff4F555A).withOpacity(0.5),
                           fontSize:  Responsive.isSmallScreen(context)? width/
                               25:width/60,
                           fontFamily:'Poppins',
                           fontWeight: FontWeight.w900),),
                       style: ElevatedButton.styleFrom(
 
-                        primary: Color(0xffF9F9F9),
-                        elevation: 0,
+                        primary: isButtonPressed ? buttonColor :  Color(0xffF9F9F9),
+                        elevation: 1,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0)),
 
                       ),
-                      onPressed: ()=> setState(() {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp()));
-                      }),
+                      onPressed:handleButtonPress,
+                      // ()=> setState(() {
+                      // Navigator.push(context, MaterialPageRoute(builder: (context)=> ColorChangingButton()));
+                      // //  Navigator.push(context, MaterialPageRoute(builder: (context)=> ScrollableTabBar()));
+                      //
+                      // }),
                     ),
 
                   ),
@@ -169,20 +216,21 @@ class _Homestate extends State<Home> {
                     margin: EdgeInsets.only(left:30.0,right:30.0, top:_mediaquery.size.height*0.19),
 
                     child: ElevatedButton(
-                      child: Text('Sign in', style: TextStyle( fontFamily:'Poppins',
+                      child: Text('Sign in', style: TextStyle(
+                          color:isButtonPressed2 ? Colors.white : Color(0xff4F555A).withOpacity(0.5),
+                          fontFamily:'Poppins',
                           fontSize:  Responsive.isSmallScreen(context)? width/
                               25:width/60,
                           fontWeight: FontWeight.w900),),
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF24B445),
+                        primary: isButtonPressed2 ? buttonColor2 :  Color(0xffF9F9F9),
+                        elevation: 1,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0)
                         ),
 
                       ),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Signin()));
-                      },
+                      onPressed:handleButtonPress2,
 
                     ),
                   ),

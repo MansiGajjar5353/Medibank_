@@ -17,6 +17,32 @@ class Signin extends StatefulWidget{
 }
 
 class _SigninState extends State<Signin>{
+  Color buttonColor = Colors.black; // Initial color of the button
+  bool isButtonPressed = false;
+
+  void handleButtonPress() {
+    setState(() {
+      buttonColor = Colors.green; // Change the color to your desired value
+      isButtonPressed = true;
+    });
+
+    Future.delayed(const Duration(milliseconds: 200), () {
+      setState(() {
+        buttonColor = Colors.green; // Change the color back to the original value
+        isButtonPressed = false;
+
+      });
+
+      _loginpage; // Perform navigation after the delay
+
+    });
+  }
+
+
+
+
+
+
   bool _obscureText2 = true;
   final TextEditingController _userController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
@@ -172,16 +198,19 @@ class _SigninState extends State<Signin>{
         height: 50.0,
         margin: EdgeInsets.only(left:20.0,right:20.0),
 
-              child:ElevatedButton(  child: Text("Sign In",style:TextStyle(color:Color(0xffFFFFFF),  fontSize:  Responsive.isSmallScreen(context)? width/
+              child:ElevatedButton(  child: Text("Sign In",
+                  style:TextStyle(color:isButtonPressed ? Colors.white : Color(0xff4F555A).withOpacity(0.5),
+                      fontSize:  Responsive.isSmallScreen(context)? width/
                   25:width/60, fontWeight: FontWeight.w700)),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF24B445),
+                    backgroundColor: isButtonPressed ? buttonColor :  Color(0xffF9F9F9),
+                    elevation: 1,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32.0)
                     ),
 
                   ),
-                  onPressed:_loginpage),),
+                  onPressed: handleButtonPress,),),
 
               Transform.translate(
                 offset: Offset(0,20),

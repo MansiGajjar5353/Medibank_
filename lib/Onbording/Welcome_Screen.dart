@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Dashbord/Dashbord.dart';
 import 'DashBoardd.dart';
 import 'Responsive.dart';
 import 'Dashboard.dart';
@@ -13,6 +14,27 @@ class Welcome_Screen extends StatefulWidget{
 }
 
 class Welcome_ScreenState extends State<Welcome_Screen>{
+  Color imageColor = Color(0xff4F555A).withOpacity(0.5);
+  Color buttonColor = Colors.black; // Initial color of the button
+  bool isButtonPressed = false;
+
+
+  void handleButtonPress() {
+    setState(() {
+      buttonColor = Colors.green; // Change the color to your desired value
+      isButtonPressed = true;
+    });
+
+    Future.delayed(const Duration(milliseconds: 200), () {
+      setState(() {
+        buttonColor = Colors.green; // Change the color back to the original value
+        isButtonPressed = false;
+      });
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>BottomNavBarApp(),));
+      // Perform navigation after the delay
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -143,6 +165,7 @@ Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.04)),
               Container(
                 margin: EdgeInsets.only(top: _mediaquery.size.height*0.05),
                 height:_mediaquery.size.height*0.5,
+              //  width:Responsive.isSmallScreen(context)? width/1 : width/1,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('image/Welcome1.png'),
@@ -305,13 +328,12 @@ mainAxisAlignment: MainAxisAlignment.center,
                     width: Responsive.isSmallScreen(context) ? width/2.5: width/3.5,
                     margin: EdgeInsets.only(top: _mediaquery.size.height*0.02),
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> DashBoardd(),));
-                      },
-                      child: Image(image: AssetImage('image/AerrowRight.png'),
+                      onPressed:handleButtonPress,
+                      child: Image.asset('image/AerrowRight.png',
+                          color: isButtonPressed? Colors.black:imageColor,
                           height: _mediaquery.size.height*0.04) ,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff24B445),
+                        backgroundColor:isButtonPressed ? buttonColor : Color(0xffF9F9F9),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0)
                         ),

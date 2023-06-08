@@ -34,7 +34,7 @@ dependencies:
   sizer: ^2.0.15
   intl: ^0.18.0
   flutter_material_color_picker: ^1.1.0+2
-
+  floating_bottom_navigation_bar: 1.5.2
   scroll_snap_list: ^0.8.4
   modal_bottom_sheet: 2.1.2
 
@@ -74,9 +74,30 @@ flutter:
         - asset: Font/Poppins/Poppins-Regular.ttf
         #- asset: Font/Poppins/Poppins-semiBoldItalic.ttf
   assets:
-
+    - image/Treatments.png
+    - image/DropDown.png
+    - image/Checkbox.png
+    - image/Diet.png
+    - image/Hospitazation.png
+    - image/Veg.png
+    - image/Lunch.png
+    - image/Nonveg.png
+    - image/Exercise.png
+    - image/EyeButton.png
+    - image/EditButton.png
+    - image/DeleteButton.png
+    - image/ViewButton.png
+    - image/PlusButton.png
+    - image/Breakfast.png
+    - image/Camera.png
+    - image/Upload.png
     - image/doc.jpeg
+    - image/Wheat.png
+    - image/Unckecked.png
+    - image/Rice.png
+    - image/Checked.png
     - image/Vector.png
+    - image/Dinner.png
     - image/Ellipse.png
     - image/Ellipse2.png
     - image/perso.png
@@ -196,6 +217,43 @@ flutter:
     - image/Circles1.png
     - image/Bmi1.png
     - image/Bmi2.png
+    - image/Lines.png
+    - image/Reports.png
+    - image/Report1.png
+    - image/placeholder.png
+    - image/profilrside.png
+    - image/Vactinationnew.png
+    - image/Profilewrite.png
+    - image/FamiltHistory.png
+    - image/Faimlymemmber.png
+    - image/Profileupdate.png
+    - image/Resend.png
+    - image/AddButton.png
+    - image/UploadFile.png
+    - image/UPFile.png
+    - image/Insorance.png
+    - image/Settings.png
+    - image/Cross.png
+    - image/Faq.png
+    - image/Logout.png
+    - image/familyreport.png
+    - image/adduserfaq.png
+    - image/lorempluse.png
+    - image/ic_settings_invitefriends.png
+    - image/ic_settings_security.png
+    - image/ic_settings_notification.png
+    - image/ic_settings_compliant.png
+    - image/ic_settings_termsandcondition.png
+    - image/ic_settings_logout.png
+    - image/forgetpassword.png
+    - image/user_one.png
+    - image/basic_edit.png
+    - image/location.png
+    - image/contact_info.png
+    - image/dialog_cancel.png
+    - image/correct.png
+    - image/gmail.png
+    - image/nott.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

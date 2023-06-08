@@ -19,6 +19,11 @@ class SignUp extends StatefulWidget{
 }
 
 class _SignUpState extends State<SignUp>{
+  Color buttonColor = Colors.black; // Initial color of the button
+  bool isButtonPressed = false;
+
+
+
   bool _obscureText = true;
   int index = 1;
   bool _obscureText2 = true;
@@ -28,34 +33,54 @@ class _SignUpState extends State<SignUp>{
   final TextEditingController _passwordController = new TextEditingController();
   final TextEditingController _checkpasswordController = new TextEditingController();
 
-  void _otppage(){
-    setState(() async {
-      if(_userController.text.isNotEmpty && _passwordController.text.isNotEmpty && _checkpasswordController.text.isNotEmpty && _passwordController.text == _checkpasswordController.text  )
+  // void _otppage(){
+  //   setState(() async {
+  //     if(_userController.text.isNotEmpty && _passwordController.text.isNotEmpty && _checkpasswordController.text.isNotEmpty && _passwordController.text == _checkpasswordController.text  )
+  //
+  //     {
+  //       final url = Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/Signup');
+  //       final jsonBody = jsonEncode({
+  //         "password": _passwordController.text,
+  //         "contactNo": _userController.text,
+  //         "createdAt": "Samsung,21,11",
+  //         "fcmToken": "fjsfhsfd082342084324",
+  //       });
+  //       final response = await http.post(url, body: jsonBody, headers: {
+  //         'Content-Type': 'application/json',
+  //       });
+  //       res = response.body;
+  //       log(res);
+  //       if (response.statusCode == 200) {
+  //         Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
+  //       } else {
+  //         _Error = "Please try again";
+  //       }
+  //
+  //     }
+  //
+  //
+  //   });
+  // }
 
-      {
-        final url = Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/Signup');
-        final jsonBody = jsonEncode({
-          "password": _passwordController.text,
-          "contactNo": _userController.text,
-          "createdAt": "Samsung,21,11",
-          "fcmToken": "fjsfhsfd082342084324",
-        });
-        final response = await http.post(url, body: jsonBody, headers: {
-          'Content-Type': 'application/json',
-        });
-        res = response.body;
-        log(res);
-        if (response.statusCode == 200) {
-          Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
-        } else {
-          _Error = "Please try again";
-        }
 
-      }
+  void handleButtonPress() {
+    setState(() {
+      buttonColor = Colors.green; // Change the color to your desired value
+      isButtonPressed = true;
+    });
 
+    Future.delayed(const Duration(milliseconds: 200), () {
+      setState(() {
+        buttonColor = Colors.green; // Change the color back to the original value
+        isButtonPressed = false;
+      });
 
+      // Perform navigation after the delay
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -331,19 +356,19 @@ class _SignUpState extends State<SignUp>{
                 height: _mediaquery.size.height*0.06,
                 margin: EdgeInsets.only(left:20.0,right:20.0),
                 child: ElevatedButton(
-                    child: Text("Sign up", style:new TextStyle(color: Colors.white,
+                    child: Text("Sign up",
+                        style:new TextStyle(color: isButtonPressed ? Colors.white : Color(0xff4F555A).withOpacity(0.5),
                         fontSize:  Responsive.isSmallScreen(context)? width/
                         25:width/60,
                         fontFamily: 'Poppins', fontWeight: FontWeight.w700)),
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF24B445),
+                      primary: isButtonPressed ? buttonColor :  Color(0xffF9F9F9),
+                      elevation: 1,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0)
                       ),),
 
-                    onPressed:(){
-                      Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
-                    }),),
+                    onPressed:handleButtonPress,),),
 
             ),
 
@@ -420,7 +445,9 @@ class _SignUpState extends State<SignUp>{
                       ),
 
                     ),
-                    onPressed:_otppage),),
+                    onPressed:(){},
+                //    _otppage
+                ),),
 
 
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Onbording/LifestyleDashboard.dart';
 import 'package:project_signup_page/Onbording/voiceAssistant.dart';
+import 'Records.dart';
 import 'Responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Onbording/FitnessData.dart';
@@ -212,7 +213,7 @@ Center(
                         InkWell(
                           onTap: (){},
                             child: Text("View Records",style: TextStyle(
-                                fontSize: Responsive.isSmallScreen(context) ? width/ 60: width/90,
+                                fontSize: Responsive.isSmallScreen(context) ? width/ 60: width/100,
                                 fontWeight: FontWeight.w500, fontFamily: 'Poppins', color: Color(0xff24B445)))),
 
                       ],
@@ -501,10 +502,14 @@ margin: EdgeInsets.only(left: _mediaquery.size.width*0.02),
               ),
             ),
             InkWell(
-              onTap: (){},
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Records(),));},
               child: Container(
-                margin: EdgeInsets.only(left:_mediaquery.size.width*0.2, right:_mediaquery.size.width*0.2, top:_mediaquery.size.width*0.02, bottom:_mediaquery.size.width*0.02, ),
-                child: Image(image: AssetImage('image/Records.png'),   width: Responsive.isSmallScreen(context)? width/18 : width/50,),
+                margin: EdgeInsets.only(left:_mediaquery.size.width*0.2,
+                  right:_mediaquery.size.width*0.2,
+                  top:_mediaquery.size.width*0.02,
+                  bottom:_mediaquery.size.width*0.02, ),
+                child: Image(image: AssetImage('image/Records.png'),
+                  width: Responsive.isSmallScreen(context)? width/18 : width/50,),
               ),
             ),
             InkWell(
