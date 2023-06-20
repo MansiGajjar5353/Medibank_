@@ -15,6 +15,8 @@ import 'package:project_signup_page/Onbording/Dash.dart';
 import 'package:project_signup_page/Onbording/DoctorsZone.dart';
 import 'package:project_signup_page/Onbording/Symptoms.dart';
 
+import 'Questionnaires.dart';
+
 class TabData {
   String title;
   String description;
@@ -494,7 +496,15 @@ class Screen1State extends State<Screen1> {
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                              child: Center(child: Text("Doctor's\n  Zone", style: TextStyle(height: 1.2,fontSize: Responsive.isSmallScreen(context)? width/29 : width/120, fontWeight: FontWeight.w600, fontFamily: 'Poppins'),))),
+                                              child: Center(child: Text("Doctor's\n  Zone",
+                                                style: TextStyle(height: 1.2,
+                                                    fontSize: Responsive.isSmallScreen(context)
+                                                    ?width/29
+                                                    :width/120,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Poppins'),
+                                              ))),
+
                                           Container(
 
                                               height:_mediaquery.size.height*0.10,
@@ -517,41 +527,44 @@ class Screen1State extends State<Screen1> {
 
 
 
-                    Container(
-                      margin: EdgeInsets.only(top: _mediaquery.size.height*0.015),
-                      height: _mediaquery.size.height*0.09,
-                      width: _mediaquery.size.width*0.75,
+                    InkWell(
+                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Questionnaires(),));},
+                      child: Container(
+                        margin: EdgeInsets.only(top: _mediaquery.size.height*0.015),
+                        height: _mediaquery.size.height*0.09,
+                        width: _mediaquery.size.width*0.75,
 
-                      decoration: BoxDecoration(
-                        color: Color(0xffECECEC),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(left: _mediaquery.size.width*0.03),
-                            height: _mediaquery.size.height*0.06,
-                            width: _mediaquery.size.width*0.12,
-                            decoration: BoxDecoration(
-                              color: Color(0xff1A5167),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "0%",
-                                style: TextStyle(color: Color(0xffFFFFFF), fontFamily: 'Poppins', fontSize: Responsive.isSmallScreen(context)? width/50 : width/100),
+                        decoration: BoxDecoration(
+                          color: Color(0xffECECEC),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(left: _mediaquery.size.width*0.03),
+                              height: _mediaquery.size.height*0.06,
+                              width: _mediaquery.size.width*0.12,
+                              decoration: BoxDecoration(
+                                color: Color(0xff1A5167),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "0%",
+                                  style: TextStyle(color: Color(0xffFFFFFF), fontFamily: 'Poppins', fontSize: Responsive.isSmallScreen(context)? width/50 : width/100),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: _mediaquery.size.width*0.02),
-                            child: Text('Complete the remaining questions for\nbetter experience',
-                              style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/50 : width/100,
-                                  fontFamily: 'Poppins', fontWeight: FontWeight.w600),),
-                          ),
-                        ],
-                      ),
+                            Container(
+                              margin: EdgeInsets.only(left: _mediaquery.size.width*0.02),
+                              child: Text('Complete the remaining questions for\nbetter experience',
+                                style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/50 : width/100,
+                                    fontFamily: 'Poppins', fontWeight: FontWeight.w600),),
+                            ),
+                          ],
+                        ),
 
+                      ),
                     ),
 
 
@@ -1791,6 +1804,15 @@ class Screen2State extends State<Screen2>{
         ),
 
       ),
+
+
+
+
+
+
+
+
+
       floatingActionButton: Container(
         margin: EdgeInsets.only(bottom: 50),
         child: FloatingActionButton.small(

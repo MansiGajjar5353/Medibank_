@@ -402,7 +402,7 @@ class _FaqList extends State<Faq> {
                                         ),
                                       ),
                                     ],
-                                  )));
+                                  )),);
                         },
                       ),
                     ),

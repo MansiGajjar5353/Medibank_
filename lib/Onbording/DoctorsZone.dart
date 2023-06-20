@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Onbording/AccessCode.dart';
+import '../Dashbord/DocSummary.dart';
+import '../Dashbord/ExpandableCells.dart';
+import '../Dashbord/practice.dart';
 import 'Responsive.dart';
 import 'HealthSummary.dart';
 class DoctorsZone extends StatefulWidget{
@@ -81,18 +84,20 @@ class DoctorsZoneState extends State<DoctorsZone> {
                                 height:Responsive.isSmallScreen(context)? 50 : 60,
                                 width:Responsive.isSmallScreen(context)? 50 : 60,
                                   child: Image(image: AssetImage("image/Doctor1.png"),height:Responsive.isSmallScreen(context)? 20 : 30,
-    width:Responsive.isSmallScreen(context)? 30 : 40,) ),
+                               width:Responsive.isSmallScreen(context)? 30 : 40,) ),
 
                             Padding(padding: EdgeInsets.only(top: 5),),
                             Text(" Doctor's\nSummary",
                               style: TextStyle(
-    fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,
+                                  fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,
     ),),
                           ],
                         ),
                       ),
                     ),
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>DocSummary(), ));
+                    },
                   ),
                 ],
                 ),

@@ -1,57 +1,65 @@
-// import 'package:flutter/material.dart';
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Username Selector Demo',
-//       home: UsernameSelector(),
-//     );
-//   }
-// }
-// class UsernameSelector extends StatefulWidget {
-//   @override
-//   _UsernameSelectorState createState() => _UsernameSelectorState();
-// }
-//
-// class _UsernameSelectorState extends State<UsernameSelector> {
-//   List<String> usernames = [
-//     'John123',
-//     'Jane456',
-//     'Mike789',
-//     // Add more usernames as needed
-//   ];
-//
-//   late String selectedUsername;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Username Selector'),
-//       ),
-//       body: ListView.builder(
-//         itemCount: usernames.length,
-//         itemBuilder: (context, index) {
-//           final username = usernames[index];
-//           return ListTile(
-//             title: Text(username),
-//             onTap: () {
-//               setState(() {
-//                 selectedUsername = username;
-//               });
-//             },
-//             tileColor: selectedUsername == username
-//                 ? Colors.blueAccent
-//                 : Colors.transparent,
-//           );
-//         },
-//       ),
-//     );
-//   }
-//   @override
-//   Future<void> debugFillProperties(DiagnosticPropertiesBuilder properties) async {
-//     super.debugFillProperties(properties);
-//     properties.add(StringProperty('selectedUsername', selectedUsername));
-//   }
-// }
+import 'package:flutter/material.dart';
+
+
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  final double minHeight = 01.0;
+  final double maxHeight = 300.0;
+  final double itemExtent = 60.0;
+  final double initialHeight = 160.0;
+
+  double _currentHeight = 160.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentHeight = initialHeight;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "${_currentHeight.toStringAsFixed(0)} cm",
+          style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.w500),
+        ),
+        Container(
+          height:  200.0,
+          child: RotatedBox(
+            quarterTurns: 3,
+
+
+            child: ListWheelScrollView(
+              controller: FixedExtentScrollController(
+                initialItem: (_currentHeight - minHeight).toInt(),
+              ),
+              itemExtent: itemExtent,
+              physics: FixedExtentScrollPhysics(),
+              onSelectedItemChanged: (index) {
+                setState(() {
+                  _currentHeight = minHeight + index.toDouble();
+                });
+              },
+              children: List.generate(
+                ((maxHeight - minHeight).toInt() + 1),
+                    (index) => Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "${minHeight + index}",
+                    style: TextStyle(fontSize: 24.0),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

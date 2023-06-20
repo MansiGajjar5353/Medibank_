@@ -215,6 +215,8 @@ class ExerciseState extends State<Exercise>{
               new Text(
                 "Yes",
                 style: new TextStyle(),
+
+
               ),
 
               new Radio<int>(

@@ -425,7 +425,8 @@ width: Responsive.isSmallScreen(context)? width/10 : width/90,
 
                                 onReachEnd: (){
                                   print("done");
-                                }, itemCount: month.length, onItemFocus: _onItemFocus,
+                                }, itemCount: month.length,
+                                onItemFocus: _onItemFocus,
                               )
                           ),
                         ],
