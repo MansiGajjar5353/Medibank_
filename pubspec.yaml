@@ -37,10 +37,13 @@ dependencies:
   floating_bottom_navigation_bar: 1.5.2
   scroll_snap_list: ^0.8.4
   modal_bottom_sheet: 2.1.2
+  vertical_weight_slider: 2.5.0
+
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +78,29 @@ flutter:
         #- asset: Font/Poppins/Poppins-semiBoldItalic.ttf
   assets:
     - image/Treatments.png
+    - image/Single.png
+    - image/Dogg.png
+    - image/Drugs.png
+    - image/EditTab.png
+    - image/Arrow.png
+    - image/Latex.png
+    - image/Pollen.png
+    - image/Food.png
+    - image/Insect.png
+    - image/Dust.png
+    - image/wheel.png
+    - image/Polygon2.png
+    - image/Peaceful.png
+    - image/Sad.png
+    - image/Cry.png
+    - image/scalpel.png
+    - image/rightlogo.png
+    - image/wrongLogo.png
+    - image/LifeStyle.png
+    - image/OtherQue.png
+    - image/systematization.png
+    - image/i.png
+    - image/ADDD.png
     - image/DropDown.png
     - image/Checkbox.png
     - image/Diet.png
@@ -82,6 +108,7 @@ flutter:
     - image/Veg.png
     - image/Lunch.png
     - image/Nonveg.png
+    - image/Doctor.png
     - image/Exercise.png
     - image/EyeButton.png
     - image/EditButton.png
