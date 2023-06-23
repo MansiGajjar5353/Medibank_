@@ -41,9 +41,9 @@ class PatientInfo2State extends State<PatientInfo2>{
 
   final List<String> imageUrls =[
         'image/Single.png',
+        'image/ic_married.png',
         'image/Single.png',
-        'image/Single.png',
-        'image/Single.png',
+        'image/ic_divorce.png',
   ];
   final Status = [
     "Single",

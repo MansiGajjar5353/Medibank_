@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/FaimlyAccess.dart';
+import 'package:project_signup_page/Dashbord/VaccinationHistory.dart';
 import 'package:project_signup_page/Onbording/AddFamilymemberForm.dart';
 import 'package:project_signup_page/Onbording/EditProfile.dart';
 import 'package:project_signup_page/Onbording/FamilyMedicalHestoryList.dart';
@@ -89,7 +91,7 @@ class ProfileState extends State<Profile>{
               GestureDetector(
                 onTap: () {Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => VaccinationForm()),
+                  MaterialPageRoute(builder: (context) => VaccinationHistory()),
                 );  // Your logic here when the container is tapped
                 },
                 child: Container(
@@ -193,7 +195,7 @@ class ProfileState extends State<Profile>{
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AddFamilymemberForm()),
+                    MaterialPageRoute(builder: (context) => FamilyAccess()),
                   );
                 },
                 child: Container(

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project_signup_page/Onbording/ForgetNewPassword.dart';
 import '../Onbording/Responsive.dart';
 
 class ForgrtPassworOtp extends StatefulWidget{
@@ -139,7 +140,8 @@ class _ForgrtPassworOtp extends State<ForgrtPassworOtp> {
                                   child: Container(
                                       child: Text("Don’t receive code ?",
                                         style: new TextStyle(fontFamily: "Poppins",
-                                            fontWeight: FontWeight.w400, color: Color(0xff5A5A5A),
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(0xff5A5A5A),
                                             fontSize: 14.0 ),)),
                                 ),
 
@@ -155,6 +157,28 @@ class _ForgrtPassworOtp extends State<ForgrtPassworOtp> {
 
                         ],
                       )
+                  ),
+                  Container(
+                    margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/10 : width/10,right: Responsive.isSmallScreen(context)? width/10 : width/10,top: Responsive.isSmallScreen(context)? width/7 : width/7,bottom: Responsive.isSmallScreen(context)? width/7 : width/7),
+                    width: Responsive.isSmallScreen(context)? width/1.3 : width/1.3,
+                    height: Responsive.isSmallScreen(context)? width/9.5 : width/9.5,
+                    child: ElevatedButton(
+                      child: Text('Continue', style: TextStyle( fontFamily:'Poppins',color: Color(0xffFFFFFF),
+                          fontSize:  Responsive.isSmallScreen(context)? width/ 25:width/25, fontWeight: FontWeight.w900),),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF24B445),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)
+                        ),
+                      ),
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>ForgetNewPassword()
+                          ),
+                        );
+                      },
+                    ),
                   ),
 
 

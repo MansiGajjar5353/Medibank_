@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Onbording/ForgetPassword.dart';
 import 'Responsive.dart';
 class ForgetNewPassword extends StatefulWidget{
   @override
@@ -32,7 +33,6 @@ class _ForgetNewPassword extends State<ForgetNewPassword> {
             height: Responsive.isSmallScreen(context)? width/1.5 : width/1.5,
             child:Image(image: AssetImage('image/forgetpassword.png')),
           ),
-
           Container(margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/20 : width/20,top: Responsive.isSmallScreen(context)? width/20 : width/20),
             child: Text("Enter new password",
               style: TextStyle(color: Color(0xff212426),
@@ -155,7 +155,7 @@ class _ForgetNewPassword extends State<ForgetNewPassword> {
               },
             ),
           ),
-
+        
 
         ],
       ),

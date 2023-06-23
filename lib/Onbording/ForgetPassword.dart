@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Onbording/ForgetPassowrOtp.dart';
 import 'Responsive.dart';
 class ForgetPassword extends StatefulWidget{
   @override
@@ -105,23 +106,29 @@ class _ForgetPassword extends State<ForgetPassword> {
             ),
           ),
           Container(
-            margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/10 : width/10,right: Responsive.isSmallScreen(context)? width/10 : width/10,top: Responsive.isSmallScreen(context)? width/7 : width/7,bottom: Responsive.isSmallScreen(context)? width/7 : width/7),
-            width: Responsive.isSmallScreen(context)? width/1.3 : width/1.3,
-            height: Responsive.isSmallScreen(context)? width/9.5 : width/9.5,
-            child: ElevatedButton(
-              child: Text('Continue', style: TextStyle( fontFamily:'Poppins',color: Color(0xffFFFFFF),
-                  fontSize:  Responsive.isSmallScreen(context)? width/ 25:width/25, fontWeight: FontWeight.w900),),
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF24B445),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
+              margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/10 : width/10,right: Responsive.isSmallScreen(context)? width/10 : width/10,top: Responsive.isSmallScreen(context)? width/7 : width/7,bottom: Responsive.isSmallScreen(context)? width/7 : width/7),
+              width: Responsive.isSmallScreen(context)? width/1.3 : width/1.3,
+              height: Responsive.isSmallScreen(context)? width/9.5 : width/9.5,
+              child: ElevatedButton(
+                child: Text('Continue', style: TextStyle( fontFamily:'Poppins',color: Color(0xffFFFFFF),
+                    fontSize:  Responsive.isSmallScreen(context)? width/ 25:width/25, fontWeight: FontWeight.w900),),
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF24B445),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
+                  ),
                 ),
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>ForgrtPassworOtp()
+                    ),
+                  );
+                },
               ),
-              onPressed: (){
-
-              },
             ),
-          ),
+
+
 
 
         ],

@@ -78,6 +78,27 @@ flutter:
         #- asset: Font/Poppins/Poppins-semiBoldItalic.ttf
   assets:
     - image/Treatments.png
+    - image/Skin1.png
+    - image/breast-cancer.png
+    - image/endocrine1.png
+    - image/Boss.png
+    - image/woman.png
+    - image/neurology.png
+    - image/ic_married.png
+    - image/ic_divorce.png
+    - image/diarrhea.png
+    - image/SadImage.png
+    - image/Noimage.png
+    - image/Venereal.png
+    - image/Heart22.png
+    - image/muscle.png
+    - image/skinn.png
+    - image/Endocrine.png
+    - image/SomeImage.png
+    - image/lungs.png
+    - image/TB.png
+    - image/HIV.png
+    - image/SoreThroat.png
     - image/Single.png
     - image/Dogg.png
     - image/Drugs.png
@@ -281,6 +302,42 @@ flutter:
     - image/correct.png
     - image/gmail.png
     - image/nott.png
+    - image/menu.png
+    - image/skinnew.png
+    - image/lungsnew.png
+    - image/kidneynew.png
+    - image/endocrinenew.png
+    - image/neurologynew.png
+    - image/musclenew.png
+    - image/bossnew.png
+    - image/womannew.png
+    - image/dermatologist.png
+    - image/dentalcare.png
+    - image/neurology.png
+    - image/cardiologist.png
+    - image/oncologist.png
+    - image/pediatrics.png
+    - image/medical.png
+    - image/psychologist.png
+    - image/doctorimg.png
+    - image/menuimg.png
+    - image/salary.png
+    - image/medal.png
+    - image/team.png
+    - image/EyeButton.png
+    - image/EditButton.png
+    - image/DeleteButton.png
+    - image/followups.png
+    - image/testfollowups.png
+    - image/yes.png
+    - image/no.png
+    - image/notgiven.png
+    - image/due.png
+    - image/given.png
+    - image/boosterdose.png
+    - image/vaccimg.png
+    - image/checksquareyes.png
+    - image/checksquareno.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

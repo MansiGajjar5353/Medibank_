@@ -1,6 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/AbdominalDigestive.dart';
+import 'package:project_signup_page/Dashbord/Cardiovascular.dart';
+import 'package:project_signup_page/Dashbord/DermatologySkin.dart';
+import 'package:project_signup_page/Dashbord/Diet&Nutrition.dart';
+import 'package:project_signup_page/Dashbord/EndocrineGlandular.dart';
+import 'package:project_signup_page/Dashbord/Exersize.dart';
+import 'package:project_signup_page/Dashbord/FamilyMedicalHistory.dart';
+import 'package:project_signup_page/Dashbord/ForMan.dart';
+import 'package:project_signup_page/Dashbord/GenitalUrinary.dart';
+import 'package:project_signup_page/Dashbord/HEAD.dart';
+import 'package:project_signup_page/Dashbord/JointsMuscleProblem.dart';
+import 'package:project_signup_page/Dashbord/LifeStyle.dart';
 import 'package:project_signup_page/Dashbord/MedicalHistory.dart';
+import 'package:project_signup_page/Dashbord/Neurological.dart';
 import 'package:project_signup_page/Dashbord/PatientInfo2.dart';
+import 'package:project_signup_page/Dashbord/RespiratoryLungsProblem.dart';
+import 'package:project_signup_page/Dashbord/illnessSurgery.dart';
+import 'package:project_signup_page/Dashbord/weightLoss.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
 
@@ -77,6 +93,81 @@ class QuestionnairesState extends State<Questionnaires>{
                            {
                              Navigator.push(context, MaterialPageRoute(builder: (context)=> MedicalHistory(),));
                            }
+                         else if(index==2)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> weightLoss(),));
+                         }
+                         else if(index==3)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> illnessSurgery(),));
+                         }
+                         else if(index==4)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> LifeStyle(),));
+                         }
+                         else if(index==5)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> DietNutrition(),));
+                         }
+
+                         else if(index==6)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> Exercise(),));
+                         }
+                         else if(index==7)
+                           {
+                             Navigator.push(context, MaterialPageRoute(builder: (context)=> FamilyMedicalHistory(),));
+                           }
+                         else if(index==8)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> EndocrineGlandular(),));
+                         }
+                         else if(index==9)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> DermatologySkin(),));
+                         }
+                         else if(index==10)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> HEAD(),));
+                         }
+
+                         else if(index==11)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> RespiratoryLungsProblem(),));
+                         }
+                         else if(index==12)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> Cardiovascular(),));
+                         }
+                         else if(index==13)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> AbdominalDigestive(),));
+                         }
+
+                         else if(index==14)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> GenitalUrinary(),));
+                         }
+
+                         else if(index==15)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> JointsMuscleProblem(),));
+                         }
+
+                         else if(index==16)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> Neurological(),));
+                         }
+                         else if(index==17)
+                         {
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=> ForMan(),));
+                         }
+
+
+
+
+
+
 
                        },
                          child: Text(question[index],
