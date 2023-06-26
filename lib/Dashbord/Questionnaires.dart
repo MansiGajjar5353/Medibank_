@@ -9,6 +9,7 @@ import 'package:project_signup_page/Dashbord/FamilyMedicalHistory.dart';
 import 'package:project_signup_page/Dashbord/ForMan.dart';
 import 'package:project_signup_page/Dashbord/GenitalUrinary.dart';
 import 'package:project_signup_page/Dashbord/HEAD.dart';
+import 'package:project_signup_page/Dashbord/HaveYouCoveredEverythink.dart';
 import 'package:project_signup_page/Dashbord/JointsMuscleProblem.dart';
 import 'package:project_signup_page/Dashbord/LifeStyle.dart';
 import 'package:project_signup_page/Dashbord/MedicalHistory.dart';
@@ -162,7 +163,10 @@ class QuestionnairesState extends State<Questionnaires>{
                          {
                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ForMan(),));
                          }
-
+                         else if(index==18)
+                           {
+                             Navigator.push(context, MaterialPageRoute(builder: (context)=> HaveYouCoveredEverythink(),));
+                           }
 
 
 
