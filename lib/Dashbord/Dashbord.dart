@@ -1,5 +1,6 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/AbhaCreate.dart';
 import 'package:project_signup_page/Dashbord/AddRecords.dart';
 import 'package:project_signup_page/Onbording/Profile.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
@@ -39,6 +40,7 @@ class _BottomNavBarAppState extends State<BottomNavBarApp> {
     Screen1(),
     Screen2(),
     Screen3(),
+    Screen4(),
   ];
 
 
@@ -75,6 +77,10 @@ class _BottomNavBarAppState extends State<BottomNavBarApp> {
             FloatingNavbarItem(
               icon: Icons.mic_none,
               title: 'Voice',
+            ),
+            FloatingNavbarItem(
+              icon: Icons.account_balance_wallet_outlined,
+              title: 'ABHA',
             ),
           ],
           selectedItemColor: Colors.green,
@@ -2005,6 +2011,180 @@ class Screen3State extends State<Screen3>{
 // Rest of the code remains the same...
 
 
+class Screen4 extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+   return Screen4State();
+  }
 
+}
+
+class Screen4State extends State<Screen4>{
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
+    // TODO: implement build
+    return Scaffold(
+
+      body: ListView(
+        children: [
+              Stack(
+                children: [
+                  Container(
+                decoration:BoxDecoration(
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(45), bottomRight: Radius.circular(45)),
+                  gradient: RadialGradient(
+                    center: Alignment(0.0, 0.0),
+                    focal: Alignment(0.0, 0.0),
+                    focalRadius: 0,
+                    radius: 0.5,
+                    colors: [
+                      Color.fromRGBO(36, 180, 69, 0.37),
+                      Color.fromRGBO(36, 180, 69, 0.9),
+
+                    ],
+                    stops: [0, 1],
+                  ),
+                ),
+                height: _mediaquery.size.height*0.5,
+                width: _mediaquery.size.width*1,
+
+                  ),
+                Column(
+                  children: [
+                    Center(
+                      child:Container(
+                        margin: EdgeInsets.only(top: 30),
+                          width: Responsive.isSmallScreen(context)? _mediaquery.size.width*0.43 : _mediaquery.size.width*0.4,
+                          child: Image(image: AssetImage("image/ABHAGROUP.png"))),
+                    ),
+                    Center(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 30),
+                        decoration: BoxDecoration(
+                          color: Color(0xffF9F9F9),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        height: _mediaquery.size.height*0.4,
+                        width: _mediaquery.size.width*0.8,
+                          child:Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 30, right: 30, top: 30),
+                                    child: Text(textAlign: TextAlign.center,"Login with ABHA  and link with Medibank to access all  medical records",
+                                style: TextStyle(
+                                  color: Color(0xff757171),
+                                  fontSize: Responsive.isSmallScreen(context)? width/35 : width/50,
+                                ),)),
+                                Container(
+                                  margin: EdgeInsets.only(top: 25),
+                                 child: InkWell(
+                                    onTap:(){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>AbhaCreate(),));
+                                    },
+                                    child:Container(
+                                      height: 45,
+                                      width: _mediaquery.size.width*0.7,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(35),
+                                        color: Color(0xff24B445),
+                                      ),
+                                      child: Center(child: Text("Create ABHA", style: TextStyle( fontFamily: 'Poppins',color: Color(0xffFFFFFF), fontSize: 17, fontWeight: FontWeight.w900),)),
+
+                                    ),
+                                  ),
+                                ),
+
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 20),
+                                    child: Row(
+
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 1,
+                                          width: 50,
+                                          color: Colors.grey,
+                                        ),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          'Already Have ABHA',
+                                          style: TextStyle( fontSize: Responsive.isSmallScreen(context)? width/30 : width/60, color: Colors.grey),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Container(
+                                          height: 1,
+                                          width: 50,
+                                          color: Colors.grey,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+
+
+                                Container(
+                                  margin: EdgeInsets.only(top: 20),
+                                  child: InkWell(
+                                    onTap:(){},
+                                    child:Container(
+                                      height: 45,
+                                      width: _mediaquery.size.width*0.7,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(35),
+                                        color: Colors.transparent,
+                                        border: Border.all(color: Color(0xffBEBEBE)),
+                                      ),
+                                      child:Center(
+                                        child:RichText(
+                                          text: TextSpan(
+                                            text: "Link your ",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 17,
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: 'ABHA',
+                                                style: TextStyle(
+                                                  color: Color(0xff24B445),
+                                                  fontWeight: FontWeight.w700,
+                                                  fontFamily: 'Poppins',
+
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+
+
+                              ],
+                          )
+                      ),
+                    )
+
+                  ],
+                ),
+                ],
+              )
+        ],
+      ),
+    );
+  }
+}
 
 

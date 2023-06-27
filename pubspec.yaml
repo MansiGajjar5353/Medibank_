@@ -86,6 +86,13 @@ flutter:
     - image/Rajasthan.png
     - image/Employed.png
     - image/Retired.png
+    - image/ABHAGROUP.png
+    - image/Phone.png
+    - image/Adhar.png
+    - image/squre.png
+    - image/AbhaDP.png
+    - image/GreenAerrow.png
+    - image/QR.png
     - image/endocrine1.png
     - image/Boss.png
     - image/woman.png
@@ -344,6 +351,8 @@ flutter:
     - image/vaccimg.png
     - image/checksquareyes.png
     - image/checksquareno.png
+    - image/insurancecenter.png
+    - image/certification.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

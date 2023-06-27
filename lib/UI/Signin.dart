@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/InsuranceForm.dart';
 import 'package:project_signup_page/UI/Signup.dart';
 
 import '../Onbording/Responsive.dart';
@@ -33,7 +34,8 @@ class _SigninState extends State<Signin>{
 
       });
 
-      _loginpage; // Perform navigation after the delay
+      _loginpage;
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>InsuranceForm(),));// Perform navigation after the delay
 
     });
   }
