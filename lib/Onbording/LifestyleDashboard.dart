@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/LifeStyleEdit.dart';
 import '../Dashbord/Diet&Nutrition.dart';
 import 'Responsive.dart';
 class LifestyleDashboard extends StatefulWidget{
@@ -534,7 +535,9 @@ Container(
           ),
         ),
         InkWell(
-          onTap:(){},
+          onTap:(){
+            Navigator.push(context,MaterialPageRoute(builder: (context)=>LifeStyleEdit(),));
+          },
           child: Container(
             height: 46,
             width: Responsive.isSmallScreen(context)? width/3: width/5,

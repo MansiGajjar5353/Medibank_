@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:project_signup_page/Dashbord/BookingConfirm.dart';
 import 'package:project_signup_page/Dashbord/InsuranceList.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
@@ -28,7 +29,8 @@ class InsuranceFormState extends State<InsuranceForm>{
         buttonColor = Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-     Navigator.push(context,MaterialPageRoute(builder: (context)=>InsuranceList(),));
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>BookingConfirm(),));
+    // Navigator.push(context,MaterialPageRoute(builder: (context)=>InsuranceList(),));
       // Perform navigation after the delay
 
     });

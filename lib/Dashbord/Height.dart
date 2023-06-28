@@ -3,6 +3,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:project_signup_page/Dashbord/practice.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 import 'package:vertical_weight_slider/vertical_weight_slider.dart';
+import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
+
 
 import 'Dashbord.dart';
 
@@ -175,7 +177,7 @@ return Scaffold(
     ),
   ),
 
-        MyWidget(),
+        HeightPicker(),
 
 
         Center(
@@ -236,4 +238,58 @@ return Scaffold(
   }
 }
 
+class HeightPicker extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return HeightPickerState();
+  }
+}
+
+class HeightPickerState extends State<HeightPicker> {
+  int currentHeight = 70;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "${currentHeight.toStringAsFixed(0)} cm",
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500,
+              color: Color(0xff000000)),
+        ),
+        Container(
+          height: 150.0,
+          child: RulerPicker(
+            beginValue: 0,
+            endValue: 500,
+            initValue: currentHeight,
+            onValueChange: (value) {
+              setState(() {
+                currentHeight = value;
+              });
+            },
+            scaleLineStyleList: [
+              ScaleLineStyle(
+                  color: Color(0xff24B445), width: 1.5, height: 40, scale: 0),
+              ScaleLineStyle(
+                  color: Color(0xff24B445), width: 1, height: 35, scale: 5),
+              ScaleLineStyle(
+                  color: Color(0xff24B445), width: 1, height: 25, scale: -1)
+            ],
+            width: MediaQuery.of(context).size.width,
+            height: 80,
+            rulerMarginTop: 8,
+            rulerScaleTextStyle: TextStyle(color: Color(0xff000000)),
+            // onSelectedItemChanged: (selectedItem) {
+            //   print('Selected weight: $selectedItem');
+            // },
+          ),
+        ),
+      ],
+    );
+  }
+}
 

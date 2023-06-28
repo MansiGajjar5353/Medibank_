@@ -4,34 +4,34 @@ import 'package:sizer/sizer.dart';
 
 import '../Onbording/Responsive.dart';
 
-class CategoryList extends StatefulWidget {
+class CategorySecondList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _CategoryListState();
+    return _CategorySecondListState();
   }
 }
 
-class _CategoryListState extends State<CategoryList> {
+class _CategorySecondListState extends State<CategorySecondList> {
   final image = [
-    "image/skinnew.png",
-    "image/lungsnew.png",
-    "image/kidneynew.png",
-    "image/endocrinenew.png",
-    "image/neurologynew.png",
-    "image/musclenew.png",
-    "image/bossnew.png",
-    "image/womannew.png"
+    "image/dermatologist.png",
+    "image/dentalcare.png",
+    "image/neurology.png",
+    "image/cardiologist.png",
+    "image/oncologist.png",
+    "image/pediatrics.png",
+    "image/medical.png",
+    "image/psychologist.png"
   ];
   final name = [
-    "Dermatology / Skin",
-    "Lungs Problem",
-    "Genital / Urinal",
-    "Endocrine",
-    "Neurological",
-    "Muscle Problem",
-    "For Men",
-    "For Women"
+    "Dermatologist",
+    "Dentist",
+    "Neurologist",
+    "Cardiologist",
+    "Oncology",
+    "Pediatrician",
+    "Radiologist",
+    "Psycologist"
   ];
 
   @override
@@ -81,7 +81,7 @@ class _CategoryListState extends State<CategoryList> {
                       top: 20),
                   child: RichText(
                     text: TextSpan(
-                      text: 'Select Your',
+                      text: 'List of ',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: Responsive.isSmallScreen(context)
@@ -106,7 +106,59 @@ class _CategoryListState extends State<CategoryList> {
                     ),
                   ),
                 ),
-
+                Container(
+                  margin: EdgeInsets.only(
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 30,
+                    right: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 30,
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: TextField(
+//
+                      decoration: InputDecoration(
+                        prefixIcon: IconButton(
+                          alignment: Alignment.centerRight,
+                          padding: EdgeInsets.only(
+                              left: Responsive.isSmallScreen(context)
+                                  ? width / 30
+                                  : width / 30,
+                              right: Responsive.isSmallScreen(context)
+                                  ? width / 45
+                                  : width / 45),
+                          icon: Icon(
+                            Icons.search,
+                            color: Color(0xff4F555A).withOpacity(0.5),
+                            size: Responsive.isSmallScreen(context)
+                                ? width / 15
+                                : width / 22,
+                          ),
+                          onPressed: () {},
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        filled: true,
+                        fillColor: Color(0xffF9F9F9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                        hintText: "Enter your keyword",
+                        hintStyle: TextStyle(
+                          color: Color(0xff4F555A).withOpacity(0.5),
+                          fontSize: Responsive.isSmallScreen(context)
+                              ? width / 28
+                              : width / 32,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 Positioned(
                   child: Container(
                     margin: EdgeInsets.only(bottom: Responsive.isSmallScreen(context)?width/10:width/20),
@@ -122,8 +174,8 @@ class _CategoryListState extends State<CategoryList> {
                         },
                         child: Container(
                           height: Responsive.isSmallScreen(context)
-                              ? width / 13
-                              : width / 13,
+                              ? width / 10
+                              : width / 10,
                           padding: EdgeInsets.all(10),
                           margin: EdgeInsets.only(
                               left: Responsive.isSmallScreen(context)
@@ -156,22 +208,56 @@ class _CategoryListState extends State<CategoryList> {
                                 Container(
                                   margin: EdgeInsets.only(
                                     top: Responsive.isSmallScreen(context)
-                                        ? width / 30
-                                        : width / 30,
+                                        ? width / 35
+                                        : width / 35,
                                   ),
                                   child: Text(
                                     name[index],
                                     style: TextStyle(
                                         fontSize:
                                             Responsive.isSmallScreen(context)
-                                                ? width / 30
-                                                : width / 38,
+                                                ? width / 34
+                                                : width / 42,
                                         color: Color(0x80004075),
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Poppins'),
                                   ),
                                 ),
-
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    top: Responsive.isSmallScreen(context)
+                                        ? width / 35
+                                        : width / 35,
+                                  ),
+                                  padding: EdgeInsets.only(
+                                    left: Responsive.isSmallScreen(context)
+                                        ? width / 20
+                                        : width / 30,
+                                    right: Responsive.isSmallScreen(context)
+                                        ? width / 20
+                                        : width / 30,
+                                    top: Responsive.isSmallScreen(context)
+                                        ? width / 80
+                                        : width / 90,
+                                    bottom: Responsive.isSmallScreen(context)
+                                        ? width / 80
+                                        : width / 90,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Color(0xff24B445)),
+                                  child: Text(
+                                    'View All',
+                                    style: TextStyle(
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 34
+                                                : width / 42,
+                                        color: Color(0xffFFFFFF),
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Poppins'),
+                                  ),
+                                )
                               ],
                             ),
                           ),

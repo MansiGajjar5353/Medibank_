@@ -38,6 +38,7 @@ dependencies:
   scroll_snap_list: ^0.8.4
   modal_bottom_sheet: 2.1.2
   vertical_weight_slider: 2.5.0
+  flutter_ruler_picker: ^1.0.3
 
 
 
@@ -99,6 +100,21 @@ flutter:
     - image/neurology.png
     - image/ic_married.png
     - image/ic_divorce.png
+    - image/Blooddonation-pana1.png
+    - image/check-mark1.png
+    - image/Filter.png
+    - image/blood1.png
+    - image/platelet.png
+    - image/sperm1.png
+    - image/DonatingBlood1.png
+    - image/Group52.png
+    - image/Bdonation2.png
+    - image/Group6.png
+    - image/Vector(8).png
+    - image/Vector9).png
+    - image/clock(2).png
+    - image/Vector(10).png
+    - image/Group1686556144.png
     - image/diarrhea.png
     - image/SadImage.png
     - image/Noimage.png
@@ -353,6 +369,11 @@ flutter:
     - image/checksquareno.png
     - image/insurancecenter.png
     - image/certification.png
+    - image/add.png
+    - image/cancel.png
+    - image/avatarContainer.png
+    - image/notificatinyes.png
+    - image/notificationno.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

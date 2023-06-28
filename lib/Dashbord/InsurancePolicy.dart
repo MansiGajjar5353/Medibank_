@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Responsive.dart';
+import 'package:project_signup_page/Onbording/Responsive.dart';
 class InsurancePolicy extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
