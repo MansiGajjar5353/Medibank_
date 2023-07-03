@@ -5,6 +5,7 @@ import 'package:project_signup_page/Onbording/NewChangePassword.dart';
 import 'package:project_signup_page/Onbording/NotificationSetting.dart';
 import 'package:project_signup_page/Onbording/Plans.dart';
 import 'package:project_signup_page/Onbording/PrivacyPolicy.dart';
+import 'package:share/share.dart';
 import 'Responsive.dart';
 import 'Dash.dart';
 import 'DoctorsZone.dart';
@@ -22,7 +23,12 @@ class Setting extends StatefulWidget {
 }
 
 class SettingState extends State<Setting> {
+  final String _content =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum diam ipsum, lobortis quis ultricies non, lacinia at justo.';
 
+  void _shareContent() {
+    Share.share(_content);
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -102,7 +108,7 @@ class SettingState extends State<Setting> {
                 ),
                 GestureDetector(
                   onTap: () {
-                   // _shareLink;
+                    Share.share('https://www.youtube.com', subject: 'Nice Service');
                   },
                   child: Container(
                     padding: EdgeInsets.only(

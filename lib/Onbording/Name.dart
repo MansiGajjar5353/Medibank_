@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_signup_page/Dashbord/FaimlyAccess.dart';
 import 'package:project_signup_page/Dashbord/VaccinationHistory.dart';
 import 'package:project_signup_page/Onbording/AddFamilymemberForm.dart';
@@ -23,6 +24,9 @@ class Name extends StatefulWidget {
 }
 
 class NameState extends State<Name> {
+  final dateController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
+  late String month;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -124,7 +128,7 @@ class NameState extends State<Name> {
                               child: TextField(
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Name',
+                                  hintText: 'Prathvi bharatwala',
                                   hintStyle: TextStyle(
                                     color: Color(0xff212426),
                                     fontSize: Responsive.isSmallScreen(context)
@@ -194,32 +198,58 @@ class NameState extends State<Name> {
                                 ),
                               ),
                             ),
-                            Row(
-                             mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'October',
-                                    style: TextStyle(
-                                      color: Color(0xff212426),
-                                      fontSize: Responsive.isSmallScreen(context)
-                                          ? width / 26
-                                          : width / 40,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w300,
+                            GestureDetector(
+                              onTap: ()
+                              async {
+                                final DateTime? picked = await showDatePicker(
+                                    context: context,
+                                    initialDate: selectedDate,
+                                    firstDate: DateTime(1900),
+                                    lastDate: DateTime(2100));
+                                if (picked != null  && picked != selectedDate) {
+    setState(() {
+      selectedDate = picked;
+      dateController.text = DateFormat('yyyy-MM-dd').format(selectedDate);
+
+       month = DateFormat('MMMM').format(selectedDate); // Extract month
+      String day = DateFormat('d').format(selectedDate); // Extract day
+
+      // Use the month and day strings as needed
+      print('Month: $month');
+      print('Day: $day');
+    });
+
+                                }
+                              },
+                              child:   Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      month,
+                                      style: TextStyle(
+                                        color: Color(0xff212426),
+                                        fontSize: Responsive.isSmallScreen(context)
+                                            ? width / 26
+                                            : width / 40,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  child: Icon(
-                                    Icons.arrow_drop_down_outlined,
-                                    color: Color(0xff4F555A),
+                                  Container(
+                                    child: Icon(
+                                      Icons.arrow_drop_down_outlined,
+                                      color: Color(0xff4F555A),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+
                             ),
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,7 +257,7 @@ class NameState extends State<Name> {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    'Birthday',
+                                    '14',
                                     style: TextStyle(
                                       color: Color(0xff212426),
                                       fontSize: Responsive.isSmallScreen(context)
@@ -259,7 +289,7 @@ class NameState extends State<Name> {
                               Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Birthday',
+                                  'Birth Year',
                                   style: TextStyle(
                                     color: Color(0xff949494),
                                     fontSize: Responsive.isSmallScreen(context)
@@ -281,7 +311,7 @@ class NameState extends State<Name> {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        'October',
+                                        '1997',
                                         style: TextStyle(
                                           color: Color(0xff212426),
                                           fontSize: Responsive.isSmallScreen(context)

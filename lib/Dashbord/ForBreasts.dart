@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
+import 'package:project_signup_page/Dashbord/HaveYouCoveredEverythink.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
 class ForBreasts extends StatefulWidget{
@@ -32,7 +33,7 @@ class ForBreastsState extends State<ForBreasts>{
         buttonColor = Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      //Navigator.push(context,MaterialPageRoute(builder: (context)=>ForWomen(),));
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>HaveYouCoveredEverythink(),));
       // Perform navigation after the delay
 
     });

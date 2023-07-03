@@ -39,6 +39,8 @@ dependencies:
   modal_bottom_sheet: 2.1.2
   vertical_weight_slider: 2.5.0
   flutter_ruler_picker: ^1.0.3
+  wave: ^0.2.2
+  share: ^2.0.1
 
 
 
@@ -374,6 +376,7 @@ flutter:
     - image/avatarContainer.png
     - image/notificatinyes.png
     - image/notificationno.png
+    - image/vactinationeyes.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

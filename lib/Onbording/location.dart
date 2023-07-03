@@ -109,7 +109,7 @@ class LocationState extends State<Location> {
                             Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Name',
+                                'Address',
                                 style: TextStyle(
                                   color: Color(0xff949494),
                                   fontSize: Responsive.isSmallScreen(context)
@@ -124,7 +124,7 @@ class LocationState extends State<Location> {
                               child: TextField(
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Name',
+                                  hintText: 'Lorem Ipsum',
                                   hintStyle: TextStyle(
                                     color: Color(0xff212426),
                                     fontSize: Responsive.isSmallScreen(context)
@@ -185,7 +185,7 @@ class LocationState extends State<Location> {
                               Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Gender',
+                                  'City',
                                   style: TextStyle(
                                     color: Color(0xff949494),
                                     fontSize: Responsive.isSmallScreen(context)
@@ -207,7 +207,7 @@ class LocationState extends State<Location> {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        'Female',
+                                        'Ahmedabad',
                                         style: TextStyle(
                                           color: Color(0xff212426),
                                           fontSize: Responsive.isSmallScreen(context)

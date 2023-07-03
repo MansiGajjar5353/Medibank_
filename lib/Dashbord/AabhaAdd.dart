@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/AbhaSetup.dart';
 import 'package:project_signup_page/UI/Create_acc.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
@@ -27,7 +28,7 @@ class AddAabhaState extends State<AddAabha> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      //Navigator.push(context,MaterialPageRoute(builder: (context)=>create_acc(),));
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>AbhaSetup(),));
       // Perform navigation after the delay
     });
   }

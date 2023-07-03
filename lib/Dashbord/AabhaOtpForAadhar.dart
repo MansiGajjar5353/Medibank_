@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:project_signup_page/Dashbord/LinkYourNumber.dart';
 import '../Onbording/Responsive.dart';
 import '../UI/Email.dart';
 
@@ -33,11 +34,11 @@ class _AabhaOtpForAddharState extends State<AabhaOtpForAddhar> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => Email_Screen(),
-      //     ));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LinkYourNumber(),
+          ));
       // Perform navigation after the delay
     });
   }

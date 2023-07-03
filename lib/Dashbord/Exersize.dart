@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/FamilyMedicalHistory.dart';
 import 'package:project_signup_page/Dashbord/practice.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
@@ -53,8 +54,7 @@ class ExerciseState extends State<Exercise>{
         isButtonPressed = false;
       });
 
-      // Perform navigation after the delay
-
+Navigator.push(context, MaterialPageRoute(builder: (context)=> FamilyMedicalHistory(),));
     });
   }
 

@@ -31,6 +31,12 @@ class ProfileState extends State<Profile>{
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.green),
+
+      ),
       body:Container(
         height: _mediaquery.size.height*1,
         child: ListView(

@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:project_signup_page/Dashbord/Height.dart';
-
+import 'package:project_signup_page/Dashbord/BloodGroup.dart';
+import 'package:project_signup_page/Dashbord/Water.dart';
 import 'package:project_signup_page/Dashbord/practice.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
-import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:vertical_weight_slider/vertical_weight_slider.dart';
+import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
+
+
 
 import 'Dashbord.dart';
 
 
 
-class Weigh extends StatefulWidget{
+class Water extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return WeighState();
+    return WaterState();
   }
 
 }
 
-class WeighState extends State<Weigh>{
+class WaterState extends State<Water>{
 
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
@@ -39,7 +40,7 @@ class WeighState extends State<Weigh>{
         buttonColor = Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-        Navigator.push(context,MaterialPageRoute(builder: (context)=>Height(),));
+     Navigator.push(context,MaterialPageRoute(builder: (context)=>BloodGroup(),));
       // Perform navigation after the delay
 
     });
@@ -145,32 +146,33 @@ class WeighState extends State<Weigh>{
 
 
 
+
+
+
               Center(
                 child: Container(
                   margin: EdgeInsets.only(left:0,top:50.0 ),
                   //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
                   child:RichText(
                     text: TextSpan(
-                      text: 'How much do you ',
+                      text: 'Water intake ',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Color(0xff24B445),
                         fontSize: Responsive.isSmallScreen(context)? width/16: width/30,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'weigh ',
+                          text: 'per day?',
                           style: TextStyle(
-                            color: Color(0xff24B445),
+                            color: Colors.black,
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Poppins',
 
                           ),
                         ),
-                        TextSpan(
-                          text: '?',
-                        ),
+
                       ],
                     ),
                   ),
@@ -179,7 +181,17 @@ class WeighState extends State<Weigh>{
                 ),
               ),
 
-              WeightPicker(),
+
+              Container(margin: EdgeInsets.only( right: 20, top: 20, left: 20),
+                  child: SliderExample()),
+
+
+
+
+
+
+
+
 
 
               Center(
@@ -243,57 +255,53 @@ class WeighState extends State<Weigh>{
 
 
 
-class WeightPicker extends StatefulWidget {
+
+class CustomSlider extends StatefulWidget {
   @override
-  _WeightPickerState createState() => _WeightPickerState();
+  _CustomSliderState createState() => _CustomSliderState();
 }
 
-class _WeightPickerState extends State<WeightPicker> {
-  int currentWeight = 70;
-
+class _CustomSliderState extends State<CustomSlider> {
+  double _sliderValue = 0;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "${currentWeight.toStringAsFixed(0)} kg",
-          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500,
-          color: Color(0xff000000)),
+    return SliderTheme(
+      data: SliderTheme.of(context).copyWith(
+        // Customize the appearance of the slider
+        activeTrackColor: Color(0xff9181F2),
+        inactiveTrackColor: Color(0xffF7F7F7),
+        thumbColor: Color(0xff9181F2),
+
+        overlayColor: Colors.blue.withOpacity(0.3),
+        valueIndicatorColor: Colors.blue,
+        trackHeight: 10.0,
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
+
+        overlayShape: RoundSliderOverlayShape(overlayRadius: 10.0),
+        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+        valueIndicatorTextStyle: TextStyle(
+          color: Colors.blue,
         ),
-        Container(
-          height: 150.0,
-          child: RulerPicker(
-            beginValue: 20,
-            endValue: 200,
-            initValue: currentWeight,
-            onValueChange: (value) {
-              setState(() {
-                currentWeight = value;
-              });
-            },
-            scaleLineStyleList: [
-              ScaleLineStyle(
-                  color: Color(0xff24B445), width: 1.5, height: 40, scale: 0),
-              ScaleLineStyle(
-                  color: Color(0xff24B445), width: 1, height: 35, scale: 5),
-              ScaleLineStyle(
-                  color: Color(0xff24B445), width: 1, height: 25, scale: -1)
-            ],
-            width: MediaQuery.of(context).size.width,
-            height: 80,
-            rulerMarginTop: 8,
-            rulerScaleTextStyle: TextStyle(color: Color(0xff000000)),
-            // onSelectedItemChanged: (selectedItem) {
-            //   print('Selected weight: $selectedItem');
-            // },
-          ),
+      ),
+      child: RotatedBox(
+        quarterTurns: 3,
+        child: Slider(
+          value: _sliderValue,
+          min: 0,
+          max: 100,
+          divisions: 10,
+          onChanged: (newValue) {
+            setState(() {
+              _sliderValue = newValue;
+              if(_sliderValue == 10){
+                print("1 ltr");
+              }else if(_sliderValue == 20){
+                print("2 ltr");
+              }
+            });
+          },
         ),
-      ],
+      ),
     );
   }
 }
-
-
-
-

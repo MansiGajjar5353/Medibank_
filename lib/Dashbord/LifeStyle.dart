@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
+import 'package:project_signup_page/Dashbord/Diet&Nutrition.dart';
 import 'package:project_signup_page/Dashbord/Height.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
@@ -30,7 +31,7 @@ class LifeStyleState extends State<LifeStyle>{
         buttonColor = Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      Navigator.push(context,MaterialPageRoute(builder: (context)=>Height(),));
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>DietNutrition(),));
       // Perform navigation after the delay
 
     });

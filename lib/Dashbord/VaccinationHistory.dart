@@ -261,7 +261,7 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                             child: Container(
                                 decoration: BoxDecoration(
                                   color: Color(0xffF9F9F9),
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
                                 margin: EdgeInsets.only(
                                     left: Responsive.isSmallScreen(context)
@@ -359,7 +359,7 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                                               decoration: BoxDecoration(
                                                   color: Color(0xffF7F7F7),
                                                   borderRadius:
-                                                      BorderRadius.circular(20),
+                                                      BorderRadius.circular(15),
                                                   border: Border.all(
                                                       width: 1,
                                                       color: Colors.red)),
@@ -390,8 +390,8 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                                                           fontSize: Responsive
                                                                   .isSmallScreen(
                                                                       context)
-                                                              ? width / 40
-                                                              : width / 40,
+                                                              ? width / 38
+                                                              : width / 38,
                                                           fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.w400,

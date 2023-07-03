@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Onbording/AddFamilymemberForm.dart';
+import 'package:project_signup_page/Onbording/ContactInfo.dart';
 import 'package:project_signup_page/Onbording/FamilyMedicalHestoryList.dart';
 import 'package:project_signup_page/Onbording/Faq.dart';
 import 'package:project_signup_page/Onbording/FitnessData.dart';
 import 'package:project_signup_page/Onbording/InsuranceHestory.dart';
+import 'package:project_signup_page/Onbording/Name.dart';
 import 'package:project_signup_page/Onbording/Setting.dart';
 import 'package:project_signup_page/Onbording/VaccinationForm.dart';
+import 'package:project_signup_page/Onbording/location.dart';
 import 'Responsive.dart';
 import 'Dash.dart';
 import 'DoctorsZone.dart';
@@ -28,39 +31,42 @@ class EditProfileState extends State<EditProfile> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(
             color: Colors.green,
             size: Responsive.isSmallScreen(context) ? width / 12 : width / 25),
-
         title: Text(
           "Edit Profile",
           style: TextStyle(
             color: Colors.black,
             fontSize:
-                Responsive.isSmallScreen(context) ? width / 20 : width /24,
+                Responsive.isSmallScreen(context) ? width / 20 : width / 24,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w400,
           ),
         ),
         actions: [
-
           Align(
-
             alignment: Alignment.centerRight,
             child: IconButton(
-              padding: EdgeInsets.only(right: Responsive.isSmallScreen(context)?width/20:width/26),
-              icon: Image.asset('image/correct.png',height:Responsive.isSmallScreen(context) ? width / 12 : width / 25,width: Responsive.isSmallScreen(context) ? width / 12 : width / 25 ,),
+              padding: EdgeInsets.only(
+                  right: Responsive.isSmallScreen(context)
+                      ? width / 20
+                      : width / 26),
+              icon: Image.asset(
+                'image/correct.png',
+                height:
+                    Responsive.isSmallScreen(context) ? width / 12 : width / 25,
+                width:
+                    Responsive.isSmallScreen(context) ? width / 12 : width / 25,
+              ),
               onPressed: () {
                 // Add your notifications icon onPressed functionality here
               },
             ),
           )
-
         ],
-
       ),
       body: Container(
         height: _mediaquery.size.height * 1,
@@ -120,7 +126,8 @@ class EditProfileState extends State<EditProfile> {
                     style: TextStyle(
                       color: Color(0xff24B445),
                       fontSize: Responsive.isSmallScreen(context)
-                          ? width /  24 : width / 28,
+                          ? width / 24
+                          : width / 28,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
                     ),
@@ -158,22 +165,31 @@ class EditProfileState extends State<EditProfile> {
                             style: TextStyle(
                               color: Color(0xff24B445),
                               fontSize: Responsive.isSmallScreen(context)
-                                  ? width /  24 : width / 28,
+                                  ? width / 24
+                                  : width / 28,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
                       ),
-                      Image(
-                        image: AssetImage('image/basic_edit.png'),
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 26,
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 26,
-                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Name()),
+                          );
+                        },
+                        child: Image(
+                          image: AssetImage('image/basic_edit.png'),
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 26,
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 26,
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -212,7 +228,8 @@ class EditProfileState extends State<EditProfile> {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: Responsive.isSmallScreen(context)
-                                      ? width /  24 : width / 28,
+                                      ? width / 24
+                                      : width / 28,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -239,14 +256,18 @@ class EditProfileState extends State<EditProfile> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: Responsive.isSmallScreen(context)?width/20:width/26),
+                              margin: EdgeInsets.only(
+                                  top: Responsive.isSmallScreen(context)
+                                      ? width / 20
+                                      : width / 26),
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Prathvi Bharatwala',
+                                'October 19, 1999',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: Responsive.isSmallScreen(context)
-                                      ? width / 24 : width / 28,
+                                      ? width / 24
+                                      : width / 28,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -255,7 +276,7 @@ class EditProfileState extends State<EditProfile> {
                             Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Name',
+                                'Birthdate',
                                 style: TextStyle(
                                   color: Color(0xff949494),
                                   fontSize: Responsive.isSmallScreen(context)
@@ -275,52 +296,62 @@ class EditProfileState extends State<EditProfile> {
                             Expanded(
                               flex: 4,
                               child: Column(
-                               children: [
-                                 Container(
-                                   margin: EdgeInsets.only(top: Responsive.isSmallScreen(context)?width/20:width/26),
-                                   alignment: Alignment.centerLeft,
-                                   child: Text(
-                                     'Female',
-                                     style: TextStyle(
-                                       color: Colors.black,
-                                       fontSize: Responsive.isSmallScreen(context)
-                                           ? width /24 : width / 28,
-                                       fontFamily: 'Poppins',
-                                       fontWeight: FontWeight.w500,
-                                     ),
-                                   ),
-                                 ),
-                                 Container(
-                                   alignment: Alignment.centerLeft,
-                                   child: Text(
-                                     'Gender',
-                                     style: TextStyle(
-                                       color: Color(0xff949494),
-                                       fontSize: Responsive.isSmallScreen(context)
-                                           ? width / 26
-                                           : width / 40,
-                                       fontFamily: 'Poppins',
-                                       fontWeight: FontWeight.w300,
-                                     ),
-                                   ),
-                                 )
-                               ],
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        top: Responsive.isSmallScreen(context)
+                                            ? width / 20
+                                            : width / 26),
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Female',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 24
+                                                : width / 28,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Gender',
+                                      style: TextStyle(
+                                        color: Color(0xff949494),
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 26
+                                                : width / 40,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-
                             Expanded(
                               flex: 4,
                               child: Column(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(top: Responsive.isSmallScreen(context)?width/20:width/26),
+                                    margin: EdgeInsets.only(
+                                        top: Responsive.isSmallScreen(context)
+                                            ? width / 20
+                                            : width / 26),
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       'A+',
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: Responsive.isSmallScreen(context)
-                                            ? width / 24 : width / 28,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 24
+                                                : width / 28,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -332,9 +363,10 @@ class EditProfileState extends State<EditProfile> {
                                       'Blood Group',
                                       style: TextStyle(
                                         color: Color(0xff949494),
-                                        fontSize: Responsive.isSmallScreen(context)
-                                            ? width / 26
-                                            : width / 40,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 26
+                                                : width / 40,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -381,22 +413,31 @@ class EditProfileState extends State<EditProfile> {
                             style: TextStyle(
                               color: Color(0xff24B445),
                               fontSize: Responsive.isSmallScreen(context)
-                                  ? width /  24 : width / 28,
+                                  ? width / 24
+                                  : width / 28,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
                       ),
-                      Image(
-                        image: AssetImage('image/basic_edit.png'),
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 26,
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 26,
-                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Location()),
+                          );
+                        },
+                        child: Image(
+                          image: AssetImage('image/basic_edit.png'),
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 26,
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 26,
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -435,7 +476,8 @@ class EditProfileState extends State<EditProfile> {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: Responsive.isSmallScreen(context)
-                                      ? width /  24 : width / 28,
+                                      ? width / 24
+                                      : width / 28,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -457,7 +499,6 @@ class EditProfileState extends State<EditProfile> {
                             )
                           ],
                         ),
-
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -467,14 +508,19 @@ class EditProfileState extends State<EditProfile> {
                               child: Column(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(top: Responsive.isSmallScreen(context)?width/20:width/26),
+                                    margin: EdgeInsets.only(
+                                        top: Responsive.isSmallScreen(context)
+                                            ? width / 20
+                                            : width / 26),
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       'Ahmedabad',
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: Responsive.isSmallScreen(context)
-                                            ? width /24 : width / 28,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 24
+                                                : width / 28,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -486,9 +532,10 @@ class EditProfileState extends State<EditProfile> {
                                       'City',
                                       style: TextStyle(
                                         color: Color(0xff949494),
-                                        fontSize: Responsive.isSmallScreen(context)
-                                            ? width / 26
-                                            : width / 40,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 26
+                                                : width / 40,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -497,20 +544,24 @@ class EditProfileState extends State<EditProfile> {
                                 ],
                               ),
                             ),
-
                             Expanded(
                               flex: 4,
                               child: Column(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(top: Responsive.isSmallScreen(context)?width/20:width/26),
+                                    margin: EdgeInsets.only(
+                                        top: Responsive.isSmallScreen(context)
+                                            ? width / 20
+                                            : width / 26),
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       '382480',
                                       style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: Responsive.isSmallScreen(context)
-                                            ? width / 24 : width / 28,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 24
+                                                : width / 28,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -522,9 +573,10 @@ class EditProfileState extends State<EditProfile> {
                                       'Zip',
                                       style: TextStyle(
                                         color: Color(0xff949494),
-                                        fontSize: Responsive.isSmallScreen(context)
-                                            ? width / 26
-                                            : width / 40,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 26
+                                                : width / 40,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -571,21 +623,31 @@ class EditProfileState extends State<EditProfile> {
                             style: TextStyle(
                               color: Color(0xff24B445),
                               fontSize: Responsive.isSmallScreen(context)
-                                  ? width /  24 : width / 28,
+                                  ? width / 24
+                                  : width / 28,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
                       ),
-                      Image(
-                        image: AssetImage('image/basic_edit.png'),
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 26,
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 26,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ContacInfo()),
+                          );
+                        },
+                        child: Image(
+                          image: AssetImage('image/basic_edit.png'),
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 26,
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 26,
+                        ),
                       ),
                     ],
                   ),
@@ -614,7 +676,6 @@ class EditProfileState extends State<EditProfile> {
                       Responsive.isSmallScreen(context)
                           ? width / 20
                           : width / 26,
-
                     ),
                     child: Column(
                       children: [
@@ -629,7 +690,8 @@ class EditProfileState extends State<EditProfile> {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: Responsive.isSmallScreen(context)
-                                      ? width /  24 : width / 28,
+                                      ? width / 24
+                                      : width / 28,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -656,15 +718,18 @@ class EditProfileState extends State<EditProfile> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: Responsive.isSmallScreen(context)?width/20:width/26),
-
+                              margin: EdgeInsets.only(
+                                  top: Responsive.isSmallScreen(context)
+                                      ? width / 20
+                                      : width / 26),
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'loremipsum@gmail.com',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: Responsive.isSmallScreen(context)
-                                      ? width /  24 : width / 28,
+                                      ? width / 24
+                                      : width / 28,
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w500,
                                 ),

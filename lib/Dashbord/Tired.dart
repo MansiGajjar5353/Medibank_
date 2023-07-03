@@ -81,8 +81,8 @@ class TiredState extends State<Tired> {
                                     ? Colors.green
                                     :Color(0xff4F555A).withOpacity(0.5) ),
                             fontFamily: "Poppins",
-                          fontSize: 15,
-                          //  fontSize: Responsive.isSmallScreen(context)? width/38 : width/90,
+
+                           fontSize: Responsive.isSmallScreen(context)? width/26 : width/90,
                           ),
 
 

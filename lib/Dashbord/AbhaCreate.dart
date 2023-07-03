@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/AabhaAdharNumber.dart';
+import 'package:project_signup_page/Dashbord/AabhaOtp.dart';
+import 'package:project_signup_page/Dashbord/AabhaOtpForAadhar.dart';
 import 'package:project_signup_page/Dashbord/AbhaSetup.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
@@ -198,7 +201,7 @@ class _ButtonGroupState2 extends State<ButtonGroup2> {
             child: InkWell(
               onTap:(){
                 onButtonPressed(ButtonState2.Button1);
-              //  Navigator.push(context, MaterialPageRoute(builder: (context)=>AbhaCreate(),));
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>AabhaOtp(),));
               },
               child:Stack(
                 children: [
@@ -265,7 +268,7 @@ class _ButtonGroupState2 extends State<ButtonGroup2> {
             child: InkWell(
               onTap:(){
                 onButtonPressed(ButtonState2.Button2);
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=>AbhaSetup(),));
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>AabhaAadharNumber(),));
               },
               child:Stack(
                 children: [

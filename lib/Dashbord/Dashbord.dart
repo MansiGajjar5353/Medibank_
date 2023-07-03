@@ -2,6 +2,8 @@ import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/AbhaCreate.dart';
 import 'package:project_signup_page/Dashbord/AddRecords.dart';
+import 'package:project_signup_page/Dashbord/Notification.dart';
+import 'package:project_signup_page/Dashbord/Weigh.dart';
 import 'package:project_signup_page/Onbording/Profile.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +97,6 @@ class _BottomNavBarAppState extends State<BottomNavBarApp> {
     );
   }
 }
-// Rest of the code remains the same...
 
 
 
@@ -211,15 +212,21 @@ class Screen1State extends State<Screen1> {
                   ],
                 ),
               ),
-              Container(
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationList()));
+                },
+
+                child: Container(
 
 
-                child: Icon(
-                  Icons.notifications_none_outlined,
-                  color: Colors.black,
-                  size: 30,
+                  child: Icon(
+                    Icons.notifications_none_outlined,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+
                 ),
-
               ),
             ],
           ),
@@ -534,7 +541,7 @@ class Screen1State extends State<Screen1> {
 
 
                     InkWell(
-                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Questionnaires(),));},
+                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Weigh(),));},
                       child: Container(
                         margin: EdgeInsets.only(top: _mediaquery.size.height*0.015),
                         height: _mediaquery.size.height*0.09,
@@ -2008,7 +2015,6 @@ class Screen3State extends State<Screen3>{
 
 
 
-// Rest of the code remains the same...
 
 
 class Screen4 extends StatefulWidget{
