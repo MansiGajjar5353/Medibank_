@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/InsuranceForm.dart';
+import 'package:project_signup_page/Dashbord/ReportsOpen2.dart';
 import 'package:project_signup_page/UI/Signup.dart';
 
 import '../Dashbord/WaterNew.dart';
@@ -36,7 +37,7 @@ class _SigninState extends State<Signin>{
       });
 
       _loginpage;
-     // Navigator.push(context, MaterialPageRoute(builder: (context)=>WaterNew(),));// Perform navigation after the delay
+     Navigator.push(context, MaterialPageRoute(builder: (context)=>ReportsOpen2(),));// Perform navigation after the delay
 
     });
   }

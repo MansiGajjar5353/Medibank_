@@ -50,6 +50,12 @@ class create_accState extends State<create_acc>{
       backgroundColor: Colors.white,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.green),
+      title: Center(
+        child: Container(padding: EdgeInsets.only(right: 30),
+            child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+      ),
+     // margin: EdgeInsets.only( top:20.0),
+
     ),
     body:
     Container(
@@ -58,7 +64,7 @@ class create_accState extends State<create_acc>{
 
           children: [
             Container(
-      //        height: _mediaquery.size.height*0.13,
+              margin: EdgeInsets.only( top:20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,

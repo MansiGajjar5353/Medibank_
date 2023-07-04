@@ -65,6 +65,12 @@ class GenderState extends State<Gender>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //  margin: EdgeInsets.only( top:20.0),
       ),
       body:
       Container(
@@ -73,6 +79,7 @@ class GenderState extends State<Gender>{
 
             children: [
               Container(
+                margin: EdgeInsets.only( top:20.0),
                 //        height: _mediaquery.size.height*0.13,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

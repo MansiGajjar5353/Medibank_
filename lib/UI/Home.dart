@@ -93,6 +93,14 @@ class _Homestate extends State<Home> {
 
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xffffffff),
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.transparent),
+        title: Center(
+          child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+        ),
+      ),
 
       body: Container(
           width: width,
@@ -105,7 +113,7 @@ class _Homestate extends State<Home> {
               Container(
              //   height: _mediaquery.size.height*0.03,
                 width:200,
-                margin: EdgeInsets.only(left:21.0, top:50.0),
+                margin: EdgeInsets.only(left:21.0, top:10.0),
                 //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
                 child:Text("You're all set?",style: new TextStyle(color: Color(0xFF24B445),
                     fontSize: Responsive.isSmallScreen(context)? width/ 25:width/60,

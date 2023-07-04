@@ -18,12 +18,28 @@ class voiceAssistantState extends State<voiceAssistant>{
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
   return Scaffold(
-appBar: AppBar(
-  backgroundColor: Colors.white,
-  elevation: 0,
-
-  title: Text("Voice Assistant", style: TextStyle(color: Color(0xff000000),fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'Poppins'),),
-),
+    appBar: AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      iconTheme: IconThemeData(color: Colors.green),
+      title: Center(
+        child: Row(
+          children: [
+            Text("Voice Assistant", style: TextStyle(color: Color(0xff000000),fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'Poppins'),),
+            Container(padding: EdgeInsets.only(right: 30),
+                child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                    width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+          ],
+        ),
+      ),
+    ),
+// appBar:
+// AppBar(
+//   backgroundColor: Colors.white,
+//   elevation: 0,
+//
+//   title: Text("Voice Assistant", style: TextStyle(color: Color(0xff000000),fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'Poppins'),),
+// ),
     
     body:ListView(
       children: [

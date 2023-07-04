@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:project_signup_page/Dashbord/BloodGroup.dart';
@@ -24,6 +26,8 @@ class Water extends StatefulWidget{
 }
 
 class WaterState extends State<Water>{
+  double _value = 5.0;
+
 
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
@@ -149,10 +153,9 @@ class WaterState extends State<Water>{
 
 
 
-
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(left:0,top:50.0 ),
+                  margin: EdgeInsets.only(left:0,top:20.0 ),
                   //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
                   child:RichText(
                     text: TextSpan(
@@ -186,9 +189,82 @@ class WaterState extends State<Water>{
               // Container(margin: EdgeInsets.only( right: 20, top: 20, left: 20),
               //     child: SliderExample()),
               //
+            Padding(padding: EdgeInsets.only(top: 20)),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: '${_value.round()} ',
+                    style: TextStyle(
+                      color: Color(0xff24B445),
+                      fontSize: Responsive.isSmallScreen(context)? width/12: width/30,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'ltr',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins',
+                          fontSize: Responsive.isSmallScreen(context)? width/20: width/60,
+
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Container(
+                //    margin: EdgeInsets.only(left: 80, right: 10),
+                    width: 80,
+                    height: 230,
+                    decoration: BoxDecoration(
+
+                      border: Border.all(color: Color(0xffCDCDCD), width: 2),
+                      borderRadius: BorderRadius.circular(3000),
+
+                    ),
+
+                    child:ClipRRect(
+borderRadius: BorderRadius.circular(3000),
+                      child: Container(
+                        width: 500,
+                        child: WaterWaveProgressBar(
+                          value: _value/10,
+                        ),
+                      ),
+                    ),
+
+                  ),
+                  Column(
+                    children: [
+                      RotatedBox(
+                        quarterTurns: 3,
+                        child: Slider(
+                          value: _value,
+                          min: 0.0,
+                          max: 10.0,
+                          onChanged: (newValue) {
+                            setState(() {
+                              _value = newValue;
+                            });
+                          },
+                          divisions: 10,
+                          label: _value.round().toString(),
+                        ),
+                      ),
 
 
-
+                    ],
+                  ),
+                ],
+              ),
 
 
 
@@ -245,6 +321,12 @@ class WaterState extends State<Water>{
               ),
 
 
+
+
+
+
+              
+              
             ]
         ),
       ),
@@ -306,3 +388,119 @@ class WaterState extends State<Water>{
 //     );
 //   }
 // }
+
+
+
+
+
+class WaterWaveProgressBar extends StatefulWidget {
+  final double value;
+  final double waveHeight;
+  final double waveSpeed;
+  final Color waterColor;
+  final Color waveColor;
+
+  WaterWaveProgressBar({
+    required this.value,
+    this.waveHeight = 15.0,
+    this.waveSpeed = 30.0,
+    this.waterColor = Colors.blue,
+    this.waveColor = Colors.blue,
+  });
+
+  @override
+  _WaterWaveProgressBarState createState() => _WaterWaveProgressBarState();
+}
+
+class _WaterWaveProgressBarState extends State<WaterWaveProgressBar>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  double _wavePhase = 80.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 2000),
+    )..repeat();
+    _animationController.addListener(_updateWavePhase);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _updateWavePhase() {
+    setState(() {
+      _wavePhase = _animationController.value * 2 * widget.waveSpeed * 3.14159;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+        painter: _WaterWavePainter(
+          value: widget.value,
+          waveHeight: widget.waveHeight,
+          wavePhase: _wavePhase,
+          waterColor: widget.waterColor,
+          waveColor: widget.waveColor,
+        ),
+
+    );
+  }
+}
+
+class _WaterWavePainter extends CustomPainter {
+  final double value;
+  final double waveHeight;
+  final double wavePhase;
+  final Color waterColor;
+  final Color waveColor;
+
+  _WaterWavePainter({
+    required this.value,
+    required this.waveHeight,
+    required this.wavePhase,
+    required this.waterColor,
+    required this.waveColor,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final wavePaint = Paint()..color = waveColor;
+    final waterPaint = Paint()..color = waterColor;
+
+    final waveAmplitude = waveHeight / 2;
+    final waveLength = size.width;
+    final waveMidpoint = size.height * (1 - value);
+
+    final path = Path();
+    path.moveTo(0, size.height);
+
+    for (double x = 0; x < size.width; x++) {
+      final y = waveMidpoint +
+          waveAmplitude *
+              sin((2 * 3.14159 / waveLength) * (x + wavePhase));
+      path.lineTo(x, y);
+    }
+
+    path.lineTo(size.width, size.height);
+    path.close();
+
+    canvas.drawPath(path, waterPaint);
+    canvas.drawPath(path, wavePaint);
+  }
+
+  @override
+  bool shouldRepaint(_WaterWavePainter oldDelegate) {
+    return oldDelegate.value != value ||
+        oldDelegate.waveHeight != waveHeight ||
+        oldDelegate.wavePhase != wavePhase ||
+        oldDelegate.waterColor != waterColor ||
+        oldDelegate.waveColor != waveColor;
+  }
+}

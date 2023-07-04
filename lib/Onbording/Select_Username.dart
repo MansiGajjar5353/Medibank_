@@ -47,6 +47,11 @@ class Select_UsernameState extends State<Select_Username>{
           backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.green),
+          title: Center(
+            child: Container(padding: EdgeInsets.only(right: 30),
+                child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                    width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+          ),
         ),
       body:  Container(
         height: _mediaquery.size.height*1,
@@ -54,7 +59,7 @@ class Select_UsernameState extends State<Select_Username>{
 children: [
   Center(
     child: Container(
-        margin: EdgeInsets.only(left:0,top:10.0 ),
+        margin: EdgeInsets.only(left:0,top:20.0 ),
         //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
         child:RichText(
           text: TextSpan(

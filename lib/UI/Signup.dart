@@ -93,7 +93,10 @@ class _SignUpState extends State<SignUp>{
         backgroundColor: Color(0xffffffff),
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green), // set the color of the icons
-
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
       ),
 
       body: Container(
@@ -102,7 +105,7 @@ class _SignUpState extends State<SignUp>{
 
           children: [
             Container(
-              margin: EdgeInsets.only(left:21.0, top:10.0),
+              margin: EdgeInsets.only(left:21.0, top:20.0),
               //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
               child:Text("Please sign up to continue",style: new TextStyle(color: Color(0xFF24B445),
                   fontSize: Responsive.isSmallScreen(context)? width/28 : width/60,

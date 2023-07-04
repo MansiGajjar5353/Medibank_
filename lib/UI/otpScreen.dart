@@ -64,14 +64,22 @@ class _otpScreenState extends State<otpScreen> {
      appBar: AppBar(
        backgroundColor: Color(0xffffffff),
      elevation: 0,
-     iconTheme: IconThemeData(color: Colors.green),),
+     
+     iconTheme: IconThemeData(color: Colors.green),
+       title: Center(
+         child: Container(padding: EdgeInsets.only(right: 30),
+             child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+       ),
+     ),
 
        body:Container(
          height: _mediaquery.size.height*1,
     child: ListView(
       children: [
         Container(
-        //  height: _mediaquery.size.height*0.13,
+          margin: EdgeInsets.only( top:20.0),
+
+          //  height: _mediaquery.size.height*0.13,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
