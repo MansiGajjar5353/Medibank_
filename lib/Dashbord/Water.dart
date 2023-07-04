@@ -9,6 +9,7 @@ import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 
 
 
+
 import 'Dashbord.dart';
 
 
@@ -182,9 +183,9 @@ class WaterState extends State<Water>{
               ),
 
 
-              Container(margin: EdgeInsets.only( right: 20, top: 20, left: 20),
-                  child: SliderExample()),
-
+              // Container(margin: EdgeInsets.only( right: 20, top: 20, left: 20),
+              //     child: SliderExample()),
+              //
 
 
 
@@ -255,53 +256,53 @@ class WaterState extends State<Water>{
 
 
 
-
-class CustomSlider extends StatefulWidget {
-  @override
-  _CustomSliderState createState() => _CustomSliderState();
-}
-
-class _CustomSliderState extends State<CustomSlider> {
-  double _sliderValue = 0;
-  @override
-  Widget build(BuildContext context) {
-    return SliderTheme(
-      data: SliderTheme.of(context).copyWith(
-        // Customize the appearance of the slider
-        activeTrackColor: Color(0xff9181F2),
-        inactiveTrackColor: Color(0xffF7F7F7),
-        thumbColor: Color(0xff9181F2),
-
-        overlayColor: Colors.blue.withOpacity(0.3),
-        valueIndicatorColor: Colors.blue,
-        trackHeight: 10.0,
-        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
-
-        overlayShape: RoundSliderOverlayShape(overlayRadius: 10.0),
-        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-        valueIndicatorTextStyle: TextStyle(
-          color: Colors.blue,
-        ),
-      ),
-      child: RotatedBox(
-        quarterTurns: 3,
-        child: Slider(
-          value: _sliderValue,
-          min: 0,
-          max: 100,
-          divisions: 10,
-          onChanged: (newValue) {
-            setState(() {
-              _sliderValue = newValue;
-              if(_sliderValue == 10){
-                print("1 ltr");
-              }else if(_sliderValue == 20){
-                print("2 ltr");
-              }
-            });
-          },
-        ),
-      ),
-    );
-  }
-}
+//
+// class CustomSlider extends StatefulWidget {
+//   @override
+//   _CustomSliderState createState() => _CustomSliderState();
+// }
+//
+// class _CustomSliderState extends State<CustomSlider> {
+//   double _sliderValue = 0;
+//   @override
+//   Widget build(BuildContext context) {
+//     return SliderTheme(
+//       data: SliderTheme.of(context).copyWith(
+//         // Customize the appearance of the slider
+//         activeTrackColor: Color(0xff9181F2),
+//         inactiveTrackColor: Color(0xffF7F7F7),
+//         thumbColor: Color(0xff9181F2),
+//
+//         overlayColor: Colors.blue.withOpacity(0.3),
+//         valueIndicatorColor: Colors.blue,
+//         trackHeight: 10.0,
+//         thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
+//
+//         overlayShape: RoundSliderOverlayShape(overlayRadius: 10.0),
+//         valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+//         valueIndicatorTextStyle: TextStyle(
+//           color: Colors.blue,
+//         ),
+//       ),
+//       child: RotatedBox(
+//         quarterTurns: 3,
+//         child: Slider(
+//           value: _sliderValue,
+//           min: 0,
+//           max: 100,
+//           divisions: 10,
+//           onChanged: (newValue) {
+//             setState(() {
+//               _sliderValue = newValue;
+//               if(_sliderValue == 10){
+//                 print("1 ltr");
+//               }else if(_sliderValue == 20){
+//                 print("2 ltr");
+//               }
+//             });
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }

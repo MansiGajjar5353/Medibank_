@@ -162,10 +162,18 @@ Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.04)),
 
           Stack(
             children: [
-              Container(
+
+              // MyApp(),
+// Container(
+//   height:_mediaquery.size.height*0.5,
+//   width:Responsive.isSmallScreen(context)? width/1 : width/1,
+//   color: ,
+// ),
+                // aspectRatio: 16 /16,
+            Container(
                 margin: EdgeInsets.only(top: _mediaquery.size.height*0.05),
                 height:_mediaquery.size.height*0.5,
-              //  width:Responsive.isSmallScreen(context)? width/1 : width/1,
+              width:Responsive.isSmallScreen(context)? width/1 : width/1,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('image/Welcome1.png'),
@@ -173,6 +181,14 @@ Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.04)),
                   ),
               ),
               ),
+
+
+// Container(
+//     width:Responsive.isSmallScreen(context)? width/1 : width/1,
+//   Center(
+//     child: Image(image: AssetImage("image/Welcome1.png"),
+//      width:Responsive.isSmallScreen(context)? width/1 : width/1.2),
+//   ),
 
               Container(
                 margin: EdgeInsets.only(top:_mediaquery.size.height*0.15),
@@ -420,4 +436,78 @@ mainAxisAlignment: MainAxisAlignment.center,
   }
 
 
+}
+
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Curved Container Example',
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Curved Container Example'),
+//         ),
+//         body: Container(
+//           color: Colors.blue,
+//           child: ClipPath(
+//             clipper: CustomShapeClipper(),
+//             child: Container(
+//               color: Colors.white,
+//               height: 200.0,
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
+
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Curved Container Example'),
+        ),
+        body: Container(
+          color: Colors.blue,
+          child: ClipPath(
+            clipper: CustomClipperShape(),
+            child: Container(
+              color: Colors.white,
+              height: 200.0,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomClipperShape extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(0, size.height - 50);
+    path.quadraticBezierTo(
+      size.width / 2,
+      size.height,
+      size.width,
+      size.height - 50,
+    );
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
 }

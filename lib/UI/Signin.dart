@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/InsuranceForm.dart';
 import 'package:project_signup_page/UI/Signup.dart';
 
+import '../Dashbord/WaterNew.dart';
 import '../Onbording/Responsive.dart';
 import 'FinalPage.dart';
 
@@ -35,7 +36,7 @@ class _SigninState extends State<Signin>{
       });
 
       _loginpage;
-    //  Navigator.push(context, MaterialPageRoute(builder: (context)=>InsuranceForm(),));// Perform navigation after the delay
+     // Navigator.push(context, MaterialPageRoute(builder: (context)=>WaterNew(),));// Perform navigation after the delay
 
     });
   }

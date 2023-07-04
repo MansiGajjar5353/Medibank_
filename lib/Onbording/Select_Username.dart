@@ -12,9 +12,12 @@ class Select_Username  extends StatefulWidget{
 }
 
 class Select_UsernameState extends State<Select_Username>{
+  String SelectedUserName = "ABC";
+
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
+
 
 
   void handleButtonPress() {
@@ -100,121 +103,13 @@ children: [
 
 
   Padding(padding: EdgeInsets.only(left:20,right: 20, top:60),),
-  Center(
-    child: Container(
-      margin: EdgeInsets.only(right: 20.0),
-      padding: EdgeInsets.only(left:20.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(35), // set the border radius
-          //border: Border.all(),
-      ),
-      child: TextField(
-//          controller: _userController,
-          decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            filled: true,
-            fillColor: Color(0xffF9F9F9),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(35),
-              borderSide: BorderSide.none,),
 
-            hintText: "Username@themedibank.in",
-            hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-            fontSize: Responsive.isSmallScreen(context)? width/22:width/60,),
-
-          ),
-      ),
-    ),
-  ),
-Padding(padding: EdgeInsets.only(top:30,left:10)),
-Container(
-  margin: EdgeInsets.only(left: 30),
-  child:Text(
-    "Suggestions",
-    style: TextStyle(
-        color: Color(0xFFB3B3B3),
-        fontFamily: 'Poppins',
-    fontSize: Responsive.isSmallScreen(context)? width/35:width/60,
-    ),
-  ),
-),
-Padding(padding: EdgeInsets.only(left:30,top:10)),
   Container(
-    margin: EdgeInsets.only(left: 30),
-child:Row(
-  mainAxisAlignment: MainAxisAlignment.start,
-  children: [
-    Container(
-        height:35,
-
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          border:Border.all(
-            color: Color(0xffDDDEE1),
-          ),
-        ),
-        padding: EdgeInsets.only(top:5,left:5,right:5),
-        child: Text(
-          'xZxcvv cbv',
-          style: TextStyle(color: Color(0xff000000).withOpacity(0.5),
-            fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
-        ),
-        ),
-Padding(padding: EdgeInsets.only(left:6)),
-    Container(
-        height:35,
-
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          border:Border.all(
-            color: Color(0xffDDDEE1),
-          ),
-        ),
-        padding: EdgeInsets.only(top:5,left:5,right:5),
-        child: Text(
-          'sdasfghj',
-          style: TextStyle(color: Color(0xff000000).withOpacity(0.5),
-            fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
-        ),
-    ),
-    Padding(padding: EdgeInsets.only(left:6)),
-    Container(
-        height:35,
-
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          border:Border.all(
-            color: Color(0xffDDDEE1),
-          ),
-        ),
-        padding: EdgeInsets.only(top:5,left:5,right:5),
-        child: Text(
-          'dsfgdhgjn',
-          style: TextStyle(color: Color(0xff000000).withOpacity(0.5),
-            fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
-        ),
-    ),
-    Padding(padding: EdgeInsets.only(left:6)),
-    Container(
-        height:35,
-
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          border:Border.all(
-            color: Color(0xffDDDEE1),
-          ),
-        ),
-        padding: EdgeInsets.only(top:5,left:5,right:5),
-        child: Text(
-          'fghnbjnmbm',
-          style: TextStyle(color: Color(0xff000000).withOpacity(0.5),
-            fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
-        ),
-    ),
-
-  ],
-),
+    margin: EdgeInsets.only(left: 0),
+child:ButtonGroup(),
   ),
-Padding(padding: EdgeInsets.only(top:10)),
+
+Padding(padding: EdgeInsets.only(top:0)),
   Container(
     margin: EdgeInsets.only(left: 32),
  child: Row(
@@ -311,4 +206,448 @@ Padding(padding: EdgeInsets.only(top:10)),
     );
   }
 
+}
+
+
+
+
+
+enum ButtonState { Button1, Button2, Button3, Button4 }
+
+class ButtonGroup extends StatefulWidget {
+  @override
+  _ButtonGroupState createState() => _ButtonGroupState();
+}
+
+class _ButtonGroupState extends State<ButtonGroup> {
+  TextEditingController _controller = TextEditingController();
+
+
+  ButtonState selectedButton = ButtonState.Button1; // Initial selected button
+
+  @override
+  Widget build(BuildContext context) {
+
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
+    return Column(
+      crossAxisAlignment:CrossAxisAlignment.start ,
+      children: [
+        Center(
+          child: Container(
+            margin: EdgeInsets.only(right: 20.0),
+            padding: EdgeInsets.only(left:20.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(35), // set the border radius
+              //border: Border.all(),
+            ),
+            child: TextField(
+              controller: _controller,
+              decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                filled: true,
+                fillColor: Color(0xffF9F9F9),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(35),
+                  borderSide: BorderSide.none,),
+
+                hintText: "Username@themedibank.in",
+                hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
+                  fontSize: Responsive.isSmallScreen(context)? width/22:width/60,),
+
+              ),
+            ),
+          ),
+        ),
+        Padding(padding: EdgeInsets.only(top:30,left:10)),
+        Container(
+         margin: EdgeInsets.only(left: 30),
+          child:Text(
+            "Suggestions",
+            style: TextStyle(
+              color: Color(0xFFB3B3B3),
+              fontFamily: 'Poppins',
+              fontSize: Responsive.isSmallScreen(context)? width/35:width/60,
+            ),
+          ),
+        ),
+        Padding(padding: EdgeInsets.only(left:30,top:10)),
+        Container(
+          margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
+          child:
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              InkWell(
+                onTap:() { onButtonPressed(ButtonState.Button1);
+                  _controller.text = "xZxcvv cbv";},
+                child: Container(
+                  height:35,
+                  decoration: BoxDecoration(
+                    color: selectedButton== ButtonState.Button1? Color(0xff24B445): Colors.transparent,
+
+                    borderRadius: BorderRadius.circular(6),
+                    border:Border.all(
+                      color: selectedButton== ButtonState.Button1? Color(0xff24B445): Color(0xffDDDEE1),
+                    ),
+                  ),
+                 padding: EdgeInsets.only(left:5,right:5),
+                  child: Center(
+                    child: Text(
+                      'xZxcvv cbv',
+                      style: TextStyle(color: selectedButton== ButtonState.Button1? Color(0xffFFFFFF):Color(0xff000000).withOpacity(0.5),
+
+                        fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(left:6)),
+              InkWell(
+                onTap:() { onButtonPressed(ButtonState.Button2);
+                _controller.text = "sdasfghj";},
+                child: Container(
+                  height:35,
+
+                  decoration: BoxDecoration(
+                    color: selectedButton== ButtonState.Button2? Color(0xff24B445): Colors.transparent,
+
+                    borderRadius: BorderRadius.circular(6),
+                    border:Border.all(
+                      color: selectedButton== ButtonState.Button2? Color(0xff24B445): Color(0xffDDDEE1),
+                    ),
+                  ),
+                  padding: EdgeInsets.only(left:5,right:5),
+                  child: Center(
+                    child: Text(
+                      'sdasfghj',
+                      style: TextStyle(color: selectedButton== ButtonState.Button2? Color(0xffFFFFFF):Color(0xff000000).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(left:6)),
+              InkWell(
+                onTap:() { onButtonPressed(ButtonState.Button3);
+                _controller.text = "dsfgdhgjn";},
+
+                child: Container(
+                  height:35,
+
+                  decoration: BoxDecoration(
+                    color: selectedButton== ButtonState.Button3? Color(0xff24B445): Colors.transparent,
+
+                    borderRadius: BorderRadius.circular(6),
+                    border:Border.all(
+                      color: selectedButton== ButtonState.Button3? Color(0xff24B445): Color(0xffDDDEE1),
+                    ),
+                  ),
+                  padding: EdgeInsets.only(left:5,right:5),
+                  child: Center(
+                    child: Text(
+                      'dsfgdhgjn',
+                      style: TextStyle(color: selectedButton== ButtonState.Button3? Color(0xffFFFFFF):Color(0xff000000).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(left:6)),
+              InkWell(
+                onTap:() { onButtonPressed(ButtonState.Button4);
+                  _controller.text = 'fghnbjnmbm';},
+                child: Container(
+                  height:35,
+
+                  decoration: BoxDecoration(
+                    color: selectedButton== ButtonState.Button4? Color(0xff24B445): Colors.transparent,
+
+                    borderRadius: BorderRadius.circular(6),
+                    border:Border.all(
+                      color: selectedButton== ButtonState.Button4? Color(0xff24B445): Color(0xffDDDEE1),
+                    ),
+                  ),
+                  padding: EdgeInsets.only(left:5,right:5),
+                  child: Center(
+                    child: Text(
+                      'fghnbjnmbm',
+                      style: TextStyle(color: selectedButton== ButtonState.Button4? Color(0xffFFFFFF):Color(0xff000000).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/35:width/60,),
+                    ),
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+
+
+
+
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //
+          //     Container(
+          //       child:InkWell
+          //         (
+          //         onTap:() { onButtonPressed(ButtonState.Button1); },
+          //
+          //
+          //         child:  Container(
+          //           decoration: BoxDecoration(
+          //             color: Colors.white,
+          //             shape: BoxShape.circle,
+          //             boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
+          //           ),
+          //           child: Stack(
+          //             children: [
+          //               CircleAvatar(
+          //
+          //                 backgroundColor: Colors.white,
+          //                 radius: 40.0,
+          //                 child:Column(
+          //
+          //                   children: [
+          //                     Transform.translate(offset: Offset(0,10),
+          //                       child:Container(
+          //                         height:40.0,
+          //                         decoration: BoxDecoration(
+          //                           image: DecorationImage(
+          //                             image: AssetImage('image/Female1.png'),
+          //                             fit: BoxFit.scaleDown,
+          //                             // child:Text('Female'),
+          //                           ), // backgroundImage: AssetImage('image/Other.png',),
+          //                         ),
+          //                       ),),
+          //                     Transform.translate(offset: Offset(0,10),
+          //                       child:   Container(
+          //                         height:20,
+          //                         child:Text(
+          //                           "Female",
+          //                           style: TextStyle(
+          //                             fontWeight: FontWeight.w400,
+          //                             color: Colors.black,
+          //                             fontFamily: 'Poppins',
+          //                             fontSize: 10,
+          //                           ),
+          //                         ),
+          //                       ),),
+          //                   ],
+          //                 ),
+          //
+          //               ),
+          //               Transform.translate(offset: Offset(60,5),
+          //                 child:Visibility(
+          //                   visible:  selectedButton== ButtonState.Button1 ? true: false,
+          //                   child: Container(
+          //                     decoration: BoxDecoration(
+          //                       color: Colors.white,
+          //                       shape: BoxShape.circle,
+          //                       boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+          //                     ),
+          //                     child: CircleAvatar(
+          //                       radius:14,
+          //                       backgroundColor: Colors.white,
+          //                       child: Center(
+          //                         child: Image.asset("image/Checkbox.png", height: 20,),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //
+          //               ),
+          //
+          //
+          //             ],
+          //           ),
+          //
+          //
+          //
+          //         ),
+          //       ),
+          //     ),
+          //
+          //     Padding(padding: EdgeInsets.only(top: 10)),
+          //
+          //
+          //     Container(
+          //       child:InkWell
+          //         (
+          //         onTap:() { onButtonPressed(ButtonState.Button2); },
+          //
+          //         child:  Container(
+          //           decoration: BoxDecoration(
+          //             color: Colors.white,
+          //             shape: BoxShape.circle,
+          //             boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
+          //           ),
+          //           child: Stack(
+          //             children: [
+          //               CircleAvatar(
+          //
+          //                 backgroundColor: Colors.white,
+          //                 radius: 40.0,
+          //                 child:Column(
+          //                   children: [
+          //                     Transform.translate(offset: Offset(0,10),
+          //                       child:Container(
+          //                         height:40.0,
+          //                         decoration: BoxDecoration(
+          //                           image: DecorationImage(
+          //                             image: AssetImage('image/Male1.png'),
+          //                             fit: BoxFit.scaleDown,
+          //                             // child:Text('Others'),
+          //                           ), // backgroundImage: AssetImage('image/Other.png',),
+          //                         ),
+          //                       ),),
+          //                     Transform.translate(offset: Offset(0,10),
+          //                       child:   Container(
+          //                         height:20,
+          //                         child:Text(
+          //                           "Male",
+          //                           style: TextStyle(
+          //                             fontWeight: FontWeight.w400,
+          //                             color: Colors.black,
+          //                             fontFamily: 'Poppins',
+          //                             fontSize: 10,
+          //                           ),
+          //                         ),
+          //                       ),),
+          //                   ],
+          //                 ),
+          //
+          //               ),
+          //
+          //
+          //               Transform.translate(offset: Offset(60,5),
+          //                 child:Visibility(
+          //                   visible: selectedButton== ButtonState.Button2 ? true: false,
+          //                   child: Container(
+          //                     decoration: BoxDecoration(
+          //                       color: Colors.white,
+          //                       shape: BoxShape.circle,
+          //                       boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+          //                     ),
+          //                     child: CircleAvatar(
+          //                       radius:14,
+          //                       backgroundColor: Colors.white,
+          //                       child: Center(
+          //                         child: Image.asset("image/Checkbox.png", height: 20,),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //
+          //               )
+          //
+          //
+          //
+          //
+          //
+          //
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //
+          //
+          //     Padding(padding: EdgeInsets.only(top: 10)),
+          //
+          //     Container(
+          //       child:InkWell
+          //         (
+          //         onTap:() { onButtonPressed(ButtonState.Button3); },
+          //
+          //         child:  Container(
+          //           decoration: BoxDecoration(
+          //             color: Colors.white,
+          //             shape: BoxShape.circle,
+          //             boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
+          //           ),
+          //           child: Stack(
+          //             children: [
+          //               CircleAvatar(
+          //
+          //                 backgroundColor: Colors.white,
+          //                 radius: 40.0,
+          //                 child:Column(
+          //                   children: [
+          //                     Transform.translate(offset: Offset(0,10),
+          //                       child:Container(
+          //                         height:40.0,
+          //                         decoration: BoxDecoration(
+          //                           image: DecorationImage(
+          //                             image: AssetImage('image/other1.png'),
+          //                             fit: BoxFit.scaleDown,
+          //                             // child:Text('Others'),
+          //                           ), // backgroundImage: AssetImage('image/Other.png',),
+          //                         ),
+          //                       ),),
+          //                     Transform.translate(offset: Offset(0,10),
+          //                       child:   Container(
+          //                         height:20,
+          //                         child:Text(
+          //                           "Other",
+          //                           style: TextStyle(
+          //                             fontWeight: FontWeight.w400,
+          //                             color: Colors.black,
+          //                             fontFamily: 'Poppins',
+          //                             fontSize: 10,
+          //                           ),
+          //                         ),
+          //                       ),),
+          //                   ],
+          //                 ),
+          //
+          //               ),
+          //
+          //               Transform.translate(offset: Offset(60,5),
+          //                 child:Visibility(
+          //                   visible: selectedButton== ButtonState.Button3 ? true: false,
+          //                   child: Container(
+          //                     decoration: BoxDecoration(
+          //                       color: Colors.white,
+          //                       shape: BoxShape.circle,
+          //                       boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+          //                     ),
+          //                     child: CircleAvatar(
+          //                       radius:14,
+          //                       backgroundColor: Colors.white,
+          //                       child: Center(
+          //                         child: Image.asset("image/Checkbox.png", height: 20,),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //
+          //               )
+          //
+          //
+          //
+          //
+          //
+          //
+          //
+          //
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //
+          //   ],
+          // ),
+        ),
+      ],
+    );
+  }
+
+  void onButtonPressed(ButtonState buttonState) {
+    setState(() {
+      selectedButton = buttonState;
+    });
+  }
 }

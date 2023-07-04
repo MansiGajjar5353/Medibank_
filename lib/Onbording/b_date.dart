@@ -20,6 +20,7 @@ class b_date extends StatefulWidget{
 
 }
 class b_dateState extends State<b_date> {
+   int selectedYear = 1999;
 
 //   late int selectedYear;
 //
@@ -71,6 +72,8 @@ class b_dateState extends State<b_date> {
   List<int> data = [
     1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
   ];
+
+
   Widget _monthItemList(BuildContext context, int index){
     if(index == month.length)
       return Center(
@@ -163,6 +166,11 @@ void initstate() {
 
   @override
   Widget build(BuildContext context) {
+    final currentYear = DateTime.now().year;
+    final years = List.generate(
+      currentYear - 1900 + 1,
+          (index) => currentYear - index,
+    );
 
 
     double width = MediaQuery.of(context).size.width;
@@ -442,7 +450,38 @@ width: Responsive.isSmallScreen(context)? width/10 : width/90,
 
 Container(
   child:   InkWell(
-    onTap: (){print('Hey');},
+    onTap: (){showModalBottomSheet(context: context,
+        builder: (BuildContext context){
+      return Container(
+        height: 200,
+        child:ListView.builder(
+          itemCount: years.length,
+          itemBuilder: (context, index) {
+            final year = years[index];
+            final isSelectedYear = year == selectedYear;
+
+            return ListTile(
+              title: Center(
+                child: Text(
+                  ' $year',
+                  style: TextStyle(
+                    fontWeight: isSelectedYear ? FontWeight.bold : FontWeight.normal,
+                  ),
+                ),
+              ),
+              onTap: () {
+                setState(() {
+                  selectedYear = year;
+                });
+              },
+            );
+          },
+        ),
+      );
+
+    }
+
+    );},
     child:Container(
         child:Column(
           children: [
@@ -471,17 +510,21 @@ Center(
     padding: EdgeInsets.only(left:20.0),
 
     child: Center(
-        child: TextField(
-   //   controller: _userController,
-        decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        filled: true,
-        fillColor: Colors.white,
-   border: OutlineInputBorder(
-  //  borderRadius: BorderRadius.circular(35),
-   borderSide: BorderSide.none,),
-        hintText: "1999",
-        hintStyle: TextStyle(fontSize: 13,fontWeight: FontWeight.w700))
-        ),
+      child: Text("$selectedYear", style: TextStyle(
+        color: Color(0xff000000),
+        fontWeight: FontWeight.w700,
+      ),),
+  //       child: TextField(
+  //  //   controller: _userController,
+  //       decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+  //       filled: true,
+  //       fillColor: Colors.white,
+  //  border: OutlineInputBorder(
+  // //  borderRadius: BorderRadius.circular(35),
+  //  borderSide: BorderSide.none,),
+  //       hintText: "1999",
+  //       hintStyle: TextStyle(fontSize: 13,fontWeight: FontWeight.w700))
+  //       ),
     ),
 
   ),

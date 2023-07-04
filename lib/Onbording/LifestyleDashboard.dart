@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/LifeStyleEdit.dart';
+import 'package:project_signup_page/Dashbord/practice.dart';
 import '../Dashbord/Diet&Nutrition.dart';
 import 'Responsive.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+
+
 class LifestyleDashboard extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -31,14 +35,13 @@ class LifestyleDashboardState extends State<LifestyleDashboard> {
 
 body: ListView(
 children: [
+
+
   Center(
     child: Container(
       child: Stack(
         children: [
-          Center(
-            child: Image(image: AssetImage("image/Circles1.png"),
-            height: Responsive.isSmallScreen(context)? width/2: width/3,),
-          ),
+          Center(child: CircularProgressBar(value: 0.75,),),
 
           Center(
             child: Column(
@@ -46,7 +49,7 @@ children: [
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 70),
+                  margin: EdgeInsets.only(top: 120),
                     child: Text("Excellent",
                     style: TextStyle(color: Color(0xff24B445), fontWeight: FontWeight.w400,),
                     )),
@@ -55,13 +58,14 @@ children: [
                     child: Text("80",
                       style: TextStyle(color: Color(0xff24B445),
                           fontWeight: FontWeight.w700,
-                          fontSize: Responsive.isSmallScreen(context)? width/20 : width/50),
+                          fontSize: Responsive.isSmallScreen(context)? width/12 : width/50),
 
                     )),
                 Container(
                     margin: EdgeInsets.only(top: 5),
                     child: Text("Lifestyle Score",
-                      style: TextStyle(color: Color(0xff24B445),  fontWeight: FontWeight.w400,),)),
+                      style: TextStyle(color: Color(0xff000000).withOpacity(0.50),
+                        fontWeight: FontWeight.w400,),)),
 
               ],
             ),
@@ -72,6 +76,7 @@ children: [
 
     ),
   ),
+
 
 
 Center(
@@ -713,7 +718,6 @@ SizedBox(
 
 
 
-
 ],
 
 ),
@@ -722,5 +726,45 @@ SizedBox(
 
 
  );
+  }
+}
+
+
+
+
+class CircularProgressBar extends StatelessWidget {
+  final double value; // Value of the progress bar (0.0 - 1.0)
+
+  CircularProgressBar({required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return SfRadialGauge(
+      axes: <RadialAxis>[
+        RadialAxis(
+          minimum: 0,
+          maximum: 1,
+          showLabels: false,
+          showTicks: false,
+          startAngle: 150,
+          endAngle: 30,
+          radiusFactor: 0.7,
+          axisLineStyle: AxisLineStyle(
+            thickness: 0.2,
+            color: Color(0xff24B445).withOpacity(0.20),
+            thicknessUnit: GaugeSizeUnit.factor,
+          ),
+          pointers: <GaugePointer>[
+            RangePointer(
+              value: value,
+              width: 23,
+              color: Color(0xff24B445), // Customize the color of the progress bar
+              enableAnimation: true,
+              animationDuration: 1000,
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

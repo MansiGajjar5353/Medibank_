@@ -41,6 +41,9 @@ dependencies:
   flutter_ruler_picker: ^1.0.3
   wave: ^0.2.2
   share: ^2.0.1
+  syncfusion_flutter_gauges: ^21.1.30
+
+
 
 
 
