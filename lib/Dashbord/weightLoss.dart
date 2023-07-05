@@ -47,12 +47,19 @@ class weightLossState extends State<weightLoss>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //                margin: EdgeInsets.only(left:0,top:10.0 ),
       ),
 
       body: ListView(
         children: [
       Container(
       // height: _mediaquery.size.height*0.13,
+        margin: EdgeInsets.only(left:0,top:10.0 ),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,

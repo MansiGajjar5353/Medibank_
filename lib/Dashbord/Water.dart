@@ -62,6 +62,12 @@ class WaterState extends State<Water>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //                margin: EdgeInsets.only(left:0,top:10.0 ),
       ),
       body: Container(
         height: _mediaquery.size.height*1,
@@ -69,6 +75,7 @@ class WaterState extends State<Water>{
             children: [
 
               Container(
+                margin: EdgeInsets.only(left:0,top:10.0 ),
                 //  height: _mediaquery.size.height*0.13,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -256,7 +263,7 @@ borderRadius: BorderRadius.circular(3000),
                             });
                           },
                           divisions: 10,
-                          label: _value.round().toString(),
+                          // label: _value.round().toString(),
                         ),
                       ),
 

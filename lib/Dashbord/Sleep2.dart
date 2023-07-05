@@ -46,12 +46,19 @@ class Sleep2State extends State<Sleep2>{
        backgroundColor: Colors.white,
        elevation: 0,
        iconTheme: IconThemeData(color: Colors.green),
+       title: Center(
+         child: Container(padding: EdgeInsets.only(right: 30),
+             child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                 width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+       ),
+       //                margin: EdgeInsets.only(left:0,top:10.0 ),
      ),
 
      body: ListView(
        children: [
      Container(
      // height: _mediaquery.size.height*0.13,
+       margin: EdgeInsets.only(left:0,top:10.0 ),
      child: Row(
      mainAxisAlignment: MainAxisAlignment.spaceBetween,
        crossAxisAlignment: CrossAxisAlignment.start,
@@ -245,113 +252,128 @@ class _ButtonGroupState extends State<ButtonGroup> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
     return Container(
-     margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 150),
-    child: Row(
-       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            child: ElevatedButton(
+       margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 150),
+      child: Row(
+         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: Responsive.isSmallScreen(context)? width/3.5 : width/6,
+              child: ElevatedButton(
 
-              onPressed: () {
-                onButtonPressed(ButtonState.Button1);
-              },
+                onPressed: () {
+                  onButtonPressed(ButtonState.Button1);
+                },
 
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xffF7F7F7),
-              side: BorderSide(width:1,  color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Colors.transparent),
-              ),
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xffF7F7F7),
+                side: BorderSide(width:1,  color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Colors.transparent),
+                ),
 
-              child: Container(
+                child: Container(
 
-                margin: EdgeInsets.only(top: 10, bottom: 10),
-                child: Column(
-                  children: [
-                    Text('Peaceful', style: TextStyle(color: Colors.black),
-                    ),
-                    Image(image: AssetImage("image/Peaceful.png"), height: 60,),
-                  ],
+                  margin: EdgeInsets.only(top: 10, bottom: 10),
+                  child: Column(
+                    children: [
+                      Text('Peaceful', style: TextStyle(color: Colors.black, fontSize: Responsive.isSmallScreen(context)? width/27 : width/50),
+                      ),
+                      Image(image: AssetImage("image/Peaceful.png"), height:
+                      Responsive.isSmallScreen(context)
+                          ? 50
+                          : 60),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
 
-          Container(
-            child: ElevatedButton(
+            Container(
+              child: ElevatedButton(
 
-              onPressed: () {
-                onButtonPressed(ButtonState.Button2);
-              },
+                onPressed: () {
+                  onButtonPressed(ButtonState.Button2);
+                },
 
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xffF7F7F7),
-                side: BorderSide(width:1,  color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Colors.transparent),
-              ),
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xffF7F7F7),
+                  side: BorderSide(width:1,  color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Colors.transparent),
+                ),
 
-              child: Container(
+                child: Container(
 
-                margin: EdgeInsets.only(top: 10, bottom: 10),
-                child: Column(
-                  children: [
-                    Text('Mixed', style: TextStyle(color: Colors.black),
-                    ),
-                    Image(image: AssetImage("image/Sad.png"), height: 60,),
-                  ],
+                  margin: EdgeInsets.only(top: 10, bottom: 10),
+                  child: Column(
+                    children: [
+                      Text('Mixed', style: TextStyle(color: Colors.black,  fontSize: Responsive.isSmallScreen(context)? width/27 : width/50),
+                      ),
+                      Image(image: AssetImage("image/Sad.png"),
+                          height: Responsive.isSmallScreen(context)
+                                ? 50
+                                : 60),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Container(
-            child: ElevatedButton(
+            Container(
+              child: ElevatedButton(
 
-              onPressed: () {
-                onButtonPressed(ButtonState.Button3);
-              },
+                onPressed: () {
+                  onButtonPressed(ButtonState.Button3);
+                },
 
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xffF7F7F7),
-                side: BorderSide(width:1,  color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Colors.transparent),
-              ),
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xffF7F7F7),
+                  side: BorderSide(width:1,  color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Colors.transparent),
+                ),
 
-              child: Container(
+                child: Container(
 
-                margin: EdgeInsets.only(top: 10, bottom: 10),
-                child: Column(
-                  children: [
-                    Text('Disturbed', style: TextStyle(color: Colors.black),
-                    ),
-                    Image(image: AssetImage("image/Cry.png"), height: 60,),
-                  ],
+                  margin: EdgeInsets.only(top: 10, bottom: 10),
+                  child: Column(
+                    children: [
+                      Text('Disturbed', style: TextStyle(color: Colors.black,
+                          fontSize: Responsive.isSmallScreen(context)? width/27 : width/50),
+                      ),
+                      Image(image: AssetImage("image/Cry.png"),
+                          height: Responsive.isSmallScreen(context)
+                          ? 50
+                          : 60),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
 
 
-          // ElevatedButton(
-          //   onPressed: () {
-          //     onButtonPressed(ButtonState.Button2);
-          //   },
-          //   style: ElevatedButton.styleFrom(
-          //     primary: selectedButton == ButtonState.Button2
-          //         ? Colors.blue
-          //         : Colors.grey,
-          //   ),
-          //   child: Text('Button 2'),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     onButtonPressed(ButtonState.Button3);
-          //   },
-          //   style: ElevatedButton.styleFrom(
-          //     primary: selectedButton == ButtonState.Button3
-          //         ? Colors.blue
-          //         : Colors.grey,
-          //   ),
-          //   child: Text('Button 3'),
-          // ),
-        ],
-      ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     onButtonPressed(ButtonState.Button2);
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     primary: selectedButton == ButtonState.Button2
+            //         ? Colors.blue
+            //         : Colors.grey,
+            //   ),
+            //   child: Text('Button 2'),
+            // ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     onButtonPressed(ButtonState.Button3);
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     primary: selectedButton == ButtonState.Button3
+            //         ? Colors.blue
+            //         : Colors.grey,
+            //   ),
+            //   child: Text('Button 3'),
+            // ),
+          ],
+        ),
+
     );
   }
 

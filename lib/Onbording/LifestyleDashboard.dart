@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/Category.dart';
+import 'package:project_signup_page/Dashbord/Dashbord.dart';
 import 'package:project_signup_page/Dashbord/LifeStyleEdit.dart';
 import 'package:project_signup_page/Dashbord/practice.dart';
 import '../Dashbord/Diet&Nutrition.dart';
@@ -22,15 +24,46 @@ class LifestyleDashboardState extends State<LifestyleDashboard> {
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
  return Scaffold(
+
    appBar: AppBar(
+     toolbarHeight: 100, // default is 56
      backgroundColor: Colors.white,
      elevation: 0,
      iconTheme: IconThemeData(color: Colors.green),
-     title: Text("Dashboard ",
-       style: TextStyle(color: Color(0xff000000),
-           fontSize: 18,
-           fontWeight: FontWeight.w400,
-           fontFamily: 'Poppins'),),
+     leading: IconButton(
+       onPressed: () {
+         Navigator.of(context).pop();
+       }, padding: EdgeInsets.only(top: 40),
+       icon: const BackButtonIcon(),
+     ),
+     title: Column(
+       crossAxisAlignment: CrossAxisAlignment.start,
+       children: [
+          Container(padding: EdgeInsets.only(right: 30),
+               child: Center(
+                 child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                     width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+               )),
+
+         Row(
+           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+           children: [
+             Text("Dashboard ",
+               style: TextStyle(color: Color(0xff000000),
+                   fontSize: 18,
+                   fontWeight: FontWeight.w400,
+                   fontFamily: 'Poppins'),),
+             InkWell(
+               onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
+               child: Image(image: AssetImage("image/DashboardImage.png"),
+                 height: 30,
+               ),
+             ),
+           ],
+         ),
+
+       ],
+     ),
    ),
 
 body: ListView(
@@ -132,41 +165,44 @@ Center(
           ),
           child:Container(
             margin: EdgeInsets.only(left: 20, right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(child: Text("Underweight", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12, fontWeight: FontWeight.w400 ),)),
-                    Container(margin: EdgeInsets.only(top: 5),
-                        child: Text("Less than 18.5",style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(child: Text("Normal", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12,fontWeight: FontWeight.w400 ))),
-                    Container(margin: EdgeInsets.only(top: 5),child: Text("18.5-24.9", style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(child: Text("Overweight", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12,fontWeight: FontWeight.w400 ))),
-                    Container(margin: EdgeInsets.only(top: 5),child: Text("25-29.9" ,style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(child: Text("Obesity", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12, fontWeight: FontWeight.w400))),
-                    Container(margin: EdgeInsets.only(top: 5),child: Text("30+" ,style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
-                  ],
-                ),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(child: Text("Underweight", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12, fontWeight: FontWeight.w400 ),)),
+                      Container(margin: EdgeInsets.only(top: 5),
+                          child: Text("Less than 18.5",style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(child: Text("Normal", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12,fontWeight: FontWeight.w400 ))),
+                      Container(margin: EdgeInsets.only(top: 5),child: Text("18.5-24.9", style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(child: Text("Overweight", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12,fontWeight: FontWeight.w400 ))),
+                      Container(margin: EdgeInsets.only(top: 5),child: Text("25-29.9" ,style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(child: Text("Obesity", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12, fontWeight: FontWeight.w400))),
+                      Container(margin: EdgeInsets.only(top: 5),child: Text("30+" ,style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                    ],
+                  ),
 
-              ],
+                ],
+              ),
             ),
           ),
 
@@ -202,7 +238,9 @@ Container(
         ),
       ),
       InkWell(
-        onTap:(){},
+        onTap:(){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> CategoryList(),));
+        },
         child: Container(
           height: 46,
           width: Responsive.isSmallScreen(context)? width/2.4: width/4,

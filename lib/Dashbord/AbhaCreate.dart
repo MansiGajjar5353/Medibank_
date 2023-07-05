@@ -80,12 +80,11 @@ class AbhaCreateState extends State<AbhaCreate>{
 
                   Center(
                     child: Container(
-                        margin: EdgeInsets.only(top: 30),
+                        margin: EdgeInsets.only(top: 30, bottom: 30),
                         decoration: BoxDecoration(
                           color: Color(0xffF9F9F9),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        height: _mediaquery.size.height*0.3,
                         width: _mediaquery.size.width*0.8,
                       child:  ButtonGroup2(),
                         // child:Column(

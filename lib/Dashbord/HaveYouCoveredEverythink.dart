@@ -44,13 +44,20 @@ return Scaffold(
     backgroundColor: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.green),
+    title: Center(
+      child: Container(padding: EdgeInsets.only(right: 30),
+          child: Image(image: AssetImage("image/MedibankLOGO.png",),
+              width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+    ),
+    //                margin: EdgeInsets.only(left:0,top:10.0 ),
   ),
   body: ListView(
       children: [
   Center(
     child: Container(
 
-      margin: EdgeInsets.only(top: _mediaquery.size.height*0.01, left: 20,right: 20),
+
+      margin: EdgeInsets.only(top: _mediaquery.size.height*0.02, left: 20,right: 20),
       child:RichText(
         text: TextSpan(
           text: 'Have you covered ',

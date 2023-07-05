@@ -23,11 +23,32 @@ class FitnessDataState extends State<FitnessData>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100,
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
-        title: Text("Fitness Data", style: TextStyle(color: Color(0xff000000),fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'Poppins'),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          }, padding: EdgeInsets.only(top: 40),
+          icon: const BackButtonIcon(),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(padding: EdgeInsets.only(right: 30),
+                child: Center(
+                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                )),
 
+            Text("Fitness Data ",
+              style: TextStyle(color: Color(0xff000000),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Poppins'),),
+          ],
+        ),
       ),
 
       body:ListView(

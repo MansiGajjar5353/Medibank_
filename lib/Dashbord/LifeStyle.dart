@@ -162,12 +162,19 @@ class LifeStyleState extends State<LifeStyle>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //                margin: EdgeInsets.only(left:0,top:10.0 ),
       ),
 
       body: ListView(
         children: [
       Container(
       // height: _mediaquery.size.height*0.13,
+        margin: EdgeInsets.only(left:0,top:10.0 ),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -288,7 +295,10 @@ class LifeStyleState extends State<LifeStyle>{
                         onChanged: handleRadioValueChanged),
                     Text(
                       "Yes",
-                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                          fontFamily: "Poppins",
+                      ),
                     ),
                   ],
                 ),
@@ -305,7 +315,10 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "No",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                          fontFamily: "Poppins",
+                      ),
                     ),
                   ],
                 ),
@@ -320,7 +333,10 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "Sometimes",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",
+                      ),
                     ),
                   ],
                 ),
@@ -418,7 +434,9 @@ class LifeStyleState extends State<LifeStyle>{
                         onChanged: handleRadioValueChanged1),
                     Text(
                       "Yes",
-                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -435,7 +453,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "No",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -450,7 +470,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "Sometimes",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -481,7 +503,9 @@ class LifeStyleState extends State<LifeStyle>{
                         onChanged: handleRadioValueChanged2),
                     Text(
                       "Yes",
-                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -498,7 +522,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "No",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -513,7 +539,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "Sometimes",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -544,7 +572,9 @@ class LifeStyleState extends State<LifeStyle>{
                         onChanged: handleRadioValueChanged3),
                     Text(
                       "Yes",
-                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -561,7 +591,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "No",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -576,7 +608,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "Sometimes",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -607,7 +641,8 @@ class LifeStyleState extends State<LifeStyle>{
                         onChanged: handleRadioValueChanged4),
                     Text(
                       "Yes",
-                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),  fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -624,7 +659,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "No",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),
@@ -639,7 +676,9 @@ class LifeStyleState extends State<LifeStyle>{
 
                     Text(
                       "Sometimes",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                        fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                        fontFamily: "Poppins",),
                     ),
                   ],
                 ),

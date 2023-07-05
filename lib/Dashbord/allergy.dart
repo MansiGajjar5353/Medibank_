@@ -56,12 +56,19 @@ class allergyState extends State<allergy>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //                margin: EdgeInsets.only(left:0,top:10.0 ),
       ),
 
       body: ListView(
         children: [
           Container(
             // height: _mediaquery.size.height*0.13,
+            margin: EdgeInsets.only(left:0,top:10.0 ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +202,8 @@ class allergyState extends State<allergy>{
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
     Image(image: AssetImage("image/Dogg.png"),),
-    Text("Pet", style: TextStyle(
+    Text("Pet", softWrap:true,style: TextStyle(
+      fontSize:Responsive.isSmallScreen(context)? width/25 : width/60,
     color: _isSelected[0] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
@@ -225,6 +233,7 @@ class allergyState extends State<allergy>{
     children: [
     Image(image: AssetImage("image/Drugs.png"),),
     Text("Drug", style: TextStyle(
+      fontSize:Responsive.isSmallScreen(context)? width/25 : width/60,
     color: _isSelected[1] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
@@ -247,13 +256,15 @@ class allergyState extends State<allergy>{
     borderRadius: BorderRadius.circular(40),
     ),
     height: Responsive.isSmallScreen(context)? 20 : 40,
-    width:Responsive.isSmallScreen(context)? width/6 : width/6,
+    width:Responsive.isSmallScreen(context)? width/5 : width/6,
     child: Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
     Image(image: AssetImage("image/Latex.png"),),
     Text("Latex", style: TextStyle(
-    color: _isSelected[2] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
+      fontSize:Responsive.isSmallScreen(context)? width/26 : width/60,
+
+      color: _isSelected[2] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
 
@@ -287,7 +298,9 @@ class allergyState extends State<allergy>{
     children: [
     Image(image: AssetImage("image/Pollen.png"),),
     Text("Pollen", style: TextStyle(
-    color: _isSelected[3] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
+      fontSize:Responsive.isSmallScreen(context)? width/25 : width/60,
+
+      color: _isSelected[3] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
 
@@ -315,7 +328,9 @@ class allergyState extends State<allergy>{
     children: [
     Image(image: AssetImage("image/Food.png"),),
     Text("Food", style: TextStyle(
-    color: _isSelected[4] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
+      fontSize:Responsive.isSmallScreen(context)? width/25 : width/60,
+
+      color: _isSelected[4] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
 
@@ -343,7 +358,9 @@ class allergyState extends State<allergy>{
     children: [
     Image(image: AssetImage("image/Insect.png"),),
     Text("Insect", style: TextStyle(
-    color: _isSelected[5] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
+      fontSize:Responsive.isSmallScreen(context)? width/25 : width/60,
+
+      color: _isSelected[5] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
 
@@ -377,7 +394,9 @@ class allergyState extends State<allergy>{
     children: [
     Image(image: AssetImage("image/Dust.png"),),
     Text("Dust", style: TextStyle(
-    color: _isSelected[6] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
+      fontSize:Responsive.isSmallScreen(context)? width/25 : width/60,
+
+      color: _isSelected[6] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
 
@@ -395,8 +414,7 @@ class allergyState extends State<allergy>{
     ),
     ElevatedButton(
     style: ElevatedButton.styleFrom(
-    primary: _isSelected[7] ?  Color(0xff24B445) : Color(0xffF9F9F9),
-    onPrimary: _isSelected[7] ?  Color(0xffFFFFFF) : Color(0xff4F555A).withOpacity(0.5),),
+    foregroundColor: _isSelected[7] ?  Color(0xffFFFFFF) : Color(0xff4F555A).withOpacity(0.5), backgroundColor: _isSelected[7] ?  Color(0xff24B445) : Color(0xffF9F9F9),),
     child:Container(
     height: Responsive.isSmallScreen(context)? 20 : 40,
     width:Responsive.isSmallScreen(context)? width/5 : width/6,
@@ -408,7 +426,9 @@ class allergyState extends State<allergy>{
     children: [
     Image(image: AssetImage("image/OtherQue.png"),),
     Text("Other", style: TextStyle(
-    color: _isSelected[7] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
+      fontSize:Responsive.isSmallScreen(context)? width/25 : width/60,
+
+      color: _isSelected[7] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
     ),),
     ],
 
@@ -442,7 +462,7 @@ class allergyState extends State<allergy>{
                   child: Row(
                     children: [
                       Container(
-                        width: Responsive.isSmallScreen(context)? width/1.13 : width/2,
+                        width: Responsive.isSmallScreen(context)? width/1.15 : width/2,
                         height: 55,
                         child: TextField(
                           //    controller: _problemController,

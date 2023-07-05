@@ -64,6 +64,13 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //                margin: EdgeInsets.only(left:0,top:10.0 ),
+
 
       ),
       body: ListView(
@@ -140,6 +147,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                         children: [
                           Image(image: AssetImage("image/Dogg.png"),),
                           Text("Chicken pox", style: TextStyle(
+                           fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                            fontFamily: "Poppins",
+                              fontWeight: FontWeight.w400,
                             color: _isSelected[0] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
                           ),),
                         ],
@@ -169,6 +179,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                         children: [
                           Image(image: AssetImage("image/Drugs.png"),),
                           Text("Hepaitis", style: TextStyle(
+                            fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w400,
                             color: _isSelected[1] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
                           ),),
                         ],
@@ -207,6 +220,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                         children: [
                           Image(image: AssetImage("image/Venereal.png"),),
                           Text("Venereal", style: TextStyle(
+                            fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w400,
                             color: _isSelected[3] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
                           ),),
                         ],
@@ -236,6 +252,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                         children: [
                           Image(image: AssetImage("image/TB.png"),),
                           Text("Tuberculosis", style: TextStyle(
+                            fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w400,
                             color: _isSelected[4] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
                           ),),
                         ],
@@ -274,6 +293,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                         children: [
                           Image(image: AssetImage("image/HIV.png"),),
                           Text("HIV", style: TextStyle(
+                            fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w400,
                             color: _isSelected[6] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
                           ),),
                         ],
@@ -307,6 +329,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                         children: [
                           Image(image: AssetImage("image/OtherQue.png"),),
                           Text("Other", style: TextStyle(
+                            fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w400,
                             color: _isSelected[7] ?  Color(0xffF9F9F9) : Color(0xff4F555A).withOpacity(0.5),
                           ),),
                         ],
@@ -341,7 +366,7 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                   child: Row(
                     children: [
                       Container(
-                        width: Responsive.isSmallScreen(context)? width/1.13 : width/2,
+                        width: Responsive.isSmallScreen(context)? width/1.15 : width/2,
                         height: 55,
                         child: TextField(
                           //    controller: _problemController,

@@ -113,10 +113,17 @@ class prescriptionMedicine extends StatefulWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //                margin: EdgeInsets.only(left:0,top:10.0 ),
       ),
       body: ListView(
         children: [
           Container(
+            margin: EdgeInsets.only(left:0,top:10.0 ),
             // height: _mediaquery.size.height*0.13,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -401,7 +408,7 @@ class prescriptionMedicine extends StatefulWidget {
                                 color: Color(
                                   0xffA3A6A9
                                 ),
-                                fontSize:15,
+                                fontSize: Responsive.isSmallScreen(context)? width/25 : width/50,
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.w400,
                               ),),
@@ -410,7 +417,7 @@ class prescriptionMedicine extends StatefulWidget {
                                   color: Color(
                                       0xffA3A6A9
                                   ),
-                                  fontSize:15,
+                                  fontSize: Responsive.isSmallScreen(context)? width/25 : width/50,
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w400,
                                 ),),
@@ -419,7 +426,7 @@ class prescriptionMedicine extends StatefulWidget {
                                   color: Color(
                                       0xffA3A6A9
                                   ),
-                                  fontSize:15,
+                                  fontSize: Responsive.isSmallScreen(context)? width/25 : width/50,
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w400,
                                 ),),
@@ -442,7 +449,7 @@ class prescriptionMedicine extends StatefulWidget {
                                           color: Color(
                                               0xffA3A6A9
                                           ),
-                                          fontSize:15,
+                                          fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
                                           fontFamily: "Poppins",
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -452,7 +459,7 @@ class prescriptionMedicine extends StatefulWidget {
                                            color: Color(
                                                0xffA3A6A9
                                            ),
-                                           fontSize:15,
+                                           fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
                                            fontFamily: "Poppins",
                                            fontWeight: FontWeight.w400,
                                          ),
@@ -463,7 +470,7 @@ class prescriptionMedicine extends StatefulWidget {
                                            color: Color(
                                                0xffA3A6A9
                                            ),
-                                           fontSize:15,
+                                           fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
                                            fontFamily: "Poppins",
                                            fontWeight: FontWeight.w400,
                                          ),
@@ -600,7 +607,7 @@ class prescriptionMedicine extends StatefulWidget {
                     child: Row(
                       children: [
                         Container(
-                         width: Responsive.isSmallScreen(context)? width/1.13 : width/2,
+                         width: Responsive.isSmallScreen(context)? width/1.15 : width/2,
                           height: 55,
                           child: TextField(
                         //    controller: _problemController,

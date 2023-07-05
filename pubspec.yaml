@@ -85,6 +85,7 @@ flutter:
         #- asset: Font/Poppins/Poppins-semiBoldItalic.ttf
   assets:
     - image/Treatments.png
+    - image/DashboardImage.png
     - image/ReportsOpened.png
     - image/MedibankLOGO.png
     - image/Skin1.png

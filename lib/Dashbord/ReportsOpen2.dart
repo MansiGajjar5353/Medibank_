@@ -311,7 +311,7 @@ class ReportsOpen2State extends State<ReportsOpen2>{
                                       // Text(item.Test),
                                       // Text(item.Value),
                                       // Text(item.Unit),
-Padding(padding: EdgeInsets.only(top: 10)),
+                                      Padding(padding: EdgeInsets.only(top: 10)),
                                       Container(
                                         height: 40,
                                         width: 150,

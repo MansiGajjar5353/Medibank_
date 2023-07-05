@@ -69,11 +69,18 @@ return Scaffold(
     backgroundColor: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.green),
+    title: Center(
+      child: Container(padding: EdgeInsets.only(right: 30),
+          child: Image(image: AssetImage("image/MedibankLOGO.png",),
+              width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+    ),
+    //                margin: EdgeInsets.only(left:0,top:10.0 ),
   ),
   body: ListView(
     children: [
   Container(
   // height: _mediaquery.size.height*0.13,
+    margin: EdgeInsets.only(left:0,top:10.0 ),
   child: Row(
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,59 +199,70 @@ return Scaffold(
     ButtonGroup(),
 
 
-      Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 20, top:20,),
-            child: Text("Are you empolyee?",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),
-                fontSize: Responsive.isSmallScreen(context)? width/22 : width/30,
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w400,
-              ),),
-          ),
-
-          Container(
-            margin: EdgeInsets.only(left: 0, right: 10, top:20,),
-            child: Row(
-
-              children:<Widget> [
-                Row(
-                  children: [
-                    Radio<int>(
-                        activeColor: Colors.green,
-                        value:0 ,
-                        groupValue: radioValue,
-                        onChanged: handleRadioValueChanged),
-                    Text(
-                      "Yes",
-                      style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
-                    ),
-                  ],
-                ),
-
-
-
-                Row(
-                  children: [
-                    Radio<int>(
-                        activeColor: Colors.green,
-                        value: 1,
-                        groupValue: radioValue,
-                        onChanged: handleRadioValueChanged),
-
-                    Text(
-                      "No",
-                      style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
-                    ),
-                  ],
-                ),
-
-
-              ],
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 20, top:20,),
+              child: Text("Are you empolyee?",
+                style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),
+                  fontSize: Responsive.isSmallScreen(context)? width/22 : width/30,
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                ),),
             ),
-          ),
-        ],
+
+            Container(
+
+              margin: EdgeInsets.only(left: 0, right: 10, top:20,),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+
+                children:<Widget> [
+                  Row(mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Radio<int>(
+                          activeColor: Colors.green,
+                          value:0 ,
+                          groupValue: radioValue,
+                          onChanged: handleRadioValueChanged),
+                      Text(
+                        "Yes",
+                        softWrap: true,
+                        style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                          fontSize: Responsive.isSmallScreen(context)? width/22 : width/30,
+                        ),
+                      ),
+                    ],
+                  ),
+
+
+
+                  Row(
+                    children: [
+                      Radio<int>(
+                          activeColor: Colors.green,
+                          value: 1,
+                          groupValue: radioValue,
+                          onChanged: handleRadioValueChanged),
+
+                      Text(
+                        "No",
+                        softWrap: true,
+                        style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                          fontSize: Responsive.isSmallScreen(context)? width/22 : width/30,
+                        ),
+                      ),
+                    ],
+                  ),
+
+
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
 
       Visibility(

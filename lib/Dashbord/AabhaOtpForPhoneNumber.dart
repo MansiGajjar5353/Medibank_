@@ -64,8 +64,13 @@ class _AabhaOtpForPhoneState extends State<AabhaOtpForPhone> {
       appBar: AppBar(
         backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green),
+        iconTheme: IconThemeData(color: Colors.green), // set the color of the icons
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
       ),
+
       body: Stack(
         children: [
           Container(

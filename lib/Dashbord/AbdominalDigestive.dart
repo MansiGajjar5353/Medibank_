@@ -49,12 +49,20 @@ return Scaffold(
     backgroundColor: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.green),
+    title: Center(
+      child: Container(padding: EdgeInsets.only(right: 30),
+          child: Image(image: AssetImage("image/MedibankLOGO.png",),
+              width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+    ),
+    //                margin: EdgeInsets.only(left:0,top:10.0 ),
+
   ),
 
   body: ListView(
     children: [
   Container(
   // height: _mediaquery.size.height*0.13,
+    margin: EdgeInsets.only(left:0,top:10.0 ),
   child: Row(
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -366,7 +374,8 @@ class _ButtonGroup2State extends State<ButtonGroup2> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -400,7 +409,8 @@ class _ButtonGroup2State extends State<ButtonGroup2> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -437,7 +447,8 @@ class _ButtonGroup2State extends State<ButtonGroup2> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -502,7 +513,8 @@ class _ButtonGroup3State extends State<ButtonGroup3>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -536,7 +548,8 @@ class _ButtonGroup3State extends State<ButtonGroup3>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -573,7 +586,8 @@ class _ButtonGroup3State extends State<ButtonGroup3>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -639,7 +653,8 @@ class _ButtonGroup4State extends State<ButtonGroup4>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -673,7 +688,8 @@ class _ButtonGroup4State extends State<ButtonGroup4>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -710,7 +726,8 @@ class _ButtonGroup4State extends State<ButtonGroup4>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -776,7 +793,8 @@ class _ButtonGroup5State extends State<ButtonGroup5>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -810,7 +828,8 @@ class _ButtonGroup5State extends State<ButtonGroup5>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -847,7 +866,8 @@ class _ButtonGroup5State extends State<ButtonGroup5>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -914,7 +934,8 @@ class _ButtonGroup6State extends State<ButtonGroup6>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -948,7 +969,8 @@ class _ButtonGroup6State extends State<ButtonGroup6>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -985,7 +1007,8 @@ class _ButtonGroup6State extends State<ButtonGroup6>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1052,7 +1075,8 @@ class _ButtonGroup7State extends State<ButtonGroup7>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1086,7 +1110,8 @@ class _ButtonGroup7State extends State<ButtonGroup7>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1123,7 +1148,8 @@ class _ButtonGroup7State extends State<ButtonGroup7>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1190,7 +1216,8 @@ class _ButtonGroup8State extends State<ButtonGroup8>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1224,7 +1251,8 @@ class _ButtonGroup8State extends State<ButtonGroup8>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1261,7 +1289,8 @@ class _ButtonGroup8State extends State<ButtonGroup8>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1326,7 +1355,8 @@ class _ButtonGroup9State extends State<ButtonGroup9>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SadImage.png")),
-                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1360,7 +1390,8 @@ class _ButtonGroup9State extends State<ButtonGroup9>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/Noimage.png"),),
-                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],
@@ -1397,7 +1428,8 @@ class _ButtonGroup9State extends State<ButtonGroup9>  {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image(image: AssetImage("image/SomeImage.png"), height: 20,),
-                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A)),
+                    Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
+                      fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
 
                   ],

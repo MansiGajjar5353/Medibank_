@@ -65,11 +65,17 @@ class QuestionnairesState extends State<Questionnaires>{
        backgroundColor: Colors.white,
        elevation: 0,
        iconTheme: IconThemeData(color: Colors.green),
-       title: Text("Questionnaires",
-         style: TextStyle(color: Color(0xff000000),
-             fontSize: 18,
-             fontWeight: FontWeight.w400,
-             fontFamily: 'Poppins'),),
+       // title: Text("Questionnaires",
+       //   style: TextStyle(color: Color(0xff000000),
+       //       fontSize: 18,
+       //       fontWeight: FontWeight.w400,
+       //       fontFamily: 'Poppins'),),
+       title: Center(
+         child: Container(padding: EdgeInsets.only(right: 30),
+             child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                 width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+       ),
+       //                margin: EdgeInsets.only(left:0,top:10.0 ),
      ),
 
      body:
@@ -84,8 +90,9 @@ class QuestionnairesState extends State<Questionnaires>{
                return Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
+                   Padding(padding: EdgeInsets.only(top: 5)),
                    Container(
-                     height: Responsive.isSmallScreen(context)? width/10: width/20,
+
                      child: InkWell(
                        onTap: (){
                          if(index==0)
@@ -174,12 +181,17 @@ class QuestionnairesState extends State<Questionnaires>{
 
 
                        },
-                         child: Text(question[index],
-                           style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50),
-                             fontFamily: "Poppins",
-                           fontWeight: FontWeight.w400,
-                           fontSize:Responsive.isSmallScreen(context)? width/25 : width/30, ),)),
+
+                         child: SingleChildScrollView(
+                           scrollDirection: Axis.vertical,
+                           child: Text(question[index],
+                             style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50),
+                               fontFamily: "Poppins",
+                             fontWeight: FontWeight.w400,
+                             fontSize:Responsive.isSmallScreen(context)? width/25 : width/30, ),),
+                         )),
                    ),
+                   Padding(padding: EdgeInsets.only(top: 5)),
                    Container(
                      height: 2,
                      color: Color(0xffF7F7F7),

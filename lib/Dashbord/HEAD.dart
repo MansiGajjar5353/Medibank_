@@ -249,6 +249,12 @@ class HEADState extends State<HEAD>{
      backgroundColor: Colors.white,
      elevation: 0,
      iconTheme: IconThemeData(color: Colors.green),
+     title: Center(
+       child: Container(padding: EdgeInsets.only(right: 30),
+           child: Image(image: AssetImage("image/MedibankLOGO.png",),
+               width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+     ),
+     //                margin: EdgeInsets.only(left:0,top:10.0 ),
    ),
    body: ListView(
 children: [
@@ -353,7 +359,11 @@ children: [
                 onChanged: handleRadioValueChanged),
             Text(
               "Yes",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ],
         ),
@@ -370,7 +380,10 @@ children: [
 
             Text(
               "No",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -385,7 +398,10 @@ children: [
 
             Text(
               "Sometimes",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -438,7 +454,10 @@ children: [
                 onChanged: handleRadioValueChanged1),
             Text(
               "Yes",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -455,7 +474,10 @@ children: [
 
             Text(
               "No",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -470,7 +492,10 @@ children: [
 
             Text(
               "Sometimes",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -506,7 +531,10 @@ children: [
                 onChanged: handleRadioValueChanged2),
             Text(
               "Yes",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -523,7 +551,10 @@ children: [
 
             Text(
               "No",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -538,7 +569,10 @@ children: [
 
             Text(
               "Sometimes",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -591,7 +625,10 @@ children: [
                 onChanged: handleRadioValueChanged3),
             Text(
               "Yes",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -608,7 +645,10 @@ children: [
 
             Text(
               "No",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -623,7 +663,10 @@ children: [
 
             Text(
               "Sometimes",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -677,7 +720,10 @@ children: [
                 onChanged: handleRadioValueChanged4),
             Text(
               "Yes",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -694,7 +740,10 @@ children: [
 
             Text(
               "No",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -709,7 +758,10 @@ children: [
 
             Text(
               "Sometimes",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -829,7 +881,10 @@ children: [
                 onChanged: handleRadioValueChanged6),
             Text(
               "Yes",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -846,7 +901,10 @@ children: [
 
             Text(
               "No",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -861,7 +919,10 @@ children: [
 
             Text(
               "Sometimes",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -914,7 +975,10 @@ children: [
                 onChanged: handleRadioValueChanged7),
             Text(
               "Yes",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -931,7 +995,10 @@ children: [
 
             Text(
               "No",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),
@@ -946,7 +1013,10 @@ children: [
 
             Text(
               "Sometimes",
-              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: Responsive.isSmallScreen(context)? width/28 : width/50,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,),
             ),
           ],
         ),

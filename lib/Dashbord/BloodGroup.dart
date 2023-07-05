@@ -47,10 +47,17 @@ class BloodGroupState extends State<BloodGroup>{
       backgroundColor: Colors.white,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.green),
+      title: Center(
+        child: Container(padding: EdgeInsets.only(right: 30),
+            child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+      ),
+      //                margin: EdgeInsets.only(left:0,top:10.0 ),
     ),
     body: ListView(
         children: [
           Container(
+            margin: EdgeInsets.only(left:0,top:10.0 ),
             // height: _mediaquery.size.height*0.13,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,7 +177,7 @@ class BloodGroupState extends State<BloodGroup>{
             ),
           ),
 
-          ButtonGroup(),
+          Center(child: ButtonGroup()),
 
 
           Padding(padding: EdgeInsets.only(top: 20)),
@@ -244,7 +251,7 @@ class _ButtonGroupState extends State<ButtonGroup> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 150),
+      margin: EdgeInsets.only(left: 20,  top: 20, bottom: 150),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
 

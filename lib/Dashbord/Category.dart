@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/Dashbord.dart';
 import 'package:project_signup_page/Onbording/AddFamilyMedicalHestoryForm.dart';
 import 'package:sizer/sizer.dart';
 
@@ -44,30 +45,44 @@ class _CategoryListState extends State<CategoryList> {
       children: [
         Scaffold(
           appBar: AppBar(
+            toolbarHeight: 100, // default is 56
+
             backgroundColor: Colors.white,
             elevation: 0,
             iconTheme: IconThemeData(color: Colors.green),
-            title: Text(
-              "Category",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize:
-                    Responsive.isSmallScreen(context) ? width / 20 : width / 24,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-              ),
+            leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              }, padding: EdgeInsets.only(top: 40),
+              icon: const BackButtonIcon(),
             ),
-            actions: <Widget>[
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Image(
-                  image: AssetImage('image/menu.png'),
-                  height: Responsive.isSmallScreen(context)
-                      ? width / 10
-                      : width / 10,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(padding: EdgeInsets.only(right: 30),
+                    child: Center(
+                      child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                          width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                    )),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Categories ",
+                      style: TextStyle(color: Color(0xff000000),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins'),),
+                    InkWell(
+                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
+                      child: Image(image: AssetImage("image/DashboardImage.png"),
+                        height: 30,
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            ],
+              ],
+            ),
           ),
           body: SingleChildScrollView(
             child: Column(

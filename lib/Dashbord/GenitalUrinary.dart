@@ -149,6 +149,12 @@ class GenitalUrinaryState extends State<GenitalUrinary>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+      title: Center(
+        child: Container(padding: EdgeInsets.only(right: 30),
+            child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+      ),
+      //                margin: EdgeInsets.only(left:0,top:10.0 ),
       ),
 
 
@@ -156,6 +162,7 @@ class GenitalUrinaryState extends State<GenitalUrinary>{
         children: [
       Container(
       // height: _mediaquery.size.height*0.13,
+        margin: EdgeInsets.only(left:0,top:10.0 ),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,93 +298,99 @@ class GenitalUrinaryState extends State<GenitalUrinary>{
                    Container(
                      child: Text("Pain", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),fontSize: Responsive.isSmallScreen(context)? width/30: width/40),),
                    ),
-                   Row(mainAxisAlignment: MainAxisAlignment.end,
-                     children: [
-                       Row(mainAxisAlignment: MainAxisAlignment.end,
-                         children: [
-                           Radio<int>(
-                               activeColor: Colors.green,
-                               value:0 ,
-                               groupValue: radioValue2,
-                               onChanged: handleRadioValueChanged2),
-                           Text(
-                             "Yes",
-                             style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
-                           ),
-                         ],
-                       ),
-                       Row(
-                         mainAxisAlignment: MainAxisAlignment.end,
-                         children: [
-                           Radio<int>(
-                               activeColor: Colors.green,
-                               value: 1,
-                               groupValue: radioValue2,
-                               onChanged: handleRadioValueChanged2),
+                   SingleChildScrollView(
+                     scrollDirection: Axis.horizontal,
+                     child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                       children: [
+                         Row(mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                             Radio<int>(
+                                 activeColor: Colors.green,
+                                 value:0 ,
+                                 groupValue: radioValue2,
+                                 onChanged: handleRadioValueChanged2),
+                             Text(
+                               "Yes",
+                               style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
+                             ),
+                           ],
+                         ),
+                         Row(
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                             Radio<int>(
+                                 activeColor: Colors.green,
+                                 value: 1,
+                                 groupValue: radioValue2,
+                                 onChanged: handleRadioValueChanged2),
 
-                           Text(
-                             "No",
-                             style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
-                           ),
-                         ],
-                       ),
-                     ],
+                             Text(
+                               "No",
+                               style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
+                             ),
+                           ],
+                         ),
+                       ],
+                     ),
                    )
                  ],
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text("Frequency", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),),
-                    ),
-                    Row(mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Row(mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Radio<int>(
-                                activeColor: Colors.green,
-                                value:0 ,
-                                groupValue: radioValue3,
-                                onChanged: handleRadioValueChanged3),
-                            Text(
-                              "High",
-                              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
-                            ),
-                          ],
-                        ),
-                        Row(mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Radio<int>(
-                                activeColor: Colors.green,
-                                value: 1,
-                                groupValue: radioValue3,
-                                onChanged: handleRadioValueChanged3),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Text("Frequency", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),),
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Row(mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Radio<int>(
+                                  activeColor: Colors.green,
+                                  value:0 ,
+                                  groupValue: radioValue3,
+                                  onChanged: handleRadioValueChanged3),
+                              Text(
+                                "High",
+                                style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
+                              ),
+                            ],
+                          ),
+                          Row(mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Radio<int>(
+                                  activeColor: Colors.green,
+                                  value: 1,
+                                  groupValue: radioValue3,
+                                  onChanged: handleRadioValueChanged3),
 
-                            Text(
-                              "Medium",
-                              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
-                            ),
-                          ],
-                        ),
-                        Row(mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Radio<int>(
-                                activeColor: Colors.green,
-                                value:2 ,
-                                groupValue: radioValue3,
-                                onChanged: handleRadioValueChanged3),
-                            Text(
-                              "Low",
-                              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
-                            ),
-                          ],
-                        ),
+                              Text(
+                                "Medium",
+                                style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
+                              ),
+                            ],
+                          ),
+                          Row(mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Radio<int>(
+                                  activeColor: Colors.green,
+                                  value:2 ,
+                                  groupValue: radioValue3,
+                                  onChanged: handleRadioValueChanged3),
+                              Text(
+                                "Low",
+                                style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
+                              ),
+                            ],
+                          ),
 
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
                 ),
 
                 Row(
@@ -386,36 +399,39 @@ class GenitalUrinaryState extends State<GenitalUrinary>{
                     Container(
                       child: Text("Difficulty in control urine", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),),
                     ),
-                    Row(mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Row(mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Radio<int>(
-                                activeColor: Colors.green,
-                                value:0 ,
-                                groupValue: radioValue4,
-                                onChanged: handleRadioValueChanged4),
-                            Text(
-                              "Yes",
-                              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
-                            ),
-                          ],
-                        ),
-                        Row(mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Radio<int>(
-                                activeColor: Colors.green,
-                                value: 1,
-                                groupValue: radioValue4,
-                                onChanged: handleRadioValueChanged4),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Row(mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Radio<int>(
+                                  activeColor: Colors.green,
+                                  value:0 ,
+                                  groupValue: radioValue4,
+                                  onChanged: handleRadioValueChanged4),
+                              Text(
+                                "Yes",
+                                style: TextStyle(color: Color(0xff4F555A).withOpacity(0.5), fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
+                              ),
+                            ],
+                          ),
+                          Row(mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Radio<int>(
+                                  activeColor: Colors.green,
+                                  value: 1,
+                                  groupValue: radioValue4,
+                                  onChanged: handleRadioValueChanged4),
 
-                            Text(
-                              "No",
-                              style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
-                            ),
-                          ],
-                        ),
-                      ],
+                              Text(
+                                "No",
+                                style: new TextStyle(color: Color(0xff4F555A).withOpacity(0.5),fontSize: Responsive.isSmallScreen(context)? width/30: width/40),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),

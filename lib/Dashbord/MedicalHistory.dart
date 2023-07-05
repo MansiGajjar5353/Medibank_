@@ -52,11 +52,18 @@ class MedicalHistoryState extends State<MedicalHistory>{
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
+        title: Center(
+          child: Container(padding: EdgeInsets.only(right: 30),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        //                margin: EdgeInsets.only(left:0,top:10.0 ),
       ),
 
       body: ListView(
         children: [
           Container(
+            margin: EdgeInsets.only(left:0,top:10.0 ),
             // height: _mediaquery.size.height*0.13,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

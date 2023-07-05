@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/Dashbord.dart';
+import 'Responsive.dart';
+
 
 class HealthSummary extends StatefulWidget{
   @override
@@ -28,17 +31,50 @@ class HealthSummaryState extends State<HealthSummary> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100, // default is 56
+
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
-        title: Text("Patient Summary",
-          style: TextStyle(color: Color(0xff000000),
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              fontFamily: 'Poppins'),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          }, padding: EdgeInsets.only(top: 40),
+          icon: const BackButtonIcon(),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(padding: EdgeInsets.only(right: 30),
+                child: Center(
+                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                )),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Patient Summary",
+                  style: TextStyle(color: Color(0xff000000),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins'),),
+                InkWell(
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
+                  child: Image(image: AssetImage("image/DashboardImage.png"),
+                    height: 30,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       body:Container(
           margin: EdgeInsets.only(top: 10),

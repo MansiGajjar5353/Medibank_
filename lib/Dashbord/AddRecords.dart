@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Dashbord/Dashbord.dart';
+import 'package:project_signup_page/Dashbord/FollowUps.dart';
+import 'package:project_signup_page/Dashbord/FollowUpsDialog.dart';
+import 'package:project_signup_page/Dashbord/FollowUpsHistory.dart';
+import 'package:project_signup_page/Dashbord/TestFollowUps.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
 import 'Hospitaization.dart';
@@ -22,11 +27,44 @@ class AddRecordsState extends State<AddRecords>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100, // default is 56
+
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
-        title: Text("Add Records", style: TextStyle(color: Color(0xff000000),fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'Poppins'),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          }, padding: EdgeInsets.only(top: 40),
+          icon: const BackButtonIcon(),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(padding: EdgeInsets.only(right: 30),
+                child: Center(
+                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                )),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Add Records ",
+                  style: TextStyle(color: Color(0xff000000),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Poppins'),),
+                InkWell(
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
+                  child: Image(image: AssetImage("image/DashboardImage.png"),
+                    height: 30,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
 
       body: ListView(
@@ -298,7 +336,9 @@ class AddRecordsState extends State<AddRecords>{
                             ),
                           ),
                         ),
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> FollowUpsHistory(),));
+                        },
                       ),
 
                     ],

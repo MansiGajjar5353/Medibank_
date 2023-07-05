@@ -45,10 +45,15 @@ class AbhaSetupState extends State<AbhaSetup>{
     // TODO: implement build
 return Scaffold(
   appBar: AppBar(
-    backgroundColor: Colors.white,
+    backgroundColor: Color(0xffffffff),
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.green),
+    iconTheme: IconThemeData(color: Colors.green), // set the color of the icons
+    title: Center(
+      child: Container(padding: EdgeInsets.only(right: 30),
+          child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+    ),
   ),
+
   body: ListView(
     children: [
       Container(
@@ -90,7 +95,7 @@ return Scaffold(
       ),
       )),),
       Container(
-          margin: EdgeInsets.only(top: 25, left: 25, right: 25),child: Column(
+          margin: EdgeInsets.only(top: 25, left: 20, right: 20),child: Column(
         children: [
           Row(
             children: [
@@ -101,7 +106,7 @@ return Scaffold(
                   child: Text(softWrap: true,"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
                   style: TextStyle(
                     color: Color(0xff929292),
-                    fontSize: Responsive.isSmallScreen(context)? width/32: width/60,
+                    fontSize: Responsive.isSmallScreen(context)? width/35: width/60,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                    ),
@@ -118,7 +123,7 @@ return Scaffold(
                   child: Text(softWrap: true,"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
                     style: TextStyle(
                       color: Color(0xff929292),
-                      fontSize: Responsive.isSmallScreen(context)? width/32: width/60,
+                      fontSize: Responsive.isSmallScreen(context)? width/35: width/60,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
@@ -135,7 +140,7 @@ return Scaffold(
                   child: Text(softWrap: true,"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
                     style: TextStyle(
                       color: Color(0xff929292),
-                      fontSize: Responsive.isSmallScreen(context)? width/32: width/60,
+                      fontSize: Responsive.isSmallScreen(context)? width/35: width/60,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),

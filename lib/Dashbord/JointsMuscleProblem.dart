@@ -55,12 +55,19 @@ class JointsMuscleProblemState extends State<JointsMuscleProblem>{
      backgroundColor: Colors.white,
      elevation: 0,
      iconTheme: IconThemeData(color: Colors.green),
+     title: Center(
+       child: Container(padding: EdgeInsets.only(right: 30),
+           child: Image(image: AssetImage("image/MedibankLOGO.png",),
+               width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+     ),
+     //                margin: EdgeInsets.only(left:0,top:10.0 ),
    ),
 
    body: ListView(
        children: [
          Container(
            // height: _mediaquery.size.height*0.13,
+           margin: EdgeInsets.only(left:0,top:10.0 ),
            child: Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,8 +165,8 @@ class JointsMuscleProblemState extends State<JointsMuscleProblem>{
                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                      children: [
 
-                       Text("Pains or stiffness that limit mobility", style: TextStyle(
-                         fontSize: Responsive.isSmallScreen(context)? width/24 : width/30,
+                       Text("Pains or stiffness that limit mobility", softWrap:true,style: TextStyle(
+                         fontSize: Responsive.isSmallScreen(context)? width/25 : width/30,
                          color: _isSelected[0] ?   Color(0xff24B445): Color(0xff4F555A).withOpacity(0.5),
                        ),),
                      ],

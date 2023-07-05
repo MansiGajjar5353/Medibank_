@@ -82,12 +82,19 @@ return Scaffold(
     backgroundColor: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.green),
+    title: Center(
+      child: Container(padding: EdgeInsets.only(right: 30),
+          child: Image(image: AssetImage("image/MedibankLOGO.png",),
+              width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+    ),
+    //                margin: EdgeInsets.only(left:0,top:10.0 ),
   ),
 
   body: ListView(
     children: [
   Container(
   // height: _mediaquery.size.height*0.13,
+    margin: EdgeInsets.only(left:0,top:10.0 ),
   child: Row(
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -249,7 +256,7 @@ return Scaffold(
                     children: [
 
                       Text("Difficulty in ejaculation", style: TextStyle(
-                        fontSize: Responsive.isSmallScreen(context)? width/24 : width/30,
+                        fontSize: Responsive.isSmallScreen(context)? width/25 : width/30,
                         color: _isSelected[0] ?   Color(0xff24B445): Color(0xff4F555A).withOpacity(0.5),
                       ),),
                     ],
@@ -284,7 +291,7 @@ return Scaffold(
                     children: [
                       //   Image(image: AssetImage("image/Drugs.png"),),
                       Text("Discharge from penis", style: TextStyle(
-                        fontSize: Responsive.isSmallScreen(context)? width/24 : width/30,
+                        fontSize: Responsive.isSmallScreen(context)? width/25 : width/30,
                         color: _isSelected[1] ?  Color(0xff24B445): Color(0xff4F555A).withOpacity(0.5),
                       ),),
                     ],
@@ -328,7 +335,7 @@ return Scaffold(
                     children: [
                       //  Image(image: AssetImage("image/Venereal.png"),),
                       Text("Pain or lump in scrotum or testicles", style: TextStyle(
-                        fontSize: Responsive.isSmallScreen(context)? width/24 : width/30,
+                        fontSize: Responsive.isSmallScreen(context)? width/25: width/30,
                         color: _isSelected[3] ?  Color(0xff24B445): Color(0xff4F555A).withOpacity(0.5),
                       ),),
                     ],
@@ -365,7 +372,7 @@ return Scaffold(
                     children: [
                       //  Image(image: AssetImage("image/TB.png"),),
                       Text("other", style: TextStyle(
-                        fontSize: Responsive.isSmallScreen(context)? width/24 : width/30,
+                        fontSize: Responsive.isSmallScreen(context)? width/25 : width/30,
                         color: _isSelected[4] ?   Color(0xff24B445): Color(0xff4F555A).withOpacity(0.5),
                       ),),
                     ],
