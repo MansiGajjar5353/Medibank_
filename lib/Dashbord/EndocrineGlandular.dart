@@ -131,6 +131,8 @@ class EndocrineGlandularState extends State<EndocrineGlandular>{
     // TODO: implement build
   return Scaffold(
     appBar: AppBar(
+      toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+
       backgroundColor: Colors.white,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.green),

@@ -91,7 +91,7 @@ class b_dateState extends State<b_date> {
              Container(
                color:Colors.white,
                width:100,
-               height:50,
+
                child:Center(
                  child:Text('${month[index]}', style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/28 : width/37),),
                ),
@@ -125,7 +125,7 @@ class b_dateState extends State<b_date> {
             height:120,
             child:Center(
               child:Text('${data[index]}',
-                style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/13 : width/20),),
+                style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/10 : width/20),),
             ),
           ),
         ],
@@ -188,6 +188,8 @@ void initstate() {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
@@ -518,17 +520,17 @@ Container(
 
 Center(
   child:   Container(
-    width:100,
-    height:25,
+    // width:100,
     margin: EdgeInsets.only(right: 20.0),
     padding: EdgeInsets.only(left:20.0),
 
-    child: Center(
-      child: Text("$selectedYear", style: TextStyle(
-        color: Color(0xff000000),
-        fontWeight: FontWeight.w700,
-        fontSize: Responsive.isSmallScreen(context)? width/30: width/40,
-      ),),
+    child: Expanded(
+      child: Center(
+        child: Text("$selectedYear", style: TextStyle(
+          color: Color(0xff000000),
+          fontWeight: FontWeight.w700,
+          fontSize: Responsive.isSmallScreen(context)? width/30: width/40,
+        ),),
   //       child: TextField(
   //  //   controller: _userController,
   //       decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -540,6 +542,7 @@ Center(
   //       hintText: "1999",
   //       hintStyle: TextStyle(fontSize: 13,fontWeight: FontWeight.w700))
   //       ),
+      ),
     ),
 
   ),

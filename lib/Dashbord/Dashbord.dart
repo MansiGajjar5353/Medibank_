@@ -1942,7 +1942,7 @@ class Screen3State extends State<Screen3> {
               "Transform your voice into a powerful tool for screen control with the simple tap of the mic, empowering you to operate your devices without lifting a finger.",
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: Responsive.isSmallScreen(context) ? 12 : 15,
+                fontSize: Responsive.isSmallScreen(context) ? width/35 : width/60,
               ),
             )),
           ),

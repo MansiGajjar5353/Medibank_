@@ -44,6 +44,8 @@ class Email_ScreenState extends State<Email_Screen>{
     var _mediaquery = MediaQuery.of(context);
   return Scaffold(
     appBar:AppBar(
+      toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+
       backgroundColor: Color(0xffffffff),
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.green),

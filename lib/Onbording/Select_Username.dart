@@ -44,6 +44,7 @@ class Select_UsernameState extends State<Select_Username>{
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
           backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.green),
@@ -134,25 +135,30 @@ Padding(padding: EdgeInsets.only(top:0)),
            ),
          ),
      ),
-        Padding(padding: EdgeInsets.only(top:20)),
-        Container(
-          margin: EdgeInsets.only(top:30,left:10),
-          // height:64,
+     SizedBox(width: 20),
+     Expanded(
+       child: Container(
+            height:80,
+            margin: EdgeInsets.only(top:30,left:10, right: 30),
+            child: Text('Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
 
-          child: Text('Amet minim mollit non deserunt ullamco est sit aliqua \ndolor do amet sint. Velit officia consequat duis enim velit\n mollit. Exercitation veniam consequat sunt nostrud amet.',
+              style: TextStyle(
+                fontSize: Responsive.isSmallScreen(context)? width/45: width/60,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
 
-            style: TextStyle(
-              fontSize: Responsive.isSmallScreen(context)? width/45: width/60,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w400,
-              height: 1.50,
-              color: Color(0xffB3B3B3),
+                // height: 1.50,
+                color: Color(0xffB3B3B3),
+              ),
             ),
           ),
-        ),
+     ),
    ],
  ),
   ),
+
+
+
   Padding(padding: EdgeInsets.only(top: 165)),
   Container(
     child:Column(

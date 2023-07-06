@@ -62,6 +62,7 @@ class GenderState extends State<Gender>{
 
     return Scaffold(
       appBar:AppBar(
+        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
@@ -620,39 +621,40 @@ class _ButtonGroupState extends State<ButtonGroup> {
 
                       backgroundColor: Colors.white,
                       radius: Responsive.isSmallScreen(context)? width/10: width/20,
-                      child:Column(
+                      child:Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
 
-                        children: [
-                          Transform.translate(offset: Offset(0,10),
-                            child:Container(
-                              height:40.0,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('image/Female1.png'),
-                                  fit: BoxFit.scaleDown,
-                                  // child:Text('Female'),
-                                ), // backgroundImage: AssetImage('image/Other.png',),
-                              ),
-                            ),),
-                          Transform.translate(offset: Offset(0,10),
-                            child:   Container(
-                              height:20,
-                              child:Text(
-                                "Female",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 10,
+                          children: [
+                             Container(
+
+                               height:Responsive.isSmallScreen(context)? width/10: width/20,
+                               decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage('image/Female1.png'),
+                                    fit: BoxFit.scaleDown,
+                                    // child:Text('Female'),
+                                  ), // backgroundImage: AssetImage('image/Other.png',),
                                 ),
                               ),
-                            ),),
-                        ],
+                               Container(
+
+                                child:Text(
+                                  "Female",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black,
+                                    fontFamily: 'Poppins',
+                                    fontSize: Responsive.isSmallScreen(context)? width/35: width/60,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
 
                     ),
-                    Transform.translate(offset: Offset(60,5),
-                      child:Visibility(
+                   Visibility(
                         visible:  selectedButton== ButtonState.Button1 ? true: false,
                         child: Container(
                           decoration: BoxDecoration(
@@ -664,13 +666,13 @@ class _ButtonGroupState extends State<ButtonGroup> {
                             radius:14,
                             backgroundColor: Colors.white,
                             child: Center(
-                              child: Image.asset("image/Checkbox.png", height: 20,),
+                              child: Image.asset("image/Checkbox.png",width: Responsive.isSmallScreen(context)? width/10: width/20,),
                             ),
                           ),
                         ),
                       ),
 
-                    ),
+
 
 
                   ],
@@ -683,13 +685,13 @@ class _ButtonGroupState extends State<ButtonGroup> {
           ),
 
           Padding(padding: EdgeInsets.only(top: 10)),
-
 
           Container(
             child:InkWell
               (
               onTap:() { onButtonPressed(ButtonState.Button2); },
 
+
               child:  Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -701,78 +703,158 @@ class _ButtonGroupState extends State<ButtonGroup> {
                     CircleAvatar(
 
                       backgroundColor: Colors.white,
-                      radius: Responsive.isSmallScreen(context)? width/10: width/30,
-                      child:Column(
-                        children: [
-                          Transform.translate(offset: Offset(0,10),
-                            child:Container(
-                              height:40.0,
+                      radius: Responsive.isSmallScreen(context)? width/10: width/20,
+                      child:Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+
+                          children: [
+                            Container(
+
+                              height:Responsive.isSmallScreen(context)? width/10: width/20,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('image/Male1.png'),
                                   fit: BoxFit.scaleDown,
-                                  // child:Text('Others'),
+                                  // child:Text('Female'),
                                 ), // backgroundImage: AssetImage('image/Other.png',),
                               ),
-                            ),),
-                          Transform.translate(offset: Offset(0,10),
-                            child:   Container(
-                              height:20,
+                            ),
+                            Container(
+
                               child:Text(
                                 "Male",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
                                   fontFamily: 'Poppins',
-                                  fontSize: 10,
+                                  fontSize: Responsive.isSmallScreen(context)? width/35: width/60,
                                 ),
                               ),
-                            ),),
-                        ],
-                      ),
-
-                    ),
-
-
-                    Transform.translate(offset: Offset(60,5),
-                      child:Visibility(
-                       visible: selectedButton== ButtonState.Button2 ? true: false,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
-                          ),
-                          child: CircleAvatar(
-                            radius:14,
-                            backgroundColor: Colors.white,
-                            child: Center(
-                              child: Image.asset("image/Checkbox.png", height: 20,),
                             ),
-                          ),
+                          ],
                         ),
                       ),
 
-                    )
-
-
+                    ),
+                    Visibility(
+                      visible:  selectedButton== ButtonState.Button2 ? true: false,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+                        ),
+                        child: CircleAvatar(
+                          radius:14,
+                          backgroundColor: Colors.white,
+                          child: Center(
+                            child: Image.asset("image/Checkbox.png", width: Responsive.isSmallScreen(context)? width/10: width/20,),
+                          ),
+                        ),
+                      ),
+                    ),
 
 
 
 
                   ],
                 ),
+
+
+
               ),
             ),
           ),
+          // Container(
+          //   child:InkWell
+          //     (
+          //     onTap:() { onButtonPressed(ButtonState.Button2); },
+          //
+          //     child:  Container(
+          //       decoration: BoxDecoration(
+          //         color: Colors.white,
+          //         shape: BoxShape.circle,
+          //         boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
+          //       ),
+          //       child: Stack(
+          //         children: [
+          //           CircleAvatar(
+          //
+          //             backgroundColor: Colors.white,
+          //             radius: Responsive.isSmallScreen(context)? width/10: width/20,
+          //             child:Column(
+          //               mainAxisAlignment: MainAxisAlignment.center,
+          //               children: [
+          //                 Transform.translate(offset: Offset(0,10),
+          //                   child:Container(
+          //                     height:40.0,
+          //                     decoration: BoxDecoration(
+          //                       image: DecorationImage(
+          //                         image: AssetImage('image/Male1.png'),
+          //                         fit: BoxFit.scaleDown,
+          //                         // child:Text('Others'),
+          //                       ), // backgroundImage: AssetImage('image/Other.png',),
+          //                     ),
+          //                   ),),
+          //                 Transform.translate(offset: Offset(0,10),
+          //                   child:   Container(
+          //                     height:20,
+          //                     child:Text(
+          //                       "Male",
+          //                       style: TextStyle(
+          //                         fontWeight: FontWeight.w400,
+          //                         color: Colors.black,
+          //                         fontFamily: 'Poppins',
+          //                         fontSize:  Responsive.isSmallScreen(context)? width/35: width/60,
+          //                       ),
+          //                     ),
+          //                   ),),
+          //               ],
+          //             ),
+          //
+          //           ),
+          //
+          //
+          //           Transform.translate(offset: Offset(60,5),
+          //             child:Visibility(
+          //              visible: selectedButton== ButtonState.Button2 ? true: false,
+          //               child: Container(
+          //                 decoration: BoxDecoration(
+          //                   color: Colors.white,
+          //                   shape: BoxShape.circle,
+          //                   boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+          //                 ),
+          //                 child: CircleAvatar(
+          //                   radius:14,
+          //                   backgroundColor: Colors.white,
+          //                   child: Center(
+          //                     child: Image.asset("image/Checkbox.png", height: 20,),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //
+          //           )
+          //
+          //
+          //
+          //
+          //
+          //
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
 
 
           Padding(padding: EdgeInsets.only(top: 10)),
-
           Container(
             child:InkWell
               (
               onTap:() { onButtonPressed(ButtonState.Button3); },
+
 
               child:  Container(
                 decoration: BoxDecoration(
@@ -785,71 +867,150 @@ class _ButtonGroupState extends State<ButtonGroup> {
                     CircleAvatar(
 
                       backgroundColor: Colors.white,
-                      radius: Responsive.isSmallScreen(context)? width/10: width/30,
-                      child:Column(
-                        children: [
-                          Transform.translate(offset: Offset(0,10),
-                            child:Container(
-                              height:40.0,
+                      radius: Responsive.isSmallScreen(context)? width/10: width/20,
+                      child:Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+
+                          children: [
+                            Container(
+
+                              height:Responsive.isSmallScreen(context)? width/10: width/20,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('image/other1.png'),
                                   fit: BoxFit.scaleDown,
-                                  // child:Text('Others'),
+                                  // child:Text('Female'),
                                 ), // backgroundImage: AssetImage('image/Other.png',),
                               ),
-                            ),),
-                          Transform.translate(offset: Offset(0,10),
-                            child:   Container(
-                              height:20,
+                            ),
+                            Container(
+
                               child:Text(
                                 "Other",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
                                   fontFamily: 'Poppins',
-                                  fontSize: 10,
+                                  fontSize: Responsive.isSmallScreen(context)? width/35: width/60,
                                 ),
                               ),
-                            ),),
-                        ],
-                      ),
-
-                    ),
-
-                    Transform.translate(offset: Offset(60,5),
-                      child:Visibility(
-                        visible: selectedButton== ButtonState.Button3 ? true: false,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
-                          ),
-                          child: CircleAvatar(
-                            radius:14,
-                            backgroundColor: Colors.white,
-                            child: Center(
-                              child: Image.asset("image/Checkbox.png", height: 20,),
                             ),
-                          ),
+                          ],
                         ),
                       ),
 
-                    )
-
-
-
-
+                    ),
+                    Visibility(
+                      visible:  selectedButton== ButtonState.Button3 ? true: false,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+                        ),
+                        child: CircleAvatar(
+                          radius:14,
+                          backgroundColor: Colors.white,
+                          child: Center(
+                            child: Image.asset("image/Checkbox.png", width: Responsive.isSmallScreen(context)? width/10: width/20,),
+                          ),
+                        ),
+                      ),
+                    ),
 
 
 
 
                   ],
                 ),
+
+
+
               ),
             ),
           ),
+          // Container(
+          //   child:InkWell
+          //     (
+          //     onTap:() { onButtonPressed(ButtonState.Button3); },
+          //
+          //     child:  Container(
+          //       decoration: BoxDecoration(
+          //         color: Colors.white,
+          //         shape: BoxShape.circle,
+          //         boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
+          //       ),
+          //       child: Stack(
+          //         children: [
+          //           CircleAvatar(
+          //
+          //             backgroundColor: Colors.white,
+          //             radius: Responsive.isSmallScreen(context)? width/10: width/20,
+          //             child:Column(
+          //               children: [
+          //                 Transform.translate(offset: Offset(0,10),
+          //                   child:Container(
+          //                     height:40.0,
+          //                     decoration: BoxDecoration(
+          //                       image: DecorationImage(
+          //                         image: AssetImage('image/other1.png'),
+          //                         fit: BoxFit.scaleDown,
+          //                         // child:Text('Others'),
+          //                       ), // backgroundImage: AssetImage('image/Other.png',),
+          //                     ),
+          //                   ),),
+          //                 Transform.translate(offset: Offset(0,10),
+          //                   child:   Container(
+          //                     height:20,
+          //                     child:Text(
+          //                       "Other",
+          //                       style: TextStyle(
+          //                         fontWeight: FontWeight.w400,
+          //                         color: Colors.black,
+          //                         fontFamily: 'Poppins',
+          //                         fontSize: 10,
+          //                       ),
+          //                     ),
+          //                   ),),
+          //               ],
+          //             ),
+          //
+          //           ),
+          //
+          //           Transform.translate(offset: Offset(60,5),
+          //             child:Visibility(
+          //               visible: selectedButton== ButtonState.Button3 ? true: false,
+          //               child: Container(
+          //                 decoration: BoxDecoration(
+          //                   color: Colors.white,
+          //                   shape: BoxShape.circle,
+          //                   boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+          //                 ),
+          //                 child: CircleAvatar(
+          //                   radius:14,
+          //                   backgroundColor: Colors.white,
+          //                   child: Center(
+          //                     child: Image.asset("image/Checkbox.png", height: 20,),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //
+          //           )
+          //
+          //
+          //
+          //
+          //
+          //
+          //
+          //
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
 
         ],
       ),

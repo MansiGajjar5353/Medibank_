@@ -90,7 +90,7 @@ class _SignUpState extends State<SignUp>{
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 90,
+        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green), // set the color of the icons
@@ -262,7 +262,7 @@ class _SignUpState extends State<SignUp>{
                               color: Colors.grey.shade400,
                             ),
                           ),
-                          title: Text('One uppercase character',style: new TextStyle( fontSize: Responsive.isSmallScreen(context)? width/40 : width/60, color: Colors.grey.shade400),  ),
+                          title: Text('One uppercase character',style: new TextStyle( fontSize: Responsive.isSmallScreen(context)? width/40 : width/90, color: Colors.grey.shade400),  ),
                         ),
                       ),
                       Transform.translate(
@@ -277,7 +277,7 @@ class _SignUpState extends State<SignUp>{
                               color: Colors.grey.shade400,
                             ),
                           ),
-                          title: Text('One lower case character', style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/60, color: Colors.grey.shade400),),
+                          title: Text('One lower case character', style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/90, color: Colors.grey.shade400),),
                         ),
                       ),
 
@@ -293,7 +293,7 @@ class _SignUpState extends State<SignUp>{
                               color: Colors.grey.shade400,
                             ),
                           ),
-                          title: Text('One special character',style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                          title: Text('One special character',style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/90,
                               color: Colors.grey.shade400),),
                         ),
                       ), ], ),
@@ -319,7 +319,7 @@ class _SignUpState extends State<SignUp>{
                                 color: Colors.grey.shade400,
                               ),
                             ),
-                            title: Text('One Number',style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/60, color: Colors.grey.shade400),  ),
+                            title: Text('One Number',style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/90, color: Colors.grey.shade400),  ),
                           ),
                         ),
                         Transform.translate(
@@ -335,7 +335,7 @@ class _SignUpState extends State<SignUp>{
                               ),
                             ),
 
-                            title: Text('8 character minimum', style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/60, color: Colors.grey.shade400),),
+                            title: Text('8 character minimum', style: new TextStyle(fontSize: Responsive.isSmallScreen(context)? width/40 : width/90, color: Colors.grey.shade400),),
                           ),
                         ),
                       ],),

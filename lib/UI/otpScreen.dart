@@ -62,7 +62,7 @@ class _otpScreenState extends State<otpScreen> {
     var _mediaquery = MediaQuery.of(context);
    return Scaffold(
      appBar: AppBar(
-       toolbarHeight: 90,
+       toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
        backgroundColor: Color(0xffffffff),
      elevation: 0,
      

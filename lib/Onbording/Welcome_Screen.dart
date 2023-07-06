@@ -43,6 +43,8 @@ class Welcome_ScreenState extends State<Welcome_Screen>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),
@@ -168,21 +170,15 @@ Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.04)),
           Stack(
             children: [
 
-              // MyApp(),
-// Container(
-//   height:_mediaquery.size.height*0.5,
-//   width:Responsive.isSmallScreen(context)? width/1 : width/1,
-//   color: ,
-// ),
-                // aspectRatio: 16 /16,
+  
             Container(
                 margin: EdgeInsets.only(top: _mediaquery.size.height*0.05),
-                height:_mediaquery.size.height*0.5,
+                 height:_mediaquery.size.height*0.5,
               width:Responsive.isSmallScreen(context)? width/1 : width/1,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('image/Welcome1.png'),
-
+                    fit:BoxFit.contain,
                   ),
               ),
               ),
@@ -229,7 +225,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                           child: Text("health management",  style: TextStyle(
                             color: Color(0xff555555),
                             fontWeight: FontWeight.w400,
-                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/80,
                           ),),
                         ),
 
@@ -246,7 +242,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                           child: Text("fitness activities",  style: TextStyle(
                             color: Color(0xff555555),
                             fontWeight: FontWeight.w400,
-                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/80,
                           ),),
                         ),
 
@@ -273,7 +269,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                           child: Text("Analyitics around your health",  style: TextStyle(
                             color: Color(0xff555555),
                             fontWeight: FontWeight.w400,
-                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/80,
                           ),),
                         ),
 
@@ -290,7 +286,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                           child: Text("Family health management",  style: TextStyle(
                             color: Color(0xff555555),
                             fontWeight: FontWeight.w400,
-                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/80,
                           ),),
                         ),
 
@@ -316,7 +312,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                           child: Text("health management",  style: TextStyle(
                             color: Color(0xff555555),
                             fontWeight: FontWeight.w400,
-                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/80,
                           ),),
                         ),
 
@@ -333,7 +329,7 @@ mainAxisAlignment: MainAxisAlignment.center,
                           child: Text("Family health management",  style: TextStyle(
                             color: Color(0xff555555),
                             fontWeight: FontWeight.w400,
-                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/60,
+                            fontSize: Responsive.isSmallScreen(context)? width/40 : width/80,
                           ),),
                         ),
 
