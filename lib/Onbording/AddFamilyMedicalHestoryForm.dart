@@ -28,14 +28,16 @@ class _AddFamilyMedicalFormState extends State<AddFamilyMedicalForm> {
         children: [
           ListView(
             children: [
-              Container(margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/46 : width/90,right: Responsive.isSmallScreen(context)? width/46 : width/90,top:1),
+              Container(margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/35 : width/90,right: Responsive.isSmallScreen(context)? width/35 : width/90,top:1),
                 alignment: Alignment.center,
                 child: RichText(
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     text: 'Note: minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. ',
+
                     style: TextStyle(
                       color: Color(0xff929292),
-                      fontSize:Responsive.isSmallScreen(context)? width/40 : width/54,
+                      fontSize:Responsive.isSmallScreen(context)? width/38 : width/54,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
@@ -47,85 +49,80 @@ class _AddFamilyMedicalFormState extends State<AddFamilyMedicalForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Container(
                       margin: EdgeInsets.only(
                         left: Responsive.isSmallScreen(context)
                             ? width / 20
                             : width / 40,
                         top: Responsive.isSmallScreen(context)
-                            ? width / 30
+                            ? width / 40
                             : width / 60,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            width: Responsive.isSmallScreen(context)
-                                ? width / 1.4
-                                : width / 1.3,
-                            height: Responsive.isSmallScreen(context)
-                                ? width / 8
-                                : width / 8,
-                            child: TextField(
+                          Expanded(
+                              flex: 4,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+
+                                  TextField(
 //
-                              decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.symmetric(horizontal: 20),
-                                filled: true,
-                                fillColor: Color(0xffF9F9F9),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(45),
-                                  borderSide: BorderSide.none,
-                                ),
-                                hintText: "Select Member",
-                                hintStyle: TextStyle(
-                                  color: Color(0xff4F555A).withOpacity(0.4 ),
-                                  fontSize: Responsive.isSmallScreen(context)
-                                      ? width / 20
-                                      : width / 26,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              style: TextStyle(
-                                color: Color(0xff000000).withOpacity(0.4),
-                                fontSize: Responsive.isSmallScreen(context)
-                                    ? width / 20
-                                    : width / 26,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 20),
+                                      filled: true,
+                                      fillColor: Color(0xffF9F9F9),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(45),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      hintText: "Select Member",
+                                      hintStyle: TextStyle(
+                                        color: Color(0xff4F555A).withOpacity(0.4),
+                                        fontSize: Responsive.isSmallScreen(context)
+                                            ? width / 20
+                                            : width / 26,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    style: TextStyle(
+                                      color: Color(0xff000000).withOpacity(0.4),
+                                      fontSize: Responsive.isSmallScreen(context)
+                                          ? width / 20
+                                          : width / 26,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
+                              )
+
                           ),
-                          Container(
-                            width: Responsive.isSmallScreen(context)
-                                ? width / 10
-                                : width / 10,
-                            height: Responsive.isSmallScreen(context)
-                                ? width / 10
-                                : width / 10,
-                            margin: EdgeInsets.only(
-                              right: Responsive.isSmallScreen(context)
-                                  ? width / 20
-                                  : width / 20,
-                              bottom: Responsive.isSmallScreen(context)
-                                  ? width / 50
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              height: Responsive.isSmallScreen(context)
+                                  ? width / 9
                                   : width / 15,
-                            ),
-                            alignment: Alignment.centerRight,
-                            child: CircleAvatar(
-                              radius: Responsive.isSmallScreen(context)
-                                  ? width / 20
-                                  : width / 35,
-                              backgroundColor: Color(0xffF9F9F9),
-                              child: Icon(
-                                Icons.arrow_drop_down_outlined,
-                                color: Color(0xff4F555A).withOpacity(0.5),
+                              width: Responsive.isSmallScreen(context)
+                                  ? width / 9
+                                  : width / 15,
+                              margin: EdgeInsets.only(
+                                right: Responsive.isSmallScreen(context)
+                                    ? width / 20
+                                    : width / 20,
+                              ),
+                              alignment: Alignment.centerRight,
+                              child: Image(
+                                image:
+                                AssetImage('image/arrowithback.png'),
                               ),
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -136,85 +133,80 @@ class _AddFamilyMedicalFormState extends State<AddFamilyMedicalForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Container(
                       margin: EdgeInsets.only(
                         left: Responsive.isSmallScreen(context)
                             ? width / 20
                             : width / 40,
                         top: Responsive.isSmallScreen(context)
-                            ? width / 30
+                            ? width / 40
                             : width / 60,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            width: Responsive.isSmallScreen(context)
-                                ? width / 1.4
-                                : width / 1.3,
-                            height: Responsive.isSmallScreen(context)
-                                ? width / 8
-                                : width / 8,
-                            child: TextField(
+                          Expanded(
+                              flex: 4,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+
+                                  TextField(
 //
-                              decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.symmetric(horizontal: 20),
-                                filled: true,
-                                fillColor: Color(0xffF9F9F9),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(45),
-                                  borderSide: BorderSide.none,
-                                ),
-                                hintText: "Living/Deceased",
-                                hintStyle: TextStyle(
-                                  color: Color(0xff4F555A).withOpacity(0.4 ),
-                                  fontSize: Responsive.isSmallScreen(context)
-                                      ? width / 20
-                                      : width / 26,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              style: TextStyle(
-                                color: Color(0xff000000).withOpacity(0.4),
-                                fontSize: Responsive.isSmallScreen(context)
-                                    ? width / 20
-                                    : width / 26,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 20),
+                                      filled: true,
+                                      fillColor: Color(0xffF9F9F9),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(45),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      hintText: "Living/Deceased",
+                                      hintStyle: TextStyle(
+                                        color: Color(0xff4F555A).withOpacity(0.4),
+                                        fontSize: Responsive.isSmallScreen(context)
+                                            ? width / 20
+                                            : width / 26,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    style: TextStyle(
+                                      color: Color(0xff000000).withOpacity(0.4),
+                                      fontSize: Responsive.isSmallScreen(context)
+                                          ? width / 20
+                                          : width / 26,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
+                              )
+
                           ),
-                          Container(
-                            width: Responsive.isSmallScreen(context)
-                                ? width / 10
-                                : width / 10,
-                            height: Responsive.isSmallScreen(context)
-                                ? width / 10
-                                : width / 10,
-                            margin: EdgeInsets.only(
-                              right: Responsive.isSmallScreen(context)
-                                  ? width / 20
-                                  : width / 20,
-                              bottom: Responsive.isSmallScreen(context)
-                                  ? width / 50
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              height: Responsive.isSmallScreen(context)
+                                  ? width / 9
                                   : width / 15,
-                            ),
-                            alignment: Alignment.centerRight,
-                            child: CircleAvatar(
-                              radius: Responsive.isSmallScreen(context)
-                                  ? width / 20
-                                  : width / 35,
-                              backgroundColor: Color(0xffF9F9F9),
-                              child: Icon(
-                                Icons.arrow_drop_down_outlined,
-                                color: Color(0xff4F555A).withOpacity(0.5),
+                              width: Responsive.isSmallScreen(context)
+                                  ? width / 9
+                                  : width / 15,
+                              margin: EdgeInsets.only(
+                                right: Responsive.isSmallScreen(context)
+                                    ? width / 20
+                                    : width / 20,
+                              ),
+                              alignment: Alignment.centerRight,
+                              child: Image(
+                                image:
+                                AssetImage('image/arrowithback.png'),
                               ),
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -295,7 +287,7 @@ class _AddFamilyMedicalFormState extends State<AddFamilyMedicalForm> {
                       child:Container(
                         margin: EdgeInsets.only(
                           top: Responsive.isSmallScreen(context)
-                              ? width / 40
+                              ? width / 60
                               : width / 60,),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

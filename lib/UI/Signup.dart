@@ -90,12 +90,14 @@ class _SignUpState extends State<SignUp>{
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 90,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green), // set the color of the icons
         title: Center(
           child: Container(padding: EdgeInsets.only(right: 30),
-              child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+              child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
         ),
       ),
 

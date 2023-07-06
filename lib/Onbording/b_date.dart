@@ -75,13 +75,16 @@ class b_dateState extends State<b_date> {
 
 
   Widget _monthItemList(BuildContext context, int index){
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
     if(index == month.length)
       return Center(
         child: CircularProgressIndicator(),
       );
    return SizedBox(
      width:120,
-     child:    Container(
+     child: Container(
          width:120,
          child:Column(
            children: [
@@ -90,7 +93,7 @@ class b_dateState extends State<b_date> {
                width:100,
                height:50,
                child:Center(
-                 child:Text('${month[index]}', style: TextStyle(fontSize: 15.0),),
+                 child:Text('${month[index]}', style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/28 : width/37),),
                ),
              ),
            ],
@@ -100,6 +103,10 @@ class b_dateState extends State<b_date> {
    ) ;
   }
   Widget _buildItemList(BuildContext context, int index){
+
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
     if(index ==  data.length)
       return Center(
         child: CircularProgressIndicator(),
@@ -117,7 +124,8 @@ class b_dateState extends State<b_date> {
             width:100,
             height:120,
             child:Center(
-              child:Text('${data[index]}', style: TextStyle(fontSize: 40.0),),
+              child:Text('${data[index]}',
+                style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/13 : width/20),),
             ),
           ),
         ],
@@ -471,6 +479,7 @@ Container(
                   ' $year',
                   style: TextStyle(
                     fontWeight: isSelectedYear ? FontWeight.bold : FontWeight.normal,
+                    fontSize: Responsive.isSmallScreen(context)? width/30 : width/50,
                   ),
                 ),
               ),
@@ -518,6 +527,7 @@ Center(
       child: Text("$selectedYear", style: TextStyle(
         color: Color(0xff000000),
         fontWeight: FontWeight.w700,
+        fontSize: Responsive.isSmallScreen(context)? width/30: width/40,
       ),),
   //       child: TextField(
   //  //   controller: _userController,
@@ -539,7 +549,7 @@ Center(
 
 
 
-            Padding(padding: EdgeInsets.only(top:10)),
+            Padding(padding: EdgeInsets.only(top:30)),
             Column(mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

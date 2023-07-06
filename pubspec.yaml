@@ -86,6 +86,9 @@ flutter:
   assets:
     - image/Treatments.png
     - image/DashboardImage.png
+    - image/WaterThumb.png
+    - image/calenderwithbackground.png
+    - image/arrowithback.png
     - image/ReportsOpened.png
     - image/MedibankLOGO.png
     - image/Skin1.png

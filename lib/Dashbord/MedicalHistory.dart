@@ -181,123 +181,127 @@ class MedicalHistoryState extends State<MedicalHistory>{
               ),),
           ),
 
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: (){
-                  setState(() {
-                    ShowText = true;
-                  });
-                },
-
-                child: Container(
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-                  height: 80,
-                  width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF7F7F7),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Container(
-                      margin:EdgeInsets.only(top: 30, left: 30),
-                      child: Text("Yes",style: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),
-                      ),)),
-                ),
-              ),
-              InkWell(
-                onTap: (){
-    setState(() {
-    ShowText = false;
-    });
-
-    },
-                child: Container(
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                  height: 80,
-                  width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF7F7F7),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Container(
-                      margin:EdgeInsets.only(top: 30, left: 30),
-                      child: Text("No",style: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),
-                      ),)),
-                ),
-              ),
-
-            ],
+          Center(
+            child: ButtonGroup(),
           ),
 
-         Visibility(
-           visible: ShowText,
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 20, top: 20),
-                  child: Text("Please enter doctor's information.",
-                    style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),
-                      fontSize: Responsive.isSmallScreen(context)? width/25 : width/50,
-                      fontFamily: "Poppins",
-                    ),),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-                      child: TextField(
-
-                        // controller: _userController,
-                        decoration: InputDecoration(
-                          contentPadding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                          filled: true,
-                          fillColor: Color(0xffF9F9F9),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(35),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: "Doctor's name",
-
-                          labelText: "Doctor's name",
-                          labelStyle: TextStyle(color: Colors.green,),
-                          hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                              fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                      child: TextField(
-
-                        // controller: _userController,
-                        decoration: InputDecoration(
-                          contentPadding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                          filled: true,
-                          fillColor: Color(0xffF9F9F9),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(35),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: "Dr no",
-                          labelText: "Contact Number",
-                          labelStyle: TextStyle(color: Colors.green,),
-                          hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                              fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+    //       Column(
+    //         mainAxisAlignment: MainAxisAlignment.center,
+    //         children: [
+    //           InkWell(
+    //             onTap: (){
+    //               setState(() {
+    //                 ShowText = true;
+    //               });
+    //             },
+    //
+    //             child: Container(
+    //               margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+    //               height: 80,
+    //               width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+    //               decoration: BoxDecoration(
+    //                 color: Color(0xffF7F7F7),
+    //                 borderRadius: BorderRadius.circular(15),
+    //               ),
+    //               child: Container(
+    //                   margin:EdgeInsets.only(top: 30, left: 30),
+    //                   child: Text("Yes",style: TextStyle(
+    //                     color: Color(0xff4F555A).withOpacity(0.5),
+    //                   ),)),
+    //             ),
+    //           ),
+    //           InkWell(
+    //             onTap: (){
+    // setState(() {
+    // ShowText = false;
+    // });
+    //
+    // },
+    //             child: Container(
+    //               margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+    //               height: 80,
+    //               width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+    //               decoration: BoxDecoration(
+    //                 color: Color(0xffF7F7F7),
+    //                 borderRadius: BorderRadius.circular(15),
+    //               ),
+    //               child: Container(
+    //                   margin:EdgeInsets.only(top: 30, left: 30),
+    //                   child: Text("No",style: TextStyle(
+    //                     color: Color(0xff4F555A).withOpacity(0.5),
+    //                   ),)),
+    //             ),
+    //           ),
+    //
+    //         ],
+    //       ),
+    //
+    //      Visibility(
+    //        visible: ShowText,
+    //         child: Column(
+    //           children: [
+    //             Container(
+    //               margin: EdgeInsets.only(left: 20, top: 20),
+    //               child: Text("Please enter doctor's information.",
+    //                 style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),
+    //                   fontSize: Responsive.isSmallScreen(context)? width/25 : width/50,
+    //                   fontFamily: "Poppins",
+    //                 ),),
+    //             ),
+    //             Column(
+    //               children: [
+    //                 Container(
+    //                   margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+    //                   child: TextField(
+    //
+    //                     // controller: _userController,
+    //                     decoration: InputDecoration(
+    //                       contentPadding:
+    //                       EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+    //                       filled: true,
+    //                       fillColor: Color(0xffF9F9F9),
+    //                       border: OutlineInputBorder(
+    //                         borderRadius: BorderRadius.circular(35),
+    //                         borderSide: BorderSide.none,
+    //                       ),
+    //                       hintText: "Doctor's name",
+    //
+    //                       labelText: "Doctor's name",
+    //                       labelStyle: TextStyle(color: Colors.green,),
+    //                       hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
+    //                           fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
+    //
+    //                     ),
+    //                   ),
+    //                 ),
+    //                 Container(
+    //                   margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+    //                   child: TextField(
+    //
+    //                     // controller: _userController,
+    //                     decoration: InputDecoration(
+    //                       contentPadding:
+    //                       EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+    //                       filled: true,
+    //                       fillColor: Color(0xffF9F9F9),
+    //                       border: OutlineInputBorder(
+    //                         borderRadius: BorderRadius.circular(35),
+    //                         borderSide: BorderSide.none,
+    //                       ),
+    //                       hintText: "Dr no",
+    //                       labelText: "Contact Number",
+    //                       labelStyle: TextStyle(color: Colors.green,),
+    //                       hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
+    //                           fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
+    //
+    //                     ),
+    //                   ),
+    //                 ),
+    //               ],
+    //             ),
+    //           ],
+    //         ),
+    //       ),
           Padding(padding: EdgeInsets.only(top: 30)),
           Center(
             child: Container(
@@ -357,4 +361,234 @@ class MedicalHistoryState extends State<MedicalHistory>{
     );
   }
 
+}
+
+
+
+
+enum ButtonState { Button1, Button2,  }
+
+class ButtonGroup extends StatefulWidget {
+  @override
+  _ButtonGroupState createState() => _ButtonGroupState();
+}
+
+class _ButtonGroupState extends State<ButtonGroup> {
+  bool ShowText = true;
+
+  ButtonState selectedButton = ButtonState.Button1; // Initial selected button
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
+    return Container(
+      margin: EdgeInsets.only( top: 20, bottom: 30),
+     child: Column(
+       children: [
+         Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: (){
+                onButtonPressed(ButtonState.Button1);
+                    ShowText = true;
+                  
+                },
+
+                child: Container(
+                  margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                  height: 80,
+                  width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+                  decoration: BoxDecoration(
+                    color: selectedButton== ButtonState.Button1 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Container(
+                      margin:EdgeInsets.only(top: 30, left: 30),
+                      child: Text("Yes",style: TextStyle(
+                        color: Color(0xff4F555A).withOpacity(0.5),
+                      ),)),
+                ),
+              ),
+              InkWell(
+                onTap: (){
+                  onButtonPressed(ButtonState.Button2);
+                  ShowText = false;
+
+
+                },
+                child: Container(
+                  margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                  height: 80,
+                  width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+                  decoration: BoxDecoration(
+                    color: selectedButton== ButtonState.Button2 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Container(
+                      margin:EdgeInsets.only(top: 30, left: 30),
+                      child: Text("No",style: TextStyle(
+                        color: Color(0xff4F555A).withOpacity(0.5),
+                      ),)),
+                ),
+              ),
+
+            ],
+          ),
+         Visibility(
+           visible: ShowText,
+           child: Column(
+             children: [
+               Container(
+                 margin: EdgeInsets.only(left: 20, top: 20),
+                 child: Text("Please enter doctor's information.",
+                   style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),
+                     fontSize: Responsive.isSmallScreen(context)? width/25 : width/50,
+                     fontFamily: "Poppins",
+                   ),),
+               ),
+               Column(
+                 children: [
+                   Container(
+                     margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+                     child: TextField(
+
+                       // controller: _userController,
+                       decoration: InputDecoration(
+                         contentPadding:
+                         EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                         filled: true,
+                         fillColor: Color(0xffF9F9F9),
+                         border: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(35),
+                           borderSide: BorderSide.none,
+                         ),
+                         hintText: "Doctor's name",
+
+                         labelText: "Doctor's name",
+                         labelStyle: TextStyle(color: Colors.green,),
+                         hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
+                             fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
+
+                       ),
+                     ),
+                   ),
+                   Container(
+                     margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                     child: TextField(
+
+                       // controller: _userController,
+                       decoration: InputDecoration(
+                         contentPadding:
+                         EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                         filled: true,
+                         fillColor: Color(0xffF9F9F9),
+                         border: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(35),
+                           borderSide: BorderSide.none,
+                         ),
+                         hintText: "Dr no",
+                         labelText: "Contact Number",
+                         labelStyle: TextStyle(color: Colors.green,),
+                         hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
+                             fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
+
+                       ),
+                     ),
+                   ),
+                 ],
+               ),
+             ],
+           ),
+         ),
+
+       ],
+     ),
+
+
+//       child: Column(
+//         children: [
+//           InkWell(
+//             onTap: (){
+//               onButtonPressed(ButtonState.Button1);
+//               ShowText= true;
+//             },
+//
+//             child: Container(
+//               margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+//               height: 80,
+//               width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+//               decoration: BoxDecoration(
+//                 color: selectedButton== ButtonState.Button1 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+//                 borderRadius: BorderRadius.circular(15),
+//               ),
+//               child: Container(
+//                   margin:EdgeInsets.only(top: 30, left: 30),
+//                   child: Text("Yes",style: TextStyle(
+//                     color: Color(0xff4F555A).withOpacity(0.5),
+//                   ),)),
+//             ),
+//           ),
+//           InkWell(
+//             onTap: (){
+//
+//               onButtonPressed(ButtonState.Button2);
+//               ShowText= false;
+//             },
+//             child: Container(
+//               margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+//               height: 80,
+//               width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+//               decoration: BoxDecoration(
+//                 color: selectedButton== ButtonState.Button2 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+//                 borderRadius: BorderRadius.circular(15),
+//               ),
+//               child: Container(
+//                   margin:EdgeInsets.only(top: 30, left: 30),
+//                   child: Text("No",style: TextStyle(
+//                     color: Color(0xff4F555A).withOpacity(0.5),
+//                   ),)),
+//             ),
+//           ),
+//
+//
+//           Visibility(
+//             visible: ShowText,
+//             child: Container(
+//               margin: EdgeInsets.only(left:20,right: 20, top:10),
+// //  width: Responsive.isSmallScreen(context)? width/1.2 : width/2,
+// //height: 200,
+//               child: TextField(
+//                 maxLines: 5,
+//                 decoration: InputDecoration(
+//                   contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+//                   filled: true,
+//                   fillColor: Color(0xffF9F9F9),
+//                   border: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(35),
+//                       borderSide: BorderSide(width: 1, color: Color(0xff).withOpacity(0.16),
+//                       )),
+//
+//                   hintText: "Any reason",
+//                   hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), ),
+//
+//                 ),
+//               ),
+//             ),
+//
+//
+//           ),
+//
+//         ],
+//       ),
+    );
+  }
+
+  void onButtonPressed(ButtonState buttonState) {
+    setState(() {
+      selectedButton = buttonState;
+    });
+  }
 }

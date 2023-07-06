@@ -176,82 +176,13 @@ class weightLossState extends State<weightLoss>{
               ),),
           ),
 
-
+Center(
+  child: ButtonGroup(),
+),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
-                onTap: (){
-                  setState(() {
-                    ShowText = true;
-                  });
-                },
 
-                child: Container(
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-                  height: 80,
-                  width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF7F7F7),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Container(
-                      margin:EdgeInsets.only(top: 30, left: 30),
-                      child: Text("Yes",style: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),
-                      ),)),
-                ),
-              ),
-              InkWell(
-                onTap: (){
-                  setState(() {
-                    ShowText = false;
-                  });
-
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                  height: 80,
-                  width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF7F7F7),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Container(
-                      margin:EdgeInsets.only(top: 30, left: 30),
-                      child: Text("No",style: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),
-                      ),)),
-                ),
-              ),
-
-
-              Visibility(
-                visible: ShowText,
-               child: Container(
-                  margin: EdgeInsets.only(left:20,right: 20, top:10),
-                //  width: Responsive.isSmallScreen(context)? width/1.2 : width/2,
-                  //height: 200,
-                  child: TextField(
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                     contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                      filled: true,
-                      fillColor: Color(0xffF9F9F9),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(35),
-                        borderSide: BorderSide(width: 1, color: Color(0xff).withOpacity(0.16),
-                        )),
-
-                      hintText: "Any reason",
-                      hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), ),
-
-                    ),
-                  ),
-                ),
-
-
-              ),
               Padding(padding: EdgeInsets.only(top: 30)),
               Center(
                 child: Container(
@@ -327,3 +258,180 @@ class weightLossState extends State<weightLoss>{
   }
 
 }
+
+enum ButtonState { Button1, Button2,  }
+
+class ButtonGroup extends StatefulWidget {
+  @override
+  _ButtonGroupState createState() => _ButtonGroupState();
+}
+
+class _ButtonGroupState extends State<ButtonGroup> {
+  bool ShowText = true;
+
+  ButtonState selectedButton = ButtonState.Button1; // Initial selected button
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
+    return Container(
+      margin: EdgeInsets.only( top: 20, bottom: 30),
+      // child: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //   children: [
+      //     Container(
+      //       width: Responsive.isSmallScreen(context)? width/3.5 : width/6,
+      //       child: ElevatedButton(
+      //
+      //         onPressed: () {
+      //           onButtonPressed(ButtonState.Button1);
+      //         },
+      //
+      //         style: ElevatedButton.styleFrom(
+      //           primary: Color(0xffF7F7F7),
+      //           side: BorderSide(width:1,  color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Colors.transparent),
+      //         ),
+      //
+      //         child: Container(
+      //
+      //           margin: EdgeInsets.only(top: 10, bottom: 10),
+      //           child: Column(
+      //             children: [
+      //               Text('Peaceful', style: TextStyle(color: Colors.black, fontSize: Responsive.isSmallScreen(context)? width/27 : width/50),
+      //               ),
+      //               Image(image: AssetImage("image/Peaceful.png"), height:
+      //               Responsive.isSmallScreen(context)
+      //                   ? 50
+      //                   : 60),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //
+      //     Container(
+      //       child: ElevatedButton(
+      //
+      //         onPressed: () {
+      //           onButtonPressed(ButtonState.Button2);
+      //         },
+      //
+      //         style: ElevatedButton.styleFrom(
+      //           primary: Color(0xffF7F7F7),
+      //           side: BorderSide(width:1,  color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Colors.transparent),
+      //         ),
+      //
+      //         child: Container(
+      //
+      //           margin: EdgeInsets.only(top: 10, bottom: 10),
+      //           child: Column(
+      //             children: [
+      //               Text('Mixed', style: TextStyle(color: Colors.black,  fontSize: Responsive.isSmallScreen(context)? width/27 : width/50),
+      //               ),
+      //               Image(image: AssetImage("image/Sad.png"),
+      //                   height: Responsive.isSmallScreen(context)
+      //                       ? 50
+      //                       : 60),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //
+      //
+      //   ],
+      // ),
+
+      child: Column(
+        children: [
+          InkWell(
+            onTap: (){
+              onButtonPressed(ButtonState.Button1);
+              ShowText= true;
+            },
+
+            child: Container(
+              margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+              height: 80,
+              width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+              decoration: BoxDecoration(
+                color: selectedButton== ButtonState.Button1 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Container(
+                  margin:EdgeInsets.only(top: 30, left: 30),
+                  child: Text("Yes",style: TextStyle(
+                    color: Color(0xff4F555A).withOpacity(0.5),
+                  ),)),
+            ),
+          ),
+          InkWell(
+            onTap: (){
+
+              onButtonPressed(ButtonState.Button2);
+              ShowText= false;
+            },
+            child: Container(
+              margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+              height: 80,
+              width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+              decoration: BoxDecoration(
+                color: selectedButton== ButtonState.Button2 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Container(
+                  margin:EdgeInsets.only(top: 30, left: 30),
+                  child: Text("No",style: TextStyle(
+                    color: Color(0xff4F555A).withOpacity(0.5),
+                  ),)),
+            ),
+          ),
+
+
+          Visibility(
+            visible: ShowText,
+            child: Container(
+              margin: EdgeInsets.only(left:20,right: 20, top:10),
+//  width: Responsive.isSmallScreen(context)? width/1.2 : width/2,
+//height: 200,
+              child: TextField(
+                maxLines: 5,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  filled: true,
+                  fillColor: Color(0xffF9F9F9),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(35),
+                      borderSide: BorderSide(width: 1, color: Color(0xff).withOpacity(0.16),
+                      )),
+
+                  hintText: "Any reason",
+                  hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), ),
+
+                ),
+              ),
+            ),
+
+
+          ),
+
+        ],
+      ),
+    );
+  }
+
+  void onButtonPressed(ButtonState buttonState) {
+    setState(() {
+      selectedButton = buttonState;
+    });
+  }
+}
+
+
+
+
+
+
+

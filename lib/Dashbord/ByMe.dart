@@ -10,7 +10,7 @@ class ByMe extends StatefulWidget {
 }
 
 class _ByMeState extends State<ByMe> {
-  List<bool> isCheckedListAdd = List.generate(5, (index) => false);
+  List<bool> isCheckedListAdd = List.generate(10, (index) => false);
 
   void toggleCheckboxAdd(int index) {
     setState(() {
@@ -18,7 +18,7 @@ class _ByMeState extends State<ByMe> {
     });
   }
 
-  List<bool> isCheckedListView = List.generate(5, (index) => false);
+  List<bool> isCheckedListView = List.generate(10, (index) => false);
 
   void toggleCheckboxView(int index) {
     setState(() {
@@ -26,7 +26,7 @@ class _ByMeState extends State<ByMe> {
     });
   }
 
-  List<bool> isCheckedListEdit = List.generate(5, (index) => false);
+  List<bool> isCheckedListEdit = List.generate(10, (index) => false);
 
   void toggleCheckboxEdit(int index) {
     setState(() {
@@ -34,12 +34,13 @@ class _ByMeState extends State<ByMe> {
     });
   }
 
-  List<bool> isCheckedListDelete = List.generate(5, (index) => false);
+  List<bool> isCheckedListDelete = List.generate(10, (index) => false);
 
   void toggleCheckboxDelete(int index) {
     setState(() {
       isCheckedListDelete[index] = !isCheckedListDelete[index];
     });
+
   }
 
   @override
@@ -56,9 +57,10 @@ class _ByMeState extends State<ByMe> {
             child: Container(
               width: double.infinity,
               child: ListView.builder(
+                physics: ClampingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                itemCount: 5,
+                itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                       margin: EdgeInsets.only(
@@ -99,8 +101,7 @@ class _ByMeState extends State<ByMe> {
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
@@ -184,89 +185,55 @@ class _ByMeState extends State<ByMe> {
                                   )
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                      child: Row(
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                toggleCheckboxAdd(index);
-                                              },
-                                              child: Stack(
-                                                children: [
-                                                  Visibility(
-                                                    visible:
-                                                    isCheckedListAdd[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareno.png',
-                                                      width: 30,
-                                                      height: 30,
-                                                    ),
-                                                  ),
-                                                  Visibility(
-                                                    visible:
-                                                    !isCheckedListAdd[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareyes.png',
-                                                      width: 30,
-                                                      height: 30,
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                          Container(
-                                            margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)?width/60:width/60),
-                                            child:    Text(
-                                              'Add',
-                                              style: TextStyle(
-                                                  fontSize: Responsive.isSmallScreen(
-                                                      context)
-                                                      ? width / 30
-                                                      : width / 38,
-                                                  color: Color(0x804F555A),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Poppins'),
-                                            ),
-                                          )
+                              Container(
 
-                                        ],
-                                      )),
-                                  Expanded(
-                                      child: Row(
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                toggleCheckboxView(index);
-                                              },
-                                              child: Stack(
-                                                children: [
-                                                  Visibility(
-                                                    visible:
-                                                    isCheckedListView[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareno.png',
-                                                      width: 30,
-                                                      height: 30,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                        child: Row(
+                                          children: [
+                                            GestureDetector(
+                                                onTap: () {
+                                                  toggleCheckboxAdd(index);
+                                                },
+                                                child: Stack(
+                                                  children: [
+                                                    Visibility(
+                                                      visible:
+                                                      isCheckedListAdd[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareno.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height: Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Visibility(
-                                                    visible:
-                                                    !isCheckedListView[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareyes.png',
-                                                      width: 30,
-                                                      height: 30,
+                                                    Visibility(
+                                                      visible:
+                                                      !isCheckedListAdd[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareyes.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height: Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              )),
-                                          Container(
+                                                  ],
+                                                )),
+                                            Container(
                                               margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)?width/60:width/60),
-                                              child:  Text(
-                                                'View',
+                                              child:    Text(
+                                                'Add',
                                                 style: TextStyle(
                                                     fontSize: Responsive.isSmallScreen(
                                                         context)
@@ -275,44 +242,163 @@ class _ByMeState extends State<ByMe> {
                                                     color: Color(0x804F555A),
                                                     fontWeight: FontWeight.w400,
                                                     fontFamily: 'Poppins'),
-                                              )
-                                          )
+                                              ),
+                                            )
 
-                                        ],
-                                      )),
-                                  Expanded(
-                                      child: Row(
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                toggleCheckboxEdit(index);
-                                              },
-                                              child: Stack(
-                                                children: [
-                                                  Visibility(
-                                                    visible:
-                                                    isCheckedListEdit[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareno.png',
-                                                      width: 30,
-                                                      height: 30,
+                                          ],
+                                        )),
+                                    Expanded(
+                                      flex: 1,
+                                        child: Row(
+                                          children: [
+                                            GestureDetector(
+                                                onTap: () {
+                                                  toggleCheckboxView(index);
+                                                },
+                                                child: Stack(
+                                                  children: [
+                                                    Visibility(
+                                                      visible:
+                                                      isCheckedListView[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareno.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Visibility(
-                                                    visible:
-                                                    !isCheckedListEdit[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareyes.png',
-                                                      width: 30,
-                                                      height: 30,
+                                                    Visibility(
+                                                      visible:
+                                                      !isCheckedListView[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareyes.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              )),
-                                          Container(
+                                                  ],
+                                                )),
+                                            Container(
+                                                margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)?width/60:width/60),
+                                                child:  Text(
+                                                  'View',
+                                                  style: TextStyle(
+                                                      fontSize: Responsive.isSmallScreen(
+                                                          context)
+                                                          ? width / 30
+                                                          : width / 38,
+                                                      color: Color(0x804F555A),
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Poppins'),
+                                                )
+                                            )
+
+                                          ],
+                                        )),
+                                    Expanded(
+                                      flex: 1,
+                                        child: Row(
+                                          children: [
+                                            GestureDetector(
+                                                onTap: () {
+                                                  toggleCheckboxEdit(index);
+                                                },
+                                                child: Stack(
+                                                  children: [
+                                                    Visibility(
+                                                      visible:
+                                                      isCheckedListEdit[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareno.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
+                                                    ),
+                                                    Visibility(
+                                                      visible:
+                                                      !isCheckedListEdit[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareyes.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
+                                            Container(
+                                                margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)?width/60:width/60),
+                                                child:  Text(
+                                                  'Edit',
+                                                  style: TextStyle(
+                                                      fontSize: Responsive.isSmallScreen(
+                                                          context)
+                                                          ? width / 30
+                                                          : width / 38,
+                                                      color: Color(0x804F555A),
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Poppins'),
+                                                )
+                                            )
+
+                                          ],
+                                        )),
+                                    Expanded(
+                                      flex: 1,
+                                        child: Row(
+                                          children: [
+                                            GestureDetector(
+                                                onTap: () {
+                                                  toggleCheckboxDelete(index);
+                                                },
+                                                child: Stack(
+                                                  children: [
+                                                    Visibility(
+                                                      visible:
+                                                      isCheckedListDelete[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareyes.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
+                                                    ),
+                                                    Visibility(
+                                                      visible:
+                                                      !isCheckedListDelete[index],
+                                                      child: Image.asset(
+                                                        'image/checksquareno.png',
+                                                        width:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                        height:Responsive.isSmallScreen(context)
+                                                            ? width / 13
+                                                            : width / 13,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
+                                            Container(
                                               margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)?width/60:width/60),
-                                              child:  Text(
-                                                'Edit',
+                                              child:      Text(
+                                                'Delete',
                                                 style: TextStyle(
                                                     fontSize: Responsive.isSmallScreen(
                                                         context)
@@ -321,59 +407,15 @@ class _ByMeState extends State<ByMe> {
                                                     color: Color(0x804F555A),
                                                     fontWeight: FontWeight.w400,
                                                     fontFamily: 'Poppins'),
-                                              )
-                                          )
+                                              ),
+                                            )
 
-                                        ],
-                                      )),
-                                  Expanded(
-                                      child: Row(
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                toggleCheckboxDelete(index);
-                                              },
-                                              child: Stack(
-                                                children: [
-                                                  Visibility(
-                                                    visible:
-                                                    isCheckedListDelete[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareyes.png',
-                                                      width: 30,
-                                                      height: 30,
-                                                    ),
-                                                  ),
-                                                  Visibility(
-                                                    visible:
-                                                    !isCheckedListDelete[index],
-                                                    child: Image.asset(
-                                                      'image/checksquareno.png',
-                                                      width: 30,
-                                                      height: 30,
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                          Container(
-                                            margin: EdgeInsets.only(left: Responsive.isSmallScreen(context)?width/60:width/60),
-                                            child:      Text(
-                                              'Delete',
-                                              style: TextStyle(
-                                                  fontSize: Responsive.isSmallScreen(
-                                                      context)
-                                                      ? width / 30
-                                                      : width / 38,
-                                                  color: Color(0x804F555A),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Poppins'),
-                                            ),
-                                          )
+                                          ],
+                                        )),
+                                  ],
+                                )
+                              ),
 
-                                        ],
-                                      )),
-                                ],
-                              )
                             ],
                           )));
                 },

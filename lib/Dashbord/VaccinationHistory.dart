@@ -23,6 +23,9 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
     "BCG",
     "BCG",
     "BCG",
+    "BCG",
+    "BCG",
+    "BCG",
   ];
   final titles = [
     "Questions about",
@@ -33,6 +36,8 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
     "Questions about"
         "Questions about",
     "Questions about"
+        "Questions about"
+
   ];
   final title = [
     "Getting Started",
@@ -44,6 +49,7 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
     "The Medibank"
         "The Medibank",
     "The Medibank"
+
   ];
   final question = [
     "27/03/99",
@@ -52,6 +58,10 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
     "20/05/99",
     "27/08/99",
     "19/06/99",
+    "19/06/99",
+    "19/06/99",
+    "19/06/99",
+
   ];
 
   @override
@@ -105,7 +115,9 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                               margin: EdgeInsets.only(
                                   left: Responsive.isSmallScreen(context)
                                       ? width / 20
-                                      : width / 20),
+                                      : width / 20,top: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 20),
                               alignment: Alignment.centerLeft,
                               child: Row(
                                 children: [
@@ -138,6 +150,10 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                         ),
                         Expanded(
                           child: Container(
+                              margin: EdgeInsets.only(
+                                top: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 20),
                               alignment: Alignment.centerRight,
                               child: Row(
                                 children: [
@@ -179,7 +195,9 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                               margin: EdgeInsets.only(
                                   left: Responsive.isSmallScreen(context)
                                       ? width / 20
-                                      : width / 20),
+                                      : width / 20,top: Responsive.isSmallScreen(context)
+                                  ? width / 30
+                                  : width / 30),
                               alignment: Alignment.centerLeft,
                               child: Row(
                                 children: [
@@ -212,6 +230,10 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                         ),
                         Expanded(
                           child: Container(
+                              margin: EdgeInsets.only(
+                                  top: Responsive.isSmallScreen(context)
+                                  ? width / 30
+                                  : width / 30),
                               alignment: Alignment.centerRight,
                               child: Row(
                                 children: [
@@ -250,14 +272,15 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                   child: Container(
                     width: double.infinity,
                     child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemCount: Name.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                             height: Responsive.isSmallScreen(context)
-                                ? width / 5
-                                : width / 5,
+                                ? width / 4
+                                : width / 4,
                             child: Container(
                                 decoration: BoxDecoration(
                                   color: Color(0xffF9F9F9),
@@ -265,11 +288,11 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                                 ),
                                 margin: EdgeInsets.only(
                                     left: Responsive.isSmallScreen(context)
-                                        ? width / 50
-                                        : width / 50,
+                                        ? width / 40
+                                        : width / 40,
                                     right: Responsive.isSmallScreen(context)
-                                        ? width / 50
-                                        : width / 50,
+                                        ? width / 40
+                                        : width / 40,
                                     top: Responsive.isSmallScreen(context)
                                         ? width / 50
                                         : width / 50),
@@ -277,10 +300,15 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.only(
-                                        left: Responsive.isSmallScreen(context)
-                                            ? width / 30
-                                            : width / 30,
-                                      ),
+                                          left: Responsive.isSmallScreen(context)
+                                              ? width / 30
+                                              : width / 30,
+                                          right: Responsive.isSmallScreen(context)
+                                              ? width / 30
+                                              : width / 30,
+                                          top: Responsive.isSmallScreen(context)
+                                              ? width / 30
+                                              : width / 30),
                                       alignment: Alignment.center,
                                       child: Column(
                                         mainAxisAlignment:
@@ -297,8 +325,8 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                                                 fontSize:
                                                     Responsive.isSmallScreen(
                                                             context)
-                                                        ? width / 28
-                                                        : width / 28,
+                                                        ? width / 24
+                                                        : width / 32,
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -313,8 +341,8 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                                                 fontSize:
                                                     Responsive.isSmallScreen(
                                                             context)
-                                                        ? width / 32
-                                                        : width / 32,
+                                                        ? width / 30
+                                                        : width / 38,
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -336,30 +364,30 @@ class _VaccinationHistoryState extends State<VaccinationHistory> {
                                                   left:
                                                       Responsive.isSmallScreen(
                                                               context)
-                                                          ? width / 40
-                                                          : width / 40,
+                                                          ? width / 25
+                                                          : width / 25,
                                                   top: Responsive.isSmallScreen(
                                                           context)
-                                                      ? width / 40
-                                                      : width / 40,
+                                                      ? width / 30
+                                                      : width / 30,
                                                   bottom:
                                                       Responsive.isSmallScreen(
                                                               context)
-                                                          ? width / 40
-                                                          : width / 40,
+                                                          ? width / 30
+                                                          : width / 30,
                                                   right:
                                                       Responsive.isSmallScreen(
                                                               context)
-                                                          ? width / 40
-                                                          : width / 40),
+                                                          ? width / 25
+                                                          : width / 25),
                                               width: Responsive.isSmallScreen(
                                                       context)
-                                                  ? width / 6.5
-                                                  : width / 6.5,
+                                                  ? width / 6
+                                                  : width / 6,
                                               decoration: BoxDecoration(
                                                   color: Color(0xffF7F7F7),
                                                   borderRadius:
-                                                      BorderRadius.circular(15),
+                                                      BorderRadius.circular(10),
                                                   border: Border.all(
                                                       width: 1,
                                                       color: Colors.red)),

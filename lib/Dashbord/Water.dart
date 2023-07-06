@@ -253,19 +253,34 @@ borderRadius: BorderRadius.circular(3000),
                     children: [
                       RotatedBox(
                         quarterTurns: 3,
-                        child: Slider(
-                          value: _value,
-                          min: 0.0,
-                          max: 10.0,
-                          onChanged: (newValue) {
-                            setState(() {
-                              _value = newValue;
-                            });
-                          },
-                          divisions: 10,
-                          // label: _value.round().toString(),
-                        ),
+                  child:SliderTheme(data: SliderThemeData(
+                    thumbColor: Color(0xffD3D3D3).withOpacity(0.25),
+                    activeTrackColor:Color(0xffD3D3D3).withOpacity(0.25),
+                    inactiveTrackColor: Color(0xffD3D3D3).withOpacity(0.25),
+                    inactiveTickMarkColor: Colors.transparent,
+                    thumbShape: RoundSliderThumbShape(
+                        enabledThumbRadius: 10.0,
+
+                    ),
+
+
+
+                  ),
+                    child: Slider(
+                    value: _value,
+                    min: 0.0,
+                    max: 10.0,
+                    onChanged: (newValue) {
+                      setState(() {
+                        _value = newValue;
+                      });
+                    },
+                    divisions: 10,
+                    // label: _value.round().toString(),
+                  ),)
+
                       ),
+                      
 
 
                     ],
@@ -511,3 +526,6 @@ class _WaterWavePainter extends CustomPainter {
         oldDelegate.waveColor != waveColor;
   }
 }
+
+
+

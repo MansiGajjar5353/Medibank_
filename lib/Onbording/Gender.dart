@@ -592,6 +592,10 @@ class _ButtonGroupState extends State<ButtonGroup> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    var _mediaquery = MediaQuery.of(context);
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 30),
       child: Column(
@@ -615,7 +619,7 @@ class _ButtonGroupState extends State<ButtonGroup> {
                     CircleAvatar(
 
                       backgroundColor: Colors.white,
-                      radius: 40.0,
+                      radius: Responsive.isSmallScreen(context)? width/10: width/20,
                       child:Column(
 
                         children: [
@@ -697,7 +701,7 @@ class _ButtonGroupState extends State<ButtonGroup> {
                     CircleAvatar(
 
                       backgroundColor: Colors.white,
-                      radius: 40.0,
+                      radius: Responsive.isSmallScreen(context)? width/10: width/30,
                       child:Column(
                         children: [
                           Transform.translate(offset: Offset(0,10),
@@ -781,7 +785,7 @@ class _ButtonGroupState extends State<ButtonGroup> {
                     CircleAvatar(
 
                       backgroundColor: Colors.white,
-                      radius: 40.0,
+                      radius: Responsive.isSmallScreen(context)? width/10: width/30,
                       child:Column(
                         children: [
                           Transform.translate(offset: Offset(0,10),

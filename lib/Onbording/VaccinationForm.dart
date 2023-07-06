@@ -20,13 +20,13 @@ class _VaccinationFormState extends State<VaccinationForm> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green),
+        iconTheme: IconThemeData(color: Colors.green,size: Responsive.isSmallScreen(context) ? width / 15 : width / 25,),
         title: Text(
           "Dashboard",
           style: TextStyle(
             color: Colors.black,
             fontSize:
-                Responsive.isSmallScreen(context) ? width / 24 : width / 34,
+                Responsive.isSmallScreen(context) ? width / 18 : width / 26,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w400,
           ),
@@ -37,8 +37,8 @@ class _VaccinationFormState extends State<VaccinationForm> {
           Container(
             margin: EdgeInsets.only(
                 left:
-                    Responsive.isSmallScreen(context) ? width / 20 : width / 60,
-                top: 20),
+                    Responsive.isSmallScreen(context) ? width / 20 : width / 40,
+                top:  Responsive.isSmallScreen(context) ? width / 20 : width / 40,),
             child: RichText(
               text: TextSpan(
                 text: 'Vaccination ',
@@ -72,19 +72,20 @@ class _VaccinationFormState extends State<VaccinationForm> {
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      left: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 40,
-                      top: Responsive.isSmallScreen(context)
-                          ? width / 30
-                          : width / 100,),
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 40,
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 30
+                        : width / 60,
+                  ),
                   child: Text(
-                    "Due  date",
+                    "Date",
                     style: TextStyle(
                       color: Color(0xff4F555A).withOpacity(0.4),
                       fontSize: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 26,
+                          ? width / 24
+                          : width / 30,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
@@ -95,21 +96,121 @@ class _VaccinationFormState extends State<VaccinationForm> {
                     left: Responsive.isSmallScreen(context)
                         ? width / 20
                         : width / 40,
-                      top: Responsive.isSmallScreen(context)
-                          ? width / 30
-                          : width / 60,
-                     ),
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 50
+                        : width / 100,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 1.4
-                            : width / 1.3,
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 8
-                            : width / 8,
+                      Expanded(
+                        flex: 4,
+                        child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                          children: [
+
+                            TextField(
+//
+                              decoration: InputDecoration(
+                                contentPadding:
+                                EdgeInsets.symmetric(horizontal: 20),
+                                filled: true,
+                                fillColor: Color(0xffF9F9F9),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(45),
+                                  borderSide: BorderSide.none,
+                                ),
+                                hintText: "Date",
+                                hintStyle: TextStyle(
+                                  color: Color(0xff4F555A).withOpacity(0.4),
+                                  fontSize: Responsive.isSmallScreen(context)
+                                      ? width / 20
+                                      : width / 26,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              style: TextStyle(
+                                color: Color(0xff000000).withOpacity(0.4),
+                                fontSize: Responsive.isSmallScreen(context)
+                                    ? width / 20
+                                    : width / 26,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        )
+
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 9
+                              : width / 15,
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 9
+                              : width / 15,
+                          margin: EdgeInsets.only(
+                            right: Responsive.isSmallScreen(context)
+                                ? width / 20
+                                : width / 20,
+                          ),
+                          alignment: Alignment.centerRight,
+                          child: Image(
+                            image:
+                            AssetImage('image/calenderwithbackground.png'),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 40,
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 40
+                        : width / 60,
+                  ),
+                  child: Text(
+                    "Vaccination  date",
+                    style: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.4),
+                      fontSize: Responsive.isSmallScreen(context)
+                          ? width / 24
+                          : width / 30,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 40,
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 50
+                        : width / 100,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 4,
                         child: TextField(
 //
                           decoration: InputDecoration(
@@ -123,7 +224,7 @@ class _VaccinationFormState extends State<VaccinationForm> {
                             ),
                             hintText: "Date",
                             hintStyle: TextStyle(
-                              color: Color(0xff4F555A).withOpacity(0.4 ),
+                              color: Color(0xff4F555A).withOpacity(0.4),
                               fontSize: Responsive.isSmallScreen(context)
                                   ? width / 20
                                   : width / 26,
@@ -141,33 +242,27 @@ class _VaccinationFormState extends State<VaccinationForm> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 10
-                            : width / 10,
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 10
-                            : width / 10,
-                        margin: EdgeInsets.only(
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 9
+                              : width / 15,
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 9
+                              : width / 15,
+                          margin: EdgeInsets.only(
                             right: Responsive.isSmallScreen(context)
                                 ? width / 20
                                 : width / 20,
-                          bottom: Responsive.isSmallScreen(context)
-                              ? width / 50
-                              : width / 15,
-                           ),
-                        alignment: Alignment.centerRight,
-                        child: CircleAvatar(
-                          radius: Responsive.isSmallScreen(context)
-                              ? width / 20
-                              : width / 35,
-                          backgroundColor: Color(0xffF9F9F9),
-                          child: Icon(
-                            Icons.calendar_today_outlined,
-                            color: Color(0xff4F555A).withOpacity(0.5),
+                          ),
+                          alignment: Alignment.centerRight,
+                          child: Image(
+                            image:
+                                AssetImage('image/calenderwithbackground.png'),
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -182,125 +277,18 @@ class _VaccinationFormState extends State<VaccinationForm> {
                   margin: EdgeInsets.only(
                     left: Responsive.isSmallScreen(context)
                         ? width / 20
-                        : width / 40,
+                        : width / 20,
                     top: Responsive.isSmallScreen(context)
-                        ? width / 30
-                        : width / 100,),
-                  child: Text(
-                    "Vaccination  date",
-                    style: TextStyle(
-                      color: Color(0xff4F555A).withOpacity(0.4),
-                      fontSize: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 26,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(
-                    left: Responsive.isSmallScreen(context)
-                        ? width / 20
-                        : width / 40,
-                    top: Responsive.isSmallScreen(context)
-                        ? width / 30
+                        ? width / 40
                         : width / 60,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 1.4
-                            : width / 1.3,
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 8
-                            : width / 8,
-                        child: TextField(
-//
-                          decoration: InputDecoration(
-                            contentPadding:
-                            EdgeInsets.symmetric(horizontal: 20),
-                            filled: true,
-                            fillColor: Color(0xffF9F9F9),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(45),
-                              borderSide: BorderSide.none,
-                            ),
-                            hintText: "Date",
-                            hintStyle: TextStyle(
-                              color: Color(0xff4F555A).withOpacity(0.4 ),
-                              fontSize: Responsive.isSmallScreen(context)
-                                  ? width / 20
-                                  : width / 26,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          style: TextStyle(
-                            color: Color(0xff000000).withOpacity(0.4),
-                            fontSize: Responsive.isSmallScreen(context)
-                                ? width / 20
-                                : width / 26,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 10
-                            : width / 10,
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 10
-                            : width / 10,
-                        margin: EdgeInsets.only(
-                          right: Responsive.isSmallScreen(context)
-                              ? width / 20
-                              : width / 20,
-                          bottom: Responsive.isSmallScreen(context)
-                              ? width / 50
-                              : width / 15,
-                        ),
-                        alignment: Alignment.centerRight,
-                        child: CircleAvatar(
-                          radius: Responsive.isSmallScreen(context)
-                              ? width / 20
-                              : width / 35,
-                          backgroundColor: Color(0xffF9F9F9),
-                          child: Icon(
-                            Icons.calendar_today_outlined,
-                            color: Color(0xff4F555A).withOpacity(0.5),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                      left: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 20,
-                      top: Responsive.isSmallScreen(context)
-                          ? width / 30
-                          : width / 100,),
                   child: Text(
                     "Height in cms",
                     style: TextStyle(
                       color: Color(0xff4F555A).withOpacity(0.4),
                       fontSize: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 26,
+                          ? width / 24
+                          : width / 30,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
@@ -311,10 +299,10 @@ class _VaccinationFormState extends State<VaccinationForm> {
                   child: Container(
                     alignment: Alignment.center,
                     margin: EdgeInsets.only(
-                        top: Responsive.isSmallScreen(context)
-                            ? width / 40
-                            : width / 60,
-                        ),
+                      top: Responsive.isSmallScreen(context)
+                          ? width / 50
+                          : width / 100,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -329,89 +317,8 @@ class _VaccinationFormState extends State<VaccinationForm> {
                           child: TextField(
 //
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 20),
-                              filled: true,
-                              fillColor: Color(0xffF9F9F9),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(45),
-                                borderSide: BorderSide.none,
-                              ),
-                              hintText: "0",
-                              hintStyle: TextStyle(
-                                color: Color(0xff4F555A).withOpacity(0.4),
-                                fontSize: Responsive.isSmallScreen(context)
-                                    ? width / 20
-                                    : width / 26,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            style: TextStyle(
-                              color: Color(0xff4F555A).withOpacity(0.4),
-                              fontSize: Responsive.isSmallScreen(context)
-                                  ? width / 20
-                                  : width / 26,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                      left: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 20,
-                      top: Responsive.isSmallScreen(context)
-                          ? width / 30
-                          : width / 100,),
-                  child: Text(
-                    "Weight in kgs",
-                    style: TextStyle(
-                      color: Color(0xff4F555A).withOpacity(0.4),
-                      fontSize: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 26,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child:Container(
-                    margin: EdgeInsets.only(
-                      top: Responsive.isSmallScreen(context)
-                            ? width / 40
-                            : width / 60,),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: Responsive.isSmallScreen(context)
-                              ? width / 1.1
-                              : width / 1.1,
-                          height: Responsive.isSmallScreen(context)
-                              ? width / 8
-                              : width / 8,
-                          child: TextField(
-//
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 20),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
                               filled: true,
                               fillColor: Color(0xffF9F9F9),
                               border: OutlineInputBorder(
@@ -455,25 +362,106 @@ class _VaccinationFormState extends State<VaccinationForm> {
                         ? width / 20
                         : width / 20,
                     top: Responsive.isSmallScreen(context)
-                        ? width / 30
-                        : width / 100,
+                        ? width / 40
+                        : width / 60,
                   ),
                   child: Text(
-                    "Head Circumference in cms",
+                    "Weight in kgs",
                     style: TextStyle(
                       color: Color(0xff4F555A).withOpacity(0.4),
                       fontSize: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 26,
+                          ? width / 24
+                          : width / 30,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
                 Align(
-
                   alignment: Alignment.center,
-                  child:Container(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      top: Responsive.isSmallScreen(context)
+                          ? width / 40
+                          : width / 60,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 1.1
+                              : width / 1.1,
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 8
+                              : width / 8,
+                          child: TextField(
+//
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
+                              filled: true,
+                              fillColor: Color(0xffF9F9F9),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(45),
+                                borderSide: BorderSide.none,
+                              ),
+                              hintText: "0",
+                              hintStyle: TextStyle(
+                                color: Color(0xff4F555A).withOpacity(0.4),
+                                fontSize: Responsive.isSmallScreen(context)
+                                    ? width / 20
+                                    : width / 26,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            style: TextStyle(
+                              color: Color(0xff4F555A).withOpacity(0.4),
+                              fontSize: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 26,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 20,
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 40
+                        : width / 60,
+                  ),
+                  child: Text(
+                    "Head Circumference in cms",
+                    style: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.4),
+                      fontSize: Responsive.isSmallScreen(context)
+                          ? width / 24
+                          : width / 30,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
                     margin: EdgeInsets.only(
                       top: Responsive.isSmallScreen(context)
                           ? width / 40
@@ -494,8 +482,8 @@ class _VaccinationFormState extends State<VaccinationForm> {
                           child: TextField(
 //
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 20),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
                               filled: true,
                               fillColor: Color(0xffF9F9F9),
                               border: OutlineInputBorder(
@@ -526,7 +514,6 @@ class _VaccinationFormState extends State<VaccinationForm> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
@@ -536,29 +523,28 @@ class _VaccinationFormState extends State<VaccinationForm> {
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      left: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 20,
-                      top: Responsive.isSmallScreen(context)
-                          ? width / 30
-                          : width / 100,
-                      ),
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 20,
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 40
+                        : width / 60,
+                  ),
                   child: Text(
                     "Doctor Name",
                     style: TextStyle(
                       color: Color(0xff4F555A).withOpacity(0.4),
                       fontSize: Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 26,
+                          ? width / 24
+                          : width / 30,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
                 Align(
-
                   alignment: Alignment.center,
-                  child:Container(
+                  child: Container(
                     margin: EdgeInsets.only(
                       top: Responsive.isSmallScreen(context)
                           ? width / 40
@@ -579,8 +565,8 @@ class _VaccinationFormState extends State<VaccinationForm> {
                           child: TextField(
 //
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 20),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
                               filled: true,
                               fillColor: Color(0xffF9F9F9),
                               border: OutlineInputBorder(
@@ -611,79 +597,70 @@ class _VaccinationFormState extends State<VaccinationForm> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
           Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 20,
-                        right: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 20,
-                        top: Responsive.isSmallScreen(context)
-                            ? width / 30
-                            : width / 100,),
-                    child: Text(
-                      "Clinic Name",
-                      style: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.4),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 26,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                      ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 20,
+                    right: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 20,
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 40
+                        : width / 60,
+                  ),
+                  child: Text(
+                    "Clinic Name",
+                    style: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.4),
+                      fontSize: Responsive.isSmallScreen(context)
+                          ? width / 24
+                          : width / 30,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  Align(
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      top: Responsive.isSmallScreen(context)
+                          ? width / 40
+                          : width / 60,
+                    ),
                     alignment: Alignment.center,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        top: Responsive.isSmallScreen(context)
-                            ? width / 40
-                            : width / 60,
-                      ),
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: Responsive.isSmallScreen(context)
-                                ? width / 1.1
-                                : width / 1.1,
-                            height: Responsive.isSmallScreen(context)
-                                ? width / 8
-                                : width / 8,
-                            child: TextField(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 1.1
+                              : width / 1.1,
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 8
+                              : width / 8,
+                          child: TextField(
 //
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 20),
-                                filled: true,
-                                fillColor: Color(0xffF9F9F9),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(45),
-                                  borderSide: BorderSide.none,
-                                ),
-                                hintText: "Clinic Name",
-                                hintStyle: TextStyle(
-                                  color: Color(0xff4F555A).withOpacity(0.4),
-                                  fontSize: Responsive.isSmallScreen(context)
-                                      ? width / 20
-                                      : width / 26,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w400,
-                                ),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 20),
+                              filled: true,
+                              fillColor: Color(0xffF9F9F9),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(45),
+                                borderSide: BorderSide.none,
                               ),
-                              style: TextStyle(
+                              hintText: "Clinic Name",
+                              hintStyle: TextStyle(
                                 color: Color(0xff4F555A).withOpacity(0.4),
                                 fontSize: Responsive.isSmallScreen(context)
                                     ? width / 20
@@ -692,21 +669,30 @@ class _VaccinationFormState extends State<VaccinationForm> {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
+                            style: TextStyle(
+                              color: Color(0xff4F555A).withOpacity(0.4),
+                              fontSize: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 26,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
+          ),
           Container(
             margin: EdgeInsets.only(
-                left:
-                    Responsive.isSmallScreen(context) ? width / 20 : width / 20,
-                right:
-                    Responsive.isSmallScreen(context) ? width / 20 : width / 20,
-                top: 10),
+              left: Responsive.isSmallScreen(context) ? width / 20 : width / 20,
+              right:
+                  Responsive.isSmallScreen(context) ? width / 20 : width / 20,
+              top: Responsive.isSmallScreen(context) ? width / 20 : width / 20,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -715,8 +701,9 @@ class _VaccinationFormState extends State<VaccinationForm> {
                   width: Responsive.isSmallScreen(context)
                       ? width / 1.1
                       : width / 1.1,
-                  height:
-                      Responsive.isSmallScreen(context) ? width / 10 : width / 8,
+                  height: Responsive.isSmallScreen(context)
+                      ? width / 10
+                      : width / 8,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Colors.green,
@@ -748,7 +735,7 @@ class _VaccinationFormState extends State<VaccinationForm> {
                 right:
                     Responsive.isSmallScreen(context) ? width / 10 : width / 10,
                 top:
-                    Responsive.isSmallScreen(context) ? width / 20 : width / 20,
+                    Responsive.isSmallScreen(context) ? width / 10 : width / 10,
                 bottom:
                     Responsive.isSmallScreen(context) ? width / 7 : width / 7),
             width:

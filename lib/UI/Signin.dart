@@ -90,6 +90,7 @@ class _SigninState extends State<Signin>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 90,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.green),

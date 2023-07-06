@@ -94,13 +94,18 @@ class _Homestate extends State<Home> {
 
     return Scaffold(
       appBar: AppBar(
+         toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.transparent),
-        title: Center(
-          child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+        title: Wrap(
+          children:<Widget>[
+            Center(
+            child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+            ),]
+          ),
         ),
-      ),
+
 
       body: Container(
           width: width,

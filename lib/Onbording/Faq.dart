@@ -3,6 +3,7 @@ import 'package:sizer/sizer.dart';
 import 'Responsive.dart';
 
 class Faq extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -11,6 +12,29 @@ class Faq extends StatefulWidget {
 }
 
 class _FaqList extends State<Faq> {
+  List<int> selectedIndices = [];
+  bool isVisible = false;
+  bool click = true;
+  bool toggle = false;
+  bool isButtonPressed = false;
+
+  List<bool> isCheckedListDelete = List.generate(5, (index) => false);
+  List<bool> imagechange = List.generate(5, (index) => false);
+
+  void toggleCheckboxDelete(int index) {
+    setState(() {
+      isCheckedListDelete[index] = !isCheckedListDelete[index];
+      imagechange[index] = !imagechange[index];
+    });
+  }
+
+  void handleButtonPress() {
+    setState(() {
+      // Change the color to your desired value
+      isButtonPressed = true;
+    });
+  }
+
   final titles = [
     "Questions about",
     "Questions about",
@@ -28,16 +52,25 @@ class _FaqList extends State<Faq> {
     "What does “The Medibank “ provide? ",
     "How secured is our Data ?",
     "I have not received OTP for mobile ?",
-    "How to enroll for other family members "
+    "How to enroll for jrkhejw jkrhewjk jkhrkw other family members "
   ];
 
   final icons = [Icons.ac_unit, Icons.access_alarm, Icons.access_time];
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    final mqHeight = MediaQuery.of(context).size.height;
-    final mqWidth = MediaQuery.of(context).size.width;
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    final mqHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    final mqWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
@@ -50,7 +83,7 @@ class _FaqList extends State<Faq> {
             style: TextStyle(
               color: Colors.black,
               fontSize:
-                  Responsive.isSmallScreen(context) ? width / 20 : width / 20,
+              Responsive.isSmallScreen(context) ? width / 20 : width / 20,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w400,
             ),
@@ -63,40 +96,36 @@ class _FaqList extends State<Faq> {
                 children: [
                   Container(
                     alignment: Alignment.centerLeft,
-
                     margin: EdgeInsets.only(
                         left: Responsive.isSmallScreen(context)
                             ? width / 30
-                            : width / 30, right: Responsive.isSmallScreen(context)
-                        ? width / 30
-                        : width / 30,
+                            : width / 30,
+                        right: Responsive.isSmallScreen(context)
+                            ? width / 30
+                            : width / 30,
                         top: 12),
-
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'How can we help you?',
-                    style: new TextStyle(
-                        color: Color(0xFF000000),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 20
-                            : width / 20,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Poppins'),
-                  ),
-                  ),
-
-
-
-
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'How can we help you?',
+                        style: new TextStyle(
+                            color: Color(0xFF000000),
+                            fontSize: Responsive.isSmallScreen(context)
+                                ? width / 20
+                                : width / 20,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Poppins'),
+                      ),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(
                         left: Responsive.isSmallScreen(context)
                             ? width / 30
-                            : width / 30,  right: Responsive.isSmallScreen(context)
-                        ? width / 30
-                        : width / 30,
+                            : width / 30,
+                        right: Responsive.isSmallScreen(context)
+                            ? width / 30
+                            : width / 30,
                         top: 20),
                     width: Responsive.isSmallScreen(context)
                         ? width / 1.0
@@ -104,7 +133,6 @@ class _FaqList extends State<Faq> {
                     height: Responsive.isSmallScreen(context)
                         ? width / 8
                         : width / 8,
-
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: TextField(
@@ -128,8 +156,8 @@ class _FaqList extends State<Faq> {
                             ),
                             onPressed: () {},
                           ),
-                          contentPadding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
                           filled: true,
                           fillColor: Color(0xffF9F9F9),
                           border: OutlineInputBorder(
@@ -148,7 +176,6 @@ class _FaqList extends State<Faq> {
                         ),
                       ),
                     ),
-
                   ),
                   Positioned(
                     top: mqHeight / 10.5,
@@ -193,31 +220,31 @@ class _FaqList extends State<Faq> {
                                     Container(
                                       margin: EdgeInsets.only(
                                           left:
-                                              Responsive.isSmallScreen(context)
-                                                  ? width / 50
-                                                  : width / 50,
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 50
+                                              : width / 50,
                                           top: 20,
                                           right:
-                                              Responsive.isSmallScreen(context)
-                                                  ? width / 30
-                                                  : width / 30),
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 30
+                                              : width / 30),
                                       alignment: Alignment.centerLeft,
                                       child: Image(
                                         image:
-                                            AssetImage('image/adduserfaq.png'),
+                                        AssetImage('image/adduserfaq.png'),
                                         height:
-                                            Responsive.isSmallScreen(context)
-                                                ? width / 15
-                                                : width / 15,
+                                        Responsive.isSmallScreen(context)
+                                            ? width / 15
+                                            : width / 15,
                                       ),
                                     ),
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       margin: EdgeInsets.only(
                                           left:
-                                              Responsive.isSmallScreen(context)
-                                                  ? width / 50
-                                                  : width / 50,
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 50
+                                              : width / 50,
                                           top: Responsive.isSmallScreen(context)
                                               ? width / 50
                                               : width / 50),
@@ -227,9 +254,9 @@ class _FaqList extends State<Faq> {
                                           color: Color(0xff4F555A)
                                               .withOpacity(0.5),
                                           fontSize:
-                                              Responsive.isSmallScreen(context)
-                                                  ? width / 36
-                                                  : width / 36,
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 36
+                                              : width / 36,
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -239,17 +266,17 @@ class _FaqList extends State<Faq> {
                                       alignment: Alignment.centerLeft,
                                       margin: EdgeInsets.only(
                                           left:
-                                              Responsive.isSmallScreen(context)
-                                                  ? width / 50
-                                                  : width / 50),
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 50
+                                              : width / 50),
                                       child: Text(
                                         'Getting Started',
                                         style: TextStyle(
                                           color: Color(0xff000000),
                                           fontSize:
-                                              Responsive.isSmallScreen(context)
-                                                  ? width / 34
-                                                  : width / 34,
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 34
+                                              : width / 34,
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -332,77 +359,142 @@ class _FaqList extends State<Faq> {
                         shrinkWrap: true,
                         itemCount: question.length,
                         itemBuilder: (BuildContext context, int index) {
+                          bool isSelected = selectedIndices.contains(index);
                           return Container(
-                              height: Responsive.isSmallScreen(context)
-                                  ? width / 5
-                                  : width / 5,
-                              child: Card(
-                                  elevation: 3,
-                                  margin: EdgeInsets.only(
-                                      left: Responsive.isSmallScreen(context)
-                                          ? width / 30
-                                          : width / 30,
-                                      right: Responsive.isSmallScreen(context)
-                                          ? width / 50
-                                          : width / 50,
-                                      top: Responsive.isSmallScreen(context)
-                                          ? width / 50
-                                          : width / 50),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            left: Responsive.isSmallScreen(
-                                                    context)
-                                                ? width / 50
-                                                : width / 50,
-                                            right: Responsive.isSmallScreen(
-                                                    context)
-                                                ? width / 50
-                                                : width / 50),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
 
-                                              alignment: Alignment.topLeft,
-                                              child: Text(
-                                                question[index],
-                                                style: TextStyle(
-                                                  color: Color(0xff000000),
-                                                  fontSize:
-                                                      Responsive.isSmallScreen(
-                                                              context)
-                                                          ? width / 28
-                                                          : width / 28,
-                                                  fontFamily: 'Poppins',
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              alignment: Alignment.topRight,
-                                              child: IconButton(
-                                                icon: Icon(
-                                                  Icons.add,
-                                                  color: Color(0xff4F555A)
-                                                      .withOpacity(0.5),
-                                                  size:
-                                                      Responsive.isSmallScreen(
-                                                              context)
-                                                          ? width / 15
-                                                          : width / 15,
-                                                ),
-                                                alignment: Alignment.topRight,
-                                                onPressed: () {},
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  )),);
+                            child: Card(
+                                elevation: 3,
+                                margin: EdgeInsets.only(
+                                    left: Responsive.isSmallScreen(context)
+                                        ? width / 30
+                                        : width / 30,
+                                    right: Responsive.isSmallScreen(context)
+                                        ? width / 50
+                                        : width / 50,
+                                    top: Responsive.isSmallScreen(context)
+                                        ? width / 50
+                                        : width / 50),
+                                child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                Container(
+                                margin: EdgeInsets.only(
+                                left:
+                                    Responsive.isSmallScreen(context)
+                                    ? width / 50
+                                    : width / 50,
+                                right:
+                                Responsive.isSmallScreen(context)
+                                    ? width / 50
+                                    : width / 50),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
+                                children: [
+                            Container(
+                             width:  Responsive.isSmallScreen(context)
+                                 ? width / 1.4
+                                 : width / 1.5,
+                            padding:EdgeInsets.only(top:20, bottom: 20),
+                            alignment: Alignment.topLeft,
+                            child:
+                            RichText(
+
+                              text: TextSpan(
+                                  text: question[index],
+
+                                  style: TextStyle(
+                                  color: Color(0xff000000),
+                              fontSize:
+                              Responsive.isSmallScreen(
+                                  context)
+                                  ? width / 28
+                                  : width / 28,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600,
+                            ),
+
+                          ),
+                          ),
+
+
+                          ),
+                          Container(
+
+
+                          child:IconButton(
+                          color: Colors.green,
+                          icon: imagechange[index]
+                          ?
+                          Container(
+                          width: 80,
+                          height:80,
+
+                          child:
+                          Image.asset(
+                          "image/Minus.png",
+                          color: Colors.green,
+                          fit: BoxFit.contain,
+                          height: Responsive.isSmallScreen(
+                          context)
+                          ? width / 20
+                              : width / 20,
+                          ),
+                          )
+                              : Image.asset(
+                          "image/add.png",
+                          fit: BoxFit.contain,
+                          height: Responsive.isSmallScreen(
+                          context)
+                          ? width / 20
+                              : width / 20,
+
+                          ),
+                          onPressed: () {
+                          handleButtonPress;
+                          setState(() {
+                          toggleCheckboxDelete(index);
+                          //toggle = !toggle;
+
+                          });
+                          }),
+                          ),
+                          ],
+                          ),
+                          ),
+                          Visibility(
+
+                          visible: isCheckedListDelete[index],
+                          child: Container(
+                          padding: EdgeInsets.only(left:Responsive.isSmallScreen(
+                          context)
+                          ? width / 30
+                              : width / 30,bottom:Responsive.isSmallScreen(
+                          context)
+                          ? width / 30
+                              : width / 30,
+                          right:Responsive.isSmallScreen(
+                          context)
+                          ? width / 30
+                              : width / 30,
+                          ),
+                          child: Text('Lorem ipsum dolor sit amet consectetur.'
+                          ' Nulla neque non adipiscing ut quam nulla pulvinar sit mauris.'
+                          ' Eu nisi arcu parturient elit enim.', style: TextStyle(
+                          color: Color(0xff757575),
+                          fontSize:
+                          Responsive.isSmallScreen(
+                          context)
+                          ? width / 28
+                              : width / 28,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          ),),
+                          ),
+                          ),
+                          ],
+                          )),
+                          );
                         },
                       ),
                     ),
@@ -411,6 +503,7 @@ class _FaqList extends State<Faq> {
               ),
             )
           ],
-        ));
+        )
+    );
   }
 }

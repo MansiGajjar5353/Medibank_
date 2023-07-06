@@ -4,21 +4,12 @@ import 'package:project_signup_page/Dashbord/AbhaCreate.dart';
 import 'package:project_signup_page/Dashbord/AddRecords.dart';
 import 'package:project_signup_page/Dashbord/Notification.dart';
 import 'package:project_signup_page/Dashbord/Weigh.dart';
+import 'package:project_signup_page/Onbording/DoctorsZone.dart';
+import 'package:project_signup_page/Onbording/FitnessData.dart';
+import 'package:project_signup_page/Onbording/LifestyleDashboard.dart';
 import 'package:project_signup_page/Onbording/Profile.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
-import 'package:flutter/material.dart';
-import 'package:project_signup_page/Onbording/LifestyleDashboard.dart';
-import 'package:project_signup_page/Onbording/voiceAssistant.dart';
-import 'package:project_signup_page/Onbording/Records.dart';
-import 'package:project_signup_page/Onbording/Responsive.dart';
-import 'package:flutter/material.dart';
-import 'package:project_signup_page/Onbording/FitnessData.dart';
-
-import 'package:project_signup_page/Onbording/Dash.dart';
-import 'package:project_signup_page/Onbording/DoctorsZone.dart';
 import 'package:project_signup_page/Onbording/Symptoms.dart';
-
-import 'Questionnaires.dart';
 
 class TabData {
   String title;
@@ -395,18 +386,29 @@ class Screen1State extends State<Screen1> {
                                                 fontFamily: 'Poppins',
                                               ),
                                             ),
-                                            Text(
-                                                "You’ve uploaded a report pdf to the records",
-                                                style: TextStyle(
-                                                  height: 0.95,
-                                                  fontSize:
-                                                      Responsive.isSmallScreen(
-                                                              context)
+                                            Container(
+                                              width: Responsive.isSmallScreen(
+                                                      context)
+                                                  ? width / 1.8
+                                                  : width / 1.8,
+                                              child: RichText(
+                                                text: TextSpan(
+                                                    text:
+                                                        "You’ve uploaded a report pdf to the records",
+                                                    style: TextStyle(
+                                                      height: 0.95,
+                                                      color: Color(0xff000000),
+                                                      fontSize: Responsive
+                                                              .isSmallScreen(
+                                                                  context)
                                                           ? width / 43
                                                           : width / 51,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Poppins',
-                                                )),
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: 'Poppins',
+                                                    )),
+                                              ),
+                                            ),
                                             InkWell(
                                                 onTap: () {},
                                                 child: Text("View Records",
@@ -1104,814 +1106,760 @@ class Screen2State extends State<Screen2> {
                   },
                   itemBuilder: (context, index) {
                     if (index == 0) {
-                      return
-                          Positioned(
-                            child: Container(
-                              margin:
-                                  EdgeInsets.only(left: 10, right: 10, top: 10),
-                              decoration: BoxDecoration(
-                                color: Color(0xffF7F7F7),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              width: double.infinity,
-                              child: ListView.builder(
-                                physics: ClampingScrollPhysics(),
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                itemCount: 6,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Container(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          width: double.infinity,
-                                          margin: EdgeInsets.only(
+                      return Positioned(
+                        child: Container(
+                          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                          decoration: BoxDecoration(
+                            color: Color(0xffF7F7F7),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          width: double.infinity,
+                          child: ListView.builder(
+                            physics: ClampingScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: 6,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Container(
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              Responsive.isSmallScreen(context)
+                                                  ? width / 50
+                                                  : width / 58,
+                                          right:
+                                              Responsive.isSmallScreen(context)
+                                                  ? width / 50
+                                                  : width / 58,
+                                          top: Responsive.isSmallScreen(context)
+                                              ? width / 40
+                                              : width / 48),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(
                                               left: Responsive.isSmallScreen(
                                                       context)
                                                   ? width / 50
-                                                  : width / 58,
-                                              right: Responsive.isSmallScreen(
-                                                      context)
-                                                  ? width / 50
-                                                  : width / 58,
+                                                  : width / 90,
                                               top: Responsive.isSmallScreen(
                                                       context)
-                                                  ? width / 40
-                                                  : width / 48),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                  left:
+                                                  ? width / 30
+                                                  : width / 60,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  //height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 :_mediaquery.size.height*0.10,
+                                                  width:
                                                       Responsive.isSmallScreen(
                                                               context)
-                                                          ? width / 50
-                                                          : width / 90,
+                                                          ? width / 7
+                                                          : width / 9,
+                                                  child: Image(
+                                                      image: AssetImage(
+                                                          'image/Report1.png')),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                    top: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 35
+                                                        : width / 40,
+                                                    bottom: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 60
+                                                        : width / 68,
+                                                  ),
+                                                  height:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 22
+                                                          : width / 30,
+                                                  width:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 8
+                                                          : width / 9,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xffDEF4E3),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                  ),
+                                                  child: Center(
+                                                      child: Text(
+                                                    "24 Jan",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xff24B445),
+                                                        fontSize: Responsive
+                                                                .isSmallScreen(
+                                                                    context)
+                                                            ? width / 32
+                                                            : width / 42,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  )),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: Responsive.isSmallScreen(
+                                                        context)
+                                                    ? width / 1.5
+                                                    : width / 1.3,
+                                                margin: EdgeInsets.only(
                                                   top: Responsive.isSmallScreen(
                                                           context)
                                                       ? width / 30
-                                                      : width / 60,
+                                                      : width / 38,
+                                                  left:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 600
+                                                          : width / 40,
                                                 ),
-                                                child: Column(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
                                                   children: [
                                                     Container(
-                                                      //height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 :_mediaquery.size.height*0.10,
-                                                      width: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 7
-                                                          : width / 9,
-                                                      child: Image(
-                                                          image: AssetImage(
-                                                              'image/Report1.png')),
-                                                    ),
+                                                        child: Text(
+                                                      "Blood Report",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          color:
+                                                              Color(0xff000000),
+                                                          fontSize: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 26
+                                                              : width / 34,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    )),
                                                     Container(
                                                       margin: EdgeInsets.only(
-                                                        top: Responsive
+                                                        right: Responsive
                                                                 .isSmallScreen(
                                                                     context)
-                                                            ? width / 35
-                                                            : width / 40,
-                                                        bottom: Responsive
-                                                                .isSmallScreen(
-                                                                    context)
-                                                            ? width / 60
-                                                            : width / 68,
+                                                            ? width / 50
+                                                            : width / 90,
                                                       ),
-                                                      height: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 22
-                                                          : width / 30,
-                                                      width: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 8
-                                                          : width / 9,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xffDEF4E3),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
+                                                      alignment:
+                                                          Alignment.topRight,
+                                                      child: InkWell(
+                                                        onTap: () {},
+                                                        child: Container(
+                                                          alignment: Alignment
+                                                              .topRight,
+                                                          height: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 22
+                                                              : width / 30,
+                                                          width: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 7
+                                                              : width / 8,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        25),
+                                                            border: Border.all(
+                                                                color: Color(
+                                                                    0xff24B445)),
+                                                          ),
+                                                          child: Center(
+                                                              child: Text(
+                                                            "Support",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                color: Color(
+                                                                        0xff000000)
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                fontSize: Responsive
+                                                                        .isSmallScreen(
+                                                                            context)
+                                                                    ? width / 32
+                                                                    : width /
+                                                                        42,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                          )),
+                                                        ),
                                                       ),
-                                                      child: Center(
-                                                          child: Text(
-                                                        "24 Jan",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            color: Color(
-                                                                0xff24B445),
-                                                            fontSize: Responsive
-                                                                    .isSmallScreen(
-                                                                        context)
-                                                                ? width /
-                                                                32
-                                                                : width /
-                                                                42,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
-                                                      )),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    width: Responsive
+                                              Container(
+                                                  margin: EdgeInsets.only(
+                                                    left: Responsive
                                                             .isSmallScreen(
                                                                 context)
-                                                        ? width / 1.5
-                                                        : width / 1.3,
-                                                    margin: EdgeInsets.only(
-                                                      top: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 30
-                                                          : width / 38,
-                                                      left: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 600
-                                                          : width / 40,
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Container(
-                                                            child: Text(
-                                                          "Blood Report",
-                                                          textAlign:
-                                                              TextAlign.center,
+                                                        ? width / 600
+                                                        : width / 40,
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                        width: Responsive
+                                                                .isSmallScreen(
+                                                                    context)
+                                                            ? width / 5
+                                                            : width / 9,
+                                                        child: Text(
+                                                          "Upload on",
                                                           style: TextStyle(
                                                               color: Color(
-                                                                  0xff000000),
+                                                                      0xff24B445)
+                                                                  .withOpacity(
+                                                                      0.5),
                                                               fontSize: Responsive
                                                                       .isSmallScreen(
                                                                           context)
-                                                                  ? width / 26
-                                                                  : width / 34,
+                                                                  ? width / 34
+                                                                  : width / 44,
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .w500),
-                                                        )),
-                                                        Container(
+                                                                      .w400),
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        ":",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                    0xff24B445)
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                      Text(
+                                                        "24/01/2023 ,10:54 AM",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                0xff000000),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    ],
+                                                  )),
+                                              Container(
+                                                  margin: EdgeInsets.only(
+                                                    left: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 600
+                                                        : width / 40,
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                        width: Responsive
+                                                                .isSmallScreen(
+                                                                    context)
+                                                            ? width / 5
+                                                            : width / 9,
+                                                        child: Text(
+                                                          "No of Pages",
+                                                          style: TextStyle(
+                                                              color: Color(
+                                                                      0xff24B445)
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              fontSize: Responsive
+                                                                      .isSmallScreen(
+                                                                          context)
+                                                                  ? width / 34
+                                                                  : width / 44,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        ":",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                    0xff24B445)
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                      Text(
+                                                        "2",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                0xff000000),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    ],
+                                                  )),
+                                              Container(
+                                                  margin: EdgeInsets.only(
+                                                    left: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 600
+                                                        : width / 40,
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                        width: Responsive
+                                                                .isSmallScreen(
+                                                                    context)
+                                                            ? width / 5
+                                                            : width / 9,
+                                                        child: Text(
+                                                          "Type",
+                                                          style: TextStyle(
+                                                              color: Color(
+                                                                      0xff24B445)
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              fontSize: Responsive
+                                                                      .isSmallScreen(
+                                                                          context)
+                                                                  ? width / 34
+                                                                  : width / 44,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        ":",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                    0xff24B445)
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                      Text(
+                                                        "Scanned",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                0xff000000),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    ],
+                                                  )),
+                                              Container(
+                                                  margin: EdgeInsets.only(
+                                                    left: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 600
+                                                        : width / 40,
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                        width: Responsive
+                                                                .isSmallScreen(
+                                                                    context)
+                                                            ? width / 5
+                                                            : width / 9,
+                                                        child: Text(
+                                                          "Verification:",
+                                                          style: TextStyle(
+                                                              color: Color(
+                                                                      0xff24B445)
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              fontSize: Responsive
+                                                                      .isSmallScreen(
+                                                                          context)
+                                                                  ? width / 34
+                                                                  : width / 44,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        ":",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                    0xff24B445)
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                      Text(
+                                                        "Verified",
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                0xff000000),
+                                                            fontSize: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 34
+                                                                : width / 44,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    ],
+                                                  )),
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                  bottom:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 70
+                                                          : width / 100,
+                                                  right:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 50
+                                                          : width / 100,
+                                                  left:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 600
+                                                          : width / 40,
+                                                ),
+                                                width: Responsive.isSmallScreen(
+                                                        context)
+                                                    ? width / 1.50
+                                                    : width / 1.35,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                      child: InkWell(
+                                                        onTap: () {},
+                                                        child: Container(
                                                           margin:
                                                               EdgeInsets.only(
-                                                            right: Responsive
+                                                            top: Responsive
                                                                     .isSmallScreen(
                                                                         context)
                                                                 ? width / 50
                                                                 : width / 90,
                                                           ),
-                                                          alignment: Alignment
-                                                              .topRight,
-                                                          child: InkWell(
-                                                            onTap: () {},
-                                                            child: Container(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topRight,
-                                                              height: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 22
-                                                                  : width / 30,
-                                                              width: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 7
-                                                                  : width / 8,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            25),
-                                                                border: Border.all(
-                                                                    color: Color(
-                                                                        0xff24B445)),
-                                                              ),
-                                                              child: Center(
-                                                                  child: Text(
-                                                                "Support",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: TextStyle(
-                                                                    color: Color(
-                                                                            0xff000000)
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                    fontSize: Responsive.isSmallScreen(
-                                                                            context)
-                                                                        ? width /
-                                                                        32
-                                                                        : width /
-                                                                        42,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500),
-                                                              )),
-                                                            ),
+                                                          height: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 22
+                                                              : width / 30,
+                                                          width: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 7
+                                                              : width / 8,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        25),
+                                                            border: Border.all(
+                                                                color: Color(
+                                                                    0xff24B445)),
                                                           ),
+                                                          child: Center(
+                                                              child: Text(
+                                                            "Verify",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                color: Color(
+                                                                        0xff000000)
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                fontSize: Responsive
+                                                                        .isSmallScreen(
+                                                                            context)
+                                                                    ? width / 32
+                                                                    : width /
+                                                                        42,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                          )),
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Container(
-                                                      margin: EdgeInsets.only(
-                                                        left: Responsive
-                                                                .isSmallScreen(
-                                                                    context)
-                                                            ? width / 600
-                                                            : width / 40,
-                                                      ),
-                                                      child: Row(
-                                                        children: [
-                                                          Container(
-                                                            width: Responsive
+                                                    Container(
+                                                      child: InkWell(
+                                                        onTap: () {},
+                                                        child: Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                            left: Responsive
                                                                     .isSmallScreen(
                                                                         context)
-                                                                ? width / 5
-                                                                : width / 9,
-                                                            child: Text(
-                                                              "Upload on",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                          0xff24B445)
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  fontSize: Responsive
-                                                                          .isSmallScreen(
-                                                                              context)
-                                                                      ? width /
-                                                                          34
-                                                                      : width /
-                                                                          44,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400),
-                                                            ),
+                                                                ? width / 50
+                                                                : width / 90,
+                                                            top: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 50
+                                                                : width / 90,
                                                           ),
-                                                          Text(
-                                                            ":",
+                                                          height: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 22
+                                                              : width / 30,
+                                                          width: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 7
+                                                              : width / 8,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        25),
+                                                            border: Border.all(
+                                                                color: Color(
+                                                                    0xff24B445)),
+                                                          ),
+                                                          child: Center(
+                                                              child: Text(
+                                                            "View",
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: TextStyle(
                                                                 color: Color(
-                                                                        0xff24B445)
+                                                                        0xff000000)
                                                                     .withOpacity(
                                                                         0.5),
                                                                 fontSize: Responsive
                                                                         .isSmallScreen(
                                                                             context)
-                                                                    ? width /
-                                                                    34
+                                                                    ? width / 32
                                                                     : width /
-                                                                    44,
+                                                                        42,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w400),
-                                                          ),
-                                                          Text(
-                                                            "24/01/2023 ,10:54 AM",
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                    0xff000000),
-                                                                fontSize: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width /
-                                                                    34
-                                                                    : width /
-                                                                    44,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                        ],
-                                                      )),
-                                                  Container(
-                                                      margin: EdgeInsets.only(
-                                                        left: Responsive
-                                                                .isSmallScreen(
-                                                                    context)
-                                                            ? width / 600
-                                                            : width / 40,
+                                                                        .w500),
+                                                          )),
+                                                        ),
                                                       ),
-                                                      child: Row(
-                                                        children: [
-                                                          Container(
-                                                            width: Responsive
-                                                                    .isSmallScreen(
-                                                                        context)
-                                                                ? width / 5
-                                                                : width / 9,
-                                                            child: Text(
-                                                              "No of Pages",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                          0xff24B445)
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  fontSize: Responsive
-                                                                          .isSmallScreen(
-                                                                              context)
-                                                                      ? width /
-                                                                      34
-                                                                      : width /
-                                                                      44,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            ":",
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                        0xff24B445)
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontSize: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width /
-                                                                    34
-                                                                    : width /
-                                                                    44,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                          Text(
-                                                            "2",
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                    0xff000000),
-                                                                fontSize: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width /
-                                                                    34
-                                                                    : width /
-                                                                    44,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                        ],
-                                                      )),
-                                                  Container(
-                                                      margin: EdgeInsets.only(
-                                                        left: Responsive
-                                                                .isSmallScreen(
-                                                                    context)
-                                                            ? width / 600
-                                                            : width / 40,
-                                                      ),
-                                                      child: Row(
-                                                        children: [
-                                                          Container(
-                                                            width: Responsive
-                                                                    .isSmallScreen(
-                                                                        context)
-                                                                ? width / 5
-                                                                : width / 9,
-                                                            child: Text(
-                                                              "Type",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                          0xff24B445)
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  fontSize: Responsive
-                                                                          .isSmallScreen(
-                                                                              context)
-                                                                      ? width /
-                                                                      34
-                                                                      : width /
-                                                                      44,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            ":",
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                        0xff24B445)
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontSize: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width /
-                                                                    34
-                                                                    : width /
-                                                                    44,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                          Text(
-                                                            "Scanned",
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                    0xff000000),
-                                                                fontSize: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width /
-                                                                    34
-                                                                    : width /
-                                                                    44,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                        ],
-                                                      )),
-                                                  Container(
-                                                      margin: EdgeInsets.only(
-                                                        left: Responsive
-                                                                .isSmallScreen(
-                                                                    context)
-                                                            ? width / 600
-                                                            : width / 40,
-                                                      ),
-                                                      child: Row(
-                                                        children: [
-                                                          Container(
-                                                            width: Responsive
-                                                                    .isSmallScreen(
-                                                                        context)
-                                                                ? width / 5
-                                                                : width / 9,
-                                                            child: Text(
-                                                              "Verification:",
-                                                              style: TextStyle(
-                                                                  color: Color(
-                                                                          0xff24B445)
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  fontSize: Responsive
-                                                                          .isSmallScreen(
-                                                                              context)
-                                                                      ? width /
-                                                                      34
-                                                                      : width /
-                                                                      44,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            ":",
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                        0xff24B445)
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                fontSize: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width /
-                                                                    34
-                                                                    : width /
-                                                                    44,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                          Text(
-                                                            "Verified",
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                    0xff000000),
-                                                                fontSize: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width /
-                                                                    34
-                                                                    : width /
-                                                                    44,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                        ],
-                                                      )),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                      bottom: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 70
-                                                          : width / 100,
-                                                      right: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 50
-                                                          : width / 100,
-                                                      left: Responsive
-                                                              .isSmallScreen(
-                                                                  context)
-                                                          ? width / 600
-                                                          : width / 40,
                                                     ),
-                                                    width: Responsive
-                                                            .isSmallScreen(
-                                                                context)
-                                                        ? width / 1.50
-                                                        : width / 1.35,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Container(
-                                                          child: InkWell(
-                                                            onTap: () {},
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                top: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width / 50
-                                                                    : width /
-                                                                        90,
-                                                              ),
-                                                              height: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 22
-                                                                  : width / 30,
-                                                              width: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 7
-                                                                  : width / 8,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            25),
-                                                                border: Border.all(
-                                                                    color: Color(
-                                                                        0xff24B445)),
-                                                              ),
-                                                              child: Center(
-                                                                  child: Text(
-                                                                "Verify",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: TextStyle(
-                                                                    color: Color(
-                                                                            0xff000000)
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                    fontSize: Responsive.isSmallScreen(
-                                                                            context)
-                                                                        ? width /
-                                                                        32
-                                                                        : width /
-                                                                        42,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500),
-                                                              )),
-                                                            ),
+                                                    Container(
+                                                      child: InkWell(
+                                                        onTap: () {},
+                                                        child: Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                            left: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 50
+                                                                : width / 90,
+                                                            top: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 50
+                                                                : width / 90,
                                                           ),
-                                                        ),
-                                                        Container(
-                                                          child: InkWell(
-                                                            onTap: () {},
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                left: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width / 50
-                                                                    : width /
-                                                                        90,
-                                                                top: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width / 50
-                                                                    : width /
-                                                                        90,
-                                                              ),
-                                                              height: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 22
-                                                                  : width / 30,
-                                                              width: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 7
-                                                                  : width / 8,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            25),
-                                                                border: Border.all(
-                                                                    color: Color(
-                                                                        0xff24B445)),
-                                                              ),
-                                                              child: Center(
-                                                                  child: Text(
-                                                                "View",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: TextStyle(
-                                                                    color: Color(
-                                                                            0xff000000)
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                    fontSize: Responsive.isSmallScreen(
-                                                                            context)
-                                                                        ? width /
-                                                                        32
-                                                                        : width /
-                                                                        42,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500),
-                                                              )),
-                                                            ),
+                                                          height: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 22
+                                                              : width / 30,
+                                                          width: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 7
+                                                              : width / 8,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        25),
+                                                            border: Border.all(
+                                                                color:
+                                                                    Colors.red),
                                                           ),
-                                                        ),
-                                                        Container(
-                                                          child: InkWell(
-                                                            onTap: () {},
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                left: Responsive
+                                                          child: Center(
+                                                              child: Text(
+                                                            "Hide",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                color: Color(
+                                                                        0xff000000)
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                fontSize: Responsive
                                                                         .isSmallScreen(
                                                                             context)
-                                                                    ? width / 50
+                                                                    ? width / 32
                                                                     : width /
-                                                                        90,
-                                                                top: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width / 50
-                                                                    : width /
-                                                                        90,
-                                                              ),
-                                                              height: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 22
-                                                                  : width / 30,
-                                                              width: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 7
-                                                                  : width / 8,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            25),
-                                                                border: Border.all(
-                                                                    color: Colors
-                                                                        .red),
-                                                              ),
-                                                              child: Center(
-                                                                  child: Text(
-                                                                "Hide",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: TextStyle(
-                                                                    color: Color(
-                                                                            0xff000000)
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                    fontSize: Responsive.isSmallScreen(
-                                                                            context)
-                                                                        ? width /
-                                                                        32
-                                                                        : width /
                                                                         42,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500),
-                                                              )),
-                                                            ),
-                                                          ),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                          )),
                                                         ),
-                                                        Container(
-                                                          child: InkWell(
-                                                            onTap: () {},
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                left: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width / 50
-                                                                    : width /
-                                                                        90,
-                                                                top: Responsive
-                                                                        .isSmallScreen(
-                                                                            context)
-                                                                    ? width / 50
-                                                                    : width /
-                                                                        90,
-                                                              ),
-                                                              height: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 22
-                                                                  : width / 30,
-                                                              width: Responsive
-                                                                      .isSmallScreen(
-                                                                          context)
-                                                                  ? width / 7
-                                                                  : width / 8,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            25),
-                                                                border: Border.all(
-                                                                    color: Colors
-                                                                        .red),
-                                                              ),
-                                                              child: Center(
-                                                                  child: Text(
-                                                                "Delete",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: TextStyle(
-                                                                    color: Color(
-                                                                            0xff000000)
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                    fontSize: Responsive.isSmallScreen(
-                                                                            context)
-                                                                        ? width /
-                                                                        32
-                                                                        : width /
-                                                                        42,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500),
-                                                              )),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Container(
+                                                      child: InkWell(
+                                                        onTap: () {},
+                                                        child: Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                            left: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 50
+                                                                : width / 90,
+                                                            top: Responsive
+                                                                    .isSmallScreen(
+                                                                        context)
+                                                                ? width / 50
+                                                                : width / 90,
+                                                          ),
+                                                          height: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 22
+                                                              : width / 30,
+                                                          width: Responsive
+                                                                  .isSmallScreen(
+                                                                      context)
+                                                              ? width / 7
+                                                              : width / 8,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        25),
+                                                            border: Border.all(
+                                                                color:
+                                                                    Colors.red),
+                                                          ),
+                                                          child: Center(
+                                                              child: Text(
+                                                            "Delete",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                                color: Color(
+                                                                        0xff000000)
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                fontSize: Responsive
+                                                                        .isSmallScreen(
+                                                                            context)
+                                                                    ? width / 32
+                                                                    : width /
+                                                                        42,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                          )),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  );
-                                },
-                              ),
-                            ),
-                          );
-
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      );
                     } else if (index == 1) {
                       return Container(
                         alignment: Alignment.center,

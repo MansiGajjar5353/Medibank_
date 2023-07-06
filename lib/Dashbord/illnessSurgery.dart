@@ -138,6 +138,9 @@ class illnessSurgeryState extends State<illnessSurgery>{
                 ],
               ),
             ),
+
+
+
             Center(
               child: Container(
                 margin: EdgeInsets.only(left:0,top:40.0 ),
@@ -180,116 +183,120 @@ class illnessSurgeryState extends State<illnessSurgery>{
               ),
             ),
 
-            Container(
-              margin: EdgeInsets.only(left: 20, top: 20, bottom: 10, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: (){
-                      setState(() {
-                        Showtextfield= true;
-                      });
-                    },
-                    child: Container(
-                      height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 : _mediaquery.size.height*0.1,
-                      width: Responsive.isSmallScreen(context)? width/4 : width/5,
-                      margin: EdgeInsets.only(right: 30),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Image(image: AssetImage("image/rightlogo.png"),color: Color(0xff4F555A).withOpacity(0.4),),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xffF1F1F1),
-                        borderRadius: BorderRadius.circular(20),
-
-                      ),
-
-                    ),
-                  ),
-                  InkWell(
-                    onTap: (){
-                      setState(() {
-                        Showtextfield= false;
-                      });
-                    },
-                    child: Container(
-                      height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 : _mediaquery.size.height*0.1,
-                      width: Responsive.isSmallScreen(context)? width/4 : width/5,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Image(image: AssetImage("image/wrongLogo.png"),),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xffF1F1F1),
-                        borderRadius: BorderRadius.circular(20),
-
-                      ),
-
-                    ),
-                  ),
-
-                ],
-              ),
+            Center(
+              child: ButtonGroup(),
             ),
-
-            Visibility(
-              visible: Showtextfield,
-              child: Container(
-                margin:EdgeInsets.only(left: 20,top: 10),
-                child: Row(
-                  children: [
-                    Container(
-                      width: Responsive.isSmallScreen(context)? width/2.2 : width/2.8,
-                      height: 55,
-                      child: TextField(
-                        //  controller: _nameController,
-                        decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                          filled: true,
-                          fillColor: Color(0xffF9F9F9),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(35),
-                            borderSide: BorderSide.none,),
-
-                          hintText: "surgery/illness",
-                          hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), fontSize: 16,fontWeight: FontWeight.w400),
-
-                        ),
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 10)),
-                    Container(
-                      width: Responsive.isSmallScreen(context)? width/4 : width/7,
-                      height: 55,
-                      child: TextField(
-                        //  controller: _nameController,
-                        decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                          filled: true,
-                          fillColor: Color(0xffF9F9F9),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(35),
-                            borderSide: BorderSide.none,),
-
-                          hintText: "2006",
-                          hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), fontSize: 16,fontWeight: FontWeight.w400),
-
-                        ),
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 10)),
-                    InkWell(
-                      onTap: (){},
-                      child: CircleAvatar(
-                      radius: 22,
-                        backgroundColor: Color(0xffF9F9F9),
-                        child: Icon(Icons.add, color: Color(0xff4F555A).withOpacity(0.5),),
-                      ),
-                    ),
-
-                  ],
-                ),
-              ),
-            ),
+            //
+            // Container(
+            //   margin: EdgeInsets.only(left: 20, top: 20, bottom: 10, right: 20),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       InkWell(
+            //         onTap: (){
+            //           setState(() {
+            //             Showtextfield= true;
+            //           });
+            //         },
+            //         child: Container(
+            //           height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 : _mediaquery.size.height*0.1,
+            //           width: Responsive.isSmallScreen(context)? width/4 : width/5,
+            //           margin: EdgeInsets.only(right: 30),
+            //           child: Padding(
+            //             padding: const EdgeInsets.all(10.0),
+            //             child: Image(image: AssetImage("image/rightlogo.png"),color: Color(0xff4F555A).withOpacity(0.4),),
+            //           ),
+            //           decoration: BoxDecoration(
+            //             color: Color(0xffF1F1F1),
+            //             borderRadius: BorderRadius.circular(20),
+            //
+            //           ),
+            //
+            //         ),
+            //       ),
+            //       InkWell(
+            //         onTap: (){
+            //           setState(() {
+            //             Showtextfield= false;
+            //           });
+            //         },
+            //         child: Container(
+            //           height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 : _mediaquery.size.height*0.1,
+            //           width: Responsive.isSmallScreen(context)? width/4 : width/5,
+            //           child: Padding(
+            //             padding: const EdgeInsets.all(10.0),
+            //             child: Image(image: AssetImage("image/wrongLogo.png"),),
+            //           ),
+            //           decoration: BoxDecoration(
+            //             color: Color(0xffF1F1F1),
+            //             borderRadius: BorderRadius.circular(20),
+            //
+            //           ),
+            //
+            //         ),
+            //       ),
+            //
+            //     ],
+            //   ),
+            // ),
+            //
+            // Visibility(
+            //   visible: Showtextfield,
+            //   child: Container(
+            //     margin:EdgeInsets.only(left: 20,top: 10),
+            //     child: Row(
+            //       children: [
+            //         Container(
+            //           width: Responsive.isSmallScreen(context)? width/2.2 : width/2.8,
+            //           height: 55,
+            //           child: TextField(
+            //             //  controller: _nameController,
+            //             decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            //               filled: true,
+            //               fillColor: Color(0xffF9F9F9),
+            //               border: OutlineInputBorder(
+            //                 borderRadius: BorderRadius.circular(35),
+            //                 borderSide: BorderSide.none,),
+            //
+            //               hintText: "surgery/illness",
+            //               hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), fontSize: 16,fontWeight: FontWeight.w400),
+            //
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(padding: EdgeInsets.only(left: 10)),
+            //         Container(
+            //           width: Responsive.isSmallScreen(context)? width/4 : width/7,
+            //           height: 55,
+            //           child: TextField(
+            //             //  controller: _nameController,
+            //             decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            //               filled: true,
+            //               fillColor: Color(0xffF9F9F9),
+            //               border: OutlineInputBorder(
+            //                 borderRadius: BorderRadius.circular(35),
+            //                 borderSide: BorderSide.none,),
+            //
+            //               hintText: "2006",
+            //               hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), fontSize: 16,fontWeight: FontWeight.w400),
+            //
+            //             ),
+            //           ),
+            //         ),
+            //         Padding(padding: EdgeInsets.only(left: 10)),
+            //         InkWell(
+            //           onTap: (){},
+            //           child: CircleAvatar(
+            //           radius: 22,
+            //             backgroundColor: Color(0xffF9F9F9),
+            //             child: Icon(Icons.add, color: Color(0xff4F555A).withOpacity(0.5),),
+            //           ),
+            //         ),
+            //
+            //       ],
+            //     ),
+            //   ),
+            // ),
 
 
 
@@ -348,3 +355,226 @@ class illnessSurgeryState extends State<illnessSurgery>{
   }
 
 }
+
+
+
+enum ButtonState { Button1, Button2,  }
+
+class ButtonGroup extends StatefulWidget {
+  @override
+  _ButtonGroupState createState() => _ButtonGroupState();
+}
+
+class _ButtonGroupState extends State<ButtonGroup> {
+  bool Showtextfield = false;
+
+  ButtonState selectedButton = ButtonState.Button2; // Initial selected button
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    var _mediaquery = MediaQuery.of(context);
+    return Container(
+      margin: EdgeInsets.only( top: 0, bottom: 30),
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 20, top: 20, bottom: 10, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: (){
+                    onButtonPressed(ButtonState.Button1);
+                      Showtextfield= true;
+
+                  },
+                  child: Container(
+                    height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 : _mediaquery.size.height*0.1,
+                    width: Responsive.isSmallScreen(context)? width/4 : width/5,
+                    margin: EdgeInsets.only(right: 30),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Image(image: AssetImage("image/rightlogo.png"),color: Color(0xff4F555A).withOpacity(0.4),),
+                    ),
+                    decoration: BoxDecoration(
+                      color: selectedButton== ButtonState.Button1 ? Color(0xffADE3BA): Color(0xffF1F1F1),
+                      borderRadius: BorderRadius.circular(20),
+
+                    ),
+
+                  ),
+                ),
+                InkWell(
+                  onTap: (){
+                    onButtonPressed(ButtonState.Button2);
+                      Showtextfield= false;
+
+                  },
+                  child: Container(
+                    height: Responsive.isSmallScreen(context)? _mediaquery.size.height*0.1 : _mediaquery.size.height*0.1,
+                    width: Responsive.isSmallScreen(context)? width/4 : width/5,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Image(image: AssetImage("image/wrongLogo.png"),),
+                    ),
+                    decoration: BoxDecoration(
+                      color:selectedButton== ButtonState.Button2 ? Color(0xffADE3BA): Color(0xffF1F1F1),
+                      borderRadius: BorderRadius.circular(20),
+
+                    ),
+
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+
+          Visibility(
+            visible: Showtextfield,
+            child: Container(
+              margin:EdgeInsets.only(left: 20,top: 10),
+              child: Row(
+                children: [
+                  Container(
+                    width: Responsive.isSmallScreen(context)? width/2.2 : width/2.8,
+                    height: 55,
+                    child: TextField(
+                      //  controller: _nameController,
+                      decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        filled: true,
+                        fillColor: Color(0xffF9F9F9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(35),
+                          borderSide: BorderSide.none,),
+
+                        hintText: "surgery/illness",
+                        hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), fontSize: 16,fontWeight: FontWeight.w400),
+
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 10)),
+                  Container(
+                    width: Responsive.isSmallScreen(context)? width/4 : width/7,
+                    height: 55,
+                    child: TextField(
+                      //  controller: _nameController,
+                      decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        filled: true,
+                        fillColor: Color(0xffF9F9F9),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(35),
+                          borderSide: BorderSide.none,),
+
+                        hintText: "2006",
+                        hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), fontSize: 16,fontWeight: FontWeight.w400),
+
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 10)),
+                  InkWell(
+                    onTap: (){},
+                    child: CircleAvatar(
+                      radius: 22,
+                      backgroundColor: Color(0xffF9F9F9),
+                      child: Icon(Icons.add, color: Color(0xff4F555A).withOpacity(0.5),),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+          ),
+
+        ],
+      ),
+
+//       child: Column(
+//         children: [
+//           InkWell(
+//             onTap: (){
+//               onButtonPressed(ButtonState.Button1);
+//               ShowText= true;
+//             },
+//
+//             child: Container(
+//               margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+//               height: 80,
+//               width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+//               decoration: BoxDecoration(
+//                 color: selectedButton== ButtonState.Button1 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+//                 borderRadius: BorderRadius.circular(15),
+//               ),
+//               child: Container(
+//                   margin:EdgeInsets.only(top: 30, left: 30),
+//                   child: Text("Yes",style: TextStyle(
+//                     color: Color(0xff4F555A).withOpacity(0.5),
+//                   ),)),
+//             ),
+//           ),
+//           InkWell(
+//             onTap: (){
+//
+//               onButtonPressed(ButtonState.Button2);
+//               ShowText= false;
+//             },
+//             child: Container(
+//               margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+//               height: 80,
+//               width: Responsive.isSmallScreen(context)? width/1.1: width/1.3,
+//               decoration: BoxDecoration(
+//                 color: selectedButton== ButtonState.Button2 ? Color(0xffADE3BA):Color(0xffF7F7F7),
+//                 borderRadius: BorderRadius.circular(15),
+//               ),
+//               child: Container(
+//                   margin:EdgeInsets.only(top: 30, left: 30),
+//                   child: Text("No",style: TextStyle(
+//                     color: Color(0xff4F555A).withOpacity(0.5),
+//                   ),)),
+//             ),
+//           ),
+//
+//
+//           Visibility(
+//             visible: ShowText,
+//             child: Container(
+//               margin: EdgeInsets.only(left:20,right: 20, top:10),
+// //  width: Responsive.isSmallScreen(context)? width/1.2 : width/2,
+// //height: 200,
+//               child: TextField(
+//                 maxLines: 5,
+//                 decoration: InputDecoration(
+//                   contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+//                   filled: true,
+//                   fillColor: Color(0xffF9F9F9),
+//                   border: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(35),
+//                       borderSide: BorderSide(width: 1, color: Color(0xff).withOpacity(0.16),
+//                       )),
+//
+//                   hintText: "Any reason",
+//                   hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5), ),
+//
+//                 ),
+//               ),
+//             ),
+//
+//
+//           ),
+//
+//         ],
+//       ),
+    );
+  }
+
+  void onButtonPressed(ButtonState buttonState) {
+    setState(() {
+      selectedButton = buttonState;
+    });
+  }
+}
+

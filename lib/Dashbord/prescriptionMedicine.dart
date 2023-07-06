@@ -347,7 +347,7 @@ class prescriptionMedicine extends StatefulWidget {
                       child: Row(
                         children: [
                           Container(
-                            width: Responsive.isSmallScreen(context)? width/2.9 : width/2,
+                            width: Responsive.isSmallScreen(context)? width/2.9 : width/4.8,
                             height: 55,
                             child: TextField(
                               controller: _problemController,
@@ -366,7 +366,7 @@ class prescriptionMedicine extends StatefulWidget {
                           ),
                           Padding(padding: EdgeInsets.only(left: 10)),
                           Container(
-                            width: Responsive.isSmallScreen(context)? width/3.50 : width/2,
+                            width: Responsive.isSmallScreen(context)? width/3.50 : width/8,
                             height: 55,
                             child: TextField(
                               controller: _doseController,

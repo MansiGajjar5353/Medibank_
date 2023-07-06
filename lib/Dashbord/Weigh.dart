@@ -62,6 +62,10 @@ class WeighState extends State<Weigh>{
                   width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
         ),
       ),
+
+
+
+
       body: Container(
         height: _mediaquery.size.height*1,
         child: ListView(
