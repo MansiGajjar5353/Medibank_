@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:project_signup_page/Dashbord/Weigh.dart';
 import 'package:project_signup_page/Onbording/LifestyleDashboard.dart';
 import 'package:project_signup_page/UI/Signin.dart';
 import 'package:project_signup_page/UI/Signup.dart';
@@ -58,8 +59,8 @@ class _Homestate extends State<Home> {
       });
 
       // Perform navigation after the delay
-    //  Navigator.push(context, MaterialPageRoute(builder: (context)=> Signin()));
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> LifestyleDashboard(),));
+     Navigator.push(context, MaterialPageRoute(builder: (context)=> Signin()));
+      // Navigator.push(context, MaterialPageRoute(builder: (context)=> Weigh(),));
 
     });
   }

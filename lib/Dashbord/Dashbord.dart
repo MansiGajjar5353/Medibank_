@@ -1004,10 +1004,16 @@ class Screen2State extends State<Screen2> {
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
+
       body: SafeArea(
         child: Container(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Center(
+                child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                    width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+              ),
               Container(
                 margin: EdgeInsets.only(
                   left: Responsive.isSmallScreen(context)
@@ -1018,15 +1024,23 @@ class Screen2State extends State<Screen2> {
                       : width / 28,
                 ),
                 alignment: Alignment.topLeft,
-                child: Text(
-                  "Medical Records",
-                  style: TextStyle(
-                      color: Color(0xff000000),
-                      fontSize: Responsive.isSmallScreen(context)
-                          ? width / 18
-                          : width / 28,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Poppins'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Medical Records",
+                      style: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: Responsive.isSmallScreen(context)
+                              ? width / 18
+                              : width / 28,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins'),
+                    ),
+                    Icon(Icons.search,
+                    color: Color(0xff000000).withOpacity(0.5),
+                    ),
+                  ],
                 ),
               ),
               Container(
@@ -1922,15 +1936,48 @@ class Screen3State extends State<Screen3> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: Responsive.isSmallScreen(context)? width/5: width/8.2,
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
-          "Voice Assistant",
-          style: TextStyle(
-              color: Color(0xff000000),
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              fontFamily: 'Poppins'),
+        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        leading: Align(
+          alignment: Alignment.bottomLeft,
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const BackButtonIcon(
+            ),
+          ),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(padding: EdgeInsets.only(right: 30),
+                child: Center(
+                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                )),
+
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text("Voice Assistant ",
+                      style: TextStyle(color: Color(0xff000000),
+                          fontSize: Responsive.isSmallScreen(context)? width/20: width/30,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins'),),
+                  ),
+
+                ],
+              ),
+            ),
+
+          ],
         ),
       ),
       body: ListView(

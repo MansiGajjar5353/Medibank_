@@ -43,11 +43,27 @@ class CreateAabhaState extends State<CreateAabha>{
 
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
+        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green),
+        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        leading: Align(
+          alignment: Alignment.bottomLeft,
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const BackButtonIcon(
+            ),
+          ),
+        ),        title: Center(
+        child: Container(padding: EdgeInsets.only(right: 30),
+            child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
       ),
+      ),
+
       body:
       Stack(
         children: [

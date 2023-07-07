@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
+import 'package:project_signup_page/Dashbord/Questionnaires.dart';
 import 'package:project_signup_page/Dashbord/RespiratoryLungsProblem.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
@@ -47,16 +48,43 @@ class AbdominalDigestiveState extends State<AbdominalDigestive>{
 return Scaffold(
   appBar: AppBar(
     toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
-
-    backgroundColor: Colors.white,
+    backgroundColor: Color(0xffffffff),
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.green),
-    title: Center(
-      child: Container(padding: EdgeInsets.only(right: 30),
-          child: Image(image: AssetImage("image/MedibankLOGO.png",),
-              width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
-    ),
-    //                margin: EdgeInsets.only(left:0,top:10.0 ),
+    iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+    leading: Align(
+      alignment: Alignment.bottomLeft,
+      child: IconButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        icon: const BackButtonIcon(
+        ),
+      ),
+    ),        title:
+
+
+
+  Align(
+    alignment: Alignment.center,
+    child: Image(image: AssetImage("image/MedibankLOGO.png",),
+        width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+  ),
+    actions: [
+      Padding(padding: EdgeInsets.only(bottom: 10),),
+
+      Align(alignment: Alignment.bottomRight,
+
+        child: Container(
+          margin: EdgeInsets.only(bottom: Responsive.isSmallScreen(context)? width/80: width/100, right: 10),
+          child: InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Questionnaires(),));},
+            child: Image(image: AssetImage("image/DashboardImage.png"),
+              height:  Responsive.isSmallScreen(context)? width/15: width/30,
+            ),
+          ),
+        ),
+      ),
+    ],
 
   ),
 
@@ -369,13 +397,13 @@ class _ButtonGroup2State extends State<ButtonGroup2> {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -405,12 +433,12 @@ class _ButtonGroup2State extends State<ButtonGroup2> {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -443,12 +471,12 @@ class _ButtonGroup2State extends State<ButtonGroup2> {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
               //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -508,13 +536,13 @@ class _ButtonGroup3State extends State<ButtonGroup3>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                 // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -544,12 +572,12 @@ class _ButtonGroup3State extends State<ButtonGroup3>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -582,12 +610,12 @@ class _ButtonGroup3State extends State<ButtonGroup3>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -648,13 +676,13 @@ class _ButtonGroup4State extends State<ButtonGroup4>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                 // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -684,12 +712,12 @@ class _ButtonGroup4State extends State<ButtonGroup4>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -722,12 +750,12 @@ class _ButtonGroup4State extends State<ButtonGroup4>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -788,13 +816,13 @@ class _ButtonGroup5State extends State<ButtonGroup5>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                 // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -824,12 +852,12 @@ class _ButtonGroup5State extends State<ButtonGroup5>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -862,12 +890,12 @@ class _ButtonGroup5State extends State<ButtonGroup5>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -929,13 +957,13 @@ class _ButtonGroup6State extends State<ButtonGroup6>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                 // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -965,12 +993,12 @@ class _ButtonGroup6State extends State<ButtonGroup6>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1003,12 +1031,12 @@ class _ButtonGroup6State extends State<ButtonGroup6>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1070,13 +1098,13 @@ class _ButtonGroup7State extends State<ButtonGroup7>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                 // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1106,12 +1134,12 @@ class _ButtonGroup7State extends State<ButtonGroup7>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1144,12 +1172,12 @@ class _ButtonGroup7State extends State<ButtonGroup7>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1211,13 +1239,13 @@ class _ButtonGroup8State extends State<ButtonGroup8>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                 // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1247,12 +1275,12 @@ class _ButtonGroup8State extends State<ButtonGroup8>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1285,12 +1313,12 @@ class _ButtonGroup8State extends State<ButtonGroup8>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"),height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1350,13 +1378,13 @@ class _ButtonGroup9State extends State<ButtonGroup9>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
 
                 // margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SadImage.png")),
+                    Image(image: AssetImage("image/SadImage.png", ),  height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Yes', style: TextStyle(color: selectedButton== ButtonState.Button1 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1386,12 +1414,12 @@ class _ButtonGroup9State extends State<ButtonGroup9>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/Noimage.png"),),
+                    Image(image: AssetImage("image/Noimage.png"), height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('No', style: TextStyle(color: selectedButton== ButtonState.Button2 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),
@@ -1424,12 +1452,13 @@ class _ButtonGroup9State extends State<ButtonGroup9>  {
               ),
 
               child: Container(
-                height: 15,
+                height: Responsive.isSmallScreen(context)? width/10 : width/20,
                 //  margin: EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(image: AssetImage("image/SomeImage.png"), height: 20,),
+                    Image(image: AssetImage("image/SomeImage.png"),
+                      height: Responsive.isSmallScreen(context)? width/20 : width/40,),
                     Text('Sometimes', style: TextStyle(color: selectedButton== ButtonState.Button3 ? Color(0xff24B445): Color(0xff4F555A),
                       fontSize: Responsive.isSmallScreen(context)? width/30 : width/60,),
                     ),

@@ -30,7 +30,7 @@ class HaveYouCoveredEverythinkState extends State<HaveYouCoveredEverythink>{
         buttonColor = Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-     Navigator.push(context,MaterialPageRoute(builder: (context)=>Questionnaires(),));
+     Navigator.push(context,MaterialPageRoute(builder: (context)=>BottomNavBarApp(),));
 
     });
   }
@@ -42,16 +42,44 @@ class HaveYouCoveredEverythinkState extends State<HaveYouCoveredEverythink>{
 return Scaffold(
   appBar: AppBar(
     toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
-
-    backgroundColor: Colors.white,
+    backgroundColor: Color(0xffffffff),
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.green),
-    title: Center(
-      child: Container(padding: EdgeInsets.only(right: 30),
-          child: Image(image: AssetImage("image/MedibankLOGO.png",),
-              width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
-    ),
-    //                margin: EdgeInsets.only(left:0,top:10.0 ),
+    iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+    leading: Align(
+      alignment: Alignment.bottomLeft,
+      child: IconButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        icon: const BackButtonIcon(
+        ),
+      ),
+    ),        title:
+
+
+
+  Align(
+    alignment: Alignment.center,
+    child: Image(image: AssetImage("image/MedibankLOGO.png",),
+        width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+  ),
+    actions: [
+      Padding(padding: EdgeInsets.only(bottom: 10),),
+
+      Align(alignment: Alignment.bottomRight,
+
+        child: Container(
+          margin: EdgeInsets.only(bottom: Responsive.isSmallScreen(context)? width/80: width/100, right: 10),
+          child: InkWell(
+            onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Questionnaires(),));},
+            child: Image(image: AssetImage("image/DashboardImage.png"),
+              height:  Responsive.isSmallScreen(context)? width/15: width/30,
+            ),
+          ),
+        ),
+      ),
+    ],
+
   ),
   body: ListView(
       children: [

@@ -75,18 +75,48 @@ class _FaqList extends State<Faq> {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: Responsive.isSmallScreen(context)? width/5: width/8.2,
           backgroundColor: Colors.white,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.green),
-          title: Text(
-            "FAQ",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize:
-              Responsive.isSmallScreen(context) ? width / 20 : width / 20,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w400,
+          iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+          leading: Align(
+            alignment: Alignment.bottomLeft,
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const BackButtonIcon(
+              ),
             ),
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(padding: EdgeInsets.only(right: 30),
+                  child: Center(
+                    child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                        width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                  )),
+
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text("FAQ ",
+                        style: TextStyle(color: Color(0xff000000),
+                            fontSize: Responsive.isSmallScreen(context)? width/20: width/30,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Poppins'),),
+                    ),
+
+                  ],
+                ),
+              ),
+
+            ],
           ),
         ),
         body: ListView(

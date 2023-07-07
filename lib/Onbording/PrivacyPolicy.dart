@@ -18,12 +18,51 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
-      appBar:  AppBar(
+      appBar: AppBar(
+        toolbarHeight: Responsive.isSmallScreen(context)? width/5: width/8.2,
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green),
-        title: Text("Privacy Policy", style:  TextStyle(color: Colors.black,  fontSize:Responsive.isSmallScreen(context)? width/20 : width/34, fontFamily: 'Poppins',fontWeight: FontWeight.w400,),),
+        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        leading: Align(
+          alignment: Alignment.bottomLeft,
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const BackButtonIcon(
+            ),
+          ),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(padding: EdgeInsets.only(right: 30),
+                child: Center(
+                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
+                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                )
+            ),
 
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text("Privacy policy ",
+                      style: TextStyle(color: Color(0xff000000),
+                          fontSize: Responsive.isSmallScreen(context)? width/20: width/30,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins'),),
+                  ),
+
+                ],
+              ),
+            ),
+
+          ],
+        ),
       ),
 
       body:ListView(

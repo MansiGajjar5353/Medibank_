@@ -27,40 +27,50 @@ class _SignUpState extends State<SignUp>{
   bool _obscureText = true;
   int index = 1;
   bool _obscureText2 = true;
-  String _Error ="";
+  String _Error ="Error text will be shown here (temporary)";
   String res ="";
   final TextEditingController _userController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
   final TextEditingController _checkpasswordController = new TextEditingController();
 
-  // void _otppage(){
-  //   setState(() async {
-  //     if(_userController.text.isNotEmpty && _passwordController.text.isNotEmpty && _checkpasswordController.text.isNotEmpty && _passwordController.text == _checkpasswordController.text  )
-  //
-  //     {
-  //       final url = Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/Signup');
-  //       final jsonBody = jsonEncode({
-  //         "password": _passwordController.text,
-  //         "contactNo": _userController.text,
-  //         "createdAt": "Samsung,21,11",
-  //         "fcmToken": "fjsfhsfd082342084324",
-  //       });
-  //       final response = await http.post(url, body: jsonBody, headers: {
-  //         'Content-Type': 'application/json',
-  //       });
-  //       res = response.body;
-  //       log(res);
-  //       if (response.statusCode == 200) {
-  //         Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
-  //       } else {
-  //         _Error = "Please try again";
-  //       }
-  //
-  //     }
-  //
-  //
-  //   });
-  // }
+  void _otppage(){
+    setState(() async {
+      // if(_userController.text.isNotEmpty
+      //     && _passwordController.text.isNotEmpty
+      //     && _checkpasswordController.text.isNotEmpty
+      //     && _passwordController.text == _checkpasswordController.text  )
+
+
+        final url = Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/Signup');
+        final jsonBody = jsonEncode({
+          "password": _passwordController.text,
+          "contactNo": _userController.text,
+          "createdAt": "Samsung,21,11",
+          "fcmToken": "fjsfhsfd082342084324",
+        });
+        final response = await http.post(url, body: jsonBody, headers: {
+          'Content-Type': 'application/json',
+        });
+        res = response.body;
+        log(res);
+        if (response.statusCode == 200) {
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
+        }
+        else
+        {
+          _Error = "Please try again";
+        }
+
+
+
+      // else
+      //   {
+      //     _Error ="please enter text";
+      //   }
+
+
+    });
+  }
 
 
   void handleButtonPress() {
@@ -75,8 +85,10 @@ class _SignUpState extends State<SignUp>{
         isButtonPressed = false;
       });
 
+     _otppage();
+     log("Mansi ");
       // Perform navigation after the delay
-      Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
+      // Navigator.push(context,MaterialPageRoute(builder: (context)=>otpScreen(),));
     });
   }
 
@@ -93,8 +105,18 @@ class _SignUpState extends State<SignUp>{
         toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green), // set the color of the icons
-        title: Center(
+        iconTheme: IconThemeData(color: Colors.green,
+          size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        leading: Align(
+          alignment: Alignment.bottomLeft,
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const BackButtonIcon(
+            ),
+          ),
+        ),        title: Center(
           child: Container(padding: EdgeInsets.only(right: 30),
               child: Image(image: AssetImage("image/MedibankLOGO.png",),
                   width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
@@ -106,6 +128,8 @@ class _SignUpState extends State<SignUp>{
         child: ListView(
 
           children: [
+
+            Text(_Error),
             Container(
               margin: EdgeInsets.only(left:21.0, top:20.0),
               //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
@@ -458,6 +482,7 @@ class _SignUpState extends State<SignUp>{
             ),
 
 
+            // new Text("$_Error"),
 
 
               Row(
@@ -475,7 +500,6 @@ class _SignUpState extends State<SignUp>{
                 ],
               ),
 
-            // new Text("$_Error"),
 
 
           ],

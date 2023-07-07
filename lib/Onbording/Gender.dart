@@ -65,7 +65,7 @@ class GenderState extends State<Gender>{
         toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green),
+        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
         title: Center(
           child: Container(padding: EdgeInsets.only(right: 30),
               child: Image(image: AssetImage("image/MedibankLOGO.png",),

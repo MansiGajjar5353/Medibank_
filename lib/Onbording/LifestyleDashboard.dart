@@ -47,7 +47,8 @@ class LifestyleDashboardState extends State<LifestyleDashboard> {
                child: Center(
                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
-               )),
+               )
+          ),
 
          Align(
            alignment: Alignment.bottomCenter,

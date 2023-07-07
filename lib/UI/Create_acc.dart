@@ -51,7 +51,7 @@ class create_accState extends State<create_acc>{
 
       backgroundColor: Colors.white,
       elevation: 0,
-      iconTheme: IconThemeData(color: Colors.green),
+      iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
       title: Center(
         child: Container(padding: EdgeInsets.only(right: 30),
             child: Image(image: AssetImage("image/MedibankLOGO.png",), width: Responsive.isSmallScreen(context)? width/2.3: width/4)),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/ContinueToAdvanceHistory.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
+import 'package:project_signup_page/Dashbord/Questionnaires.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
 class FamilyMedicalHistory extends StatefulWidget{
@@ -62,17 +63,43 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
     return  Scaffold(
       appBar: AppBar(
         toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
-
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green),
-        title: Center(
-          child: Container(padding: EdgeInsets.only(right: 30),
-              child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
-        ),
-        //                margin: EdgeInsets.only(left:0,top:10.0 ),
+        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        leading: Align(
+          alignment: Alignment.bottomLeft,
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const BackButtonIcon(
+            ),
+          ),
+        ),        title:
 
+
+
+      Align(
+        alignment: Alignment.center,
+        child: Image(image: AssetImage("image/MedibankLOGO.png",),
+            width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+      ),
+        actions: [
+          Padding(padding: EdgeInsets.only(bottom: 10),),
+
+          Align(alignment: Alignment.bottomRight,
+
+            child: Container(
+              margin: EdgeInsets.only(bottom: Responsive.isSmallScreen(context)? width/80: width/100, right: 10),
+              child: InkWell(
+                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Questionnaires(),));},
+                child: Image(image: AssetImage("image/DashboardImage.png"),
+                  height:  Responsive.isSmallScreen(context)? width/15: width/30,
+                ),
+              ),
+            ),
+          ),
+        ],
 
       ),
       body: ListView(
@@ -141,7 +168,7 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      height: Responsive.isSmallScreen(context)? 20 : 40,
+                      height: Responsive.isSmallScreen(context)? width/20: width/40,
                       width:Responsive.isSmallScreen(context)? width/3 : width/6,
 
                       child: Row(
@@ -159,6 +186,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0)
+                      ),
                       primary: _isSelected[0] ?  Color(0xff24B445) : Color(0xffF9F9F9),
                       //  onPrimary: Colors.white,
                     ),
@@ -173,7 +203,7 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      height: Responsive.isSmallScreen(context)? 20 : 40,
+                      height: Responsive.isSmallScreen(context)? width/20: width/40,
                       width:Responsive.isSmallScreen(context)? width/3 : width/6,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -191,6 +221,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0)
+                      ),
                       primary: _isSelected[1] ? Color(0xff24B445) : Color(0xffF9F9F9),
                       onPrimary: Colors.white,
                     ),
@@ -213,7 +246,7 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      height: Responsive.isSmallScreen(context)? 20 : 40,
+                      height: Responsive.isSmallScreen(context)? width/20: width/40,
                       width:Responsive.isSmallScreen(context)? width/3 : width/6,
 
                       child: Row(
@@ -232,6 +265,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0)
+                      ),
                       primary: _isSelected[3] ?  Color(0xff24B445) : Color(0xffF9F9F9),
                       onPrimary: Colors.white,
                     ),
@@ -246,7 +282,7 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      height: Responsive.isSmallScreen(context)? 20 : 40,
+                      height: Responsive.isSmallScreen(context)? width/20: width/40,
                       width:Responsive.isSmallScreen(context)? width/2.5 : width/6,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -264,6 +300,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0)
+                      ),
                       primary: _isSelected[4] ?  Color(0xff24B445) : Color(0xffF9F9F9),
                       onPrimary: Colors.white,
                     ),
@@ -286,7 +325,7 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      height: Responsive.isSmallScreen(context)? 20 : 40,
+                      height: Responsive.isSmallScreen(context)? width/20: width/40,
                       width:Responsive.isSmallScreen(context)? width/4 : width/6,
 
                       child: Row(
@@ -305,6 +344,9 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0)
+                      ),
                       primary: _isSelected[6] ?  Color(0xff24B445) : Color(0xffF9F9F9),
                       onPrimary: Colors.white,
                     ),
@@ -316,11 +358,14 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0)
+                      ),
 
                       primary: _isSelected[7] ?  Color(0xff24B445) : Color(0xffF9F9F9),
                       onPrimary: _isSelected[7] ?  Color(0xffFFFFFF) : Color(0xff4F555A).withOpacity(0.5),),
                     child:Container(
-                      height: Responsive.isSmallScreen(context)? 20 : 40,
+                      height: Responsive.isSmallScreen(context)? width/20: width/40,
                       width:Responsive.isSmallScreen(context)? width/4 : width/6,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
@@ -446,22 +491,6 @@ class FamilyMedicalHistoryState extends State<FamilyMedicalHistory>{
               ],
             ),
           ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ],
       ),
     );
