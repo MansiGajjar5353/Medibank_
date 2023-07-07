@@ -173,7 +173,11 @@ class allergyState extends State<allergy>{
                   ],
                 ),
               ),
-              // child:Text("We need to verify your Number?",style: new TextStyle(height:0.90,color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.w900,fontFamily: 'Poppins'),),
+
+              // child:Text("We need to verify your Number?",
+              // style: new TextStyle(height:0.90,color: Colors.black,
+              // fontSize: 25.0, fontWeight: FontWeight.w900,
+              // fontFamily: 'Poppins'),),
 
             ),
           ),

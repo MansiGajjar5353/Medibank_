@@ -26,7 +26,20 @@ class Name extends StatefulWidget {
 class NameState extends State<Name> {
   final dateController = TextEditingController();
   DateTime selectedDate = DateTime.now();
+
+  //late String month;
   late String month;
+  late String date;
+  late String year;
+
+  @override
+  void initState() {
+    month = "Month";
+    date = "Date";
+    year = "Year";
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -137,7 +150,6 @@ class NameState extends State<Name> {
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w300,
                                   ),
-
                                 ),
                                 style: TextStyle(
                                   color: Color(0xff212426),
@@ -147,7 +159,6 @@ class NameState extends State<Name> {
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w300,
                                 ),
-
                               ),
                             ),
                           ],
@@ -198,30 +209,7 @@ class NameState extends State<Name> {
                                 ),
                               ),
                             ),
-                            GestureDetector(
-                              onTap: ()
-                              async {
-                                final DateTime? picked = await showDatePicker(
-                                    context: context,
-                                    initialDate: selectedDate,
-                                    firstDate: DateTime(1900),
-                                    lastDate: DateTime(2100));
-                                if (picked != null  && picked != selectedDate) {
-    setState(() {
-      selectedDate = picked;
-      dateController.text = DateFormat('yyyy-MM-dd').format(selectedDate);
-
-       month = DateFormat('MMMM').format(selectedDate); // Extract month
-      String day = DateFormat('d').format(selectedDate); // Extract day
-
-      // Use the month and day strings as needed
-      print('Month: $month');
-      print('Day: $day');
-    });
-
-                                }
-                              },
-                              child:   Row(
+                            Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -231,9 +219,10 @@ class NameState extends State<Name> {
                                       month,
                                       style: TextStyle(
                                         color: Color(0xff212426),
-                                        fontSize: Responsive.isSmallScreen(context)
-                                            ? width / 26
-                                            : width / 40,
+                                        fontSize:
+                                            Responsive.isSmallScreen(context)
+                                                ? width / 26
+                                                : width / 40,
                                         fontFamily: 'Poppins',
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -247,9 +236,6 @@ class NameState extends State<Name> {
                                   ),
                                 ],
                               ),
-
-                            ),
-
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -257,12 +243,13 @@ class NameState extends State<Name> {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    '14',
+                                    date,
                                     style: TextStyle(
                                       color: Color(0xff212426),
-                                      fontSize: Responsive.isSmallScreen(context)
-                                          ? width / 26
-                                          : width / 40,
+                                      fontSize:
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 26
+                                              : width / 40,
                                       fontFamily: 'Poppins',
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -279,11 +266,16 @@ class NameState extends State<Name> {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top:Responsive.isSmallScreen(context)
-                              ? width / 20
-                              : width / 30,),
-                          child:  Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+
+                          margin: EdgeInsets.only(
+                            top: Responsive.isSmallScreen(context)
+                                ? width / 20
+                                : width / 30,
+
+                          ),
+
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
@@ -301,22 +293,26 @@ class NameState extends State<Name> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left:Responsive.isSmallScreen(context)
-                                    ? width / 9
-                                    : width / 30,),
-                                child:  Row(
+                                margin: EdgeInsets.only(
+
+                                  right: Responsive.isSmallScreen(context)
+                                      ? width / 20
+                                      : width / 30,
+                                ),
+                                child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        '1997',
+                                        year,
                                         style: TextStyle(
                                           color: Color(0xff212426),
-                                          fontSize: Responsive.isSmallScreen(context)
-                                              ? width / 26
-                                              : width / 40,
+                                          fontSize:
+                                              Responsive.isSmallScreen(context)
+                                                  ? width / 26
+                                                  : width / 40,
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -330,7 +326,51 @@ class NameState extends State<Name> {
                                     ),
                                   ],
                                 ),
+                              ),
+                              GestureDetector(
+                                onTap: () async {
+                                  final DateTime? picked = await showDatePicker(
+                                      context: context,
+                                      initialDate: selectedDate,
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2100));
+                                  if (picked != null && picked != selectedDate) {
+                                    setState(() {
+                                      selectedDate = picked;
+                                      dateController.text =
+                                          DateFormat('yyyy-MM-dd')
+                                              .format(selectedDate);
+                                      month = DateFormat('MMMM')
+                                          .format(selectedDate); // Extract month
+                                      date = DateFormat('d').format(selectedDate);
+                                      year = DateFormat('yyyy')
+                                          .format(selectedDate); // Extract day
+
+                                      // Use the month and day strings as needed
+                                      print('Month: $month');
+                                      print('Day: $date');
+                                    });
+                                  }
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                    right: Responsive.isSmallScreen(context)
+                                        ? width / 20
+                                        : width / 30,
+                                  ),
+                                  alignment: Alignment.centerRight,
+                                  child: Image(
+                                    image: AssetImage('image/basic_edit.png'),
+                                    height: Responsive.isSmallScreen(context)
+                                        ? width / 20
+                                        : width / 26,
+                                    width: Responsive.isSmallScreen(context)
+                                        ? width / 20
+                                        : width / 26,
+                                  ),
+                                ),
                               )
+
                             ],
                           ),
                         )
@@ -363,8 +403,7 @@ class NameState extends State<Name> {
                     child: Column(
                       children: [
                         Container(
-
-                          child:  Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -383,10 +422,12 @@ class NameState extends State<Name> {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left:Responsive.isSmallScreen(context)
-                                    ? width / 9
-                                    : width / 30,),
-                                child:  Row(
+                                margin: EdgeInsets.only(
+                                  left: Responsive.isSmallScreen(context)
+                                      ? width / 9
+                                      : width / 30,
+                                ),
+                                child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -396,9 +437,10 @@ class NameState extends State<Name> {
                                         'Female',
                                         style: TextStyle(
                                           color: Color(0xff212426),
-                                          fontSize: Responsive.isSmallScreen(context)
-                                              ? width / 26
-                                              : width / 40,
+                                          fontSize:
+                                              Responsive.isSmallScreen(context)
+                                                  ? width / 26
+                                                  : width / 40,
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -420,88 +462,7 @@ class NameState extends State<Name> {
                     ),
                   ),
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  margin: EdgeInsets.only(
-                    left: Responsive.isSmallScreen(context)
-                        ? width / 20
-                        : width / 30,
-                    right: Responsive.isSmallScreen(context)
-                        ? width / 20
-                        : width / 30,
-                    top: Responsive.isSmallScreen(context)
-                        ? width / 20
-                        : width / 30,
-                  ),
-                  elevation: 5,
-                  child: Container(
-                    padding: EdgeInsets.all(
-                      Responsive.isSmallScreen(context)
-                          ? width / 20
-                          : width / 26,
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
 
-                          child:  Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Blood Group',
-                                  style: TextStyle(
-                                    color: Color(0xff949494),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 26
-                                        : width / 40,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(left:Responsive.isSmallScreen(context)
-                                    ? width / 9
-                                    : width / 30,),
-                                child:  Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'AB+',
-                                        style: TextStyle(
-                                          color: Color(0xff212426),
-                                          fontSize: Responsive.isSmallScreen(context)
-                                              ? width / 26
-                                              : width / 40,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Icon(
-                                        Icons.arrow_drop_down_outlined,
-                                        color: Color(0xff4F555A),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
               ],
             )
           ],

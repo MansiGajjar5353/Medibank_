@@ -26,15 +26,19 @@ class LifestyleDashboardState extends State<LifestyleDashboard> {
  return Scaffold(
 
    appBar: AppBar(
-     toolbarHeight: 100, // default is 56
+     toolbarHeight: Responsive.isSmallScreen(context)? width/5: width/8.2,
      backgroundColor: Colors.white,
      elevation: 0,
-     iconTheme: IconThemeData(color: Colors.green),
-     leading: IconButton(
-       onPressed: () {
-         Navigator.of(context).pop();
-       }, padding: EdgeInsets.only(top: 40),
-       icon: const BackButtonIcon(),
+     iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+     leading: Align(
+       alignment: Alignment.bottomLeft,
+       child: IconButton(
+         onPressed: () {
+           Navigator.of(context).pop();
+         },
+         icon: const BackButtonIcon(
+         ),
+       ),
      ),
      title: Column(
        crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,21 +49,27 @@ class LifestyleDashboardState extends State<LifestyleDashboard> {
                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
                )),
 
-         Row(
-           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-           children: [
-             Text("Dashboard ",
-               style: TextStyle(color: Color(0xff000000),
-                   fontSize: 18,
-                   fontWeight: FontWeight.w400,
-                   fontFamily: 'Poppins'),),
-             InkWell(
-               onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
-               child: Image(image: AssetImage("image/DashboardImage.png"),
-                 height: 30,
+         Align(
+           alignment: Alignment.bottomCenter,
+           child: Row(
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             children: [
+               Align(
+                 alignment: Alignment.bottomLeft,
+                 child: Text("Dashboard ",
+                   style: TextStyle(color: Color(0xff000000),
+                       fontSize: Responsive.isSmallScreen(context)? width/20: width/30,
+                       fontWeight: FontWeight.w400,
+                       fontFamily: 'Poppins'),),
                ),
-             ),
-           ],
+               InkWell(
+                 onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
+                 child: Image(image: AssetImage("image/DashboardImage.png"),
+                   height:  Responsive.isSmallScreen(context)? width/15: width/30,
+                 ),
+               ),
+             ],
+           ),
          ),
 
        ],
@@ -157,16 +167,16 @@ Center(
 
 
         Container(
-          margin: EdgeInsets.only( top:20),
+          margin: EdgeInsets.only( top:20, left: 20, right: 20),
           height:90,
+          width: Responsive.isSmallScreen(context)? width/1.2 : width/1.5,
           decoration: BoxDecoration(
             color: Color(0xffF9F9F9),
             borderRadius: BorderRadius.circular(21),
           ),
           child:Container(
             margin: EdgeInsets.only(left: 20, right: 20),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
+
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -174,36 +184,48 @@ Center(
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(child: Text("Underweight", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12, fontWeight: FontWeight.w400 ),)),
+                      Container(child: Text("Underweight",
+                        style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50),
+                            fontSize: Responsive.isSmallScreen(context)? width/40: width/80,
+                            fontWeight: FontWeight.w400 ),)),
                       Container(margin: EdgeInsets.only(top: 5),
-                          child: Text("Less than 18.5",style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                          child: Text("Less than 18.5",
+                            style: TextStyle(
+                                fontSize: Responsive.isSmallScreen(context)? width/50: width/100,
+
+                                fontWeight: FontWeight.w500 ),)),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(child: Text("Normal", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12,fontWeight: FontWeight.w400 ))),
-                      Container(margin: EdgeInsets.only(top: 5),child: Text("18.5-24.9", style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                      Container(child: Text("Normal", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: Responsive.isSmallScreen(context)? width/40: width/80,fontWeight: FontWeight.w400 ))),
+                      Container(margin: EdgeInsets.only(top: 5),child: Text("18.5-24.9", style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/50: width/100,fontWeight: FontWeight.w500 ),)),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(child: Text("Overweight", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12,fontWeight: FontWeight.w400 ))),
-                      Container(margin: EdgeInsets.only(top: 5),child: Text("25-29.9" ,style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                      Container(child: Text("Overweight", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50),
+
+                          fontSize: Responsive.isSmallScreen(context)? width/40: width/80,
+                          fontWeight: FontWeight.w400 ))),
+                      Container(margin: EdgeInsets.only(top: 5),child: Text("25-29.9" ,style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/50: width/100,
+                          fontWeight: FontWeight.w500 ),)),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(child: Text("Obesity", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: 12, fontWeight: FontWeight.w400))),
-                      Container(margin: EdgeInsets.only(top: 5),child: Text("30+" ,style: TextStyle(fontSize: 10,fontWeight: FontWeight.w500 ),)),
+                      Container(child: Text("Obesity", style: TextStyle(color: Color(0xff4F555A).withOpacity(0.50), fontSize: Responsive.isSmallScreen(context)? width/40: width/80,
+                          fontWeight: FontWeight.w400))),
+                      Container(margin: EdgeInsets.only(top: 5),child: Text("30+" ,style: TextStyle(fontSize: Responsive.isSmallScreen(context)? width/50: width/100,fontWeight: FontWeight.w500 ),)),
                     ],
                   ),
 
                 ],
               ),
-            ),
+
           ),
 
 
@@ -357,7 +379,7 @@ Container(
                           ),
                           hintText: "21.5",
                           hintStyle:
-                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/23: width/60,
+                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/30: width/60,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
@@ -411,7 +433,7 @@ Container(
                           ),
                           hintText: "55",
                           hintStyle:
-                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/23: width/60,
+                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/30: width/60,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
@@ -466,7 +488,7 @@ Container(
                           ),
                           hintText: "5000",
                           hintStyle:
-                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/23: width/60,
+                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/30: width/60,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           ),
@@ -521,7 +543,7 @@ Container(
                           ),
                           hintText: "500",
                           hintStyle:
-                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/23: width/60,
+                          TextStyle(fontSize:Responsive.isSmallScreen(context)? width/30: width/60,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             ),
