@@ -62,29 +62,39 @@ class _AabhaAadharNumberState extends State<AabhaAadharNumber> {
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+        toolbarHeight:
+            Responsive.isSmallScreen(context) ? width / 10 : width / 10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        iconTheme: IconThemeData(
+          color: Colors.green,
+          size: Responsive.isSmallScreen(context) ? width / 20 : width / 25,
+        ),
         leading: Align(
           alignment: Alignment.bottomLeft,
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: const BackButtonIcon(
-            ),
+            icon: const BackButtonIcon(),
           ),
-        ),        title: Center(
-        child: Container(padding: EdgeInsets.only(right: 30),
-            child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
-      ),
+        ),
+        title: Center(
+          child: Container(
+              padding: EdgeInsets.only(right: 30),
+              child: Image(
+                  image: AssetImage(
+                    "image/MedibankLOGO.png",
+                  ),
+                  width: Responsive.isSmallScreen(context)
+                      ? width / 2.3
+                      : width / 4)),
+        ),
       ),
       body: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(top:10),
+            margin: EdgeInsets.only(top: 10),
             height: _mediaquery.size.height * 1,
             child: ListView(
               children: [
@@ -157,63 +167,65 @@ class _AabhaAadharNumberState extends State<AabhaAadharNumber> {
                 Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:[
-
+                    children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           OtpInput(_fieldOne, true), // auto focus
                           OtpInput(_fieldTwo, false),
                           OtpInput(_fieldThree, false),
-
                         ],
                       ),
-                   
-
                       Center(
                         child: Stack(
                           children: [
-                            Transform.translate(offset: Offset(0,-60),
-                              child:SizedBox(
-                                height: _mediaquery.size.height*0.49,
+                            Transform.translate(
+                              offset: Offset(0, -60),
+                              child: SizedBox(
+                                height: _mediaquery.size.height * 0.49,
                                 child: Image.asset(
                                   "image/Otpapage.png",
                                   fit: BoxFit.contain,
                                 ),
                               ),
                             ),
-
                           ],
                         ),
                       ),
-
-                    ]
-                )
+                    ])
               ],
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/10 : width/10,right: Responsive.isSmallScreen(context)? width/10 : width/10,bottom: Responsive.isSmallScreen(context)? width/7 : width/12),
-
-              width: Responsive.isSmallScreen(context)? width/2.5 : width/2.5,
-              height: Responsive.isSmallScreen(context)? width/8: width/8,
-
-              child: ElevatedButton(onPressed:handleButtonPress,
+              margin: EdgeInsets.only(
+                  left: Responsive.isSmallScreen(context)
+                      ? width / 10
+                      : width / 10,
+                  right: Responsive.isSmallScreen(context)
+                      ? width / 10
+                      : width / 10,
+                  bottom: Responsive.isSmallScreen(context)
+                      ? width / 7
+                      : width / 12),
+              width:
+                  Responsive.isSmallScreen(context) ? width / 2.5 : width / 2.5,
+              height: Responsive.isSmallScreen(context) ? width / 8 : width / 8,
+              child: ElevatedButton(
+                onPressed: handleButtonPress,
                 child: Image.asset('image/AerrowRight.png',
-                    color: isButtonPressed? Colors.black:imageColor,
-                    height: _mediaquery.size.height*0.04) ,
+                    color: isButtonPressed ? Colors.black : imageColor,
+                    height: _mediaquery.size.height * 0.04),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:isButtonPressed ? buttonColor :  Color(0xffF9F9F9),
+                  backgroundColor:
+                      isButtonPressed ? buttonColor : Color(0xffF9F9F9),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0)
-                  ),
+                      borderRadius: BorderRadius.circular(32.0)),
                 ),
               ),
             ),
           )
-
         ],
       ),
     );
@@ -231,13 +243,8 @@ class OtpInput extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-
-      height: Responsive.isSmallScreen(context)
-          ? height / 12
-          : height / 12,
-      width: Responsive.isSmallScreen(context)
-          ? width / 4
-          : width /5.5,
+      height: Responsive.isSmallScreen(context) ? height / 12 : height / 12,
+      width: Responsive.isSmallScreen(context) ? width / 4 : width / 5.5,
       child: TextField(
         autofocus: autoFocus,
         textAlign: TextAlign.center,
@@ -245,14 +252,12 @@ class OtpInput extends StatelessWidget {
         controller: controller,
         maxLength: 4,
         cursorColor: Theme.of(context).primaryColor,
-          style: TextStyle(
-              color: Color(0xff4F555A).withOpacity(0.5),
-              fontSize: Responsive.isSmallScreen(context)
-                  ? width / 22
-                  : width / 34,
-              fontWeight: FontWeight.w400),
+        style: TextStyle(
+            color: Color(0xff4F555A).withOpacity(0.5),
+            fontSize:
+                Responsive.isSmallScreen(context) ? width / 22 : width / 34,
+            fontWeight: FontWeight.w400),
         decoration: InputDecoration(
-
             filled: true,
             fillColor: Color(0xffF9F9F9),
             border: OutlineInputBorder(
@@ -263,13 +268,9 @@ class OtpInput extends StatelessWidget {
             counterText: '',
             hintStyle: TextStyle(
                 color: Color(0xff4F555A).withOpacity(0.5),
-                fontSize: Responsive.isSmallScreen(context)
-                    ? width / 22
-                    : width / 34,
-                fontWeight: FontWeight.w400)
-
-        ),
-
+                fontSize:
+                    Responsive.isSmallScreen(context) ? width / 22 : width / 34,
+                fontWeight: FontWeight.w400)),
         onChanged: (value) {
           if (value.length == 4) {
             FocusScope.of(context).nextFocus();

@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:project_signup_page/Onbording/Payment.dart';
-import 'Responsive.dart';
-import 'City.dart';
-import 'Dashboard.dart';
-import 'Welcome_Screen.dart';
-enum ButtonState { Button1, Button2, }
 
-class Plans extends StatefulWidget{
+import 'Responsive.dart';
+import 'Welcome_Screen.dart';
+
+enum ButtonState {
+  Button1,
+  Button2,
+}
+
+class Plans extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return PlansState();
   }
-
 }
 
-class PlansState extends State<Plans>{
+class PlansState extends State<Plans> {
   ButtonState selectedButton = ButtonState.Button1; // Initial selected button
 
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
-
 
   void handleButtonPress() {
     setState(() {
@@ -31,25 +31,27 @@ class PlansState extends State<Plans>{
 
     Future.delayed(const Duration(milliseconds: 200), () {
       setState(() {
-        buttonColor = Colors.green; // Change the color back to the original value
+        buttonColor =
+            Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      Navigator.push(context,MaterialPageRoute(builder: (context)=>Welcome_Screen(),));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Welcome_Screen(),
+          ));
       // Perform navigation after the delay
-
     });
   }
 
-
-
   final TextEditingController _userController = new TextEditingController();
 
-
-  void _erase(){
+  void _erase() {
     setState(() {
       _userController.clear();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -58,234 +60,287 @@ class PlansState extends State<Plans>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
-
+        toolbarHeight:
+            Responsive.isSmallScreen(context) ? width / 10 : width / 10,
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        iconTheme: IconThemeData(
+          color: Colors.green,
+          size: Responsive.isSmallScreen(context) ? width / 20 : width / 25,
+        ),
         title: Center(
-          child: Container(padding: EdgeInsets.only(right: 30),
-              child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                  width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+          child: Container(
+              padding: EdgeInsets.only(right: 30),
+              child: Image(
+                  image: AssetImage(
+                    "image/MedibankLOGO.png",
+                  ),
+                  width: Responsive.isSmallScreen(context)
+                      ? width / 2.3
+                      : width / 4)),
         ),
       ),
-      body:Container(
-        height: _mediaquery.size.height*1,
+      body: Container(
+        height: _mediaquery.size.height * 1,
         child: ListView(
           children: [
-         Center(
-           child: Container(
-        margin: EdgeInsets.only(left:0,top:10.0 ),
-        //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
-        child:RichText(
-            text: TextSpan(
-              text: 'Choose Your ',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: Responsive.isSmallScreen(context)?width/16 : width/30,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'Plan',
-                  style: TextStyle(
-                    color: Color(0xff24B445),
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Poppins',),
+            Center(
+              child: Container(
+                margin: EdgeInsets.only(left: 0, top: 10.0),
+                //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Choose Your ',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: Responsive.isSmallScreen(context)
+                          ? width / 16
+                          : width / 30,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Plan',
+                        style: TextStyle(
+                          color: Color(0xff24B445),
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-        ),
-           ),
-         ),
 
             Container(
-              child:Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    child:Text("Amet minim mollit non deserunt ullamco est sit ",
-                      style: new TextStyle(color:Color(0xff929292),
-                        fontSize: Responsive.isSmallScreen(context)?width/30 : width/60,),
-                    ),),
-
-                  Container( child:Text("aliqua dolor do amet sint.",
-                    style: new TextStyle(color:Color(0xff929292),
-                      fontSize: Responsive.isSmallScreen(context)?width/30 : width/60,),
+                    child: Text(
+                      "Amet minim mollit non deserunt ullamco est sit ",
+                      style: new TextStyle(
+                        color: Color(0xff929292),
+                        fontSize: Responsive.isSmallScreen(context)
+                            ? width / 30
+                            : width / 60,
+                      ),
+                    ),
                   ),
+                  Container(
+                    child: Text(
+                      "aliqua dolor do amet sint.",
+                      style: new TextStyle(
+                        color: Color(0xff929292),
+                        fontSize: Responsive.isSmallScreen(context)
+                            ? width / 30
+                            : width / 60,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-
-
-
-
-
-
-
 
             Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Padding(padding: EdgeInsets.only(top: 60)),
+                  Stack(
+                    children: [
+                      Container(
+                        child: InkWell(
+                          onTap: () {
+                            onButtonPressed(ButtonState.Button1);
+                          },
+                          child: Container(
+                            height: _mediaquery.size.height * 0.13,
+                            width: Responsive.isSmallScreen(context)
+                                ? width / 0.5
+                                : width / 0.6,
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            decoration: BoxDecoration(
+                              color: selectedButton == ButtonState.Button1
+                                  ? Color(0xffADE3BA)
+                                  : Color(0xffF7F7F7),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: _mediaquery.size.width * 0.01)),
+                                Container(
+                                  width: Responsive.isSmallScreen(context)
+                                      ? width / 5
+                                      : width / 9,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage('image/Plan1.png'),
+                                      fit: BoxFit.scaleDown,
 
-                  Padding(padding: EdgeInsets.only(top:60)),
-                 Stack(
-                   children: [
-                     Container(
-
-                       child: InkWell(
-                       onTap:(){
-                         onButtonPressed(ButtonState.Button1);
-
-                       },
+                                      // child:Text('Others'),
+                                    ),
+                                    // backgroundImage: AssetImage('image/Other.png',),
+                                  ),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        left: _mediaquery.size.width * 0.02)),
+                                Container(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Individual Plan",
+                                        style: TextStyle(
+                                          color: Color(0xff000000),
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Poppins',
+                                          fontSize:
+                                              Responsive.isSmallScreen(context)
+                                                  ? width / 22
+                                                  : width / 60,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Applied discount 200/-",
+                                        style: TextStyle(
+                                          color: Color(0xffA1A1A1),
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Poppins',
+                                          fontSize:
+                                              Responsive.isSmallScreen(context)
+                                                  ? width / 40
+                                                  : width / 60,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(padding: EdgeInsets.only(left: 15)),
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                          text: '800 ',
+                                          style: TextStyle(
+                                            color: Color(0xff24B445),
+                                            fontSize: Responsive.isSmallScreen(
+                                                    context)
+                                                ? width / 22
+                                                : width / 60,
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                              text: 'INR',
+                                              style: TextStyle(
+                                                fontSize:
+                                                    Responsive.isSmallScreen(
+                                                            context)
+                                                        ? width / 30
+                                                        : width / 60,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w400,
+                                                fontFamily: 'Poppins',
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          'Per Year',
+                                          style: TextStyle(
+                                            fontSize: Responsive.isSmallScreen(
+                                                    context)
+                                                ? width / 50
+                                                : width / 60,
+                                            color: Color(0xffBEBEBE),
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Visibility(
+                        visible: selectedButton == ButtonState.Button1
+                            ? true
+                            : false,
                         child: Container(
-                           height: _mediaquery.size.height*0.13,
-                           width: Responsive.isSmallScreen(context)?width/0.5:width/0.6,
-                           margin: EdgeInsets.only(left:20,right: 20),
-                           decoration: BoxDecoration(
-                             color: selectedButton== ButtonState.Button1? Color(0xffADE3BA): Color(0xffF7F7F7),
-                             borderRadius: BorderRadius.circular(20.0),
-                           ),
-                           child: Row(
-                             mainAxisAlignment: MainAxisAlignment.start,
-                             children: [
-                               Padding(padding: EdgeInsets.only(left:_mediaquery.size.width*0.01)),
-                               Container(
-                                 width:Responsive.isSmallScreen(context)? width/5: width/9,
-                                 decoration: BoxDecoration(
-
-                                   image: DecorationImage(
-                                     image: AssetImage('image/Plan1.png'),
-                                     fit: BoxFit.scaleDown,
-
-                                     // child:Text('Others'),
-                                   ),
-                                   // backgroundImage: AssetImage('image/Other.png',),
-                                 ),
-                               ),
-                               Padding(padding: EdgeInsets.only(left: _mediaquery.size.width*0.02)),
-                               Container(
-                                 child: Column(
-                                   mainAxisAlignment: MainAxisAlignment.center,
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
-                                     Text("Individual Plan",
-                                       style: TextStyle(
-                                       color: Color(0xff000000),
-                                       fontWeight: FontWeight.w500,
-                                       fontFamily: 'Poppins',
-                                       fontSize: Responsive.isSmallScreen(context)?width/22: width/60,
-                                     ),),
-                                     Text("Applied discount 200/-",
-                                       style: TextStyle(
-                                         color: Color(0xffA1A1A1),
-                                         fontWeight: FontWeight.w500,
-                                         fontFamily: 'Poppins',
-                                         fontSize: Responsive.isSmallScreen(context)?width/40: width/60,
-                                       ),),
-                                   ],
-                                 ),
-                               ),
-                               Padding(padding: EdgeInsets.only(left:15)),
-                               Container(
-                                 child:Column(
-                                   crossAxisAlignment: CrossAxisAlignment.end,
-                                   mainAxisAlignment: MainAxisAlignment.center,
-                                   children: [
-                                     RichText(
-                                       text: TextSpan(
-                                         text: '800 ',
-                                         style: TextStyle(
-                                           color: Color(0xff24B445),
-                                           fontSize:Responsive.isSmallScreen(context)? width/22 : width/60,
-                                           fontFamily: 'Poppins',
-                                           fontWeight: FontWeight.w400,
-                                         ),
-                                         children: <TextSpan>[
-                                           TextSpan(
-                                             text: 'INR',
-                                             style: TextStyle(
-                                               fontSize:Responsive.isSmallScreen(context)? width/30 : width/60,
-                                               color: Colors.black,
-                                               fontWeight: FontWeight.w400,
-                                               fontFamily: 'Poppins',),
-                                           ),
-                                         ],
-                                       ),
-                                     ),
-                                     Container(
-                                       child: Text('Per Year',style: TextStyle(
-                                         fontSize:Responsive.isSmallScreen(context)? width/50: width/60,
-                                         color: Color(0xffBEBEBE),
-                                         fontWeight: FontWeight.w500,
-                                         fontFamily: 'Poppins',),),
-                                     )
-
-                                   ],
-                                 ),
-                               ),
-                             ],
-                           ),
-                         ),
-
-                       ),
-                     ),
-                     Visibility(
-                       visible:  selectedButton== ButtonState.Button1 ? true: false,
-                       child: Container(
-                         margin: EdgeInsets.only(left: 312),
-                         decoration: BoxDecoration(
-                           color: Colors.white,
-                           shape: BoxShape.circle,
-                           boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
-                         ),
-                         child: CircleAvatar(
-                           radius:14,
-                           backgroundColor: Colors.white,
-                           child: Center(
-                             child: Image.asset("image/Checkbox.png", height: 20,),
-                           ),
-                         ),
-                       ),
-                     ),
-                   ],
-                 ),
-
-
-
-
-
-
-Padding(padding: EdgeInsets.only(top: 20)),
-
+                          margin: EdgeInsets.only(left: 312),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 0,
+                                  color: Color(0xffCECECE),
+                                  spreadRadius: 2)
+                            ],
+                          ),
+                          child: CircleAvatar(
+                            radius: 14,
+                            backgroundColor: Colors.white,
+                            child: Center(
+                              child: Image.asset(
+                                "image/Checkbox.png",
+                                height: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 20)),
                   Container(
-
                     child: InkWell(
-                      onTap: ()
-                      {
-                      onButtonPressed(ButtonState.Button2);
+                      onTap: () {
+                        onButtonPressed(ButtonState.Button2);
                       },
                       child: Container(
-                        height: _mediaquery.size.height*0.13,
-                        width: Responsive.isSmallScreen(context)?width/0.5:width/0.6,
-                        margin: EdgeInsets.only(left:20,right: 20),
+                        height: _mediaquery.size.height * 0.13,
+                        width: Responsive.isSmallScreen(context)
+                            ? width / 0.5
+                            : width / 0.6,
+                        margin: EdgeInsets.only(left: 20, right: 20),
                         decoration: BoxDecoration(
-                        //  color: Color(0xffF7F7F7),
-                         color: selectedButton== ButtonState.Button2? Color(0xffADE3BA): Color(0xffF7F7F7),
+                          //  color: Color(0xffF7F7F7),
+                          color: selectedButton == ButtonState.Button2
+                              ? Color(0xffADE3BA)
+                              : Color(0xffF7F7F7),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Padding(padding: EdgeInsets.only(left:_mediaquery.size.width*0.01)),
-
+                            Padding(
+                                padding: EdgeInsets.only(
+                                    left: _mediaquery.size.width * 0.01)),
                             Container(
-                              width:Responsive.isSmallScreen(context)? width/5: width/9,
-
+                              width: Responsive.isSmallScreen(context)
+                                  ? width / 5
+                                  : width / 9,
                               decoration: BoxDecoration(
                                 // color: Colors.black,
                                 image: DecorationImage(
@@ -296,34 +351,44 @@ Padding(padding: EdgeInsets.only(top: 20)),
                                 ), // backgroundImage: AssetImage('image/Other.png',),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(left:5)),
+                            Padding(padding: EdgeInsets.only(left: 5)),
                             Container(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Family Plan", style: TextStyle(
-                                    color: Color(0xff000000),
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'Poppins',
-                                    fontSize: Responsive.isSmallScreen(context)?width/22: width/60,
-                                  ),),
-                                  Text("Applied discount 200/-",
+                                  Text(
+                                    "Family Plan",
+                                    style: TextStyle(
+                                      color: Color(0xff000000),
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: 'Poppins',
+                                      fontSize:
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 22
+                                              : width / 60,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Applied discount 200/-",
                                     style: TextStyle(
                                       color: Color(0xffA1A1A1),
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'Poppins',
-                                      fontSize: Responsive.isSmallScreen(context)?width/40: width/60,
-
-                                    ),),
+                                      fontSize:
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 40
+                                              : width / 60,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(left:20)),
+                            Padding(padding: EdgeInsets.only(left: 20)),
                             Stack(
                               children: [
                                 Container(
-                                  child:Column(
+                                  child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -332,7 +397,10 @@ Padding(padding: EdgeInsets.only(top: 20)),
                                           text: '1000 ',
                                           style: TextStyle(
                                             color: Color(0xff24B445),
-                                            fontSize:Responsive.isSmallScreen(context)? width/22 : width/60,
+                                            fontSize: Responsive.isSmallScreen(
+                                                    context)
+                                                ? width / 22
+                                                : width / 60,
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.w400,
                                           ),
@@ -340,108 +408,133 @@ Padding(padding: EdgeInsets.only(top: 20)),
                                             TextSpan(
                                               text: 'INR',
                                               style: TextStyle(
-                                                fontSize:Responsive.isSmallScreen(context)? width/30 : width/60,
+                                                fontSize:
+                                                    Responsive.isSmallScreen(
+                                                            context)
+                                                        ? width / 30
+                                                        : width / 60,
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w400,
-                                                fontFamily: 'Poppins',),
+                                                fontFamily: 'Poppins',
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                       Container(
-                                        child: Text('Per Year',style: TextStyle(
-                                          fontSize:Responsive.isSmallScreen(context)? width/50: width/60,
-                                          color: Color(0xffBEBEBE),
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'Poppins',),),
+                                        child: Text(
+                                          'Per Year',
+                                          style: TextStyle(
+                                            fontSize: Responsive.isSmallScreen(
+                                                    context)
+                                                ? width / 50
+                                                : width / 60,
+                                            color: Color(0xffBEBEBE),
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        ),
                                       )
-
                                     ],
                                   ),
                                 ),
-
                                 Visibility(
-                                  visible:  selectedButton== ButtonState.Button2 ? true: false,
+                                  visible: selectedButton == ButtonState.Button2
+                                      ? true
+                                      : false,
                                   child: Container(
                                     margin: EdgeInsets.only(left: 71),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       shape: BoxShape.circle,
-                                      boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
+                                      boxShadow: [
+                                        BoxShadow(
+                                            blurRadius: 0,
+                                            color: Color(0xffCECECE),
+                                            spreadRadius: 2)
+                                      ],
                                     ),
                                     child: CircleAvatar(
-                                      radius:14,
+                                      radius: 14,
                                       backgroundColor: Colors.white,
                                       child: Center(
-                                        child: Image.asset("image/Checkbox.png", height: 20,),
+                                        child: Image.asset(
+                                          "image/Checkbox.png",
+                                          height: 20,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
-
-
-
-
                           ],
                         ),
                       ),
-
                     ),
                   ),
-
-
                 ],
               ),
             ),
 
-          Padding(padding: EdgeInsets.only(top:126)),
+            Padding(padding: EdgeInsets.only(top: 126)),
 
             Container(
               margin: EdgeInsets.only(right: 20.0),
-              padding: EdgeInsets.only(left:20.0),
+              padding: EdgeInsets.only(left: 20.0),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35), // set the border radius
+                borderRadius:
+                    BorderRadius.circular(35), // set the border radius
                 //border: Border.all(),
               ),
               child: TextField(
-          controller: _userController,
-                decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                controller: _userController,
+                decoration: InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   filled: true,
                   fillColor: Color(0xffF9F9F9),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(35),
-                    borderSide: BorderSide.none,),
-
+                    borderSide: BorderSide.none,
+                  ),
                   hintText: "Enter Coupen Code",
-                  suffixIcon: IconButton(icon:Icon(Icons.clear_sharp,color: Color(0xff4F555A).withOpacity(0.5),
-                    size: 14,),
-                    onPressed: _erase,),
-                  hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                      fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Icons.clear_sharp,
+                      color: Color(0xff4F555A).withOpacity(0.5),
+                      size: 14,
+                    ),
+                    onPressed: _erase,
+                  ),
+                  hintStyle: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.5),
+                      fontSize: Responsive.isSmallScreen(context)
+                          ? width / 25
+                          : width / 60),
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: _mediaquery.size.height*0.05)),
+            Padding(
+                padding: EdgeInsets.only(top: _mediaquery.size.height * 0.05)),
 
             Center(
               child: Container(
-                height: _mediaquery.size.height*0.070,
-                width: Responsive.isSmallScreen(context) ? width/2.5: width/3.5,
-                margin: EdgeInsets.only(top: _mediaquery.size.height*0.02),
+                height: _mediaquery.size.height * 0.070,
+                width: Responsive.isSmallScreen(context)
+                    ? width / 2.5
+                    : width / 3.5,
+                margin: EdgeInsets.only(top: _mediaquery.size.height * 0.02),
                 child: ElevatedButton(
-                  onPressed:handleButtonPress,
+                  onPressed: handleButtonPress,
                   child: Image.asset('image/AerrowRight.png',
-                      color: isButtonPressed? Colors.black:imageColor,
-                      height: _mediaquery.size.height*0.04) ,
+                      color: isButtonPressed ? Colors.black : imageColor,
+                      height: _mediaquery.size.height * 0.04),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:isButtonPressed ? buttonColor : Color(0xffF9F9F9),
+                    backgroundColor:
+                        isButtonPressed ? buttonColor : Color(0xffF9F9F9),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0)
-                    ),
+                        borderRadius: BorderRadius.circular(32.0)),
                   ),
                 ),
               ),
@@ -478,20 +571,15 @@ Padding(padding: EdgeInsets.only(top: 20)),
             //     ],
             //   ),
             // ),
-
-
           ],
         ),
       ),
     );
   }
 
-
-
   void onButtonPressed(ButtonState buttonState) {
     setState(() {
       selectedButton = buttonState;
     });
   }
-
 }

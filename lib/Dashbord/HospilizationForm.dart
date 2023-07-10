@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
-
 import 'PatientBilling.dart';
+
 class TabData {
   String title;
   String description;
@@ -11,21 +11,18 @@ class TabData {
   TabData(this.title, this.description);
 }
 
-
-class HospilizationForm extends StatefulWidget{
+class HospilizationForm extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return HospilizationFormState();
   }
-
 }
 
 class HospilizationFormState extends State<HospilizationForm> {
   List<TabData> tabs = [
     TabData('Patient Record', 'Description for Tab 1'),
     TabData('Patient Biling', 'Description for Tab 2'),
-
   ];
   int currentIndex = 0;
   PageController _pageController = PageController();
@@ -36,11 +33,9 @@ class HospilizationFormState extends State<HospilizationForm> {
     super.dispose();
   }
 
-
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
-
 
   void handleButtonPress() {
     setState(() {
@@ -57,46 +52,49 @@ class HospilizationFormState extends State<HospilizationForm> {
       //
       // Navigator.push(context,MaterialPageRoute(builder: (context)=>BottomNavBarApp(),));
       // Perform navigation after the delay
-
     });
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    double width = MediaQuery.of(context).size.width;
 
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Responsive.isSmallScreen(context)? width/5: width/8.2,
+        toolbarHeight:
+            Responsive.isSmallScreen(context) ? width / 5 : width / 8.2,
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        iconTheme: IconThemeData(
+          color: Colors.green,
+          size: Responsive.isSmallScreen(context) ? width / 20 : width / 25,
+        ),
         leading: Align(
           alignment: Alignment.bottomLeft,
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: const BackButtonIcon(
-            ),
+            icon: const BackButtonIcon(),
           ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(padding: EdgeInsets.only(right: 30),
+            Container(
+                padding: EdgeInsets.only(right: 30),
                 child: Center(
-                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
-                )
-            ),
-
+                  child: Image(
+                      image: AssetImage(
+                        "image/MedibankLOGO.png",
+                      ),
+                      width: Responsive.isSmallScreen(context)
+                          ? width / 2.3
+                          : width / 4),
+                )),
             Align(
               alignment: Alignment.bottomCenter,
               child: Row(
@@ -104,26 +102,38 @@ class HospilizationFormState extends State<HospilizationForm> {
                 children: [
                   Align(
                     alignment: Alignment.bottomLeft,
-                    child: Text("Hospilization ",
-                      style: TextStyle(color: Color(0xff000000),
-                          fontSize: Responsive.isSmallScreen(context)? width/20: width/30,
+                    child: Text(
+                      "Hospilization ",
+                      style: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 30,
                           fontWeight: FontWeight.w400,
-                          fontFamily: 'Poppins'),),
+                          fontFamily: 'Poppins'),
+                    ),
                   ),
                   InkWell(
-                    onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
-                    child: Image(image: AssetImage("image/DashboardImage.png"),
-                      height:  Responsive.isSmallScreen(context)? width/15: width/30,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BottomNavBarApp(),
+                          ));
+                    },
+                    child: Image(
+                      image: AssetImage("image/DashboardImage.png"),
+                      height: Responsive.isSmallScreen(context)
+                          ? width / 15
+                          : width / 30,
                     ),
                   ),
                 ],
               ),
             ),
-
           ],
         ),
       ),
-
       body: ListView(
         children: [
           Container(
@@ -131,7 +141,6 @@ class HospilizationFormState extends State<HospilizationForm> {
             height: 1,
             color: Color(0xffE4E8EE),
           ),
-
           Container(
             margin: EdgeInsets.only(left: 20, top: 10),
             child: Row(
@@ -159,16 +168,19 @@ class HospilizationFormState extends State<HospilizationForm> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => PatientBilling(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PatientBilling(),
+                        ));
                   },
                   child: Container(
                     margin: EdgeInsets.only(left: 10),
                     width: 119,
                     height: 26,
                     decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Color(0xff858585).withOpacity(0.5)),
+                      border:
+                          Border.all(color: Color(0xff858585).withOpacity(0.5)),
                       borderRadius: BorderRadius.circular(20),
                       color: Color(0xffF4F4F4),
                     ),
@@ -186,101 +198,100 @@ class HospilizationFormState extends State<HospilizationForm> {
               ],
             ),
           ),
-
-          Column(crossAxisAlignment: CrossAxisAlignment.start,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Container(
                 margin: EdgeInsets.only(left: 30, right: 30, top: 20),
-                width: Responsive.isSmallScreen(context) ? width / 1.2 : width /
-                    2,
+                width:
+                    Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
                 height: 55,
                 child: TextField(
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     filled: true,
                     fillColor: Color(0xffF9F9F9),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(35),
-                      borderSide: BorderSide.none,),
-
+                      borderSide: BorderSide.none,
+                    ),
                     hintText: "Admission date",
-                    hintStyle: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5)),
-
+                    hintStyle:
+                        TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
                   ),
                 ),
               ),
             ],
           ),
-          Column(crossAxisAlignment: CrossAxisAlignment.start,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Container(
                 margin: EdgeInsets.only(left: 30, right: 30, top: 10),
-                width: Responsive.isSmallScreen(context) ? width / 1.2 : width /
-                    2,
+                width:
+                    Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
                 height: 55,
                 child: TextField(
 //
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     filled: true,
                     fillColor: Color(0xffF9F9F9),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(35),
-                      borderSide: BorderSide.none,),
-
+                      borderSide: BorderSide.none,
+                    ),
                     hintText: "Discharge date",
-                    hintStyle: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5)),
-
+                    hintStyle:
+                        TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
                   ),
                 ),
               ),
             ],
           ),
-          Column(crossAxisAlignment: CrossAxisAlignment.start,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Container(
                 margin: EdgeInsets.only(left: 30, right: 30, top: 10),
-                width: Responsive.isSmallScreen(context) ? width / 1.2 : width /
-                    2,
+                width:
+                    Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
                 height: 55,
                 child: TextField(
 //
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     filled: true,
                     fillColor: Color(0xffF9F9F9),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(35),
-                      borderSide: BorderSide.none,),
-
+                      borderSide: BorderSide.none,
+                    ),
                     hintText: "Hospital name",
-                    hintStyle: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5)),
-
+                    hintStyle:
+                        TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
                   ),
                 ),
               ),
             ],
           ),
-
-
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(margin: EdgeInsets.only(left: 30, top: 20),
-                  child: Text("Select Doctor", style: TextStyle(
-                    color: Color(0xff4F555A).withOpacity(0.4),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,),),
+                Container(
+                  margin: EdgeInsets.only(left: 30, top: 20),
+                  child: Text(
+                    "Select Doctor",
+                    style: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.4),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 30, top: 10),
@@ -291,7 +302,6 @@ class HospilizationFormState extends State<HospilizationForm> {
                             ? width / 1.5
                             : width / 2,
                         height: 55,
-
                         child: TextField(
 //
                           decoration: InputDecoration(
@@ -301,14 +311,13 @@ class HospilizationFormState extends State<HospilizationForm> {
                             fillColor: Color(0xffF9F9F9),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(35),
-                              borderSide: BorderSide.none,),
-
+                              borderSide: BorderSide.none,
+                            ),
                             hintText: "Select Doctor",
                             hintStyle: TextStyle(
                                 color: Color(0xff4F555A).withOpacity(0.5),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400),
-
                           ),
                         ),
                       ),
@@ -319,22 +328,21 @@ class HospilizationFormState extends State<HospilizationForm> {
                           backgroundColor: Color(0xffF9F9F9),
                           child: Image(
                             image: AssetImage("image/DropDown.png"),
-                            height: 18,),
+                            height: 18,
+                          ),
                           //child:Icon(Icons.arrow_drop_down, color: Color(0xff4F555A).withOpacity(0.5),),
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-
-
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Container(
                   margin: EdgeInsets.only(left: 30, right: 30, top: 10),
                   width: Responsive.isSmallScreen(context)
@@ -344,16 +352,18 @@ class HospilizationFormState extends State<HospilizationForm> {
                   child: TextField(
 //
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       filled: true,
                       fillColor: Color(0xffF9F9F9),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
-                        borderSide: BorderSide.none,),
+                        borderSide: BorderSide.none,
+                      ),
                       hintText: "chief complaints",
                       hintStyle: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),),
+                        color: Color(0xff4F555A).withOpacity(0.5),
+                      ),
                     ),
                   ),
                 ),
@@ -364,7 +374,6 @@ class HospilizationFormState extends State<HospilizationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Container(
                   margin: EdgeInsets.only(left: 30, right: 30, top: 10),
                   width: Responsive.isSmallScreen(context)
@@ -374,16 +383,18 @@ class HospilizationFormState extends State<HospilizationForm> {
                   child: TextField(
 //
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       filled: true,
                       fillColor: Color(0xffF9F9F9),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
-                        borderSide: BorderSide.none,),
+                        borderSide: BorderSide.none,
+                      ),
                       hintText: "diagnosis",
                       hintStyle: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),),
+                        color: Color(0xff4F555A).withOpacity(0.5),
+                      ),
                     ),
                   ),
                 ),
@@ -394,7 +405,6 @@ class HospilizationFormState extends State<HospilizationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Container(
                   margin: EdgeInsets.only(left: 30, right: 30, top: 10),
                   width: Responsive.isSmallScreen(context)
@@ -404,32 +414,38 @@ class HospilizationFormState extends State<HospilizationForm> {
                   child: TextField(
 //
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       filled: true,
                       fillColor: Color(0xffF9F9F9),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
-                        borderSide: BorderSide.none,),
+                        borderSide: BorderSide.none,
+                      ),
                       hintText: "Treatments given",
                       hintStyle: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),),
+                        color: Color(0xff4F555A).withOpacity(0.5),
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(margin: EdgeInsets.only(left: 30, top: 20),
-                  child: Text("Upload Reports", style: TextStyle(
-                    color: Color(0xff4F555A).withOpacity(0.4),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,),),
+                Container(
+                  margin: EdgeInsets.only(left: 30, top: 20),
+                  child: Text(
+                    "Upload Reports",
+                    style: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.4),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 30, top: 10),
@@ -440,7 +456,6 @@ class HospilizationFormState extends State<HospilizationForm> {
                             ? width / 1.5
                             : width / 2,
                         height: 55,
-
                         child: TextField(
 //
                           decoration: InputDecoration(
@@ -450,14 +465,13 @@ class HospilizationFormState extends State<HospilizationForm> {
                             fillColor: Color(0xffF9F9F9),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(35),
-                              borderSide: BorderSide.none,),
-
+                              borderSide: BorderSide.none,
+                            ),
                             hintText: "Select File",
                             hintStyle: TextStyle(
                                 color: Color(0xff4F555A).withOpacity(0.5),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400),
-
                           ),
                         ),
                       ),
@@ -467,9 +481,12 @@ class HospilizationFormState extends State<HospilizationForm> {
                           radius: 25,
                           backgroundColor: Color(0xffF9F9F9),
                           child: Image(
-                            image: AssetImage("image/Upload.png"), height: 20,),
+                            image: AssetImage("image/Upload.png"),
+                            height: 20,
+                          ),
                           //child:Icon(Icons.upload_rounded, color: Color(0xff4F555A).withOpacity(0.5),),
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -480,11 +497,16 @@ class HospilizationFormState extends State<HospilizationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(margin: EdgeInsets.only(left: 30, top: 20),
-                  child: Text("Upload x-ray/mri", style: TextStyle(
-                    color: Color(0xff4F555A).withOpacity(0.4),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,),),
+                Container(
+                  margin: EdgeInsets.only(left: 30, top: 20),
+                  child: Text(
+                    "Upload x-ray/mri",
+                    style: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.4),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 30, top: 10),
@@ -495,7 +517,6 @@ class HospilizationFormState extends State<HospilizationForm> {
                             ? width / 1.5
                             : width / 2,
                         height: 55,
-
                         child: TextField(
 //
                           decoration: InputDecoration(
@@ -505,14 +526,13 @@ class HospilizationFormState extends State<HospilizationForm> {
                             fillColor: Color(0xffF9F9F9),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(35),
-                              borderSide: BorderSide.none,),
-
+                              borderSide: BorderSide.none,
+                            ),
                             hintText: "Select File",
                             hintStyle: TextStyle(
                                 color: Color(0xff4F555A).withOpacity(0.5),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400),
-
                           ),
                         ),
                       ),
@@ -522,9 +542,12 @@ class HospilizationFormState extends State<HospilizationForm> {
                           radius: 25,
                           backgroundColor: Color(0xffF9F9F9),
                           child: Image(
-                            image: AssetImage("image/Upload.png"), height: 20,),
+                            image: AssetImage("image/Upload.png"),
+                            height: 20,
+                          ),
                           //child:Icon(Icons.upload_rounded, color: Color(0xff4F555A).withOpacity(0.5),),
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -535,11 +558,16 @@ class HospilizationFormState extends State<HospilizationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(margin: EdgeInsets.only(left: 30, top: 20),
-                  child: Text("Upload discharge summary", style: TextStyle(
-                    color: Color(0xff4F555A).withOpacity(0.4),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,),),
+                Container(
+                  margin: EdgeInsets.only(left: 30, top: 20),
+                  child: Text(
+                    "Upload discharge summary",
+                    style: TextStyle(
+                      color: Color(0xff4F555A).withOpacity(0.4),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 30, top: 10),
@@ -550,7 +578,6 @@ class HospilizationFormState extends State<HospilizationForm> {
                             ? width / 1.5
                             : width / 2,
                         height: 55,
-
                         child: TextField(
 //
                           decoration: InputDecoration(
@@ -560,14 +587,13 @@ class HospilizationFormState extends State<HospilizationForm> {
                             fillColor: Color(0xffF9F9F9),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(35),
-                              borderSide: BorderSide.none,),
-
+                              borderSide: BorderSide.none,
+                            ),
                             hintText: "Select File",
                             hintStyle: TextStyle(
                                 color: Color(0xff4F555A).withOpacity(0.5),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400),
-
                           ),
                         ),
                       ),
@@ -577,9 +603,12 @@ class HospilizationFormState extends State<HospilizationForm> {
                           radius: 25,
                           backgroundColor: Color(0xffF9F9F9),
                           child: Image(
-                            image: AssetImage("image/Upload.png"), height: 20,),
+                            image: AssetImage("image/Upload.png"),
+                            height: 20,
+                          ),
                           //child:Icon(Icons.upload_rounded, color: Color(0xff4F555A).withOpacity(0.5),),
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -590,7 +619,6 @@ class HospilizationFormState extends State<HospilizationForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Container(
                   margin: EdgeInsets.only(left: 30, top: 10),
                   child: Row(
@@ -600,7 +628,6 @@ class HospilizationFormState extends State<HospilizationForm> {
                             ? width / 1.8
                             : width / 2,
                         height: 55,
-
                         child: TextField(
 //
                           decoration: InputDecoration(
@@ -610,15 +637,17 @@ class HospilizationFormState extends State<HospilizationForm> {
                             fillColor: Color(0xffF9F9F9),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(35),
-                              borderSide: BorderSide.none,),
-
+                              borderSide: BorderSide.none,
+                            ),
                             hintText: "Medicine name",
                             hintStyle: TextStyle(
                                 color: Color(0xff4F555A).withOpacity(0.5),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400),
                             suffixIcon: Image.asset(
-                              "image/DropDown.png", scale: 5,),
+                              "image/DropDown.png",
+                              scale: 5,
+                            ),
                           ),
                         ),
                       ),
@@ -628,7 +657,6 @@ class HospilizationFormState extends State<HospilizationForm> {
                             ? width / 4
                             : width / 6,
                         height: 55,
-
                         child: TextField(
 //
                           decoration: InputDecoration(
@@ -638,14 +666,13 @@ class HospilizationFormState extends State<HospilizationForm> {
                             fillColor: Color(0xffF9F9F9),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(35),
-                              borderSide: BorderSide.none,),
-
+                              borderSide: BorderSide.none,
+                            ),
                             hintText: "Freq/Day",
                             hintStyle: TextStyle(
                                 color: Color(0xff4F555A).withOpacity(0.5),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400),
-
                           ),
                         ),
                       ),
@@ -655,7 +682,6 @@ class HospilizationFormState extends State<HospilizationForm> {
               ],
             ),
           ),
-
           Padding(padding: EdgeInsets.only(top: 20, right: 20)),
           InkWell(
             onTap: () {},
@@ -670,13 +696,11 @@ class HospilizationFormState extends State<HospilizationForm> {
               ],
             ),
           ),
-
-
           Center(
             child: Container(
               height: _mediaquery.size.height * 0.070,
-              width: Responsive.isSmallScreen(context) ? width / 2.5 : width /
-                  3.5,
+              width:
+                  Responsive.isSmallScreen(context) ? width / 2.5 : width / 3.5,
               margin: EdgeInsets.only(top: _mediaquery.size.height * 0.02),
               child: ElevatedButton(
                 onPressed: handleButtonPress,
@@ -684,11 +708,10 @@ class HospilizationFormState extends State<HospilizationForm> {
                     color: isButtonPressed ? Colors.black : imageColor,
                     height: _mediaquery.size.height * 0.04),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: isButtonPressed ? buttonColor : Color(
-                      0xffF9F9F9),
+                  backgroundColor:
+                      isButtonPressed ? buttonColor : Color(0xffF9F9F9),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0)
-                  ),
+                      borderRadius: BorderRadius.circular(32.0)),
                 ),
               ),
             ),
@@ -698,4 +721,3 @@ class HospilizationFormState extends State<HospilizationForm> {
     );
   }
 }
-

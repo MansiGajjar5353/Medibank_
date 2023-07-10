@@ -62,26 +62,35 @@ class _AabhaOtpState extends State<AabhaOtp> {
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+        toolbarHeight:
+            Responsive.isSmallScreen(context) ? width / 10 : width / 10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        iconTheme: IconThemeData(
+          color: Colors.green,
+          size: Responsive.isSmallScreen(context) ? width / 20 : width / 25,
+        ),
         leading: Align(
           alignment: Alignment.bottomLeft,
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: const BackButtonIcon(
-            ),
+            icon: const BackButtonIcon(),
           ),
-        ),        title: Center(
-        child: Container(padding: EdgeInsets.only(right: 30),
-            child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        title: Center(
+          child: Container(
+              padding: EdgeInsets.only(right: 30),
+              child: Image(
+                  image: AssetImage(
+                    "image/MedibankLOGO.png",
+                  ),
+                  width: Responsive.isSmallScreen(context)
+                      ? width / 2.3
+                      : width / 4)),
+        ),
       ),
-      ),
-
       body: Stack(
         children: [
           Container(
@@ -153,8 +162,7 @@ class _AabhaOtpState extends State<AabhaOtp> {
                 Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:[
-
+                    children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -170,66 +178,79 @@ class _AabhaOtpState extends State<AabhaOtp> {
                         height: 5,
                       ),
                       Container(
-                          margin:EdgeInsets.only(top:  Responsive.isSmallScreen(context)? width/25:width/60),
-                          child:Row(
+                          margin: EdgeInsets.only(
+                              top: Responsive.isSmallScreen(context)
+                                  ? width / 25
+                                  : width / 60),
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
-                                onTap: (){},
-                                child: Container(margin:EdgeInsets.only(left: 20),
-                                    child: Text("Resend Otp?",
-                                      style: new TextStyle(fontFamily: "Poppins",
-                                          fontWeight: FontWeight.w400, color: Color(0xffC7C7C7),
-                                          fontSize: 14.0 ),)),
+                                onTap: () {},
+                                child: Container(
+                                    margin: EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      "Resend Otp?",
+                                      style: new TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xffC7C7C7),
+                                          fontSize: 14.0),
+                                    )),
                               ),
                             ],
-                          )
-                      ),
-
+                          )),
                       Center(
                         child: Stack(
                           children: [
-                            Transform.translate(offset: Offset(0,-60),
-                              child:SizedBox(
-                                height: _mediaquery.size.height*0.49,
+                            Transform.translate(
+                              offset: Offset(0, -60),
+                              child: SizedBox(
+                                height: _mediaquery.size.height * 0.49,
                                 child: Image.asset(
                                   "image/Otpapage.png",
                                   fit: BoxFit.contain,
                                 ),
                               ),
                             ),
-
                           ],
                         ),
                       ),
-
-                    ]
-                )
+                    ])
               ],
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/10 : width/10,right: Responsive.isSmallScreen(context)? width/10 : width/10,bottom: Responsive.isSmallScreen(context)? width/7 : width/12),
-
-              width: Responsive.isSmallScreen(context)? width/2.5 : width/2.5,
-              height: Responsive.isSmallScreen(context)? width/10: width/15,
-
-              child: ElevatedButton(onPressed:handleButtonPress,
+              margin: EdgeInsets.only(
+                  left: Responsive.isSmallScreen(context)
+                      ? width / 10
+                      : width / 10,
+                  right: Responsive.isSmallScreen(context)
+                      ? width / 10
+                      : width / 10,
+                  bottom: Responsive.isSmallScreen(context)
+                      ? width / 7
+                      : width / 12),
+              width:
+                  Responsive.isSmallScreen(context) ? width / 2.5 : width / 2.5,
+              height:
+                  Responsive.isSmallScreen(context) ? width / 10 : width / 15,
+              child: ElevatedButton(
+                onPressed: handleButtonPress,
                 child: Image.asset('image/AerrowRight.png',
-                    color: isButtonPressed? Colors.black:imageColor,
-                    height: _mediaquery.size.height*0.04) ,
+                    color: isButtonPressed ? Colors.black : imageColor,
+                    height: _mediaquery.size.height * 0.04),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:isButtonPressed ? buttonColor :  Color(0xffF9F9F9),
+                  backgroundColor:
+                      isButtonPressed ? buttonColor : Color(0xffF9F9F9),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0)
-                  ),
+                      borderRadius: BorderRadius.circular(32.0)),
                 ),
               ),
             ),
           )
-
         ],
       ),
     );

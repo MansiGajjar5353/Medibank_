@@ -28,7 +28,11 @@ class AddAabhaState extends State<AddAabha> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      Navigator.push(context,MaterialPageRoute(builder: (context)=>AbhaSetup(),));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AbhaSetup(),
+          ));
       // Perform navigation after the delay
     });
   }
@@ -41,26 +45,35 @@ class AddAabhaState extends State<AddAabha> {
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+        toolbarHeight:
+            Responsive.isSmallScreen(context) ? width / 10 : width / 10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        iconTheme: IconThemeData(
+          color: Colors.green,
+          size: Responsive.isSmallScreen(context) ? width / 20 : width / 25,
+        ),
         leading: Align(
           alignment: Alignment.bottomLeft,
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: const BackButtonIcon(
-            ),
+            icon: const BackButtonIcon(),
           ),
-        ),        title: Center(
-        child: Container(padding: EdgeInsets.only(right: 30),
-            child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                width: Responsive.isSmallScreen(context)? width/2.3: width/4)),
+        ),
+        title: Center(
+          child: Container(
+              padding: EdgeInsets.only(right: 30),
+              child: Image(
+                  image: AssetImage(
+                    "image/MedibankLOGO.png",
+                  ),
+                  width: Responsive.isSmallScreen(context)
+                      ? width / 2.3
+                      : width / 4)),
+        ),
       ),
-      ),
-
       body: Stack(
         children: [
           ListView(
@@ -141,9 +154,12 @@ class AddAabhaState extends State<AddAabha> {
                     height: Responsive.isSmallScreen(context)
                         ? width / 8
                         : width / 8,
-                    margin: EdgeInsets.only(right: 20.0,top: Responsive.isSmallScreen(context)
-                        ? width / 30.0
-                        : width / 60.0,),
+                    margin: EdgeInsets.only(
+                      right: 20.0,
+                      top: Responsive.isSmallScreen(context)
+                          ? width / 30.0
+                          : width / 60.0,
+                    ),
                     padding: EdgeInsets.only(left: 20.0),
                     decoration: BoxDecoration(
                       borderRadius:
@@ -181,7 +197,6 @@ class AddAabhaState extends State<AddAabha> {
                       left: Responsive.isSmallScreen(context)
                           ? width / 20
                           : width / 20,
-
                     ),
                     child: Positioned(
                       left: 0,
@@ -266,9 +281,12 @@ class AddAabhaState extends State<AddAabha> {
                     height: Responsive.isSmallScreen(context)
                         ? width / 8
                         : width / 8,
-                    margin: EdgeInsets.only(right: 20.0,top: Responsive.isSmallScreen(context)
-                        ? width / 30.0
-                        : width / 60.0,),
+                    margin: EdgeInsets.only(
+                      right: 20.0,
+                      top: Responsive.isSmallScreen(context)
+                          ? width / 30.0
+                          : width / 60.0,
+                    ),
                     padding: EdgeInsets.only(left: 20.0),
                     decoration: BoxDecoration(
                       borderRadius:

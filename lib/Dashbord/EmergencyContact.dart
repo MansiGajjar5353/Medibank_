@@ -4,24 +4,23 @@ import 'package:project_signup_page/Dashbord/MedicalHistory.dart';
 import 'package:project_signup_page/Dashbord/Questionnaires.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
-class EmergencyContact extends StatefulWidget{
+class EmergencyContact extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-   return EmergencyContactState();
+    return EmergencyContactState();
   }
-
-
 }
 
-class EmergencyContactState extends State<EmergencyContact>{
+class EmergencyContactState extends State<EmergencyContact> {
   int radioValue = 1;
   bool showTextfield = false;
-  void handleRadioValueChanged(int? value){
-    setState(() {
-      radioValue = value! ;
 
-      switch (radioValue){
+  void handleRadioValueChanged(int? value) {
+    setState(() {
+      radioValue = value!;
+
+      switch (radioValue) {
         case 0:
           showTextfield = true;
           break;
@@ -29,20 +28,18 @@ class EmergencyContactState extends State<EmergencyContact>{
         case 1:
           showTextfield = false;
           break;
-
       }
-
     });
   }
 
-
   int radioValue1 = 1;
   bool showTextfield1 = true;
-  void handleRadioValueChanged1(int? value){
-    setState(() {
-      radioValue1 = value! ;
 
-      switch (radioValue1){
+  void handleRadioValueChanged1(int? value) {
+    setState(() {
+      radioValue1 = value!;
+
+      switch (radioValue1) {
         case 0:
           showTextfield1 = false;
           break;
@@ -50,17 +47,13 @@ class EmergencyContactState extends State<EmergencyContact>{
         case 1:
           showTextfield1 = true;
           break;
-
       }
-
     });
   }
-
 
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
-
 
   void handleButtonPress() {
     setState(() {
@@ -70,15 +63,18 @@ class EmergencyContactState extends State<EmergencyContact>{
 
     Future.delayed(const Duration(milliseconds: 200), () {
       setState(() {
-        buttonColor = Colors.green; // Change the color back to the original value
+        buttonColor =
+            Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
 
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> MedicalHistory(),));
-
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MedicalHistory(),
+          ));
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,50 +84,67 @@ class EmergencyContactState extends State<EmergencyContact>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Responsive.isSmallScreen(context)? width/10: width/10,
+        toolbarHeight:
+            Responsive.isSmallScreen(context) ? width / 10 : width / 10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        iconTheme: IconThemeData(
+          color: Colors.green,
+          size: Responsive.isSmallScreen(context) ? width / 20 : width / 25,
+        ),
         leading: Align(
           alignment: Alignment.bottomLeft,
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: const BackButtonIcon(
-            ),
+            icon: const BackButtonIcon(),
           ),
-        ),        title:
-
-
-
-      Align(
-        alignment: Alignment.center,
-        child: Image(image: AssetImage("image/MedibankLOGO.png",),
-            width: Responsive.isSmallScreen(context)? width/2.3: width/4),
-      ),
+        ),
+        title: Align(
+          alignment: Alignment.center,
+          child: Image(
+              image: AssetImage(
+                "image/MedibankLOGO.png",
+              ),
+              width:
+                  Responsive.isSmallScreen(context) ? width / 2.3 : width / 4),
+        ),
         actions: [
-          Padding(padding: EdgeInsets.only(bottom: 10),),
-
-          Align(alignment: Alignment.bottomRight,
-
+          Padding(
+            padding: EdgeInsets.only(bottom: 10),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
             child: Container(
-              margin: EdgeInsets.only(bottom: Responsive.isSmallScreen(context)? width/80: width/100, right: 10),
+              margin: EdgeInsets.only(
+                  bottom: Responsive.isSmallScreen(context)
+                      ? width / 80
+                      : width / 100,
+                  right: 10),
               child: InkWell(
-                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Questionnaires(),));},
-                child: Image(image: AssetImage("image/DashboardImage.png"),
-                  height:  Responsive.isSmallScreen(context)? width/15: width/30,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Questionnaires(),
+                      ));
+                },
+                child: Image(
+                  image: AssetImage("image/DashboardImage.png"),
+                  height: Responsive.isSmallScreen(context)
+                      ? width / 15
+                      : width / 30,
                 ),
               ),
             ),
           ),
         ],
-
       ),
       body: ListView(
         children: [
           Container(
-            margin: EdgeInsets.only(left:0,top:10.0 ),
+            margin: EdgeInsets.only(left: 0, top: 10.0),
             // height: _mediaquery.size.height*0.13,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,51 +155,82 @@ class EmergencyContactState extends State<EmergencyContact>{
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       Container(
-                        margin:EdgeInsets.only(left:25),
-
-                        child: Text("General ",style: new TextStyle( color: Colors.black,  fontSize: Responsive.isSmallScreen(context)? width/15 : width/30,
-                            fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                      ),
-
-                      Container(
-                        margin:EdgeInsets.only(left:25),
-                        //margin: EdgeInsets.only(left:30,),
-                        child:Text("Information ",style: new TextStyle(height:0.90,color: Colors.green, fontSize: Responsive.isSmallScreen(context)? width/15 : width/30, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                      ),
-
-                      Container(
-                        margin:EdgeInsets.only(left:25),
-                        child: Text("Note: minim mollit non deserunt ullamco ",style:new TextStyle( color: Color(0xff929292), fontSize: Responsive.isSmallScreen(context)? width/46 : width/60, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                      ),
-
-                      Container(
-                        margin:EdgeInsets.only(left:25),
-                        child: Text("est sit aliqua dolor do amet sint. ",style:new TextStyle( color: Color(0xff929292), fontSize: Responsive.isSmallScreen(context)? width/46 : width/60, fontWeight: FontWeight.w300,fontFamily: 'Poppins'),),
-                      ),
-                    ],
-                  ), ),
-                Container(
-                  margin: EdgeInsets.only(right: 20),
-                  child:Column(
-                    children: [
-
-                      Container(
-                        child: Image.asset('image/i.png',height: _mediaquery.size.height*0.080
+                        margin: EdgeInsets.only(left: 25),
+                        child: Text(
+                          "General ",
+                          style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: Responsive.isSmallScreen(context)
+                                  ? width / 15
+                                  : width / 30,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Poppins'),
                         ),
                       ),
-
-
-
                       Container(
-                        margin: EdgeInsets.only(top: _mediaquery.size.height*0.01),
-                        child:RichText(
+                        margin: EdgeInsets.only(left: 25),
+                        //margin: EdgeInsets.only(left:30,),
+                        child: Text(
+                          "Information ",
+                          style: new TextStyle(
+                              height: 0.90,
+                              color: Colors.green,
+                              fontSize: Responsive.isSmallScreen(context)
+                                  ? width / 15
+                                  : width / 30,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Poppins'),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 25),
+                        child: Text(
+                          "Note: minim mollit non deserunt ullamco ",
+                          style: new TextStyle(
+                              color: Color(0xff929292),
+                              fontSize: Responsive.isSmallScreen(context)
+                                  ? width / 46
+                                  : width / 60,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Poppins'),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 25),
+                        child: Text(
+                          "est sit aliqua dolor do amet sint. ",
+                          style: new TextStyle(
+                              color: Color(0xff929292),
+                              fontSize: Responsive.isSmallScreen(context)
+                                  ? width / 46
+                                  : width / 60,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'Poppins'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        child: Image.asset('image/i.png',
+                            height: _mediaquery.size.height * 0.080),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: _mediaquery.size.height * 0.01),
+                        child: RichText(
                           text: TextSpan(
                             text: 'category ',
                             style: TextStyle(
                               color: Color(0xff929292),
-                              fontSize: Responsive.isSmallScreen(context)?width/35 : width/60,
+                              fontSize: Responsive.isSmallScreen(context)
+                                  ? width / 35
+                                  : width / 60,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w300,
                             ),
@@ -211,14 +255,16 @@ class EmergencyContactState extends State<EmergencyContact>{
           ),
           Center(
             child: Container(
-              margin: EdgeInsets.only(left:0,top:40.0 ),
+              margin: EdgeInsets.only(left: 0, top: 40.0),
               //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
-              child:RichText(
+              child: RichText(
                 text: TextSpan(
                   text: "Emergency ",
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: Responsive.isSmallScreen(context)? width/16: width/30,
+                    fontSize: Responsive.isSmallScreen(context)
+                        ? width / 16
+                        : width / 30,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                   ),
@@ -229,65 +275,63 @@ class EmergencyContactState extends State<EmergencyContact>{
                         color: Color(0xff24B445),
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Poppins',
-
                       ),
                     ),
                   ],
                 ),
               ),
               // child:Text("We need to verify your Number?",style: new TextStyle(height:0.90,color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.w900,fontFamily: 'Poppins'),),
-
             ),
           ),
-
           Container(
-            margin: EdgeInsets.only(left: 20,right: 20,top: 30),
-            child: Text("Should anybody else can be contacted regarding appointments and other matters",
-              style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),
+            margin: EdgeInsets.only(left: 20, right: 20, top: 30),
+            child: Text(
+              "Should anybody else can be contacted regarding appointments and other matters",
+              style: TextStyle(
+                  color: Color(0xff4F555A).withOpacity(0.45),
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w400,
-                  fontSize: Responsive.isSmallScreen(context)? width/32 : width/50),
+                  fontSize: Responsive.isSmallScreen(context)
+                      ? width / 32
+                      : width / 50),
             ),
           ),
           Container(
             margin: EdgeInsets.only(left: 10),
             child: new Row(
               mainAxisAlignment: MainAxisAlignment.start,
-
-              children:<Widget> [
+              children: <Widget>[
                 new Radio<int>(
                     activeColor: Colors.green,
-                    value:0 , groupValue: radioValue,onChanged: handleRadioValueChanged),
-
+                    value: 0,
+                    groupValue: radioValue,
+                    onChanged: handleRadioValueChanged),
                 new Text(
                   "Yes",
                   style: new TextStyle(),
-
-
                 ),
-
                 new Radio<int>(
                     activeColor: Colors.green,
-                    value: 1, groupValue: radioValue, onChanged: handleRadioValueChanged),
-
+                    value: 1,
+                    groupValue: radioValue,
+                    onChanged: handleRadioValueChanged),
                 new Text(
                   "No",
                   style: new TextStyle(),
                 ),
-
               ],
             ),
           ),
-
           Padding(padding: EdgeInsets.only(top: 20)),
           Center(
             child: Visibility(
               visible: showTextfield,
               child: Container(
                 margin: EdgeInsets.only(right: 20.0),
-                padding: EdgeInsets.only(left:20.0),
+                padding: EdgeInsets.only(left: 20.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(35), // set the border radius
+                  borderRadius:
+                      BorderRadius.circular(35), // set the border radius
                   //border: Border.all(),
                 ),
                 child: Column(
@@ -295,11 +339,10 @@ class EmergencyContactState extends State<EmergencyContact>{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextField(
-
                       // controller: _userController,
                       decoration: InputDecoration(
                         contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                         filled: true,
                         fillColor: Color(0xffF9F9F9),
                         border: OutlineInputBorder(
@@ -307,21 +350,23 @@ class EmergencyContactState extends State<EmergencyContact>{
                           borderSide: BorderSide.none,
                         ),
                         hintText: "Full Name",
-
                         labelText: "Name",
-                        labelStyle: TextStyle(color: Colors.green,),
-                        hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                            fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
+                        labelStyle: TextStyle(
+                          color: Colors.green,
+                        ),
+                        hintStyle: TextStyle(
+                            color: Color(0xff4F555A).withOpacity(0.5),
+                            fontSize: Responsive.isSmallScreen(context)
+                                ? width / 25
+                                : width / 60),
                       ),
                     ),
                     Padding(padding: EdgeInsets.only(top: 10)),
                     TextField(
-
                       // controller: _userController,
                       decoration: InputDecoration(
                         contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                         filled: true,
                         fillColor: Color(0xffF9F9F9),
                         border: OutlineInputBorder(
@@ -329,21 +374,23 @@ class EmergencyContactState extends State<EmergencyContact>{
                           borderSide: BorderSide.none,
                         ),
                         hintText: "Number",
-
                         labelText: "Contact Number",
-                        labelStyle: TextStyle(color: Colors.green,),
-                        hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                            fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
+                        labelStyle: TextStyle(
+                          color: Colors.green,
+                        ),
+                        hintStyle: TextStyle(
+                            color: Color(0xff4F555A).withOpacity(0.5),
+                            fontSize: Responsive.isSmallScreen(context)
+                                ? width / 25
+                                : width / 60),
                       ),
                     ),
                     Padding(padding: EdgeInsets.only(top: 10)),
                     TextField(
-
                       // controller: _userController,
                       decoration: InputDecoration(
                         contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                         filled: true,
                         fillColor: Color(0xffF9F9F9),
                         border: OutlineInputBorder(
@@ -351,55 +398,56 @@ class EmergencyContactState extends State<EmergencyContact>{
                           borderSide: BorderSide.none,
                         ),
                         hintText: "abc@gmail.com",
-
                         labelText: "Email",
-                        labelStyle: TextStyle(color: Colors.green,),
-                        hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                            fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
+                        labelStyle: TextStyle(
+                          color: Colors.green,
+                        ),
+                        hintStyle: TextStyle(
+                            color: Color(0xff4F555A).withOpacity(0.5),
+                            fontSize: Responsive.isSmallScreen(context)
+                                ? width / 25
+                                : width / 60),
                       ),
                     ),
-
                     Container(
                       margin: EdgeInsets.only(top: 20),
-                      child: Text("Address is same as Patient?",
-                        style: TextStyle(color: Color(0xff4F555A).withOpacity(0.45),
+                      child: Text(
+                        "Address is same as Patient?",
+                        style: TextStyle(
+                            color: Color(0xff4F555A).withOpacity(0.45),
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w400,
-                            fontSize: Responsive.isSmallScreen(context)? width/32 : width/50),
+                            fontSize: Responsive.isSmallScreen(context)
+                                ? width / 32
+                                : width / 50),
                       ),
                     ),
-
                     Container(
-                   //   margin: EdgeInsets.only(left: 10),
+                      //   margin: EdgeInsets.only(left: 10),
                       child: new Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-
-                        children:<Widget> [
+                        children: <Widget>[
                           new Radio<int>(
                               activeColor: Colors.green,
-                              value:0 , groupValue: radioValue1,onChanged: handleRadioValueChanged1),
-
+                              value: 0,
+                              groupValue: radioValue1,
+                              onChanged: handleRadioValueChanged1),
                           new Text(
                             "Yes",
                             style: new TextStyle(),
-
-
                           ),
-
                           new Radio<int>(
                               activeColor: Colors.green,
-                              value: 1, groupValue: radioValue1, onChanged: handleRadioValueChanged1),
-
+                              value: 1,
+                              groupValue: radioValue1,
+                              onChanged: handleRadioValueChanged1),
                           new Text(
                             "No",
                             style: new TextStyle(),
                           ),
-
                         ],
                       ),
                     ),
-
                     Padding(padding: EdgeInsets.only(top: 20)),
                     Center(
                       child: Visibility(
@@ -408,17 +456,17 @@ class EmergencyContactState extends State<EmergencyContact>{
                           // margin: EdgeInsets.only(right: 20.0),
                           // padding: EdgeInsets.only(left:20.0),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(35), // set the border radius
+                            borderRadius: BorderRadius.circular(
+                                35), // set the border radius
                             //border: Border.all(),
                           ),
                           child: Column(
                             children: [
                               TextField(
-
                                 // controller: _userController,
                                 decoration: InputDecoration(
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 15),
                                   filled: true,
                                   fillColor: Color(0xffF9F9F9),
                                   border: OutlineInputBorder(
@@ -426,21 +474,24 @@ class EmergencyContactState extends State<EmergencyContact>{
                                     borderSide: BorderSide.none,
                                   ),
                                   hintText: "Residential Address",
-
                                   labelText: "Address",
-                                  labelStyle: TextStyle(color: Colors.green,),
-                                  hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                                      fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
+                                  labelStyle: TextStyle(
+                                    color: Colors.green,
+                                  ),
+                                  hintStyle: TextStyle(
+                                      color: Color(0xff4F555A).withOpacity(0.5),
+                                      fontSize:
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 25
+                                              : width / 60),
                                 ),
                               ),
                               Padding(padding: EdgeInsets.only(top: 10)),
                               TextField(
-
                                 // controller: _userController,
                                 decoration: InputDecoration(
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 15),
                                   filled: true,
                                   fillColor: Color(0xffF9F9F9),
                                   border: OutlineInputBorder(
@@ -448,72 +499,80 @@ class EmergencyContactState extends State<EmergencyContact>{
                                     borderSide: BorderSide.none,
                                   ),
                                   hintText: "Ahmedabad",
-
                                   labelText: "City",
-                                  labelStyle: TextStyle(color: Colors.green,),
-                                  hintStyle: TextStyle(color:Color(0xff4F555A).withOpacity(0.5),
-                                      fontSize: Responsive.isSmallScreen(context)? width/25 : width/60),
-
+                                  labelStyle: TextStyle(
+                                    color: Colors.green,
+                                  ),
+                                  hintStyle: TextStyle(
+                                      color: Color(0xff4F555A).withOpacity(0.5),
+                                      fontSize:
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 25
+                                              : width / 60),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),
             ),
           ),
-
-
-
-
-
           Padding(padding: EdgeInsets.only(top: 30)),
           Center(
             child: Container(
-              height: _mediaquery.size.height*0.070,
-              width: Responsive.isSmallScreen(context) ? width/2.5: width/3.5,
-              margin: EdgeInsets.only(top: _mediaquery.size.height*0.02),
+              height: _mediaquery.size.height * 0.070,
+              width:
+                  Responsive.isSmallScreen(context) ? width / 2.5 : width / 3.5,
+              margin: EdgeInsets.only(top: _mediaquery.size.height * 0.02),
               child: ElevatedButton(
-                onPressed:handleButtonPress,
+                onPressed: handleButtonPress,
                 child: Image.asset('image/AerrowRight.png',
-                    color: isButtonPressed? Colors.black:imageColor,
-                    height: _mediaquery.size.height*0.04) ,
+                    color: isButtonPressed ? Colors.black : imageColor,
+                    height: _mediaquery.size.height * 0.04),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:isButtonPressed ? buttonColor : Color(0xffF9F9F9),
+                  backgroundColor:
+                      isButtonPressed ? buttonColor : Color(0xffF9F9F9),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0)
-                  ),
+                      borderRadius: BorderRadius.circular(32.0)),
                 ),
               ),
             ),
           ),
-
           Padding(padding: EdgeInsets.only(top: 20)),
-
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Skip to ",
+                Text(
+                  "Skip to ",
                   style: TextStyle(
                     color: Color(0xffACADAC),
-                    fontSize: Responsive.isSmallScreen(context)?width/30 : width/45,
+                    fontSize: Responsive.isSmallScreen(context)
+                        ? width / 30
+                        : width / 45,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 InkWell(
-                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNavBarApp(),));},
-                  child: Text("Dashboard",
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BottomNavBarApp(),
+                        ));
+                  },
+                  child: Text(
+                    "Dashboard",
                     style: TextStyle(
                       color: Color(0xff000000),
-                      fontSize: Responsive.isSmallScreen(context)?width/30 : width/45,
+                      fontSize: Responsive.isSmallScreen(context)
+                          ? width / 30
+                          : width / 45,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
                     ),
@@ -522,8 +581,6 @@ class EmergencyContactState extends State<EmergencyContact>{
               ],
             ),
           ),
-
-
         ],
       ),
     );

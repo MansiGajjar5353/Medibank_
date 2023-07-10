@@ -1004,15 +1004,19 @@ class Screen2State extends State<Screen2> {
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
     return Scaffold(
-
       body: SafeArea(
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Center(
-                child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                    width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                child: Image(
+                    image: AssetImage(
+                      "image/MedibankLOGO.png",
+                    ),
+                    width: Responsive.isSmallScreen(context)
+                        ? width / 2.3
+                        : width / 4),
               ),
               Container(
                 margin: EdgeInsets.only(
@@ -1037,8 +1041,9 @@ class Screen2State extends State<Screen2> {
                           fontWeight: FontWeight.w400,
                           fontFamily: 'Poppins'),
                     ),
-                    Icon(Icons.search,
-                    color: Color(0xff000000).withOpacity(0.5),
+                    Icon(
+                      Icons.search,
+                      color: Color(0xff000000).withOpacity(0.5),
                     ),
                   ],
                 ),
@@ -1936,29 +1941,37 @@ class Screen3State extends State<Screen3> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Responsive.isSmallScreen(context)? width/5: width/8.2,
+        toolbarHeight:
+            Responsive.isSmallScreen(context) ? width / 5 : width / 8.2,
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.green, size: Responsive.isSmallScreen(context)? width/20: width/25,),
+        iconTheme: IconThemeData(
+          color: Colors.green,
+          size: Responsive.isSmallScreen(context) ? width / 20 : width / 25,
+        ),
         leading: Align(
           alignment: Alignment.bottomLeft,
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: const BackButtonIcon(
-            ),
+            icon: const BackButtonIcon(),
           ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(padding: EdgeInsets.only(right: 30),
+            Container(
+                padding: EdgeInsets.only(right: 30),
                 child: Center(
-                  child: Image(image: AssetImage("image/MedibankLOGO.png",),
-                      width: Responsive.isSmallScreen(context)? width/2.3: width/4),
+                  child: Image(
+                      image: AssetImage(
+                        "image/MedibankLOGO.png",
+                      ),
+                      width: Responsive.isSmallScreen(context)
+                          ? width / 2.3
+                          : width / 4),
                 )),
-
             Align(
               alignment: Alignment.bottomCenter,
               child: Row(
@@ -1966,17 +1979,20 @@ class Screen3State extends State<Screen3> {
                 children: [
                   Align(
                     alignment: Alignment.bottomLeft,
-                    child: Text("Voice Assistant ",
-                      style: TextStyle(color: Color(0xff000000),
-                          fontSize: Responsive.isSmallScreen(context)? width/20: width/30,
+                    child: Text(
+                      "Voice Assistant ",
+                      style: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: Responsive.isSmallScreen(context)
+                              ? width / 20
+                              : width / 30,
                           fontWeight: FontWeight.w400,
-                          fontFamily: 'Poppins'),),
+                          fontFamily: 'Poppins'),
+                    ),
                   ),
-
                 ],
               ),
             ),
-
           ],
         ),
       ),
@@ -1989,7 +2005,8 @@ class Screen3State extends State<Screen3> {
               "Transform your voice into a powerful tool for screen control with the simple tap of the mic, empowering you to operate your devices without lifting a finger.",
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: Responsive.isSmallScreen(context) ? width/35 : width/60,
+                fontSize:
+                    Responsive.isSmallScreen(context) ? width / 35 : width / 60,
               ),
             )),
           ),
