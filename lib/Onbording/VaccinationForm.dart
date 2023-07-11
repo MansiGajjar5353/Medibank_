@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
 import 'Responsive.dart';
 
@@ -11,6 +12,29 @@ class VaccinationForm extends StatefulWidget {
 }
 
 class _VaccinationFormState extends State<VaccinationForm> {
+  final DuedateController = TextEditingController();
+  final VaccdateController = TextEditingController();
+  DateTime DueselectedDate = DateTime.now();
+  DateTime VaccselectedDate = DateTime.now();
+
+  //late String month;
+  late String Duemonth;
+  late String Duedate;
+  late String Dueyear;
+  late String Vaccmonth;
+  late String Vaccdate;
+  late String Vaccyear;
+
+  @override
+  void initState() {
+    Duemonth = "Month";
+    Duedate = "Date";
+    Dueyear = "Year";
+    Vaccmonth = "Month";
+    Vaccdate = "Date";
+    Vaccyear = "Year";
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -102,6 +126,7 @@ class _VaccinationFormState extends State<VaccinationForm> {
               ),
             ),
           ),
+
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,7 +172,7 @@ class _VaccinationFormState extends State<VaccinationForm> {
                           children: [
 
                             TextField(
-//
+                              controller: DuedateController,
                               decoration: InputDecoration(
                                 contentPadding:
                                 EdgeInsets.symmetric(horizontal: 20),
@@ -180,27 +205,76 @@ class _VaccinationFormState extends State<VaccinationForm> {
                         )
 
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          height: Responsive.isSmallScreen(context)
-                              ? width / 9
-                              : width / 15,
-                          width: Responsive.isSmallScreen(context)
-                              ? width / 9
-                              : width / 15,
-                          margin: EdgeInsets.only(
-                            right: Responsive.isSmallScreen(context)
-                                ? width / 20
-                                : width / 20,
+                      GestureDetector(
+                        onTap: ()
+                        async {
+                          final DateTime? picked = await showDatePicker(
+                              builder: (context, child) {
+                                return Theme(
+                                  data: Theme.of(context).copyWith(
+                                    colorScheme: ColorScheme.light(
+                                        primary: Color(0xff24B445), // header background color
+                                        onPrimary: Color(0xffFFFFFF), // header text color
+                                        onSurface: Color(0Xff000000)
+                                    ),
+                                    textButtonTheme: TextButtonThemeData(
+                                      style: TextButton.styleFrom(
+                                          foregroundColor: Color(0xff24B445)
+                                      ),
+                                    ),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                              context: context,
+                              initialDate: DueselectedDate,
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2100));
+                          if (picked != null && picked != DueselectedDate) {
+                            setState(() {
+                              DueselectedDate = picked;
+                              DuedateController.text =
+                                  DateFormat('yyyy-MM-dd')
+                                      .format(DueselectedDate);
+                              Duemonth = DateFormat('MMMM')
+                                  .format(DueselectedDate); // Extract month
+                              Duedate = DateFormat('d').format(DueselectedDate);
+                              Dueyear= DateFormat('yyyy')
+                                  .format(DueselectedDate); // Extract day
+
+                              // Use the month and day strings as needed
+                              print('Month: $Duemonth');
+                              print('Day: $Duedate');
+                            });
+                          }
+                        },
+                        child:
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            height: Responsive.isSmallScreen(context)
+                                ? width / 9
+                                : width / 15,
+                            width: Responsive.isSmallScreen(context)
+                                ? width / 9
+                                : width / 15,
+                            margin: EdgeInsets.only(
+                              right: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 20,
+                              left: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 20,
+                            ),
+                            alignment: Alignment.centerRight,
+                            child: Image(
+                              image:
+                              AssetImage('image/calenderwithbackground.png'),
+                            ),
                           ),
-                          alignment: Alignment.centerRight,
-                          child: Image(
-                            image:
-                            AssetImage('image/calenderwithbackground.png'),
-                          ),
-                        ),
+                        )
                       )
+
                     ],
                   ),
                 ),
@@ -247,20 +321,31 @@ class _VaccinationFormState extends State<VaccinationForm> {
                     children: [
                       Expanded(
                         flex: 4,
-                        child: TextField(
-//
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 20),
-                            filled: true,
-                            fillColor: Color(0xffF9F9F9),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(45),
-                              borderSide: BorderSide.none,
+                    child: Container(
+
+                          child: TextField(
+                            controller: VaccdateController,
+                            decoration: InputDecoration(
+                              contentPadding:
+                              EdgeInsets.symmetric(horizontal: 20),
+                              filled: true,
+                              fillColor: Color(0xffF9F9F9),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(45),
+                                borderSide: BorderSide.none,
+                              ),
+                              hintText: "Date",
+                              hintStyle: TextStyle(
+                                color: Color(0xff4F555A).withOpacity(0.4),
+                                fontSize: Responsive.isSmallScreen(context)
+                                    ? width / 20
+                                    : width / 26,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
-                            hintText: "Date",
-                            hintStyle: TextStyle(
-                              color: Color(0xff4F555A).withOpacity(0.4),
+                            style: TextStyle(
+                              color: Color(0xff000000).withOpacity(0.4),
                               fontSize: Responsive.isSmallScreen(context)
                                   ? width / 20
                                   : width / 26,
@@ -268,36 +353,78 @@ class _VaccinationFormState extends State<VaccinationForm> {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          style: TextStyle(
-                            color: Color(0xff000000).withOpacity(0.4),
-                            fontSize: Responsive.isSmallScreen(context)
-                                ? width / 20
-                                : width / 26,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+
+                    ),
+                   ),
+
+                      GestureDetector(
+                        onTap: ()
+                        async {
+                          final DateTime? picked = await showDatePicker(
+                              builder: (context, child) {
+                                return Theme(
+                                  data: Theme.of(context).copyWith(
+                                    colorScheme: ColorScheme.light(
+                                        primary: Color(0xff24B445), // header background color
+                                        onPrimary: Color(0xffFFFFFF), // header text color
+                                        onSurface: Color(0Xff000000)
+                                    ),
+                                    textButtonTheme: TextButtonThemeData(
+                                      style: TextButton.styleFrom(
+                                          foregroundColor: Color(0xff24B445)
+                                      ),
+                                    ),
+                                  ),
+                                  child: child!,
+                                );
+                              },
+                              context: context,
+                              initialDate: VaccselectedDate,
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2100));
+                          if (picked != null && picked != VaccselectedDate) {
+                            setState(() {
+                              VaccselectedDate = picked;
+                              VaccdateController.text =
+                                  DateFormat('yyyy-MM-dd')
+                                      .format(VaccselectedDate);
+                              Vaccmonth = DateFormat('MMMM')
+                                  .format(VaccselectedDate); // Extract month
+                              Vaccdate = DateFormat('d').format(VaccselectedDate);
+                              Vaccyear = DateFormat('yyyy')
+                                  .format(VaccselectedDate); // Extract day
+
+                              // Use the month and day strings as needed
+                              print('Month: $Vaccmonth');
+                              print('Day: $Vaccdate');
+                            });
+                          }
+                        },
+                        child:
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            height: Responsive.isSmallScreen(context)
+                                ? width / 9
+                                : width / 15,
+                            width: Responsive.isSmallScreen(context)
+                                ? width / 9
+                                : width / 15,
+                            margin: EdgeInsets.only(
+                              right: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 20,
+                              left: Responsive.isSmallScreen(context)
+                                  ? width / 20
+                                  : width / 20,
+                            ),
+                            alignment: Alignment.centerRight,
+                            child: Image(
+                              image:
+                              AssetImage('image/calenderwithbackground.png'),
+                            ),
                           ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          height: Responsive.isSmallScreen(context)
-                              ? width / 9
-                              : width / 15,
-                          width: Responsive.isSmallScreen(context)
-                              ? width / 9
-                              : width / 15,
-                          margin: EdgeInsets.only(
-                            right: Responsive.isSmallScreen(context)
-                                ? width / 20
-                                : width / 20,
-                          ),
-                          alignment: Alignment.centerRight,
-                          child: Image(
-                            image:
-                                AssetImage('image/calenderwithbackground.png'),
-                          ),
-                        ),
+                        )
                       )
                     ],
                   ),
@@ -305,6 +432,7 @@ class _VaccinationFormState extends State<VaccinationForm> {
               ],
             ),
           ),
+
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

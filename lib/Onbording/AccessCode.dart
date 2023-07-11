@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
 
 import 'Responsive.dart';
@@ -12,6 +13,21 @@ class AccessCode extends StatefulWidget {
 }
 
 class AccessCodeState extends State<AccessCode> {
+  final dateController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
+
+  //late String month;
+  late String month;
+  late String date;
+  late String year;
+
+  @override
+  void initState() {
+    month = "Month";
+    date = "Date";
+    year = "Year";
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -149,7 +165,7 @@ class AccessCodeState extends State<AccessCode> {
                       : width / 1.5,
                   height: 55,
                   child: TextField(
-//
+                    controller:dateController,
                     decoration: InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -168,18 +184,64 @@ class AccessCodeState extends State<AccessCode> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(left: 10, top: 12)),
-                Container(
-                  child: CircleAvatar(
-                    radius: Responsive.isSmallScreen(context)
-                        ? width / 17
-                        : width / 35,
-                    backgroundColor: Color(0xffF9F9F9),
-                    child: Icon(
-                      Icons.calendar_today_outlined,
-                      color: Color(0xff4F555A).withOpacity(0.5),
+                GestureDetector(
+                  onTap: ()
+                  async {
+                    final DateTime? picked = await showDatePicker(
+                        builder: (context, child) {
+                          return Theme(
+                            data: Theme.of(context).copyWith(
+                              colorScheme: ColorScheme.light(
+                                  primary: Color(0xff24B445), // header background color
+                                  onPrimary: Color(0xffFFFFFF), // header text color
+                                  onSurface: Color(0Xff000000)
+                              ),
+                              textButtonTheme: TextButtonThemeData(
+                                style: TextButton.styleFrom(
+                                    foregroundColor: Color(0xff24B445)
+                                ),
+                              ),
+                            ),
+                            child: child!,
+                          );
+                        },
+                        context: context,
+                        initialDate: selectedDate,
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime(2100));
+                    if (picked != null && picked != selectedDate) {
+                      setState(() {
+                        selectedDate = picked;
+                        dateController.text =
+                            DateFormat('yyyy-MM-dd')
+                                .format(selectedDate);
+                        month = DateFormat('MMMM')
+                            .format(selectedDate); // Extract month
+                        date = DateFormat('d').format(selectedDate);
+                        year = DateFormat('yyyy')
+                            .format(selectedDate); // Extract day
+
+                        // Use the month and day strings as needed
+                        print('Month: $month');
+                        print('Day: $date');
+                      });
+                    }
+                  },
+                  child:
+                  Container(
+                    child: CircleAvatar(
+                      radius: Responsive.isSmallScreen(context)
+                          ? width / 17
+                          : width / 35,
+                      backgroundColor: Color(0xffF9F9F9),
+                      child: Icon(
+                        Icons.calendar_today_outlined,
+                        color: Color(0xff4F555A).withOpacity(0.5),
+                      ),
                     ),
                   ),
-                ),
+                )
+
               ],
             ),
           ),

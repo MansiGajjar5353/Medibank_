@@ -12,11 +12,17 @@ class create_acc extends StatefulWidget {
 }
 
 class create_accState extends State<create_acc> {
+  final TextEditingController _FirstName = new TextEditingController();
+  final TextEditingController _LastName = new TextEditingController();
+
+
+
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
 
   void handleButtonPress() {
+
     setState(() {
       buttonColor = Colors.green; // Change the color to your desired value
       isButtonPressed = true;
@@ -28,10 +34,15 @@ class create_accState extends State<create_acc> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
+      String firstName = _FirstName.text;
+      String lastName = _LastName.text;
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => b_date(),
+            builder: (context) => b_date(
+              firstName: firstName,
+              lastName: lastName,
+            ),
           ));
       // Perform navigation after the delay
     });
@@ -39,6 +50,7 @@ class create_accState extends State<create_acc> {
 
   @override
   Widget build(BuildContext context) {
+
     double width = MediaQuery.of(context).size.width;
 
     var _mediaquery = MediaQuery.of(context);
@@ -254,7 +266,7 @@ class create_accState extends State<create_acc> {
               //border: Border.all(),
             ),
             child: TextField(
-//          controller: _userController,
+            controller: _FirstName,
               decoration: InputDecoration(
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -285,7 +297,7 @@ class create_accState extends State<create_acc> {
               //border: Border.all(),
             ),
             child: TextField(
-//          controller: _userController,
+          controller: _LastName,
               decoration: InputDecoration(
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -345,29 +357,7 @@ class create_accState extends State<create_acc> {
                 ),
               ),
 
-              // ElevatedButton.icon(
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: Color(0xff24B445),
-              //     shape: RoundedRectangleBorder(
-              //         borderRadius: BorderRadius.circular(32.0)
-              //     ),
-              //
-              //   ),
-              //   onPressed: () {
-              //     // Do something when the button is pressed
-              //    Navigator.push(context, MaterialPageRoute(builder: (contex)=> b_date(),));
-              //   },
-              //
-              //   icon: Container(
-              //     margin: EdgeInsets.only(left:10),
-              //     width: 80,
-              //     child: Icon(
-              //       Icons.arrow_forward,
-              //       size: 30,
-              //       color: Colors.black,
-              //     ),
-              //   ), label: Text(""),
-              // ),
+
 
               Center(
                 child: Container(
@@ -393,78 +383,7 @@ class create_accState extends State<create_acc> {
             ],
           )
 
-          // Center(
-          //   child: Stack(
-          //     children: [
-          //       Transform.translate(offset: Offset(0,0),
-          //         child:  Center(
-          //           child: Container(
-          //             child:Text('2/10 Questions', style: TextStyle(color:Color(0xffB0B2B5),fontSize: 12),),
-          //           ),
-          //         ),),
-          //       Transform.translate(offset: Offset(150, 0),
-          //         child:Center(
-          //           child:Container(
-          //             child:Row(
-          //               children: [
-          //                 Padding(padding: EdgeInsets.only(left:9)),
-          //                 CircleAvatar(
-          //                   backgroundColor: Color(0xffD9D9D9),
-          //                   radius:4,
-          //                 ),
-          //                 Padding(padding: EdgeInsets.only(left:7)),
-          //                 CircleAvatar(
-          //                   backgroundColor: Color(0xff24B445),
-          //                   radius:5,
-          //                 ),
-          //                 Padding(padding: EdgeInsets.only(left:7)),
-          //                 CircleAvatar(
-          //                   backgroundColor: Color(0xffD9D9D9),
-          //                   radius:4,
-          //                 ),
-          //               ],
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //
-          //       Transform.translate(offset: Offset(0, 0),
-          //         child:  Center(
-          //           child: ElevatedButton.icon(
-          //             style: ElevatedButton.styleFrom(
-          //               backgroundColor: Color(0xff24B445),
-          //               shape: RoundedRectangleBorder(
-          //                   borderRadius: BorderRadius.circular(32.0)
-          //               ),
-          //
-          //             ),
-          //             onPressed: () {
-          //               // Do something when the button is pressed
-          //               print('Button pressed');
-          //             },
-          //
-          //             icon: Container(
-          //               margin: EdgeInsets.only(left:10),
-          //               width: 80,
-          //               child: Icon(
-          //                 Icons.arrow_forward,
-          //                 size: 30,
-          //                 color: Colors.black,
-          //               ),
-          //             ), label: Text(""),
-          //           ),
-          //         ),
-          //
-          //       ),
-          //
-          //
-          //
-          //
-          //
-          //
-          //     ],
-          //   ),
-          // ),
+
         ]),
       ),
     );

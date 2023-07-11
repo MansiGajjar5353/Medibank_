@@ -24,6 +24,8 @@ class Name extends StatefulWidget {
 }
 
 class NameState extends State<Name> {
+  String GENDER = "Female";
+  String BLOOD = "A+";
   final dateController = TextEditingController();
   DateTime selectedDate = DateTime.now();
 
@@ -43,6 +45,28 @@ class NameState extends State<Name> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    List<String> Gender = [
+      'Male',
+      'Female',
+    ];
+    TextEditingController _relationsheepController = TextEditingController();
+    _relationsheepController.text = GENDER;
+
+
+    List<String> Blood = [
+      'A+',
+      'A-',
+      'B+',
+      'B-',
+      'AB+',
+      'AB-',
+      'O+',
+      'O-'
+    ];
+    TextEditingController _bloodController = TextEditingController();
+    _bloodController.text = BLOOD;
+
+
 
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
@@ -384,6 +408,23 @@ class NameState extends State<Name> {
                               GestureDetector(
                                 onTap: () async {
                                   final DateTime? picked = await showDatePicker(
+                                      builder: (context, child) {
+                                        return Theme(
+                                          data: Theme.of(context).copyWith(
+                                            colorScheme: ColorScheme.light(
+                                                primary: Color(0xff24B445), // header background color
+                                                onPrimary: Color(0xffFFFFFF), // header text color
+                                                onSurface: Color(0Xff000000)
+                                            ),
+                                            textButtonTheme: TextButtonThemeData(
+                                              style: TextButton.styleFrom(
+                                                  foregroundColor: Color(0xff24B445)
+                                              ),
+                                            ),
+                                          ),
+                                          child: child!,
+                                        );
+                                      },
                                       context: context,
                                       initialDate: selectedDate,
                                       firstDate: DateTime(1900),
@@ -475,40 +516,366 @@ class NameState extends State<Name> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: Responsive.isSmallScreen(context)
-                                      ? width / 9
-                                      : width / 30,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+
+                              InkWell(
+                                onTap: ()
+                                {
+                                  showModalBottomSheet(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(25),
+                                            topRight: Radius.circular(25)),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Container(
+                                            height: Responsive.isSmallScreen(context)
+                                                ? width / 2
+                                                : width / 90,
+                                            child: ListView(
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                    top: Responsive.isSmallScreen(context)
+                                                        ? width / 30
+                                                        : width / 30,
+                                                  ),
+                                                  child: Text(
+                                                    'Choose',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      color: Color(0xff000000),
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize:
+                                                      Responsive.isSmallScreen(context)
+                                                          ? width / 20
+                                                          : width / 50,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Positioned(
+                                                  child: Container(
+                                                    margin: EdgeInsets.only(
+                                                      top: Responsive.isSmallScreen(context)
+                                                          ? width / 30
+                                                          : width / 30,
+                                                    ),
+                                                    width: double.infinity,
+                                                    child: ListView.builder(
+                                                      physics: ClampingScrollPhysics(),
+                                                      scrollDirection: Axis.vertical,
+                                                      shrinkWrap: true,
+                                                      itemCount: Gender.length,
+                                                      itemBuilder: (context, index) {
+                                                        final year = Gender[index];
+                                                        final isSelectedYear = year == GENDER;
+
+                                                        return ListTile(
+                                                          title: Column(
+                                                            children: [
+                                                              Container(
+                                                                alignment: Alignment.topLeft,
+                                                                child: Text(
+                                                                  ' $year',
+                                                                  style: TextStyle(
+                                                                    fontFamily: 'Poppins',
+                                                                    fontWeight: isSelectedYear
+                                                                        ? FontWeight.w700
+                                                                        : FontWeight.w500,
+                                                                    fontSize: Responsive
+                                                                        .isSmallScreen(
+                                                                        context)
+                                                                        ? width / 24
+                                                                        : width / 26,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                padding: EdgeInsets.only(
+                                                                  top: Responsive
+                                                                      .isSmallScreen(
+                                                                      context)
+                                                                      ? width / 30
+                                                                      : width / 30,
+                                                                ),
+                                                                child: Container(
+                                                                  height: 1.5,
+                                                                  color: Color(0xffE4E8EE),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          onTap: () {
+                                                            setState(() {
+                                                              GENDER = year;
+                                                              Navigator.of(context).pop();
+                                                            });
+                                                          },
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ));
+                                      });
+                                },
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'Female',
-                                        style: TextStyle(
-                                          color: Color(0xff212426),
-                                          fontSize:
-                                              Responsive.isSmallScreen(context)
-                                                  ? width / 26
-                                                  : width / 40,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w300,
+                                      margin: EdgeInsets.only(
+                                        left: Responsive.isSmallScreen(context)
+                                            ? width / 20
+                                            : width / 40,
+
+                                      ),
+                                      child: Container(
+                                        margin: EdgeInsets.only(
+                                          left: Responsive.isSmallScreen(context)
+                                              ? width / 9
+                                              : width / 30,
                                         ),
-                                      ),
-                                    ),
-                                    Container(
-                                      child: Icon(
-                                        Icons.arrow_drop_down_outlined,
-                                        color: Color(0xff4F555A),
-                                      ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                GENDER,
+                                                style: TextStyle(
+                                                  color: Color(0xff212426),
+                                                  fontSize:
+                                                  Responsive.isSmallScreen(context)
+                                                      ? width / 26
+                                                      : width / 40,
+                                                  fontFamily: 'Poppins',
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Icon(
+                                                Icons.arrow_drop_down_outlined,
+                                                color: Color(0xff4F555A),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
+
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.only(
+                    left: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 30,
+                    right: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 30,
+                    top: Responsive.isSmallScreen(context)
+                        ? width / 20
+                        : width / 30,
+                  ),
+                  elevation: 5,
+                  child: Container(
+                    padding: EdgeInsets.all(
+                      Responsive.isSmallScreen(context)
+                          ? width / 20
+                          : width / 26,
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Blood Group',
+                                  style: TextStyle(
+                                    color: Color(0xff949494),
+                                    fontSize: Responsive.isSmallScreen(context)
+                                        ? width / 26
+                                        : width / 40,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+
+                              InkWell(
+                                onTap: ()
+                                {
+                                  showModalBottomSheet(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(25),
+                                            topRight: Radius.circular(25)),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Container(
+                                            height: Responsive.isSmallScreen(context)
+                                                ? width / 2
+                                                : width / 90,
+                                            child: ListView(
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                    top: Responsive.isSmallScreen(context)
+                                                        ? width / 30
+                                                        : width / 30,
+                                                  ),
+                                                  child: Text(
+                                                    'Choose',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      color: Color(0xff000000),
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize:
+                                                      Responsive.isSmallScreen(context)
+                                                          ? width / 20
+                                                          : width / 50,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Positioned(
+                                                  child: Container(
+                                                    margin: EdgeInsets.only(
+                                                      top: Responsive.isSmallScreen(context)
+                                                          ? width / 30
+                                                          : width / 30,
+                                                    ),
+                                                    width: double.infinity,
+                                                    child: ListView.builder(
+                                                      physics: ClampingScrollPhysics(),
+                                                      scrollDirection: Axis.vertical,
+                                                      shrinkWrap: true,
+                                                      itemCount: Blood.length,
+                                                      itemBuilder: (context, index) {
+                                                        final year = Blood[index];
+                                                        final isSelectedYear = year == BLOOD;
+
+                                                        return ListTile(
+                                                          title: Column(
+                                                            children: [
+                                                              Container(
+                                                                alignment: Alignment.topLeft,
+                                                                child: Text(
+                                                                  ' $year',
+                                                                  style: TextStyle(
+                                                                    fontFamily: 'Poppins',
+                                                                    fontWeight: isSelectedYear
+                                                                        ? FontWeight.w700
+                                                                        : FontWeight.w500,
+                                                                    fontSize: Responsive
+                                                                        .isSmallScreen(
+                                                                        context)
+                                                                        ? width / 24
+                                                                        : width / 26,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                padding: EdgeInsets.only(
+                                                                  top: Responsive
+                                                                      .isSmallScreen(
+                                                                      context)
+                                                                      ? width / 30
+                                                                      : width / 30,
+                                                                ),
+                                                                child: Container(
+                                                                  height: 1.5,
+                                                                  color: Color(0xffE4E8EE),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          onTap: () {
+                                                            setState(() {
+                                                              BLOOD = year;
+                                                              Navigator.of(context).pop();
+                                                            });
+                                                          },
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ));
+                                      });
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                        margin: EdgeInsets.only(
+                                          left: Responsive.isSmallScreen(context)
+                                              ? width / 20
+                                              : width / 40,
+
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.only(
+                                            left: Responsive.isSmallScreen(context)
+                                                ? width / 9
+                                                : width / 30,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                alignment: Alignment.centerLeft,
+                                                child: Text(
+                                                  BLOOD,
+                                                  style: TextStyle(
+                                                    color: Color(0xff212426),
+                                                    fontSize:
+                                                    Responsive.isSmallScreen(context)
+                                                        ? width / 26
+                                                        : width / 40,
+                                                    fontFamily: 'Poppins',
+                                                    fontWeight: FontWeight.w300,
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: Icon(
+                                                  Icons.arrow_drop_down_outlined,
+                                                  color: Color(0xff4F555A),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                    ),
+                                  ],
+                                ),
+                              ),
+
                             ],
                           ),
                         )

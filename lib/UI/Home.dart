@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
+import 'package:project_signup_page/Onbording/b_date.dart';
+import 'package:project_signup_page/UI/Create_acc.dart';
 import 'package:project_signup_page/UI/Signin.dart';
 import 'package:project_signup_page/UI/Signup.dart';
 
@@ -51,7 +53,8 @@ class _Homestate extends State<Home> {
 
       // Perform navigation after the delay
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Signin()));
+          context, MaterialPageRoute(builder: (context) => create_acc()));
+         // context, MaterialPageRoute(builder: (context) => Signin()));
       // Navigator.push(context, MaterialPageRoute(builder: (context)=> Weigh(),));
     });
   }

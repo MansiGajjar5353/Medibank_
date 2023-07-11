@@ -6,24 +6,32 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:project_signup_page/Functions/APILink.dart';
 import 'package:project_signup_page/Functions/Loader.dart';
-import 'package:project_signup_page/Functions/Utility.dart';
-import 'package:project_signup_page/Onbording/Responsive.dart';
 import 'package:project_signup_page/UI/Create_acc.dart';
-import 'package:project_signup_page/UI/EmailOTP.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Email_Screen extends StatefulWidget {
+import '../Functions/Utility.dart';
+import '../Onbording/Responsive.dart';
+import 'Email.dart';
+
+class EmailOTP extends StatefulWidget {
+  //final String data;
+  //const otpScreen(this.data,{ super.key})
+
   @override
   State<StatefulWidget> createState() {
-    return Email_ScreenState();
+    return _EmailOTPState();
   }
 }
 
-class Email_ScreenState extends State<Email_Screen> {
 
+
+
+
+class _EmailOTPState extends State<EmailOTP> {
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
+
 
   void handleButtonPress() {
     setState(() {
@@ -37,101 +45,83 @@ class Email_ScreenState extends State<Email_Screen> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      _validation();
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => create_acc(),
-      //     ));
-      // Perform navigation after the delay
+      _Validation();
+
     });
   }
 
-String res ='';
-  String _Error ='';
+  void _Validation() {
+    setState(() {
+      if (_fieldOne.text.isEmpty && _fieldTwo.text.isEmpty &&
+          _fieldThree.text.isEmpty && _fieldFour.text.isEmpty &&
+          _fieldFive.text.isEmpty && _fieldSix.text.isEmpty
+      ) {
+        Utility.ShowToast("Please Enter OTP");
+      }
+      else{
+        _EmailScreen();
+      }
 
-  void _CreateAcc() async {
+    });
+
+  }
+  String res = "";
+
+
+  void _EmailScreen() async{
+    final String otp =
+        _fieldOne.text +
+            _fieldTwo.text +
+            _fieldThree.text +
+            _fieldFour.text +
+            _fieldFive.text +
+            _fieldSix.text;
+
     try {
-
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String userId = "";
       userId = prefs.getString('userId') ?? '';
+      String contactNo = prefs.getString('contactNo') ?? '';
+      String password = prefs.getString('password') ?? '';
+
+
 
       final url =
-      Uri.parse('$API' + APIList.SaveEmailAddress);
+      Uri.parse('$API' + APIList.VerifyEmailOtp);
       final jsonBody = jsonEncode({
-        "EmailId" : _emailcontroller.text,
         "userID" : userId,
+        "OtpNumber" : otp,
         "CreatedAt": "Samsung,21,11",
-        "FcmToken": "fjsfhsfd082342084324",
+
       });
-      print("0");
       print(jsonBody.toString());
-      print("1");
 
       final response = await http.post(url, body: jsonBody, headers: {
         'Content-Type': 'application/json',
       });
-      print(response.statusCode);
       print(response.body);
       if (response.statusCode == 200) {
         // Request was successful
         final jsonResponse = jsonDecode(response.body);
-        print(jsonResponse);
-
         int statusCode = jsonResponse['statusCode'];
-        print(statusCode);
-        print(jsonResponse["responseData"]['contactNo']);
-        String ContactNo = jsonResponse["responseData"]['contactNo'];
-        print(ContactNo);
-
-        int UserID = jsonResponse["responseData"]['userId'];
-        print(jsonResponse["responseData"]['userId']);
-
-        // String PWD = jsonResponse["responseData"]['Password'];
         res = response.body;
         log(res);
-        print("2");
-
         print(res);
-        print("3");
-
 
         if (statusCode == 200) {
-          Future<void> saveUserData() async {
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.setString('userId', UserID.toString());
-           // await prefs.setString('contactNo', ContactNo);
-            // await prefs.setString('password', PWD);
-          }
-
-          saveUserData().then((_) {
 
 
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> EmailOTP()));
-
-
-
-          });
-
-
-
-
-
-
-
-
-
-
-
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => create_acc()),
+            );
 
         } else {
-          // Handle other status codes here
-          _Error = "Please try again";
+          Utility.ShowToast("Invalid OTP");
         }
       } else {
         // Handle request failure here
-        _Error = "Request failed with status: ${response.statusCode}";
+        //  _Error = "Request failed with status: ${response.statusCode}";
       }
     } catch (e) {
       // Exception handling
@@ -142,40 +132,30 @@ String res ='';
 
 
 
+  //final String data;
+  //otpScreen({required this.data});
+  //String _WelcomeString = "";
+  final TextEditingController _fieldOne = TextEditingController();
+  final TextEditingController _fieldTwo = TextEditingController();
+  final TextEditingController _fieldThree = TextEditingController();
+  final TextEditingController _fieldFour = TextEditingController();
+  final TextEditingController _fieldFive = TextEditingController();
+  final TextEditingController _fieldSix = TextEditingController();
 
-  void _validation(){
-    final pattern = r'^[\w\d\+\-_]+(\.[\w\d\+\-_]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z]{2,}$';
-    final regExp = RegExp(pattern);
-    setState(() {
-      if (
-       _emailcontroller.text.isEmpty
-      ) {
-        Utility.ShowToast("Please Enter your Email ID");
-      }else if(
-      !regExp.hasMatch(_emailcontroller.text)
-      ){
-        Utility.ShowToast("Please Enter valid Email Id");
-      }
-      else{
-        _CreateAcc();
-      }
-
-    });
-
-}
-  final TextEditingController _emailcontroller = new TextEditingController();
-  // bool _isEmailValid = true;
 
   @override
   Widget build(BuildContext context) {
+
+
+
     double width = MediaQuery.of(context).size.width;
-    //double height = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
 
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight:
-            Responsive.isSmallScreen(context) ? width / 10 : width / 10,
+        Responsive.isSmallScreen(context) ? width / 10 : width / 10,
         backgroundColor: Color(0xffffffff),
         elevation: 0,
         iconTheme: IconThemeData(
@@ -195,13 +175,13 @@ String res ='';
         ),
       ),
       body: Container(
-        //height: _mediaquery.size.height*1,
+        height: _mediaquery.size.height * 1,
         child: ListView(
           children: [
             Container(
               margin: EdgeInsets.only(top: 20.0),
 
-              // height: _mediaquery.size.height*0.13,
+              //  height: _mediaquery.size.height*0.13,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,13 +289,14 @@ String res ='';
                 ],
               ),
             ),
+            Padding(padding: EdgeInsets.only(top: 50.0)),
             Center(
               child: Container(
-                margin: EdgeInsets.only(left: 0, top: 50.0),
+                // margin: EdgeInsets.only(left:21.0,top:50.0 ),
                 //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
                 child: RichText(
                   text: TextSpan(
-                    text: 'What is your ',
+                    text: 'We need to verify your ',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: Responsive.isSmallScreen(context)
@@ -326,9 +307,9 @@ String res ='';
                     ),
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'Email Address',
+                        text: 'Email',
                         style: TextStyle(
-                          color: Color(0xff24B445),
+                          color: Colors.green,
                           fontWeight: FontWeight.w400,
                           fontFamily: 'Poppins',
                         ),
@@ -370,182 +351,186 @@ String res ='';
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 30),
-            ),
-            Center(
-              child: Container(
-                margin: EdgeInsets.only(right: 20.0),
-                padding: EdgeInsets.only(left: 20.0),
-                decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(80), // set the border radius
-                  //border: Border.all(),
-                ),
-                child: TextField(
-         controller: _emailcontroller,
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                    filled: true,
-                    fillColor: Color(0xffF9F9F9),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(80),
-                      borderSide: BorderSide.none,
-                    ),
-                    hintText: "prathvi@unada.io",
-                    hintStyle: TextStyle(
-                        color: Color(0xff4F555A).withOpacity(0.5),
-                        fontFamily: 'Poppins',
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 23
-                            : width / 60),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-                padding: EdgeInsets.only(top: _mediaquery.size.height * 0.02)),
-            Center(
-              child: Container(
-                //margin: EdgeInsets.only(left:21.0,top:0 ),
-                //new  Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Note: ',
-                    style: TextStyle(
-                      color: Color(0xff24B445),
-                      fontSize: Responsive.isSmallScreen(context)
-                          ? width / 35
-                          : width / 60,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w300,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text:
-                            'Please check your email for verification and confirm it.',
-                        style: TextStyle(
-                          color: Color(0xff929292),
-                          fontWeight: FontWeight.w300,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      OtpInput(_fieldOne, true), // auto focus
+                      OtpInput(_fieldTwo, false),
+                      OtpInput(_fieldThree, false),
+                      OtpInput(_fieldFour, false),
+                      OtpInput(_fieldFive, false),
+                      OtpInput(_fieldSix, false),
                     ],
                   ),
-                ),
-              ),
-            ),
-            Center(
-              child: Stack(
-                children: [
-                  Transform.translate(
-                    offset: Offset(0, -60),
-                    child: SizedBox(
-                      height: _mediaquery.size.height * 0.49,
-                      child: Image.asset(
-                        'image/Rectangle.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
+                  const SizedBox(
+                    height: 5,
                   ),
-
-                  Center(
-                    child: Container(
-                      margin:
-                          EdgeInsets.only(top: _mediaquery.size.height * 0.22),
-                      child: Text(
-                        '2/10 Questions',
-                        style: TextStyle(
-                            color: Color(0xffB0B2B5),
-                            fontSize: Responsive.isSmallScreen(context)
-                                ? width / 25
-                                : width / 60),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      margin:
-                          EdgeInsets.only(top: _mediaquery.size.height * 0.26),
+                  Container(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(padding: EdgeInsets.only(left: 9)),
-                          CircleAvatar(
-                            backgroundColor: Color(0xffD9D9D9),
-                            radius: 4,
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                                margin: EdgeInsets.only(left: 20),
+                                child: Text(
+                                  "Resend Otp?",
+                                  style: new TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xffC7C7C7),
+                                      fontSize: 14.0),
+                                )),
                           ),
-                          Padding(padding: EdgeInsets.only(left: 7)),
-                          CircleAvatar(
-                            backgroundColor: Color(0xff24B445),
-                            radius: 5,
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 7)),
-                          CircleAvatar(
-                            backgroundColor: Color(0xffD9D9D9),
-                            radius: 4,
-                          ),
+                          Container(
+                              margin: EdgeInsets.only(right: 20),
+                              child: Text("0.30sec",
+                                  style: new TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xffC7C7C7),
+                                      fontSize: 14.0))),
                         ],
-                      ),
-                    ),
-                  ),
+                      )),
 
                   Center(
-                    child: Container(
-                      height: _mediaquery.size.height * 0.070,
-                      width: Responsive.isSmallScreen(context)
-                          ? width / 2.5
-                          : width / 3.5,
-                      margin:
-                          EdgeInsets.only(top: _mediaquery.size.height * 0.29),
-                      child: ElevatedButton(
-                        onPressed: handleButtonPress,
-                        child: Image.asset('image/AerrowRight.png',
-                            color: isButtonPressed ? Colors.black : imageColor,
-                            height: _mediaquery.size.height * 0.04),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              isButtonPressed ? buttonColor : Color(0xffF9F9F9),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32.0)),
+                    child: Stack(
+                      children: [
+                        Transform.translate(
+                          offset: Offset(0, -60),
+                          child: SizedBox(
+                            height: _mediaquery.size.height * 0.49,
+                            child: Image.asset(
+                              "image/Otpapage.png",
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+
                         ),
-                      ),
+
+                        Center(
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                top: _mediaquery.size.height * 0.25),
+                            child: Text(
+                              '2/10 Questions',
+                              style: TextStyle(
+                                  color: Color(0xffB0B2B5),
+                                  fontSize: Responsive.isSmallScreen(context)
+                                      ? width / 25
+                                      : width / 60),
+                            ),
+                          ),
+                        ),
+
+                        Center(
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                top: _mediaquery.size.height * 0.29),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(padding: EdgeInsets.only(left: 9)),
+                                CircleAvatar(
+                                  backgroundColor: Color(0xffD9D9D9),
+                                  radius: 4,
+                                ),
+                                Padding(padding: EdgeInsets.only(left: 7)),
+                                CircleAvatar(
+                                  backgroundColor: Color(0xff24B445),
+                                  radius: 5,
+                                ),
+                                Padding(padding: EdgeInsets.only(left: 7)),
+                                CircleAvatar(
+                                  backgroundColor: Color(0xffD9D9D9),
+                                  radius: 4,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        Center(
+                          child: Container(
+                            height: _mediaquery.size.height * 0.070,
+                            width: Responsive.isSmallScreen(context)
+                                ? width / 2.5
+                                : width / 3.5,
+                            margin: EdgeInsets.only(
+                                top: _mediaquery.size.height * 0.32),
+                            child: ElevatedButton(
+                              onPressed: handleButtonPress,
+                              child: Image.asset('image/AerrowRight.png',
+                                  color: isButtonPressed
+                                      ? Colors.black
+                                      : imageColor,
+                                  height: _mediaquery.size.height * 0.04),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: isButtonPressed
+                                    ? buttonColor
+                                    : Color(0xffF9F9F9),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+
+
+                      ],
                     ),
                   ),
 
-                  //   Center(
-                  //   child: Container(
-                  //     margin: EdgeInsets.only(top: _mediaquery.size.height*0.29),
-                  //     child: ElevatedButton.icon(
-                  //         style: ElevatedButton.styleFrom(
-                  //           backgroundColor: Color(0xff24B445),
-                  //           shape: RoundedRectangleBorder(
-                  //               borderRadius: BorderRadius.circular(32.0)
-                  //           ),
-                  //
-                  //         ),
-                  //         onPressed: () {
-                  //         Navigator.push(context,MaterialPageRoute(builder: (context)=>create_acc(),));
-                  //         },
-                  //         icon: Container(
-                  //           margin: EdgeInsets.only(left:10),
-                  //           width: 80,
-                  //           child: Icon(
-                  //             Icons.arrow_forward,
-                  //             size: 30,
-                  //             color: Colors.black,
-                  //           ),
-                  //         ), label: Text(""),
-                  //       ),
-                  //   ),
-                  // ),
-                  //
-                ],
-              ),
-            ),
+                ])
           ],
         ),
+      ),
+    );
+  }
+}
+
+class OtpInput extends StatelessWidget {
+  final TextEditingController controller;
+  final bool autoFocus;
+
+  const OtpInput(this.controller, this.autoFocus, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 45,
+      child: TextField(
+        autofocus: autoFocus,
+        textAlign: TextAlign.center,
+        keyboardType: TextInputType.number,
+        controller: controller,
+        maxLength: 1,
+        cursorColor: Theme.of(context).primaryColor,
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+            filled: true,
+            fillColor: Color(0xffF9F9F9),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(35),
+              borderSide: BorderSide.none,
+            ),
+            hintText: "2",
+            counterText: '',
+            hintStyle: TextStyle(
+                color: Color(0xff4F555A).withOpacity(0.5),
+                fontSize: 12,
+                fontWeight: FontWeight.w400)),
+        onChanged: (value) {
+          if (value.length == 1) {
+            FocusScope.of(context).nextFocus();
+          }
+        },
       ),
     );
   }

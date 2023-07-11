@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
 
 import '../Onbording/Responsive.dart';
@@ -12,6 +13,21 @@ class FollowUpsForm extends StatefulWidget {
 }
 
 class _FollowUpsFormState extends State<FollowUpsForm> {
+  final dateController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
+
+  //late String month;
+  late String month;
+  late String date;
+  late String year;
+
+  @override
+  void initState() {
+    month = "Month";
+    date = "Date";
+    year = "Year";
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -107,7 +123,7 @@ class _FollowUpsFormState extends State<FollowUpsForm> {
                             ? width / 8
                             : width / 8,
                         child: TextField(
-//
+                          controller:dateController,
                           decoration: InputDecoration(
                             contentPadding:
                             EdgeInsets.symmetric(horizontal: 20),
@@ -137,33 +153,86 @@ class _FollowUpsFormState extends State<FollowUpsForm> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 10
-                            : width / 10,
-                        height: Responsive.isSmallScreen(context)
-                            ? width / 10
-                            : width / 10,
-                        margin: EdgeInsets.only(
-                          right: Responsive.isSmallScreen(context)
-                              ? width / 20
-                              : width / 20,
-                          bottom: Responsive.isSmallScreen(context)
-                              ? width / 50
-                              : width / 15,
-                        ),
-                        alignment: Alignment.centerRight,
-                        child: CircleAvatar(
-                          radius: Responsive.isSmallScreen(context)
-                              ? width / 20
-                              : width / 35,
-                          backgroundColor: Color(0xffF9F9F9),
-                          child: Icon(
-                            Icons.calendar_today_outlined,
-                            color: Color(0xff4F555A).withOpacity(0.5),
+                      GestureDetector(
+                        onTap: ()
+                        async
+                        {
+                          final DateTime? picked = await
+                          showDatePicker
+                            (
+                            builder: (context, child) {
+                              return Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme: ColorScheme.light(
+                                    primary: Color(0xff24B445), // header background color
+                                    onPrimary: Color(0xffFFFFFF), // header text color
+                                    onSurface: Color(0Xff000000)
+                                  ),
+                                  textButtonTheme: TextButtonThemeData(
+                                    style: TextButton.styleFrom(
+                                      foregroundColor: Color(0xff24B445)
+                                    ),
+                                  ),
+                                ),
+                                child: child!,
+                              );
+                            },
+
+                              context: context,
+
+                              initialDate: selectedDate,
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2100),);
+
+                          if (picked != null && picked != selectedDate) {
+                            setState(() {
+                              selectedDate = picked;
+                              dateController.text =
+                                  DateFormat('yyyy-MM-dd')
+                                      .format(selectedDate);
+                              month = DateFormat('MMMM')
+                                  .format(selectedDate); // Extract month
+                              date = DateFormat('d').format(selectedDate);
+                              year = DateFormat('yyyy')
+                                  .format(selectedDate); // Extract day
+
+                              // Use the month and day strings as needed
+                              print('Month: $month');
+                              print('Day: $date');
+                            });
+                          }
+                        },
+
+                        child:
+                        Container(
+                          width: Responsive.isSmallScreen(context)
+                              ? width / 10
+                              : width / 10,
+                          height: Responsive.isSmallScreen(context)
+                              ? width / 10
+                              : width / 10,
+                          margin: EdgeInsets.only(
+                            right: Responsive.isSmallScreen(context)
+                                ? width / 20
+                                : width / 20,
+                            bottom: Responsive.isSmallScreen(context)
+                                ? width / 50
+                                : width / 15,
+                          ),
+                          alignment: Alignment.centerRight,
+                          child: CircleAvatar(
+                            radius: Responsive.isSmallScreen(context)
+                                ? width / 20
+                                : width / 35,
+                            backgroundColor: Color(0xffF9F9F9),
+                            child: Icon(
+                              Icons.calendar_today_outlined,
+                              color: Color(0xff4F555A).withOpacity(0.5),
+                            ),
                           ),
                         ),
-                      ),
+                      )
+
                     ],
                   ),
                 ),

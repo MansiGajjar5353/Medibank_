@@ -8,6 +8,10 @@ import 'Responsive.dart';
 //import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 
 class b_date extends StatefulWidget {
+  final String firstName;
+  final String lastName;
+
+  b_date({required this.firstName, required this.lastName});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -19,50 +23,6 @@ class b_date extends StatefulWidget {
 class b_dateState extends State<b_date> {
   int selectedYear = 1999;
 
-//   late int selectedYear;
-//
-//   final List<int> yearsList = List<int>.generate(2024 - 1900, (index) => index + 1900);
-//   void initState() {
-//     super.initState();
-//     selectedYear = yearsList[0]; // Set the initial value
-//   }
-//
-//   final TextEditingController _userController = new TextEditingController();
-// void _showSheet{
-//   setState(() {
-//     showModalBottomSheet(
-//     context:context,
-//     builder:(BuildContext context){
-//     return SizedBox(
-//       height:400,
-//       child:ListView(children: [
-//   DropdownButton<int>(
-//   value: selectedYear,
-//   items: yearsList.map((int year) {
-//   return DropdownMenuItem<int>(
-//   value: year,
-//   child: Text(year.toString()),
-//   );
-//   }).toList(),
-//   onChanged: (int year) {
-//   setState(() {
-//   selectedYear = year;
-//   });
-//   // Handle the selected value here
-//   print(selectedYear);
-//   },
-//   ),
-//   ),
-
-//   ],
-//
-//
-//   ),
-//     );
-//   },
-//     );
-//   });
-// }
   late DateTime dateTime;
   List<String> month = [
     'Jan',
@@ -78,7 +38,9 @@ class b_dateState extends State<b_date> {
     'Nov',
     'Dec'
   ];
+
   int _focusedIndex = 0;
+  int _focusedIndex2 = 0;
   List<int> data = [
     1,
     2,
@@ -113,10 +75,13 @@ class b_dateState extends State<b_date> {
     31
   ];
 
+
+
   Widget _monthItemList(BuildContext context, int index) {
     double width = MediaQuery.of(context).size.width;
 
     var _mediaquery = MediaQuery.of(context);
+
     if (index == month.length)
       return Center(
         child: CircularProgressIndicator(),
@@ -185,6 +150,11 @@ class b_dateState extends State<b_date> {
       _focusedIndex = index;
     });
   }
+  void _onItemFocus2(int index) {
+    setState(() {
+      _focusedIndex2 = index;
+    });
+  }
 
   @override
   void initstate() {
@@ -208,10 +178,18 @@ class b_dateState extends State<b_date> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
+
+      String firstName = widget.firstName;
+      String lastName = widget.lastName;
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Gender(),
+            builder: (context) => Gender(
+
+              firstName: firstName,
+              lastName: lastName,
+
+            ),
           ));
       // Perform navigation after the delay
     });
@@ -219,6 +197,8 @@ class b_dateState extends State<b_date> {
 
   @override
   Widget build(BuildContext context) {
+    final String FinalMonth = month[_focusedIndex2] ;
+    final String Finaldate = data[_focusedIndex].toString();
     final currentYear = DateTime.now().year;
     final years = List.generate(
       currentYear - 1900 + 1,
@@ -226,7 +206,6 @@ class b_dateState extends State<b_date> {
     );
 
     double width = MediaQuery.of(context).size.width;
-
     var _mediaquery = MediaQuery.of(context);
     // TODO: implement build
 
@@ -255,10 +234,12 @@ class b_dateState extends State<b_date> {
         //  margin: EdgeInsets.only( top:20.0),
       ),
       body: Container(
+
         height: _mediaquery.size.height * 1,
         child: ListView(
           //   shrinkWrap: true,
           children: [
+            // Text("$selectedYear"),
             Container(
               margin: EdgeInsets.only(top: 20.0),
               child: Row(
@@ -412,41 +393,6 @@ class b_dateState extends State<b_date> {
               ),
             ),
 
-            //
-            // Center(
-            //   child: Container(
-            //     margin: EdgeInsets.only(left:50,top:50.0 ),
-            //    // Padding(padding: const EdgeInsets.only(left:50.0, top:20.0),),
-            //     child:RichText(
-            //       text: TextSpan(
-            //         text: 'What do we celebrate your ',
-            //         style: TextStyle(
-            //           color: Colors.black,
-            //           fontSize: 20,
-            //           fontFamily: 'Poppins',
-            //           fontWeight: FontWeight.w400,
-            //         ),
-            //         children: <TextSpan>[
-            //           TextSpan(
-            //             text: 'Birthday',
-            //             style: TextStyle(
-            //               color: Color(0xff24B445),
-            //               fontWeight: FontWeight.w400,
-            //               fontFamily: 'Poppins',
-            //
-            //             ),
-            //           ),
-            //           TextSpan(
-            //             text: '.',
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //     // child:Text("We need to verify your Number?",style: new TextStyle(height:0.90,color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.w900,fontFamily: 'Poppins'),),
-            //
-            //   ),
-            // ),
-
             Container(
               child: Column(
                 children: [
@@ -539,11 +485,12 @@ class b_dateState extends State<b_date> {
                         itemBuilder: _monthItemList,
                         itemSize: 120,
                         dynamicItemSize: true,
+
                         onReachEnd: () {
                           print("done");
                         },
                         itemCount: month.length,
-                        onItemFocus: _onItemFocus,
+                        onItemFocus: _onItemFocus2,
                       )),
                     ],
                   ),
@@ -636,17 +583,7 @@ class b_dateState extends State<b_date> {
                             : width / 40,
                       ),
                     ),
-                    //       child: TextField(
-                    //  //   controller: _userController,
-                    //       decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    //       filled: true,
-                    //       fillColor: Colors.white,
-                    //  border: OutlineInputBorder(
-                    // //  borderRadius: BorderRadius.circular(35),
-                    //  borderSide: BorderSide.none,),
-                    //       hintText: "1999",
-                    //       hintStyle: TextStyle(fontSize: 13,fontWeight: FontWeight.w700))
-                    //       ),
+
                   ),
                 ),
               ),
@@ -711,29 +648,7 @@ class b_dateState extends State<b_date> {
                     ),
                   ),
                 ),
-                // ElevatedButton.icon(
-                //   style: ElevatedButton.styleFrom(
-                //     backgroundColor: Color(0xff24B445),
-                //     shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(32.0)
-                //     ),
-                //
-                //   ),
-                //   onPressed: () {
-                //     log("Hello");
-                //     Navigator.push(context, MaterialPageRoute(builder: (contex)=> Gender(),));
-                //   },
-                //
-                //   icon: Container(
-                //     margin: EdgeInsets.only(left:10),
-                //     width: 80,
-                //     child: Icon(
-                //       Icons.arrow_forward,
-                //       size: 30,
-                //       color: Colors.black,
-                //     ),
-                //   ), label: Text(""),
-                // ),
+
               ],
             ),
           ],

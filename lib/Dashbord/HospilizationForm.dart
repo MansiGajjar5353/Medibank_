@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_signup_page/Dashbord/Dashbord.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
@@ -20,6 +21,32 @@ class HospilizationForm extends StatefulWidget {
 }
 
 class HospilizationFormState extends State<HospilizationForm> {
+  final AddmidateController = TextEditingController();
+  final DisdateController = TextEditingController();
+  bool isDisabled = false;
+  DateTime AddmiselectedDate = DateTime.now();
+  DateTime DisselectedDate = DateTime.now();
+
+  //late String month;
+  late String Addmimonth;
+  late String Addmidate;
+  late String Addmiyear;
+
+  late String DissAddmimonth;
+  late String DissAddmidate;
+  late String DissAddmiyear;
+
+  @override
+  void initState() {
+    Addmimonth = "Month";
+    Addmidate = "Date";
+    Addmiyear = "Year";
+
+    DissAddmimonth = "Month";
+    DissAddmidate = "Date";
+    DissAddmiyear = "Year";
+    super.initState();
+  }
   List<TabData> tabs = [
     TabData('Patient Record', 'Description for Tab 1'),
     TabData('Patient Biling', 'Description for Tab 2'),
@@ -201,27 +228,148 @@ class HospilizationFormState extends State<HospilizationForm> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                margin: EdgeInsets.only(left: 30, right: 30, top: 20),
-                width:
-                    Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
-                height: 55,
-                child: TextField(
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    filled: true,
-                    fillColor: Color(0xffF9F9F9),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(35),
-                      borderSide: BorderSide.none,
+              GestureDetector(
+                onTap: () async {
+                  final DateTime? picked = await showDatePicker(
+                      builder: (context, child) {
+                        return Theme(
+                          data: Theme.of(context).copyWith(
+                            colorScheme: ColorScheme.light(
+                                primary: Color(0xff24B445), // header background color
+                                onPrimary: Color(0xffFFFFFF), // header text color
+                                onSurface: Color(0Xff000000)
+                            ),
+                            textButtonTheme: TextButtonThemeData(
+                              style: TextButton.styleFrom(
+                                  foregroundColor: Color(0xff24B445)
+                              ),
+                            ),
+                          ),
+                          child: child!,
+                        );
+                      },
+                      context: context,
+                      initialDate: AddmiselectedDate,
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime(2100));
+                  if (picked != null && picked != AddmiselectedDate) {
+                    setState(() {
+                      AddmiselectedDate = picked;
+                      AddmidateController.text =
+                          DateFormat('yyyy-MM-dd')
+                              .format(AddmiselectedDate);
+                      Addmimonth= DateFormat('MMMM')
+                          .format(AddmiselectedDate); // Extract month
+                      Addmidate = DateFormat('d').format(AddmiselectedDate);
+                      Addmiyear = DateFormat('yyyy')
+                          .format(AddmiselectedDate); // Extract day
+
+                      // Use the month and day strings as needed
+                      print('Month: $Addmimonth');
+                      print('Day: $Addmidate');
+                    });
+                  }
+                },
+                child:
+                Container(
+
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 20),
+                  width:
+                  Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
+                  height: 55,
+                  child: TextField(
+                    enabled: false,
+                    controller: AddmidateController,
+                    decoration: InputDecoration(
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      filled: true,
+                      fillColor: Color(0xffF9F9F9),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(35),
+                        borderSide: BorderSide.none,
+                      ),
+                      hintText: "Admission date",
+                      hintStyle:
+                      TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
                     ),
-                    hintText: "Admission date",
-                    hintStyle:
-                        TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
                   ),
                 ),
               ),
+
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  final DateTime? picked = await showDatePicker(
+                      builder: (context, child) {
+                        return Theme(
+                          data: Theme.of(context).copyWith(
+                            colorScheme: ColorScheme.light(
+                                primary: Color(0xff24B445), // header background color
+                                onPrimary: Color(0xffFFFFFF), // header text color
+                                onSurface: Color(0Xff000000)
+                            ),
+                            textButtonTheme: TextButtonThemeData(
+                              style: TextButton.styleFrom(
+                                  foregroundColor: Color(0xff24B445)
+                              ),
+                            ),
+                          ),
+                          child: child!,
+                        );
+                      },
+                      context: context,
+                      initialDate: DisselectedDate,
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime(2100));
+                  if (picked != null && picked != DisselectedDate) {
+                    setState(() {
+                      DisselectedDate = picked;
+                      DisdateController.text =
+                          DateFormat('yyyy-MM-dd')
+                              .format(DisselectedDate);
+                      DissAddmimonth = DateFormat('MMMM')
+                          .format(DisselectedDate); // Extract month
+                      DissAddmidate = DateFormat('d').format(DisselectedDate);
+                      DissAddmiyear = DateFormat('yyyy')
+                          .format(DisselectedDate); // Extract day
+
+                      // Use the month and day strings as needed
+                      print('Month: $DissAddmimonth');
+                      print('Day: $DissAddmidate');
+                    });
+                  }
+                },
+                child:
+                Container(
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 10),
+                  width:
+                  Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
+                  height: 55,
+                  child: TextField(
+                    enabled: false,
+                    controller: DisdateController,
+                    decoration: InputDecoration(
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      filled: true,
+                      fillColor: Color(0xffF9F9F9),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(35),
+                        borderSide: BorderSide.none,
+                      ),
+                      hintText: "Discharge date",
+                      hintStyle:
+                      TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                    ),
+                  ),
+                ),
+              ),
+
             ],
           ),
           Column(
@@ -230,40 +378,13 @@ class HospilizationFormState extends State<HospilizationForm> {
               Container(
                 margin: EdgeInsets.only(left: 30, right: 30, top: 10),
                 width:
-                    Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
+                Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
                 height: 55,
                 child: TextField(
-//
+
                   decoration: InputDecoration(
                     contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    filled: true,
-                    fillColor: Color(0xffF9F9F9),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(35),
-                      borderSide: BorderSide.none,
-                    ),
-                    hintText: "Discharge date",
-                    hintStyle:
-                        TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 30, right: 30, top: 10),
-                width:
-                    Responsive.isSmallScreen(context) ? width / 1.2 : width / 2,
-                height: 55,
-                child: TextField(
-//
-                  decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                     filled: true,
                     fillColor: Color(0xffF9F9F9),
                     border: OutlineInputBorder(
@@ -272,7 +393,7 @@ class HospilizationFormState extends State<HospilizationForm> {
                     ),
                     hintText: "Hospital name",
                     hintStyle:
-                        TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
+                    TextStyle(color: Color(0xff4F555A).withOpacity(0.5)),
                   ),
                 ),
               ),

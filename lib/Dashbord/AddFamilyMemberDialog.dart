@@ -1,11 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_signup_page/Dashbord/FollowUps.dart';
 
 import '../Onbording/Responsive.dart';
 import 'TestFollowUps.dart';
 
 class AddFamilyMemberDialog extends StatelessWidget {
+  final dateController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
+
+  //late String month;
+  late String month;
+  late String date;
+  late String year;
+
+  @override
+  void initState() {
+    month = "Month";
+    date = "Date";
+    year = "Year";
+    initState();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -30,6 +46,7 @@ class AddFamilyMemberDialog extends StatelessWidget {
       "For Men",
       "For Women"
     ];
+
     return Dialog(
       backgroundColor: Colors.transparent,
       child: Container(
@@ -150,43 +167,97 @@ class AddFamilyMemberDialog extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(
-                        left: Responsive.isSmallScreen(context)
-                            ? width / 25
-                            : width / 40,
-                        right: Responsive.isSmallScreen(context)
-                            ? width / 25
-                            : width / 40,
-                        top: Responsive.isSmallScreen(context)
-                            ? width / 80
-                            : width / 100,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: Responsive.isSmallScreen(context)
-                                ? width / 2.1
-                                : width / 1.7,
-                            height: Responsive.isSmallScreen(context)
-                                ? width / 13
-                                : width / 13,
-                            child: TextField(
-//
-                              decoration: InputDecoration(
-                                contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                                filled: true,
-                                fillColor: Color(0xffF9F9F9),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                  borderSide: BorderSide.none,
+                    GestureDetector(
+                      onTap: ()
+                      async {
+                        final DateTime? picked = await showDatePicker(
+                            builder: (context, child) {
+                              return Theme(
+                                data: Theme.of(context).copyWith(
+                                  colorScheme: ColorScheme.light(
+                                      primary: Color(0xff24B445), // header background color
+                                      onPrimary: Color(0xffFFFFFF), // header text color
+                                      onSurface: Color(0Xff000000)
+                                  ),
+                                  textButtonTheme: TextButtonThemeData(
+                                    style: TextButton.styleFrom(
+                                        foregroundColor: Color(0xff24B445)
+                                    ),
+                                  ),
                                 ),
-                                hintText: "22/10/1999",
-                                hintStyle: TextStyle(
-                                  color: Color(0xff4F555A).withOpacity(0.4),
+                                child: child!,
+                              );
+                            },
+                            context: context,
+                            initialDate: selectedDate,
+                            firstDate: DateTime(1900),
+                            lastDate: DateTime(2100));
+                        if (picked != null && picked != selectedDate) {
+
+                            selectedDate = picked;
+                            dateController.text =
+                                DateFormat('yyyy-MM-dd')
+                                    .format(selectedDate);
+                            month = DateFormat('MMMM')
+                                .format(selectedDate); // Extract month
+                            date = DateFormat('d').format(selectedDate);
+                            year = DateFormat('yyyy')
+                                .format(selectedDate); // Extract day
+
+                            // Use the month and day strings as needed
+                            print('Month: $month');
+                            print('Day: $date');
+
+                        }
+                      },
+                      child:
+                      Container(
+                        padding: EdgeInsets.only(
+                          left: Responsive.isSmallScreen(context)
+                              ? width / 25
+                              : width / 40,
+                          right: Responsive.isSmallScreen(context)
+                              ? width / 25
+                              : width / 40,
+                          top: Responsive.isSmallScreen(context)
+                              ? width / 80
+                              : width / 100,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: Responsive.isSmallScreen(context)
+                                  ? width / 2.1
+                                  : width / 1.7,
+                              height: Responsive.isSmallScreen(context)
+                                  ? width / 13
+                                  : width / 13,
+                              child: TextField(
+                                enabled: false,
+                                controller: dateController,
+                                decoration: InputDecoration(
+                                  contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 10),
+                                  filled: true,
+                                  fillColor: Color(0xffF9F9F9),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  hintText: "22/10/1999",
+                                  hintStyle: TextStyle(
+                                    color: Color(0xff4F555A).withOpacity(0.4),
+                                    fontSize: Responsive.isSmallScreen(context)
+                                        ? width / 30
+                                        : width / 42,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                style: TextStyle(
+                                  color: Color(0xff000000).withOpacity(0.4),
                                   fontSize: Responsive.isSmallScreen(context)
                                       ? width / 30
                                       : width / 42,
@@ -194,19 +265,12 @@ class AddFamilyMemberDialog extends StatelessWidget {
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              style: TextStyle(
-                                color: Color(0xff000000).withOpacity(0.4),
-                                fontSize: Responsive.isSmallScreen(context)
-                                    ? width / 30
-                                    : width / 42,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
+
                     Container(
                       alignment: Alignment.topLeft,
                       margin: EdgeInsets.only(

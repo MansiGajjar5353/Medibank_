@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'Responsive.dart';
 class AddInsurance extends StatefulWidget{
   @override
@@ -9,6 +10,29 @@ class AddInsurance extends StatefulWidget{
 }
 
 class AddInsuranceState extends State<AddInsurance> {
+  final InsudateController = TextEditingController();
+  final ExpdateController = TextEditingController();
+  DateTime InsuselectedDate = DateTime.now();
+  DateTime ExpselectedDate = DateTime.now();
+
+  //late String month;
+  late String Insumonth;
+  late String Insudate;
+  late String Insuyear;
+  late String Expmonth;
+  late String Expdate;
+  late String Expyear;
+
+  @override
+  void initState() {
+    Insumonth = "Month";
+    Insudate = "Date";
+    Insuyear = "Year";
+    Expmonth = "Month";
+    Expdate = "Date";
+    Expyear = "Year";
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -76,33 +100,82 @@ class AddInsuranceState extends State<AddInsurance> {
                               style: TextStyle(color: Color(0xff212426),
                                 fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w400,),),
                           ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/20 : width/20,top: Responsive.isSmallScreen(context)? width/50 : width/50 ),
-                            width: Responsive.isSmallScreen(context)? width/2.4 : width/2.4,
-                            height: Responsive.isSmallScreen(context)? width/9.3 : width/9.3,
-                            child: TextField(
-                              textAlign: TextAlign.left,
-                              decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color:Color(0xff24B445), width: 1),
-                                ),
+                          GestureDetector(
+                            onTap: ()
+                            async {
+                              final DateTime? picked = await showDatePicker(
+                                  builder: (context, child) {
+                                    return Theme(
+                                      data: Theme.of(context).copyWith(
+                                        colorScheme: ColorScheme.light(
+                                            primary: Color(0xff24B445), // header background color
+                                            onPrimary: Color(0xffFFFFFF), // header text color
+                                            onSurface: Color(0Xff000000)
+                                        ),
+                                        textButtonTheme: TextButtonThemeData(
+                                          style: TextButton.styleFrom(
+                                              foregroundColor: Color(0xff24B445)
+                                          ),
+                                        ),
+                                      ),
+                                      child: child!,
+                                    );
+                                  },
+                                  context: context,
+                                  initialDate: InsuselectedDate,
+                                  firstDate: DateTime(1900),
+                                  lastDate: DateTime(2100));
+                              if (picked != null && picked != InsuselectedDate) {
+                                setState(() {
+                                  InsuselectedDate = picked;
+                                  InsudateController.text =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(InsuselectedDate);
+                                  Insumonth = DateFormat('MMMM')
+                                      .format(InsuselectedDate); // Extract month
+                                  Insudate = DateFormat('d').format(InsuselectedDate);
+                                  Insuyear = DateFormat('yyyy')
+                                      .format(InsuselectedDate); // Extract day
 
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(color: Color(0x1F0A0A0A), width:1),
-                                ),
-                                suffixIcon: IconButton(padding: EdgeInsets.only(right: Responsive.isSmallScreen(context)? width/30 : width/30),icon:Icon(Icons.calendar_today_outlined,color: Color(0xff4F555A).withOpacity(0.5),
-                                  size: Responsive.isSmallScreen(context)? width/22 : width/28,), onPressed: () {  },
-                                ),
-                                hintText: "Policy Date",
-                                hintStyle: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
+                                  // Use the month and day strings as needed
+                                  print('Month: $Insumonth');
+                                  print('Day: $Insudate');
+                                });
+                              }
+                            },
+                            child:
+                            Container(
 
+                              alignment: Alignment.centerLeft,
+                              margin:EdgeInsets.only(left: Responsive.isSmallScreen(context)? width/20 : width/20,top: Responsive.isSmallScreen(context)? width/50 : width/50 ),
+                              width: Responsive.isSmallScreen(context)? width/2.4 : width/2.4,
+                              height: Responsive.isSmallScreen(context)? width/9.3 : width/9.3,
+                              child: TextField(
+                                enabled: false,
+                                controller:InsudateController,
+                                textAlign: TextAlign.left,
+                                decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color:Color(0xff24B445), width: 1),
+                                  ),
+
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(color: Color(0x1F0A0A0A), width:1),
+                                  ),
+                                  suffixIcon: IconButton(padding: EdgeInsets.only(right: Responsive.isSmallScreen(context)? width/30 : width/30),icon:Icon(Icons.calendar_today_outlined,color: Color(0xff4F555A).withOpacity(0.5),
+                                    size: Responsive.isSmallScreen(context)? width/22 : width/28,), onPressed: () {  },
+                                  ),
+                                  hintText: "Policy Date",
+                                  hintStyle: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
+
+                                ),
+                                style: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
                               ),
-                              style: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
                             ),
-                          ),
+                          )
+
                         ],
                       ),
                       Column(
@@ -110,36 +183,84 @@ class AddInsuranceState extends State<AddInsurance> {
                           Container(
                             width: Responsive.isSmallScreen(context)? width/2.4 : width/2.4,
                             margin:EdgeInsets.only(right: Responsive.isSmallScreen(context)? width/20 : width/20,top: Responsive.isSmallScreen(context)? width/50 : width/50),
-                            child: Text("Policy date ",
+                            child: Text("Expiry Date",
                               style: TextStyle(color: Color(0xff212426),
                                 fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w400, ),),
                           ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin:EdgeInsets.only(right: Responsive.isSmallScreen(context)? width/20 : width/20,top: Responsive.isSmallScreen(context)? width/50 : width/50 ),
-                            width: Responsive.isSmallScreen(context)? width/2.4 : width/2.4,
-                            height: Responsive.isSmallScreen(context)? width/9.3 : width/9.3,
-                            child: TextField(
-                              textAlign: TextAlign.left,
-                              decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color:Color(0xff24B445), width: 1),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(color: Color(0x1F0A0A0A), width:1),
-                                ),
-                                suffixIcon: IconButton(padding: EdgeInsets.only(right: Responsive.isSmallScreen(context)? width/30 : width/30),icon:Icon(Icons.calendar_today_outlined,color: Color(0xff4F555A).withOpacity(0.5),
-                                  size: Responsive.isSmallScreen(context)? width/22 : width/28,), onPressed: () {  },
-                                ),
-                                hintText: "Expiry Date",
 
-                                hintStyle: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
+                          GestureDetector(
+                            onTap: ()
+                            async {
+                              final DateTime? picked = await showDatePicker(
+                                  builder: (context, child) {
+                                    return Theme(
+                                      data: Theme.of(context).copyWith(
+                                        colorScheme: ColorScheme.light(
+                                            primary: Color(0xff24B445), // header background color
+                                            onPrimary: Color(0xffFFFFFF), // header text color
+                                            onSurface: Color(0Xff000000)
+                                        ),
+                                        textButtonTheme: TextButtonThemeData(
+                                          style: TextButton.styleFrom(
+                                              foregroundColor: Color(0xff24B445)
+                                          ),
+                                        ),
+                                      ),
+                                      child: child!,
+                                    );
+                                  },
+                                  context: context,
+                                  initialDate: ExpselectedDate,
+                                  firstDate: DateTime(1900),
+                                  lastDate: DateTime(2100));
+                              if (picked != null && picked != ExpselectedDate) {
+                                setState(() {
+                                  ExpselectedDate = picked;
+                                  ExpdateController.text =
+                                      DateFormat('yyyy-MM-dd')
+                                          .format(ExpselectedDate);
+                                  Expmonth = DateFormat('MMMM')
+                                      .format(ExpselectedDate); // Extract month
+                                  Expdate = DateFormat('d').format(ExpselectedDate);
+                                  Expyear = DateFormat('yyyy')
+                                      .format(ExpselectedDate); // Extract day
+
+                                  // Use the month and day strings as needed
+                                  print('Month: $Expmonth');
+                                  print('Day: $Expdate');
+                                });
+                              }
+                            },
+                            child:
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              margin:EdgeInsets.only(right: Responsive.isSmallScreen(context)? width/20 : width/20,top: Responsive.isSmallScreen(context)? width/50 : width/50 ),
+                              width: Responsive.isSmallScreen(context)? width/2.4 : width/2.4,
+                              height: Responsive.isSmallScreen(context)? width/9.3 : width/9.3,
+                              child: TextField(
+                                enabled: false,
+                                controller: ExpdateController,
+                                textAlign: TextAlign.left,
+                                decoration: InputDecoration(  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color:Color(0xff24B445), width: 1),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(color: Color(0x1F0A0A0A), width:1),
+                                  ),
+                                  suffixIcon: IconButton(padding: EdgeInsets.only(right: Responsive.isSmallScreen(context)? width/30 : width/30),icon:Icon(Icons.calendar_today_outlined,color: Color(0xff4F555A).withOpacity(0.5),
+                                    size: Responsive.isSmallScreen(context)? width/22 : width/28,), onPressed: () {  },
+                                  ),
+                                  hintText: "Expiry Date",
+
+                                  hintStyle: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
+                                ),
+                                style: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
                               ),
-                              style: TextStyle(color:Color(0xff979797), fontSize:Responsive.isSmallScreen(context)? width/24 : width/24, fontFamily: 'Poppins',fontWeight: FontWeight.w500, ),
                             ),
-                          ),
+                          )
                         ],
                       )
                     ],

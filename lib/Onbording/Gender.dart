@@ -4,6 +4,10 @@ import 'package:project_signup_page/Onbording/City.dart';
 import 'Responsive.dart';
 
 class Gender extends StatefulWidget {
+  final String firstName;
+  final String lastName;
+
+  Gender({required this.firstName, required this.lastName});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -55,7 +59,9 @@ class GenderState extends State<Gender> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => City(),
+            builder: (context) => City(
+
+            ),
           ));
       // Perform navigation after the delay
     });
