@@ -81,13 +81,16 @@ String res ='';
 
         int statusCode = jsonResponse['statusCode'];
         print(statusCode);
-        print(jsonResponse["responseData"]['contactNo']);
-        String ContactNo = jsonResponse["responseData"]['contactNo'];
-        print(ContactNo);
+        // print(jsonResponse["responseData"]['contactNo']);
+        // String ContactNo = jsonResponse["responseData"]['contactNo'];
+        // print(ContactNo);
+        print("2");
+        print("3");
+        //
+        // int UserID = jsonResponse["responseData"]['userId'];
+        // print(jsonResponse["responseData"]['userId']);
 
-        int UserID = jsonResponse["responseData"]['userId'];
-        print(jsonResponse["responseData"]['userId']);
-
+        print("3");
         // String PWD = jsonResponse["responseData"]['Password'];
         res = response.body;
         log(res);
@@ -98,32 +101,7 @@ String res ='';
 
 
         if (statusCode == 200) {
-          Future<void> saveUserData() async {
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.setString('userId', UserID.toString());
-           // await prefs.setString('contactNo', ContactNo);
-            // await prefs.setString('password', PWD);
-          }
-
-          saveUserData().then((_) {
-
-
               Navigator.push(context, MaterialPageRoute(builder: (context)=> EmailOTP()));
-
-
-
-          });
-
-
-
-
-
-
-
-
-
-
-
 
         } else {
           // Handle other status codes here

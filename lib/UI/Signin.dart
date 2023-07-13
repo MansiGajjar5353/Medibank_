@@ -4,7 +4,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_signup_page/Dashbord/ReportsOpen2.dart';
+import 'package:project_signup_page/Functions/APILink.dart';
+import 'package:project_signup_page/Functions/Utility.dart';
 import 'package:project_signup_page/UI/Signup.dart';
+import 'package:project_signup_page/UI/otpScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Onbording/Responsive.dart';
 import 'FinalPage.dart';
@@ -32,13 +36,15 @@ class _SigninState extends State<Signin> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
+setState(() {
+  loginpage();
 
-      _loginpage;
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ReportsOpen2(),
-          )); // Perform navigation after the delay
+});
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => ReportsOpen2(),
+      //     )); // Perform navigation after the delay
     });
   }
 
@@ -48,33 +54,145 @@ class _SigninState extends State<Signin> {
   String _Error = "";
   String res = "";
 
-  void _loginpage() {
-    setState(() async {
-      if (_userController.text.isNotEmpty &&
-          _passwordController.text.isNotEmpty) {
-        final url =
-            Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/Login');
-        final jsonBody = jsonEncode({
-          "createdAt": "Samsung,21,11",
-          "userName": _userController.text,
-          "password": _passwordController.text,
-          "fcmToken": "fjsfhsfd082342084324"
-        });
-        final response = await http.post(url, body: jsonBody, headers: {
-          'Content-Type': 'application/json',
-        });
+
+
+  void loginpage() async {
+
+    try {
+
+      final url = Uri.parse('$API' + APIList.UserLogin);
+      final jsonBody = jsonEncode({
+        "Password": _passwordController.text,
+        "UserName": _userController.text,
+        "CreatedAt": "Samsung,21,11",
+        "FcmToken": "fjsfhsfd082342084324",
+      });
+      print("0");
+      print(jsonBody.toString());
+      print("1");
+
+      final response = await http.post(url, body: jsonBody, headers: {
+        'Content-Type': 'application/json',
+      });
+print(response.statusCode);
+      if (response.statusCode == 200) {
+        // Request was successful
+        final jsonResponse = jsonDecode(response.body);
+        print(jsonResponse);
+        print(jsonResponse["responseData"]['userId']);
+        int statusCode = jsonResponse['statusCode'];
+        print(statusCode);
+        print(jsonResponse["responseData"]['contactNo']);
+        String ContactNo = jsonResponse["responseData"]['contactNo'];
+        String userName = jsonResponse["responseData"]['userName'];
+        int Patientid = jsonResponse["responseData"]['patientId'];
+        int UserID = jsonResponse["responseData"]['userId'];
+        String firstName = jsonResponse["responseData"]['firstName'];
+        String lastName = jsonResponse["responseData"]['lastName'];
+        String emailId = jsonResponse["responseData"]['emailId'];
+        String password = jsonResponse["responseData"]['password'];
+        String salt = jsonResponse["responseData"]['salt'];
+        String isVerifyMobileNo = jsonResponse["responseData"]['isVerifyMobileNo'];
+        String isVerifyEmail = jsonResponse["responseData"]['isVerifyEmail'];
+        String dateOfBirth = jsonResponse["responseData"]['dateOfBirth'];
+        String gender = jsonResponse["responseData"]['gender'];
+        String city = jsonResponse["responseData"]['city'];
+        String fcmToken = jsonResponse["responseData"]['fcmToken'];
+        String address = jsonResponse["responseData"]['address'];
+        String bloodGroup = jsonResponse["responseData"]['bloodGroup'];
+        String zip = jsonResponse["responseData"]['zip'];
+        String profileImage = jsonResponse["responseData"]['profileImage'];
+        String isSubscribed = jsonResponse["responseData"]['isSubscribed'];
+        int parentUserId = jsonResponse["responseData"]['parentUserId'];
+
+        // String PWD = jsonResponse["responseData"]['Password'];
         res = response.body;
         log(res);
+        print("2");
 
-        if (response.statusCode == 200) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => FinalPage()));
+        print(res);
+        print("3");
+        if (statusCode == 200) {
+          Future<void> saveUserData() async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            await prefs.setString('userId', UserID.toString());
+            await prefs.setString('contactNo', ContactNo);
+            await prefs.setString('patientId', Patientid.toString());
+            await prefs.setString('patientId', userName);
+            await prefs.setString('patientId', firstName);
+            await prefs.setString('patientId', lastName);
+            await prefs.setString('patientId', emailId);
+            await prefs.setString('patientId', password);
+            await prefs.setString('patientId', salt);
+            await prefs.setString('patientId', isVerifyMobileNo);
+            await prefs.setString('patientId', isVerifyEmail);
+            await prefs.setString('patientId', dateOfBirth);
+            await prefs.setString('patientId', gender);
+            await prefs.setString('patientId', city);
+            await prefs.setString('patientId', fcmToken);
+            await prefs.setString('patientId', address);
+            await prefs.setString('patientId', bloodGroup);
+            await prefs.setString('patientId', zip);
+            await prefs.setString('patientId', profileImage);
+            await prefs.setString('patientId', isSubscribed);
+            await prefs.setString('patientId', parentUserId.toString());
+
+
+            // await prefs.setString('password', PWD);
+          }
+
+          saveUserData().then((_) {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => otpScreen()),
+            // );
+
+            // });
+          });
         } else {
-          _Error = "Please try again";
+         print("Errror 1");
+
+          // Handle other status codes here
         }
+      } else {
+        print("Errror 1");
       }
-    });
+    } catch (e) {
+
+      print('An error occurred: $e');
+      // Handle the error as needed
+    }
+
   }
+
+
+  // void _loginpage() {
+  //   setState(() async {
+  //     if (_userController.text.isNotEmpty &&
+  //         _passwordController.text.isNotEmpty) {
+  //       final url =
+  //           Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/Login');
+  //       final jsonBody = jsonEncode({
+  //         "createdAt": "Samsung,21,11",
+  //         "userName": _userController.text,
+  //         "password": _passwordController.text,
+  //         "fcmToken": "fjsfhsfd082342084324"
+  //       });
+  //       final response = await http.post(url, body: jsonBody, headers: {
+  //         'Content-Type': 'application/json',
+  //       });
+  //       res = response.body;
+  //       log(res);
+  //
+  //       if (response.statusCode == 200) {
+  //         Navigator.push(
+  //             context, MaterialPageRoute(builder: (context) => FinalPage()));
+  //       } else {
+  //         _Error = "Please try again";
+  //       }
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -342,7 +460,7 @@ class _SigninState extends State<Signin> {
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
-                  onPressed: _loginpage),
+                  onPressed: (){}),
             ),
             /*child: ElevatedButton(  child: Text("Google", style:new TextStyle(color: Colors.black, fontFamily: 'Poppins', fontWeight: FontWeight.w900)),
                     style: ElevatedButton.styleFrom(

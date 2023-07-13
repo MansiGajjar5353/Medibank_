@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Functions/Utility.dart';
 import 'package:project_signup_page/Onbording/Responsive.dart';
 
 import '../Onbording/b_date.dart';
@@ -16,6 +17,29 @@ class create_accState extends State<create_acc> {
   final TextEditingController _LastName = new TextEditingController();
 
 
+  void _Validation() {
+    if (_FirstName.text.isEmpty) {
+      Utility.ShowToast("Please Enter First Name");
+    } else if (_LastName.text.isEmpty){
+      Utility.ShowToast("Please Enter Last Name");}
+    else{
+      _Navigate();}
+  }
+
+
+
+  void _Navigate(){
+    String firstName = _FirstName.text;
+    String lastName = _LastName.text;
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => b_date(
+            firstName: firstName,
+            lastName: lastName,
+          ),
+        ));
+  }
 
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
@@ -34,19 +58,11 @@ class create_accState extends State<create_acc> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      String firstName = _FirstName.text;
-      String lastName = _LastName.text;
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => b_date(
-              firstName: firstName,
-              lastName: lastName,
-            ),
-          ));
+      _Validation();
       // Perform navigation after the delay
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

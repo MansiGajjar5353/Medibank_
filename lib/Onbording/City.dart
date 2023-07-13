@@ -1,4 +1,12 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Functions/APILink.dart';
+import 'package:project_signup_page/Functions/Utility.dart';
+import 'package:project_signup_page/Onbording/Plans.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Responsive.dart';
 import 'Select_Username.dart';
@@ -12,6 +20,8 @@ class City extends StatefulWidget {
 }
 
 class CityState extends State<City> {
+  final TextEditingController _City = new TextEditingController();
+
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
@@ -28,14 +38,78 @@ class CityState extends State<City> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Select_Username(),
-          ));
+      Validation();
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Select_Username(),
+      //     ));
       // Perform navigation after the delay
     });
   }
+
+  String res = "";
+void Validation(){
+  if(_City.text.isEmpty){
+    Utility.ShowToast("Please enter Your City");
+  }
+  UserName();
+}
+  void UserName() async{
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String userId = "";
+      userId = prefs.getString('userId') ?? '';
+      String contactNo = prefs.getString('contactNo') ?? '';
+      String password = prefs.getString('password') ?? '';
+      String City = _City.text;
+
+
+      final url =
+      Uri.parse('$API' + APIList.SaveAddress);
+      final jsonBody = jsonEncode({
+        "userID" : userId,
+        "city" : City,
+         "CreatedAt": "Samsung,21,11",
+
+      });
+      print(jsonBody.toString());
+
+      final response = await http.post(url, body: jsonBody, headers: {
+        'Content-Type': 'application/json',
+      });
+      print(response.body);
+      if (response.statusCode == 200) {
+        // Request was successful
+        final jsonResponse = jsonDecode(response.body);
+        int statusCode = jsonResponse['statusCode'];
+        res = response.body;
+        log(res);
+        print(res);
+
+        if (statusCode == 200) {
+
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Plans()),
+          );
+
+        } else {
+          Utility.ShowToast("Please check details");
+        }
+      } else {
+        // Handle request failure here
+        //  _Error = "Request failed with status: ${response.statusCode}";
+      }
+    } catch (e) {
+      // Exception handling
+      print('An error occurred: $e');
+      // Handle the error as needed
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -270,6 +344,7 @@ class CityState extends State<City> {
                         //border: Border.all(),
                       ),
                       child: TextField(
+                        controller: _City,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 15),

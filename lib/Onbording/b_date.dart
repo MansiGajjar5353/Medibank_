@@ -21,6 +21,7 @@ class b_date extends StatefulWidget {
 }
 
 class b_dateState extends State<b_date> {
+
   int selectedYear = 1999;
 
   late DateTime dateTime;
@@ -41,6 +42,8 @@ class b_dateState extends State<b_date> {
 
   int _focusedIndex = 0;
   int _focusedIndex2 = 0;
+
+
   List<int> data = [
     1,
     2,
@@ -74,6 +77,7 @@ class b_dateState extends State<b_date> {
     30,
     31
   ];
+
 
 
 
@@ -165,7 +169,7 @@ class b_dateState extends State<b_date> {
   Color imageColor = Color(0xff4F555A).withOpacity(0.5);
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
-
+  String Birthdate = "";
   void handleButtonPress() {
     setState(() {
       buttonColor = Colors.green; // Change the color to your desired value
@@ -178,27 +182,81 @@ class b_dateState extends State<b_date> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-
-      String firstName = widget.firstName;
-      String lastName = widget.lastName;
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Gender(
-
-              firstName: firstName,
-              lastName: lastName,
-
-            ),
-          ));
+      Monthh();
+      // String firstName = widget.firstName;
+      // String lastName = widget.lastName;
+      //
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Gender(
+      //
+      //         firstName: firstName,
+      //         lastName: lastName,
+      //         Birthdate: Birthdate,
+      //       ),
+      //     ));
       // Perform navigation after the delay
     });
   }
+void Nav(){
+
+  String firstName = widget.firstName;
+  String lastName = widget.lastName;
+
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Gender(
+
+          firstName: firstName,
+          lastName: lastName,
+          Birthdate: Birthdate,
+        ),
+      ));
+}
+  String FinalMonth = '';
+  String Finaldate = '';
+  String Montthh = '';
+  String Dattee = '';
+
+  void Monthh(){
+    if(FinalMonth.toString().length >= 2){
+      Montthh = FinalMonth;
+    }
+    else if(FinalMonth.toString().length <2) {
+      Montthh = '0' + FinalMonth.toString();
+    }
+    setState(() {
+      Datee();
+    });
+  }
+  void Datee(){
+    if(Finaldate.toString().length >= 2){
+      Dattee = Finaldate;
+    } else if(Finaldate.toString().length <2) {
+      Dattee = '0' + Finaldate.toString();
+    }
+    setState(() {
+      Birthdatee();
+    });
+  }
+
+  void Birthdatee(){
+    Birthdate = '$selectedYear' + '-' + '$Montthh'+ '-' + '$Dattee';
+    setState(() {
+      Nav();
+    });
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
-    final String FinalMonth = month[_focusedIndex2] ;
-    final String Finaldate = data[_focusedIndex].toString();
+     FinalMonth = '${_focusedIndex2 + 1}' ;
+     Finaldate = data[_focusedIndex].toString();
+     Birthdate = '$selectedYear' + '-' + '$Montthh'+ '-' + '$Dattee';
+
     final currentYear = DateTime.now().year;
     final years = List.generate(
       currentYear - 1900 + 1,
@@ -239,7 +297,8 @@ class b_dateState extends State<b_date> {
         child: ListView(
           //   shrinkWrap: true,
           children: [
-            // Text("$selectedYear"),
+            Text("$Birthdate"),
+             // Text("$Birthdate"),
             Container(
               margin: EdgeInsets.only(top: 20.0),
               child: Row(
@@ -427,22 +486,7 @@ class b_dateState extends State<b_date> {
                 width: 280,
                 height: 120,
 
-                // scrollDirection: Axis.horizontal,
 
-                // child:    CupertinoDatePicker(
-                //
-                //     initialDateTime: DateTime.now(),
-                //     minimumDate: DateTime(1900),
-                //     maximumDate: DateTime.now(),
-                //     mode: CupertinoDatePickerMode.date,
-                //     dateOrder: DatePickerDateOrder.dmy,
-                //     onDateTimeChanged: (date){
-                //       setState(()async {
-                //         dateTime = date;
-                //       });
-                //
-                //     })
-                // ),
 
                 child: Container(
                   height: _mediaquery.size.height * 20,

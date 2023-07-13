@@ -17,6 +17,29 @@ class HospilizationState extends State<Hospilization> {
   Color buttonColor = Colors.black; // Initial color of the button
   bool isButtonPressed = false;
 
+  List<int> selectedIndices = [];
+  bool isVisible = false;
+  bool click = true;
+  bool toggle = false;
+  bool newisButtonPressed = false;
+
+  List<bool> isCheckedListDelete = List.generate(5, (index) => false);
+  List<bool> imagechange = List.generate(5, (index) => false);
+
+  void toggleCheckboxDelete(int index) {
+    setState(() {
+      isCheckedListDelete[index] = !isCheckedListDelete[index];
+      imagechange[index] = !imagechange[index];
+    });
+  }
+
+  void NewhandleButtonPress() {
+    setState(() {
+      // Change the color to your desired value
+      newisButtonPressed = true;
+    });
+  }
+
   void handleButtonPress() {
     setState(() {
       buttonColor = Colors.green; // Change the color to your desired value
@@ -241,755 +264,363 @@ class HospilizationState extends State<Hospilization> {
           ],
         ),
       ),
-      body: ListView(
-        children: [
-          Container(
-            height: Responsive.isSmallScreen(context)
-                ? _mediaquery.size.width * 0.45
-                : _mediaquery.size.width * 0.2,
-            margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-            decoration: BoxDecoration(
-              color: Color(0xffF7F7F7),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 20),
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 2.5
-                            : width / 3,
-                        child: Text(
-                          "Hospitalization",
-                          style: TextStyle(
-                            color: Color(0XFF929292),
-                            fontSize: Responsive.isSmallScreen(context)
-                                ? width / 22
-                                : width / 35,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "Poppins",
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 3
-                            : width / 3,
-                        margin: EdgeInsets.only(right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: Responsive.isSmallScreen(context)
-                                    ? width / 10
-                                    : width / 30,
-                                child: Image(
-                                  image: AssetImage("image/EyeButton.png"),
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: Responsive.isSmallScreen(context)
-                                    ? width / 10
-                                    : width / 30,
-                                child: Image(
-                                  image: AssetImage("image/EditButton.png"),
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: Responsive.isSmallScreen(context)
-                                    ? width / 10
-                                    : width / 30,
-                                child: Image(
-                                  image: AssetImage("image/DeleteButton.png"),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 1,
-                  margin:
-                      EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                  color: Color(0xff000000).withOpacity(0.20),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 2.5
-                            : width / 3.5,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Date",
-                                  style: TextStyle(
-                                    color: Color(0XFF4F555A),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(
-                                  "27/08/2022",
-                                  style: TextStyle(
-                                    color: Color(0xff4F555A).withOpacity(0.5),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Doctor",
-                                  style: TextStyle(
-                                    color: Color(0XFF4F555A),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(
-                                  "Amet Minit",
-                                  style: TextStyle(
-                                    color: Color(0xff4F555A).withOpacity(0.5),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Treatment",
-                                  style: TextStyle(
-                                    color: Color(0XFF4F555A),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(
-                                  "Fever",
-                                  style: TextStyle(
-                                    color: Color(0xff4F555A).withOpacity(0.5),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 25,
-                        width: 60,
-                        margin: EdgeInsets.only(right: 20),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Color(0xff8ED69E),
-                            border: Border.all(color: Color(0xff24B445))),
-                        child: Center(
-                            child: Text(
-                          "Billing",
-                          style:
-                              TextStyle(color: Color(0xff000000), fontSize: 12),
-                        )),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Hospitalization",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: Responsive.isSmallScreen(context)
-                ? _mediaquery.size.width * 0.45
-                : _mediaquery.size.width * 0.2,
-            margin: EdgeInsets.only(top: 10, left: 20, right: 20),
-            decoration: BoxDecoration(
-              color: Color(0xffF7F7F7),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 20),
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 2.5
-                            : width / 3,
-                        child: Text(
-                          "Hospitalization",
-                          style: TextStyle(
-                            color: Color(0XFF929292),
-                            fontSize: Responsive.isSmallScreen(context)
-                                ? width / 22
-                                : width / 35,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "Poppins",
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 3
-                            : width / 3,
-                        margin: EdgeInsets.only(right: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: Responsive.isSmallScreen(context)
-                                    ? width / 10
-                                    : width / 30,
-                                child: Image(
-                                  image: AssetImage("image/EyeButton.png"),
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: Responsive.isSmallScreen(context)
-                                    ? width / 10
-                                    : width / 30,
-                                child: Image(
-                                  image: AssetImage("image/EditButton.png"),
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: Responsive.isSmallScreen(context)
-                                    ? width / 10
-                                    : width / 30,
-                                child: Image(
-                                  image: AssetImage("image/DeleteButton.png"),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 1,
-                  margin:
-                      EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                  color: Color(0xff000000).withOpacity(0.20),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        width: Responsive.isSmallScreen(context)
-                            ? width / 2.5
-                            : width / 3.5,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Date",
-                                  style: TextStyle(
-                                    color: Color(0XFF4F555A),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(
-                                  "27/08/2022",
-                                  style: TextStyle(
-                                    color: Color(0xff4F555A).withOpacity(0.5),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Doctor",
-                                  style: TextStyle(
-                                    color: Color(0XFF4F555A),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(
-                                  "Amet Minit",
-                                  style: TextStyle(
-                                    color: Color(0xff4F555A).withOpacity(0.5),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Treatment",
-                                  style: TextStyle(
-                                    color: Color(0XFF4F555A),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(
-                                  "Fever",
-                                  style: TextStyle(
-                                    color: Color(0xff4F555A).withOpacity(0.5),
-                                    fontSize: Responsive.isSmallScreen(context)
-                                        ? width / 28
-                                        : width / 60,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: "Poppins",
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 25,
-                        width: 60,
-                        margin: EdgeInsets.only(right: 20),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Color(0xff8ED69E),
-                            border: Border.all(color: Color(0xff24B445))),
-                        child: Center(
-                            child: Text(
-                          "Billing",
-                          style:
-                              TextStyle(color: Color(0xff000000), fontSize: 12),
-                        )),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Hospitalization",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Hospitalization",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Hospitalization",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Hospitalization",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Hospitalization",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Hospitalization",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: 83,
-            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xffF7F7F7),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    //width: Responsive.isSmallScreen(context)? width/2.5 : width/3,
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Perception",
-                      style: TextStyle(
-                        color: Color(0XFF929292),
-                        fontSize: Responsive.isSmallScreen(context)
-                            ? width / 22
-                            : width / 35,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins",
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: Image(
-                        image: AssetImage("image/ViewButton.png"),
-                        height: 20,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Center(
+      body: ListView.builder(
+        physics: ClampingScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            margin: EdgeInsets.only(
+                left:
+                    Responsive.isSmallScreen(context) ? width / 20 : width / 20,
+                right:
+                    Responsive.isSmallScreen(context) ? width / 20 : width / 20,
+                top: Responsive.isSmallScreen(context)
+                    ? width / 50
+                    : width / 50),
+            width:
+                Responsive.isSmallScreen(context) ? width / 3.1 : width / 3.1,
             child: Container(
-              height: _mediaquery.size.height * 0.070,
-              width:
-                  Responsive.isSmallScreen(context) ? width / 2.5 : width / 3.5,
-              margin: EdgeInsets.only(top: _mediaquery.size.height * 0.02),
-              child: ElevatedButton(
-                onPressed: handleButtonPress,
-                child: Image.asset('image/PlusButton.png',
-                    color: isButtonPressed ? Colors.black : imageColor,
-                    height: _mediaquery.size.height * 0.04),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      isButtonPressed ? buttonColor : Color(0xffF9F9F9),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ),
-            ),
-          ),
-        ],
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffF7F7F7),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: Responsive.isSmallScreen(context)
+                                  ? width / 30
+                                  : width / 30,
+                              bottom: Responsive.isSmallScreen(context)
+                                  ? width / 30
+                                  : width / 30,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 20),
+                                  width: Responsive.isSmallScreen(context)
+                                      ? width / 2.5
+                                      : width / 3,
+                                  child: Text(
+                                    "Hospitalization",
+                                    style: TextStyle(
+                                      color: Color(0XFF929292),
+                                      fontSize:
+                                          Responsive.isSmallScreen(context)
+                                              ? width / 22
+                                              : width / 35,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: "Poppins",
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(right: 20),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          handleButtonPress;
+                                          setState(() {
+                                            toggleCheckboxDelete(index);
+                                            //toggle = !toggle;
+                                          });
+                                        },
+                                        child: Container(
+                                            child: imagechange[index]
+                                                ? Container(
+                                                    width: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 10
+                                                        : width / 30,
+                                                    child: Image(
+                                                        image: AssetImage(
+                                                            "image/EyeButton.png")),
+                                                  )
+                                                : Container(
+                                                    width: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 8
+                                                        : width / 30,
+                                                    child: Image(
+                                                        image: AssetImage(
+                                                            "image/ViewButton.png")),
+                                                  )),
+                                      ),
+                                      Visibility(
+                                        visible: isCheckedListDelete[index],
+                                        child: Container(
+                                          margin: EdgeInsets.only(
+                                            top: Responsive.isSmallScreen(
+                                                    context)
+                                                ? width / 30
+                                                : width / 30,
+                                            bottom: Responsive.isSmallScreen(
+                                                    context)
+                                                ? width / 30
+                                                : width / 30,
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              InkWell(
+                                                onTap: () {},
+                                                child: Container(
+                                                  width:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 10
+                                                          : width / 30,
+                                                  margin: EdgeInsets.only(
+                                                    left: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 40
+                                                        : width / 40,
+                                                  ),
+                                                  child: Image(
+                                                    image: AssetImage(
+                                                        "image/EditButton.png"),
+                                                  ),
+                                                ),
+                                              ),
+                                              InkWell(
+                                                onTap: () {},
+                                                child: Container(
+                                                  width:
+                                                      Responsive.isSmallScreen(
+                                                              context)
+                                                          ? width / 10
+                                                          : width / 30,
+                                                  margin: EdgeInsets.only(
+                                                    left: Responsive
+                                                            .isSmallScreen(
+                                                                context)
+                                                        ? width / 40
+                                                        : width / 40,
+                                                  ),
+                                                  child: Image(
+                                                    image: AssetImage(
+                                                        "image/DeleteButton.png"),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Visibility(
+                              visible: isCheckedListDelete[index],
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 1,
+                                    margin: EdgeInsets.only(
+                                        left: Responsive.isSmallScreen(context)
+                                            ? width / 30
+                                            : width /30,
+                                        right:Responsive.isSmallScreen(context)
+                                            ? width / 30
+                                            : width / 30,
+                                        bottom:Responsive.isSmallScreen(context)
+                                            ? width / 30
+                                            : width / 30),
+                                    color: Color(0xff000000).withOpacity(0.20),
+                                  ),
+                                  Container(
+
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              left: Responsive.isSmallScreen(context)
+                                                  ? width / 30
+                                                  : width /30,
+                                              right:Responsive.isSmallScreen(context)
+                                                  ? width / 30
+                                                  : width / 30,
+                                              bottom:Responsive.isSmallScreen(context)
+                                                  ? width / 30
+                                                  : width / 30),
+                                          width:
+                                              Responsive.isSmallScreen(context)
+                                                  ? width / 2.5
+                                                  : width / 3.5,
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    "Date",
+                                                    style: TextStyle(
+                                                      color: Color(0XFF4F555A),
+                                                      fontSize: Responsive
+                                                              .isSmallScreen(
+                                                                  context)
+                                                          ? width / 28
+                                                          : width / 60,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10)),
+                                                  Text(
+                                                    "27/08/2022",
+                                                    style: TextStyle(
+                                                      color: Color(0xff4F555A)
+                                                          .withOpacity(0.5),
+                                                      fontSize: Responsive
+                                                              .isSmallScreen(
+                                                                  context)
+                                                          ? width / 28
+                                                          : width / 60,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    "Doctor",
+                                                    style: TextStyle(
+                                                      color: Color(0XFF4F555A),
+                                                      fontSize: Responsive
+                                                              .isSmallScreen(
+                                                                  context)
+                                                          ? width / 28
+                                                          : width / 60,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10)),
+                                                  Text(
+                                                    "Amet Minit",
+                                                    style: TextStyle(
+                                                      color: Color(0xff4F555A)
+                                                          .withOpacity(0.5),
+                                                      fontSize: Responsive
+                                                              .isSmallScreen(
+                                                                  context)
+                                                          ? width / 28
+                                                          : width / 60,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    "Treatment",
+                                                    style: TextStyle(
+                                                      color: Color(0XFF4F555A),
+                                                      fontSize: Responsive
+                                                              .isSmallScreen(
+                                                                  context)
+                                                          ? width / 28
+                                                          : width / 60,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10)),
+                                                  Text(
+                                                    "Fever",
+                                                    style: TextStyle(
+                                                      color: Color(0xff4F555A)
+                                                          .withOpacity(0.5),
+                                                      fontSize: Responsive
+                                                              .isSmallScreen(
+                                                                  context)
+                                                          ? width / 28
+                                                          : width / 60,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily: "Poppins",
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 60,
+                                          margin: EdgeInsets.only(
+
+                                              right:Responsive.isSmallScreen(context)
+                                                  ? width / 30
+                                                  : width / 30,
+                                              bottom:Responsive.isSmallScreen(context)
+                                                  ? width / 30
+                                                  : width / 30),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: Color(0xff8ED69E),
+                                              border: Border.all(
+                                                  color: Color(0xff24B445))),
+                                          child: Center(
+                                              child: Text(
+                                            "Billing",
+                                            style: TextStyle(
+                                                color: Color(0xff000000),
+                                                fontSize: 12),
+                                          )),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
+          );
+        },
       ),
     );
   }

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'dart:convert';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import '../Functions/Utility.dart';
 import 'Plans.dart';
 import 'Responsive.dart';
+import '../Functions/APILink.dart';
+
 
 class Select_Username extends StatefulWidget {
   @override
@@ -11,6 +17,25 @@ class Select_Username extends StatefulWidget {
   }
 }
 
+class Userdetails {
+
+  final String name;
+
+
+  Userdetails({
+
+    required this.name,
+
+  });
+
+  factory Userdetails.fromJson(Map<String, dynamic> json) {
+    return Userdetails(
+
+      name: json['name'],
+
+    );
+  }
+}
 class Select_UsernameState extends State<Select_Username> {
   String SelectedUserName = "ABC";
 
@@ -30,14 +55,113 @@ class Select_UsernameState extends State<Select_Username> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Plans(),
-          ));
+      // CityScreen();
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Plans(),
+      //     ));
       // Perform navigation after the delay
     });
   }
+
+
+  // String res = "";
+ // List<dynamic>Username = [];
+ //  void CityScreen() async {
+ //    try {
+ //      SharedPreferences prefs = await SharedPreferences.getInstance();
+ //      String userId = "";
+ //      userId = prefs.getString('userId') ?? '';
+ //      String contactNo = prefs.getString('contactNo') ?? '';
+ //      String password = prefs.getString('password') ?? '';
+ //
+ //      print("1");
+ //      final url =
+ //      Uri.parse('$API' + APIList.GetUsernameSuggestions +'/$userId');
+ //      final jsonBody = jsonEncode({
+ //        // "userId":userId,
+ //      });
+ //      print(url);
+ //
+ //    print("2");
+ //
+ //      print(jsonBody.toString());
+ //      print('Request Body: $jsonBody');
+ //
+ //      print("3");
+ //
+ //      final response = await http.get(url);
+ //      print("4");
+ //
+ //      print(response.body);
+ //      print("5");
+ //      final jsonResponse = jsonDecode(response.body);
+ //      int statusCode = jsonResponse['statusCode'];
+ //      List<dynamic>Username = jsonResponse['responseData'];
+ //      print(Username);
+ //
+ //
+ //      if (statusCode == 200) {
+ //        print("Success");
+ //        setState(() {
+ //          Navigator.push(context, MaterialPageRoute(builder: (context)=> Plans(),));
+ //
+ //        });
+ //      } else {
+ //        Utility.ShowToast("Please check details");
+ //      }
+ //
+ //    } catch (e) {
+ //      // Exception handling
+ //      print('An error occurred: $e');
+ //      // Handle the error as needed
+ //    }
+ //  }
+
+
+
+  String res = "";
+
+  List<dynamic> UserData = [];
+  Future<List<Userdetails>> Username() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+         String userId = "";
+         userId = prefs.getString('userId') ?? '';
+         String contactNo = prefs.getString('contactNo') ?? '';
+         String password = prefs.getString('password') ?? '';
+    final url =
+     Uri.parse('$API' + APIList.GetUsernameSuggestions +'/$userId');
+    
+    final response = await http.get(url);
+    print("1");
+// res = jsonDecode(response.body);
+    print("2");
+// print(res);
+    if (response.statusCode == 200) {
+      print("3");
+
+      final List<dynamic> jsonList = jsonDecode(response.body);
+      final List<Userdetails> plans = jsonList.map((json) => Userdetails.fromJson(json)).toList();
+      return plans;
+      // If the API call is successful, parse the response body
+      // UserData = jsonDecode(response.body);
+      //  print(UserData);
+      //  return UserData;
+
+    } else {
+      // If the API call fails, throw an exception or handle the error as desired
+      throw Exception('Failed to fetch subscription plans');
+    }
+  }
+
+  late Future<List<Userdetails>>FutureUser;
+  @override
+  void initState() {
+    super.initState();
+    FutureUser = Username();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +194,35 @@ class Select_UsernameState extends State<Select_Username> {
       body: Container(
         height: _mediaquery.size.height * 1,
         child: ListView(
-          children: [
+          children: <Widget>[
+            // Expanded(L)
+            Expanded(
+              child: Container(
+                height: 300,
+                child: FutureBuilder<List<Userdetails>>(
+                  future: FutureUser,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final plan = snapshot.data![index];
+                          return ListTile(
+                            title: Text(plan.name),
+                          
+                          );
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  },
+                ),
+              ),
+            ),
+
             Center(
               child: Container(
                 margin: EdgeInsets.only(left: 0, top: 20.0),
@@ -261,6 +413,7 @@ class ButtonGroup extends StatefulWidget {
 
 class _ButtonGroupState extends State<ButtonGroup> {
   TextEditingController _controller = TextEditingController();
+  final titles = ["List 1", "List 2", "List 3"];
 
   ButtonState selectedButton = ButtonState.Button1; // Initial selected button
 
@@ -269,6 +422,7 @@ class _ButtonGroupState extends State<ButtonGroup> {
     double width = MediaQuery.of(context).size.width;
 
     var _mediaquery = MediaQuery.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -315,6 +469,21 @@ class _ButtonGroupState extends State<ButtonGroup> {
             ),
           ),
         ),
+
+        // ListView.builder(
+        //     itemCount: 5,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       return ListTile(
+        //           leading: const Icon(Icons.list),
+        //           trailing: const Text(
+        //             "GFG",
+        //             style: TextStyle(color: Colors.green, fontSize: 15),
+        //           ),
+        //           title: Text("List item $index"));
+        //     }),
+
+
+
         Padding(padding: EdgeInsets.only(left: 30, top: 10)),
         Container(
           margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
@@ -463,261 +632,7 @@ class _ButtonGroupState extends State<ButtonGroup> {
             ],
           ),
 
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //
-          //     Container(
-          //       child:InkWell
-          //         (
-          //         onTap:() { onButtonPressed(ButtonState.Button1); },
-          //
-          //
-          //         child:  Container(
-          //           decoration: BoxDecoration(
-          //             color: Colors.white,
-          //             shape: BoxShape.circle,
-          //             boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
-          //           ),
-          //           child: Stack(
-          //             children: [
-          //               CircleAvatar(
-          //
-          //                 backgroundColor: Colors.white,
-          //                 radius: 40.0,
-          //                 child:Column(
-          //
-          //                   children: [
-          //                     Transform.translate(offset: Offset(0,10),
-          //                       child:Container(
-          //                         height:40.0,
-          //                         decoration: BoxDecoration(
-          //                           image: DecorationImage(
-          //                             image: AssetImage('image/Female1.png'),
-          //                             fit: BoxFit.scaleDown,
-          //                             // child:Text('Female'),
-          //                           ), // backgroundImage: AssetImage('image/Other.png',),
-          //                         ),
-          //                       ),),
-          //                     Transform.translate(offset: Offset(0,10),
-          //                       child:   Container(
-          //                         height:20,
-          //                         child:Text(
-          //                           "Female",
-          //                           style: TextStyle(
-          //                             fontWeight: FontWeight.w400,
-          //                             color: Colors.black,
-          //                             fontFamily: 'Poppins',
-          //                             fontSize: 10,
-          //                           ),
-          //                         ),
-          //                       ),),
-          //                   ],
-          //                 ),
-          //
-          //               ),
-          //               Transform.translate(offset: Offset(60,5),
-          //                 child:Visibility(
-          //                   visible:  selectedButton== ButtonState.Button1 ? true: false,
-          //                   child: Container(
-          //                     decoration: BoxDecoration(
-          //                       color: Colors.white,
-          //                       shape: BoxShape.circle,
-          //                       boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
-          //                     ),
-          //                     child: CircleAvatar(
-          //                       radius:14,
-          //                       backgroundColor: Colors.white,
-          //                       child: Center(
-          //                         child: Image.asset("image/Checkbox.png", height: 20,),
-          //                       ),
-          //                     ),
-          //                   ),
-          //                 ),
-          //
-          //               ),
-          //
-          //
-          //             ],
-          //           ),
-          //
-          //
-          //
-          //         ),
-          //       ),
-          //     ),
-          //
-          //     Padding(padding: EdgeInsets.only(top: 10)),
-          //
-          //
-          //     Container(
-          //       child:InkWell
-          //         (
-          //         onTap:() { onButtonPressed(ButtonState.Button2); },
-          //
-          //         child:  Container(
-          //           decoration: BoxDecoration(
-          //             color: Colors.white,
-          //             shape: BoxShape.circle,
-          //             boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
-          //           ),
-          //           child: Stack(
-          //             children: [
-          //               CircleAvatar(
-          //
-          //                 backgroundColor: Colors.white,
-          //                 radius: 40.0,
-          //                 child:Column(
-          //                   children: [
-          //                     Transform.translate(offset: Offset(0,10),
-          //                       child:Container(
-          //                         height:40.0,
-          //                         decoration: BoxDecoration(
-          //                           image: DecorationImage(
-          //                             image: AssetImage('image/Male1.png'),
-          //                             fit: BoxFit.scaleDown,
-          //                             // child:Text('Others'),
-          //                           ), // backgroundImage: AssetImage('image/Other.png',),
-          //                         ),
-          //                       ),),
-          //                     Transform.translate(offset: Offset(0,10),
-          //                       child:   Container(
-          //                         height:20,
-          //                         child:Text(
-          //                           "Male",
-          //                           style: TextStyle(
-          //                             fontWeight: FontWeight.w400,
-          //                             color: Colors.black,
-          //                             fontFamily: 'Poppins',
-          //                             fontSize: 10,
-          //                           ),
-          //                         ),
-          //                       ),),
-          //                   ],
-          //                 ),
-          //
-          //               ),
-          //
-          //
-          //               Transform.translate(offset: Offset(60,5),
-          //                 child:Visibility(
-          //                   visible: selectedButton== ButtonState.Button2 ? true: false,
-          //                   child: Container(
-          //                     decoration: BoxDecoration(
-          //                       color: Colors.white,
-          //                       shape: BoxShape.circle,
-          //                       boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
-          //                     ),
-          //                     child: CircleAvatar(
-          //                       radius:14,
-          //                       backgroundColor: Colors.white,
-          //                       child: Center(
-          //                         child: Image.asset("image/Checkbox.png", height: 20,),
-          //                       ),
-          //                     ),
-          //                   ),
-          //                 ),
-          //
-          //               )
-          //
-          //
-          //
-          //
-          //
-          //
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //
-          //
-          //     Padding(padding: EdgeInsets.only(top: 10)),
-          //
-          //     Container(
-          //       child:InkWell
-          //         (
-          //         onTap:() { onButtonPressed(ButtonState.Button3); },
-          //
-          //         child:  Container(
-          //           decoration: BoxDecoration(
-          //             color: Colors.white,
-          //             shape: BoxShape.circle,
-          //             boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 3)],
-          //           ),
-          //           child: Stack(
-          //             children: [
-          //               CircleAvatar(
-          //
-          //                 backgroundColor: Colors.white,
-          //                 radius: 40.0,
-          //                 child:Column(
-          //                   children: [
-          //                     Transform.translate(offset: Offset(0,10),
-          //                       child:Container(
-          //                         height:40.0,
-          //                         decoration: BoxDecoration(
-          //                           image: DecorationImage(
-          //                             image: AssetImage('image/other1.png'),
-          //                             fit: BoxFit.scaleDown,
-          //                             // child:Text('Others'),
-          //                           ), // backgroundImage: AssetImage('image/Other.png',),
-          //                         ),
-          //                       ),),
-          //                     Transform.translate(offset: Offset(0,10),
-          //                       child:   Container(
-          //                         height:20,
-          //                         child:Text(
-          //                           "Other",
-          //                           style: TextStyle(
-          //                             fontWeight: FontWeight.w400,
-          //                             color: Colors.black,
-          //                             fontFamily: 'Poppins',
-          //                             fontSize: 10,
-          //                           ),
-          //                         ),
-          //                       ),),
-          //                   ],
-          //                 ),
-          //
-          //               ),
-          //
-          //               Transform.translate(offset: Offset(60,5),
-          //                 child:Visibility(
-          //                   visible: selectedButton== ButtonState.Button3 ? true: false,
-          //                   child: Container(
-          //                     decoration: BoxDecoration(
-          //                       color: Colors.white,
-          //                       shape: BoxShape.circle,
-          //                       boxShadow: [BoxShadow(blurRadius: 0, color: Color(0xffCECECE), spreadRadius: 2)],
-          //                     ),
-          //                     child: CircleAvatar(
-          //                       radius:14,
-          //                       backgroundColor: Colors.white,
-          //                       child: Center(
-          //                         child: Image.asset("image/Checkbox.png", height: 20,),
-          //                       ),
-          //                     ),
-          //                   ),
-          //                 ),
-          //
-          //               )
-          //
-          //
-          //
-          //
-          //
-          //
-          //
-          //
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //
-          //   ],
-          // ),
+
         ),
       ],
     );

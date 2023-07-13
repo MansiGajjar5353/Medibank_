@@ -1,4 +1,11 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:project_signup_page/Functions/APILink.dart';
+import 'package:project_signup_page/Functions/Utility.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 import 'Responsive.dart';
 import 'Welcome_Screen.dart';
@@ -15,7 +22,31 @@ class Plans extends StatefulWidget {
     return PlansState();
   }
 }
+class SubscriptionPlan {
+  final int subscriptionPlanId;
+  final String name;
+  final String description;
+  final double amount;
+  final double discount;
 
+  SubscriptionPlan({
+    required this.subscriptionPlanId,
+    required this.name,
+    required this.description,
+    required this.amount,
+    required this.discount,
+  });
+
+  factory SubscriptionPlan.fromJson(Map<String, dynamic> json) {
+    return SubscriptionPlan(
+      subscriptionPlanId: json['subscriptionPlanId'],
+      name: json['name'],
+      description: json['description'],
+      amount: json['amount'].toDouble(),
+      discount: json['discount'].toDouble(),
+    );
+  }
+}
 class PlansState extends State<Plans> {
   ButtonState selectedButton = ButtonState.Button1; // Initial selected button
 
@@ -35,14 +66,18 @@ class PlansState extends State<Plans> {
             Colors.green; // Change the color back to the original value
         isButtonPressed = false;
       });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Welcome_Screen(),
-          ));
+      // fetchSubscriptionPlans();
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Welcome_Screen(),
+      //     ));
       // Perform navigation after the delay
     });
   }
+
+
+
 
   final TextEditingController _userController = new TextEditingController();
 
@@ -51,6 +86,39 @@ class PlansState extends State<Plans> {
       _userController.clear();
     });
   }
+  String res = "";
+
+  List<dynamic> subscriptionPlans = [];
+  Future<List<SubscriptionPlan>> fetchSubscriptionPlans() async {
+    final response = await http.get(Uri.parse('https://staging.themedibank.in/api/v1/UserSignUp/GetSubscriptionPlan'));
+    print("1");
+// res = jsonDecode(response.body);
+print("2");
+// print(res);
+    if (response.statusCode == 200) {
+      print("3");
+
+      final List<dynamic> jsonList = jsonDecode(response.body);
+      final List<SubscriptionPlan> plans = jsonList.map((json) => SubscriptionPlan.fromJson(json)).toList();
+      return plans;
+      // If the API call is successful, parse the response body
+     // subscriptionPlans = jsonDecode(response.body);
+     //  print(subscriptionPlans);
+     //  return subscriptionPlans;
+
+    } else {
+      // If the API call fails, throw an exception or handle the error as desired
+      throw Exception('Failed to fetch subscription plans');
+    }
+  }
+
+  late Future<List<SubscriptionPlan>> futurePlans;
+  @override
+  void initState() {
+    super.initState();
+    futurePlans = fetchSubscriptionPlans();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +148,86 @@ class PlansState extends State<Plans> {
                       : width / 4)),
         ),
       ),
-      body: Container(
+      body:
+
+
+
+
+
+
+      Container(
         height: _mediaquery.size.height * 1,
         child: ListView(
           children: [
+        Expanded(
+          child: Container(
+            height: 300,
+            child: FutureBuilder<List<SubscriptionPlan>>(
+            future: futurePlans,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final plan = snapshot.data![index];
+                      return ListTile(
+                        title: Text(plan.name),
+                        subtitle: Text(plan.description),
+                        trailing: Text('${plan.amount}'),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
+          ),
+        ),
+            // Expanded(
+            //   child:
+            //   ListView.builder(
+            //     itemCount: subscriptionPlans.length,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       // Return a widget for each item in the subscriptionPlans list
+            //       return ListTile(
+            //         title: Text(subscriptionPlans[index]['name']),
+            //         subtitle: Text(subscriptionPlans[index]['description']),
+            //         trailing: Text('\$${subscriptionPlans[index]['amount']}'),
+            //       );
+            //     },
+            //   )
+            //   // FutureBuilder<List<dynamic>>(
+            //   //   future: fetchSubscriptionPlans(),
+            //   //   builder: (context, snapshot) {
+            //   //     if (snapshot.hasData) {
+            //   //       List<dynamic> subscriptionPlans = snapshot.data!;
+            //   //       return ListView.builder(
+            //   //         itemCount: subscriptionPlans.length,
+            //   //         itemBuilder: (context, index) {
+            //   //           dynamic plan = subscriptionPlans[index];
+            //   //           return ListTile(
+            //   //             title: Text(plan['name']),
+            //   //             subtitle: Text(plan['description']),
+            //   //             trailing: Text('Amount: ${plan['amount']}'),
+            //   //           );
+            //   //         },
+            //   //       );
+            //   //     } else if (snapshot.hasError) {
+            //   //       return Center(
+            //   //         child: Text('Error: ${snapshot.error}'),
+            //   //       );
+            //   //     } else {
+            //   //       return Center(
+            //   //         child: CircularProgressIndicator(),
+            //   //       );
+            //   //     }
+            //   //   },
+            //   // ),
+            // ),
+
             Center(
               child: Container(
                 margin: EdgeInsets.only(left: 0, top: 10.0),
@@ -540,37 +684,7 @@ class PlansState extends State<Plans> {
               ),
             ),
 
-            // Container(
-            //   child:Column(
-            //     children: [
-            //       Padding(padding: EdgeInsets.only(top:15)),
-            //       ElevatedButton.icon(
-            //         style: ElevatedButton.styleFrom(
-            //           backgroundColor: Color(0xff24B445),
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(32.0)
-            //           ),
-            //
-            //         ),
-            //         onPressed: (){
-            //
-            // Navigator.push(context, MaterialPageRoute(builder: (context)=> Welcome_Screen(),));
-            //
-            //         },
-            //
-            //         icon: Container(
-            //           margin: EdgeInsets.only(left:10),
-            //           width: 80,
-            //           child: Icon(
-            //             Icons.arrow_forward,
-            //             size: 30,
-            //             color: Colors.black,
-            //           ),
-            //         ), label: Text(""),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+
           ],
         ),
       ),
