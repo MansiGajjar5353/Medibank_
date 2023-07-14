@@ -6,6 +6,12 @@ import 'package:http/http.dart' as http;
 import 'package:project_signup_page/Dashbord/ReportsOpen2.dart';
 import 'package:project_signup_page/Functions/APILink.dart';
 import 'package:project_signup_page/Functions/Utility.dart';
+import 'package:project_signup_page/Onbording/City.dart';
+import 'package:project_signup_page/Onbording/Gender.dart';
+import 'package:project_signup_page/Onbording/Select_Username.dart';
+import 'package:project_signup_page/Onbording/b_date.dart';
+import 'package:project_signup_page/UI/Create_acc.dart';
+import 'package:project_signup_page/UI/Email.dart';
 import 'package:project_signup_page/UI/Signup.dart';
 import 'package:project_signup_page/UI/otpScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -82,6 +88,8 @@ print(response.statusCode);
         print(jsonResponse["responseData"]['userId']);
         int statusCode = jsonResponse['statusCode'];
         print(statusCode);
+        String redirectTo = jsonResponse['redirectTo'];
+        print(redirectTo);
         print(jsonResponse["responseData"]['contactNo']);
         String ContactNo = jsonResponse["responseData"]['contactNo'];
         String userName = jsonResponse["responseData"]['userName'];
@@ -92,8 +100,8 @@ print(response.statusCode);
         String emailId = jsonResponse["responseData"]['emailId'];
         String password = jsonResponse["responseData"]['password'];
         String salt = jsonResponse["responseData"]['salt'];
-        String isVerifyMobileNo = jsonResponse["responseData"]['isVerifyMobileNo'];
-        String isVerifyEmail = jsonResponse["responseData"]['isVerifyEmail'];
+      //  String isVerifyMobileNo = jsonResponse["responseData"]['isVerifyMobileNo'];
+     //   String isVerifyEmail = jsonResponse["responseData"]['isVerifyEmail'];
         String dateOfBirth = jsonResponse["responseData"]['dateOfBirth'];
         String gender = jsonResponse["responseData"]['gender'];
         String city = jsonResponse["responseData"]['city'];
@@ -101,8 +109,8 @@ print(response.statusCode);
         String address = jsonResponse["responseData"]['address'];
         String bloodGroup = jsonResponse["responseData"]['bloodGroup'];
         String zip = jsonResponse["responseData"]['zip'];
-        String profileImage = jsonResponse["responseData"]['profileImage'];
-        String isSubscribed = jsonResponse["responseData"]['isSubscribed'];
+     //   String profileImage = jsonResponse["responseData"]['profileImage'];
+      //  String isSubscribed = jsonResponse["responseData"]['isSubscribed'];
         int parentUserId = jsonResponse["responseData"]['parentUserId'];
 
         // String PWD = jsonResponse["responseData"]['Password'];
@@ -118,36 +126,48 @@ print(response.statusCode);
             await prefs.setString('userId', UserID.toString());
             await prefs.setString('contactNo', ContactNo);
             await prefs.setString('patientId', Patientid.toString());
-            await prefs.setString('patientId', userName);
-            await prefs.setString('patientId', firstName);
-            await prefs.setString('patientId', lastName);
-            await prefs.setString('patientId', emailId);
-            await prefs.setString('patientId', password);
-            await prefs.setString('patientId', salt);
-            await prefs.setString('patientId', isVerifyMobileNo);
-            await prefs.setString('patientId', isVerifyEmail);
-            await prefs.setString('patientId', dateOfBirth);
-            await prefs.setString('patientId', gender);
-            await prefs.setString('patientId', city);
-            await prefs.setString('patientId', fcmToken);
-            await prefs.setString('patientId', address);
-            await prefs.setString('patientId', bloodGroup);
-            await prefs.setString('patientId', zip);
-            await prefs.setString('patientId', profileImage);
-            await prefs.setString('patientId', isSubscribed);
-            await prefs.setString('patientId', parentUserId.toString());
+            await prefs.setString('userName', userName);
+            await prefs.setString('firstName', firstName);
+            await prefs.setString('lastName', lastName);
+            await prefs.setString('emailId', emailId);
+            await prefs.setString('password', password);
+            await prefs.setString('salt', salt);
+           // await prefs.setString('isVerifyMobileNo', isVerifyMobileNo.toString());
+         //   await prefs.setString('isVerifyEmail', isVerifyEmail.toString());
+            await prefs.setString('dateOfBirth', dateOfBirth);
+            await prefs.setString('gender', gender);
+            await prefs.setString('city', city);
+            await prefs.setString('fcmToken', fcmToken);
+            await prefs.setString('address', address);
+            await prefs.setString('bloodGroup', bloodGroup);
+            await prefs.setString('zip', zip);
+         //   await prefs.setString('profileImage', profileImage.toString());
+          //  await prefs.setString('isSubscribed', isSubscribed);
+            await prefs.setString('parentUserId', parentUserId.toString());
+            await prefs.setString('redirectTo', redirectTo);
 
 
             // await prefs.setString('password', PWD);
           }
 
           saveUserData().then((_) {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => otpScreen()),
-            // );
+            print("1");
+          if(redirectTo==("username")){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>Select_Username(), ));
+          }else if(redirectTo==('city')){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>City(), ));
+          }else if(redirectTo==("gender")){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>create_acc(), ));
+          }else if(redirectTo==("birthdate")) {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> create_acc(),));
+          }else if(redirectTo==("name")) {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> create_acc(),));
+          }else if(redirectTo==("name")) {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> create_acc(),));
+          }
 
-            // });
+
+
           });
         } else {
          print("Errror 1");
